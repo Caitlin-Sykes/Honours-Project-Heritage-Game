@@ -1,3 +1,5 @@
 # Godot 4+ specific ignores
 .godot/
+
+# Cait specific ignores
 blender_src/
