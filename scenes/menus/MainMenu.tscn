@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://3x7tubsa2wal"]
+[gd_scene load_steps=7 format=3 uid="uid://3x7tubsa2wal"]
 
 [ext_resource type="Script" path="res://scripts/MainMenu.cs" id="1_vmw0m"]
 [ext_resource type="Texture2D" uid="uid://mw7ayma0m24r" path="res://resources/logos/intersex_inclusive.png" id="2_phrki"]
 [ext_resource type="Texture2D" uid="uid://c3way72bjjemo" path="res://resources/logos/philly_2017.png" id="3_5x0fc"]
 [ext_resource type="Texture2D" uid="uid://cbon2wexfkb7o" path="res://resources/logos/PrideProgress.png" id="4_sq0yg"]
 [ext_resource type="Texture2D" uid="uid://bqdowa8y02amp" path="res://resources/logos/pride_1979.png" id="5_ewfec"]
+[ext_resource type="Texture2D" uid="uid://bjbs6wlfdnnlq" path="res://resources/logos/original_pride.png" id="5_ib41u"]
 
 [node name="Main_Menu" type="Control" node_paths=PackedStringArray("intersexInclusive", "philly", "originalPride", "prideProgress", "prideSeventyNine")]
 layout_mode = 3
@@ -14,72 +15,80 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_vmw0m")
-intersexInclusive = NodePath("CanvasLayer/MarginContainer/VBoxContainer/IntersexInclusive")
-philly = NodePath("CanvasLayer/MarginContainer/VBoxContainer/Philly2017")
-originalPride = NodePath("CanvasLayer/MarginContainer/VBoxContainer/OriginalPride")
-prideProgress = NodePath("CanvasLayer/MarginContainer/VBoxContainer/PrideProgress")
-prideSeventyNine = NodePath("CanvasLayer/MarginContainer/VBoxContainer/Pride1979")
+intersexInclusive = NodePath("CanvasLayer/Panel/MarginContainer/VBoxContainer/IntersexInclusive")
+philly = NodePath("CanvasLayer/Panel/MarginContainer/VBoxContainer/Philly2017")
+originalPride = NodePath("CanvasLayer/Panel/MarginContainer/VBoxContainer/OriginalPride")
+prideProgress = NodePath("CanvasLayer/Panel/MarginContainer/VBoxContainer/PrideProgress")
+prideSeventyNine = NodePath("CanvasLayer/Panel/MarginContainer/VBoxContainer/Pride1979")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Panel"]
+layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -170.0
+offset_left = -170.5
 offset_top = -355.0
-offset_right = 171.0
+offset_right = 170.5
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel/MarginContainer"]
 layout_mode = 2
 
-[node name="Start" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+[node name="Start" type="Button" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Play"
 
-[node name="Options" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+[node name="Options" type="Button" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Options"
 
-[node name="Sources" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+[node name="Sources" type="Button" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Sources"
 
-[node name="Exit" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+[node name="Exit" type="Button" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Exit"
 
-[node name="IntersexInclusive" type="Sprite2D" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+[node name="IntersexInclusive" type="Sprite2D" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer"]
 visible = false
 position = Vector2(168, -157)
 texture = ExtResource("2_phrki")
 
-[node name="Philly2017" type="Sprite2D" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+[node name="Philly2017" type="Sprite2D" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer"]
 visible = false
 position = Vector2(168, -157)
 texture = ExtResource("3_5x0fc")
 
-[node name="OriginalPride" type="Sprite2D" parent="CanvasLayer/MarginContainer/VBoxContainer"]
-visible = false
-position = Vector2(169, -157)
-texture = ExtResource("3_5x0fc")
-
-[node name="PrideProgress" type="Sprite2D" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+[node name="PrideProgress" type="Sprite2D" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer"]
 visible = false
 position = Vector2(168, -157)
 texture = ExtResource("4_sq0yg")
 
-[node name="Pride1979" type="Sprite2D" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+[node name="OriginalPride" type="Sprite2D" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer"]
+visible = false
+position = Vector2(168.5, -157)
+texture = ExtResource("5_ib41u")
+
+[node name="Pride1979" type="Sprite2D" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer"]
 visible = false
 position = Vector2(168, -157)
 texture = ExtResource("5_ewfec")
 
-[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Start" to="." method="OnStartPressed"]
-[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Options" to="." method="OnOptionsPressed"]
-[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Sources" to="." method="OnSourcesPressed"]
-[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Exit" to="." method="OnExitPressed"]
+[connection signal="pressed" from="CanvasLayer/Panel/MarginContainer/VBoxContainer/Start" to="." method="OnStartPressed"]
+[connection signal="pressed" from="CanvasLayer/Panel/MarginContainer/VBoxContainer/Options" to="." method="OnOptionsPressed"]
+[connection signal="pressed" from="CanvasLayer/Panel/MarginContainer/VBoxContainer/Sources" to="." method="OnSourcesPressed"]
+[connection signal="pressed" from="CanvasLayer/Panel/MarginContainer/VBoxContainer/Exit" to="." method="OnExitPressed"]

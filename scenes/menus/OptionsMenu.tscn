@@ -1,6 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://dq2js4c06x6de"]
+[gd_scene load_steps=12 format=3 uid="uid://dq2js4c06x6de"]
 
 [ext_resource type="Script" path="res://scripts/OptionsMenu.cs" id="1_kntfd"]
+[ext_resource type="Theme" uid="uid://dctcjbvtvuvys" path="res://resources/themes/red_visual_settings.tres" id="2_5q7um"]
+[ext_resource type="Texture2D" uid="uid://mfhe2dv33dkx" path="res://resources/icons/vision.png" id="3_jjb1t"]
+[ext_resource type="Theme" uid="uid://cdfd23e2exkr4" path="res://resources/themes/orange_audio_settings.tres" id="4_iq587"]
+[ext_resource type="Texture2D" uid="uid://dsswwcd6my60a" path="res://resources/icons/volume.png" id="5_o1fo6"]
+[ext_resource type="Theme" uid="uid://0x82uhdynem6" path="res://resources/themes/yellow_credits_settings.tres" id="6_pwsye"]
+[ext_resource type="Texture2D" uid="uid://duccjpwl4mq3j" path="res://resources/icons/movie.png" id="7_ko46v"]
+[ext_resource type="Theme" uid="uid://b77bvmwnkc8a5" path="res://resources/themes/back_button.tres" id="8_p48k4"]
+[ext_resource type="Texture2D" uid="uid://dsdt4amufrxcn" path="res://resources/icons/arrow.png" id="9_5x8bt"]
+
+[sub_resource type="SystemFont" id="SystemFont_i6pmk"]
+
+[sub_resource type="Theme" id="Theme_raslq"]
+default_font = SubResource("SystemFont_i6pmk")
 
 [node name="OptionsMenu" type="Control"]
 layout_mode = 3
@@ -11,41 +24,81 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_kntfd")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Canvas_Layer" type="CanvasLayer" parent="."]
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -170.0
-offset_top = -355.0
-offset_right = 171.0
+[node name="Menu_Panel" type="Panel" parent="Canvas_Layer"]
+offset_right = 1152.0
+offset_bottom = 648.0
 grow_horizontal = 2
-grow_vertical = 0
-size_flags_vertical = 0
+grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
+[node name="Settings_Buttons" type="MarginContainer" parent="Canvas_Layer/Menu_Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = SubResource("Theme_raslq")
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 150
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 50
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Canvas_Layer/Menu_Panel/Settings_Buttons"]
 layout_mode = 2
 
-[node name="Start" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+[node name="Visuals" type="Button" parent="Canvas_Layer/Menu_Panel/Settings_Buttons/HBoxContainer"]
 layout_mode = 2
-text = "Play"
+size_flags_horizontal = 3
+theme = ExtResource("2_5q7um")
+text = "Visuals"
+icon = ExtResource("3_jjb1t")
+icon_alignment = 1
+vertical_icon_alignment = 2
+expand_icon = true
 
-[node name="Options" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+[node name="Audio" type="Button" parent="Canvas_Layer/Menu_Panel/Settings_Buttons/HBoxContainer"]
 layout_mode = 2
-text = "Options"
+size_flags_horizontal = 3
+theme = ExtResource("4_iq587")
+text = "Audio"
+icon = ExtResource("5_o1fo6")
+icon_alignment = 1
+vertical_icon_alignment = 2
+expand_icon = true
 
-[node name="Sources" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+[node name="Credits" type="Button" parent="Canvas_Layer/Menu_Panel/Settings_Buttons/HBoxContainer"]
 layout_mode = 2
-text = "Sources"
+size_flags_horizontal = 3
+theme = ExtResource("6_pwsye")
+text = "Credits"
+icon = ExtResource("7_ko46v")
+icon_alignment = 1
+vertical_icon_alignment = 2
+expand_icon = true
 
-[node name="Exit" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+[node name="Back_Button" type="MarginContainer" parent="Canvas_Layer/Menu_Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -200.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 93.0
+grow_horizontal = 0
+
+[node name="Back" type="Button" parent="Canvas_Layer/Menu_Panel/Back_Button"]
 layout_mode = 2
-text = "Exit"
+theme = ExtResource("8_p48k4")
+text = "Back"
+icon = ExtResource("9_5x8bt")
+icon_alignment = 1
+vertical_icon_alignment = 2
+expand_icon = true
+metadata/_edit_use_anchors_ = true
 
-[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Start" to="." method="OnStartPressed"]
-[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Options" to="." method="OnOptionsPressed"]
-[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Sources" to="." method="OnSourcesPressed"]
-[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Exit" to="." method="OnExitPressed"]
+[connection signal="pressed" from="Canvas_Layer/Menu_Panel/Back_Button/Back" to="." method="OnBackPressed"]

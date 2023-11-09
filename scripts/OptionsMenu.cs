@@ -12,4 +12,20 @@ public partial class OptionsMenu : Control
 	public override void _Process(double delta)
 	{
 	}
+
+
+	/**
+	*----------------------------------------------------------------
+	* Start of Menu Buttons
+	*----------------------------------------------------------------
+	**/
+	
+	/**
+	* A function to control the button "Back" on the Options
+	* Sends you back to the main menu
+	**/
+	private void OnBackPressed()
+	{ 
+		GetTree().ChangeSceneToFile("res://scenes/menus/MainMenu.tscn");
+	}
 }

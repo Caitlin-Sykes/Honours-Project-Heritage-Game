@@ -27,6 +27,21 @@ public partial class MainMenu : Control
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		DecideMainMenuLogo();
+		
+	}
+
+	/**
+	* ----------------------------------------------------------------
+	* Main Menu Logo
+	* ----------------------------------------------------------------
+	**/
+
+	/**
+	* Decides the logo for the main menu
+	**/
+
+	private void DecideMainMenuLogo() {
 		Random rdm = new Random();
 		int logo = rdm.Next(5); //0,1,2,3,4
 
@@ -60,9 +75,11 @@ public partial class MainMenu : Control
 	}
 
 
+
 	/** ----------------------------------------------------------------
 	*	Start of Menu Buttons
-	    ---------------------------------------------------------------- **/
+	*	----------------------------------------------------------------
+	**/   
 
 
 	/**

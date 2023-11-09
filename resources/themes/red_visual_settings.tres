@@ -1,0 +1,24 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://dctcjbvtvuvys"]
+
+[ext_resource type="FontFile" uid="uid://5fctrf5wofwi" path="res://resources/fonts/CascadiaCode-Bold.ttf" id="1_7c63r"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o2mui"]
+bg_color = Color(0.898039, 0.00392157, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6qiso"]
+bg_color = Color(0.509804, 0.184314, 0.176471, 1)
+border_width_left = 2
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_crdhl"]
+bg_color = Color(0.999787, 0.416824, 0.348158, 1)
+
+[resource]
+default_font = ExtResource("1_7c63r")
+Button/constants/icon_max_width = 340
+Button/font_sizes/font_size = 38
+Button/styles/hover = SubResource("StyleBoxFlat_o2mui")
+Button/styles/normal = SubResource("StyleBoxFlat_6qiso")
+Button/styles/pressed = SubResource("StyleBoxFlat_crdhl")
