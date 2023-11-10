@@ -1,0 +1,176 @@
+[gd_scene load_steps=9 format=3 uid="uid://btorfjg240pgu"]
+
+[ext_resource type="Script" path="res://scenes/menus/OptionsVisualsGUI.cs" id="1_o4arp"]
+[ext_resource type="Theme" uid="uid://dctcjbvtvuvys" path="res://resources/themes/red_visual_settings.tres" id="2_2t4ix"]
+[ext_resource type="Texture2D" uid="uid://dvvwqu54gnk2q" path="res://resources/icons/font.png" id="3_fucqk"]
+[ext_resource type="Texture2D" uid="uid://1rjhww4502vr" path="res://resources/icons/size.png" id="4_3dfs0"]
+[ext_resource type="Theme" uid="uid://b77bvmwnkc8a5" path="res://resources/themes/back_button.tres" id="8_dpik7"]
+[ext_resource type="Texture2D" uid="uid://dsdt4amufrxcn" path="res://resources/icons/arrow.png" id="9_fwufp"]
+
+[sub_resource type="SystemFont" id="SystemFont_i6pmk"]
+
+[sub_resource type="Theme" id="Theme_raslq"]
+default_font = SubResource("SystemFont_i6pmk")
+
+[node name="OptionsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_o4arp")
+
+[node name="Canvas_Layer" type="CanvasLayer" parent="."]
+
+[node name="Menu_Panel" type="Panel" parent="Canvas_Layer"]
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Visual Buttons" type="MarginContainer" parent="Canvas_Layer/Menu_Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = SubResource("Theme_raslq")
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 150
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 50
+
+[node name="PanelContainer" type="PanelContainer" parent="Canvas_Layer/Menu_Panel/Visual Buttons"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Canvas_Layer/Menu_Panel/Visual Buttons/PanelContainer"]
+layout_mode = 2
+theme = ExtResource("2_2t4ix")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Canvas_Layer/Menu_Panel/Visual Buttons/PanelContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Canvas_Layer/Menu_Panel/Visual Buttons/PanelContainer/Panel/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Canvas_Layer/Menu_Panel/Visual Buttons/PanelContainer/Panel/HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="Fonts" type="OptionButton" parent="Canvas_Layer/Menu_Panel/Visual Buttons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Choose the font for the game (Dialogue, etc)"
+theme_override_font_sizes/font_size = 16
+alignment = 1
+icon_alignment = 2
+item_count = 2
+selected = 1
+popup/item_0/text = "Cascadia"
+popup/item_0/icon = ExtResource("3_fucqk")
+popup/item_0/id = 0
+popup/item_1/text = "Dyslexie"
+popup/item_1/icon = ExtResource("3_fucqk")
+popup/item_1/id = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Canvas_Layer/Menu_Panel/Visual Buttons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/Fonts"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 2.0
+offset_top = -11.0
+offset_right = 2.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Canvas_Layer/Menu_Panel/Visual Buttons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/Fonts/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("2_2t4ix")
+text = "Game Font:"
+fit_content = true
+
+[node name="Font_Size" type="OptionButton" parent="Canvas_Layer/Menu_Panel/Visual Buttons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Choose the font for the game (Dialogue, etc)"
+theme_override_font_sizes/font_size = 16
+alignment = 1
+icon_alignment = 2
+item_count = 3
+selected = 1
+popup/item_0/text = "Default"
+popup/item_0/icon = ExtResource("4_3dfs0")
+popup/item_0/id = 0
+popup/item_1/text = "Bigger"
+popup/item_1/icon = ExtResource("4_3dfs0")
+popup/item_1/id = 1
+popup/item_2/text = "Biggest"
+popup/item_2/icon = ExtResource("4_3dfs0")
+popup/item_2/id = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Canvas_Layer/Menu_Panel/Visual Buttons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/Font_Size"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 2.0
+offset_top = -11.0
+offset_right = 2.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "To change the size of the game font"
+theme_override_constants/margin_left = 10
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Canvas_Layer/Menu_Panel/Visual Buttons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/Font_Size/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("2_2t4ix")
+text = "Font Size:"
+fit_content = true
+
+[node name="Back_Button" type="MarginContainer" parent="Canvas_Layer/Menu_Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -200.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 93.0
+grow_horizontal = 0
+
+[node name="Back" type="Button" parent="Canvas_Layer/Menu_Panel/Back_Button"]
+layout_mode = 2
+theme = ExtResource("8_dpik7")
+text = "Back"
+icon = ExtResource("9_fwufp")
+icon_alignment = 1
+vertical_icon_alignment = 2
+expand_icon = true
+metadata/_edit_use_anchors_ = true
+
+[connection signal="item_selected" from="Canvas_Layer/Menu_Panel/Visual Buttons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/Fonts" to="." method="OnFontsItemSelected"]
+[connection signal="item_selected" from="Canvas_Layer/Menu_Panel/Visual Buttons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/Font_Size" to="." method="OnFontSizeItemSelected"]
+[connection signal="pressed" from="Canvas_Layer/Menu_Panel/Back_Button/Back" to="." method="OnBackPressed"]

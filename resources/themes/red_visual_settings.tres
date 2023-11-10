@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://dctcjbvtvuvys"]
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://dctcjbvtvuvys"]
 
 [ext_resource type="FontFile" uid="uid://5fctrf5wofwi" path="res://resources/fonts/CascadiaCode-Bold.ttf" id="1_7c63r"]
 
@@ -15,6 +15,18 @@ border_blend = true
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_crdhl"]
 bg_color = Color(0.999787, 0.416824, 0.348158, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aa48y"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ct4x6"]
+bg_color = Color(0.509804, 0.184314, 0.176471, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0utiy"]
+bg_color = Color(0.415686, 0.0509804, 0, 1)
+border_width_left = 4
+border_width_bottom = 5
+border_color = Color(0.172549, 0.172549, 0.172549, 1)
+border_blend = true
+
 [resource]
 default_font = ExtResource("1_7c63r")
 Button/constants/icon_max_width = 340
@@ -22,3 +34,7 @@ Button/font_sizes/font_size = 38
 Button/styles/hover = SubResource("StyleBoxFlat_o2mui")
 Button/styles/normal = SubResource("StyleBoxFlat_6qiso")
 Button/styles/pressed = SubResource("StyleBoxFlat_crdhl")
+ItemList/styles/panel = SubResource("StyleBoxFlat_aa48y")
+ItemList/styles/selected = SubResource("StyleBoxFlat_ct4x6")
+Panel/styles/panel = SubResource("StyleBoxFlat_0utiy")
+RichTextLabel/font_sizes/bold_font_size = 16

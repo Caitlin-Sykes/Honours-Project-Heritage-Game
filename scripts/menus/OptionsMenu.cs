@@ -28,4 +28,13 @@ public partial class OptionsMenu : Control
 	{ 
 		GetTree().ChangeSceneToFile("res://scenes/menus/MainMenu.tscn");
 	}
+
+	/**
+	* A function to control the button "Visuals" on the Options
+	* Sends you back to the visual settings screen
+	**/
+	private void OnVisualPressed()
+	{ 
+		GetTree().ChangeSceneToFile("res://scenes/menus/OptionsVisuals.tscn");
+	}
 }

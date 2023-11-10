@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.IO;
 
 public partial class MainMenu : Control
 {
@@ -19,6 +20,7 @@ public partial class MainMenu : Control
 	[Export]
     public Sprite2D prideSeventyNine { get; set; } //pride1979 logo
 
+
 	
 	/**
 	* On Node Load
@@ -27,7 +29,8 @@ public partial class MainMenu : Control
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		DecideMainMenuLogo();
+			DecideMainMenuLogo();
+			OptionsFileHandler.InitConfigFile();
 		
 	}
 
@@ -73,8 +76,6 @@ public partial class MainMenu : Control
 		
 		}
 	}
-
-
 
 	/** ----------------------------------------------------------------
 	*	Start of Menu Buttons
