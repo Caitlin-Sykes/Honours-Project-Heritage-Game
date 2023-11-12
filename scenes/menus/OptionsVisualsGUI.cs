@@ -5,6 +5,8 @@ using System.Linq;
 
 public partial class OptionsVisualsGUI : Control
 {
+
+	private static readonly string OPTION_BUTTON_PATH = "Menu_Panel/Visual Buttons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/Fonts";
 	//An enum for replacing the default sizes
 	enum ReplacingSize {
 		Default,
@@ -12,6 +14,30 @@ public partial class OptionsVisualsGUI : Control
 		Biggest
 	} 
 
+	/**
+	*---------------------------------------------------------------- 
+	*Sets default menu options
+	*----------------------------------------------------------------
+	**/
+
+	/**
+	* Selects the default options
+	**/
+	private void SetFontDefault() {
+		
+		//If font "Dyslexie" is found in config
+		//Sets default setting to Dyslexie
+		//Otherwise sets it to Cascadia
+		if (OptionsFileHandler.FindInFile("DYSLEXIE")) {
+			GetNode<OptionButton>(OPTION_BUTTON_PATH).Select(1); //with 1 being the index of dyslexie
+		}
+
+		//If it finds biggest in the config file, sets setting to be replaced to biggest
+		else {
+			GetNode<OptionButton>(OPTION_BUTTON_PATH).Select(0); //with 0 being the index of cascadia
+		}
+
+	}
 	/**
 	*----------------------------------------------------------------
 	* Start of Menu Buttons
@@ -46,25 +72,25 @@ public partial class OptionsVisualsGUI : Control
 	private void OnFontSizeItemSelected(int index) {
 		ReplacingSize rs = ReplacingSize.Default;
 		
+		//If it finds Bigger in the config file, sets setting to be replaced to bigger
 		if (OptionsFileHandler.FindInFile("BIGGER")) {
 			rs = ReplacingSize.Bigger;
 		}
 
+		//If it finds biggest in the config file, sets setting to be replaced to biggest
 		else if (OptionsFileHandler.FindInFile("BIGGEST")) {
 			rs = ReplacingSize.Biggest;
 		}
 
+		//Depending on what font size in settings, replaces old config with new config
 		switch (index) {
 			case 0:
-					GD.Print(rs.ToString());
 					OptionsFileHandler.ReplaceInFile(rs.ToString().ToUpper(), "DEFAULT");
 					break;	
 			case 1:
-					GD.Print(rs.ToString());
 					OptionsFileHandler.ReplaceInFile(rs.ToString().ToUpper(), "BIGGER");
 					break;
 			case 2:
-					GD.Print(rs.ToString());
 					OptionsFileHandler.ReplaceInFile(rs.ToString().ToUpper(), "BIGGEST");
 					break;
 			default: 

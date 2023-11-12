@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=14 format=3 uid="uid://c8ikhuofmlww0"]
+[gd_resource type="Theme" load_steps=15 format=3 uid="uid://c8ikhuofmlww0"]
 
 [ext_resource type="FontFile" uid="uid://5fctrf5wofwi" path="res://resources/fonts/CascadiaCode-Bold.ttf" id="1_upp5f"]
 
@@ -28,6 +28,9 @@ bg_color = Color(0.509804, 0.184314, 0.176471, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nra4v"]
 bg_color = Color(1, 0.415686, 0.34902, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uohru"]
+bg_color = Color(0.509804, 0.184314, 0.176471, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ak360"]
 bg_color = Color(0.996078, 0.807843, 0, 1)
@@ -63,6 +66,8 @@ RedButton/font_sizes/font_size = 51
 RedButton/styles/hover = SubResource("StyleBoxFlat_yo1w3")
 RedButton/styles/normal = SubResource("StyleBoxFlat_cxjym")
 RedButton/styles/pressed = SubResource("StyleBoxFlat_nra4v")
+RedPanel/base_type = &"Panel"
+RedPanel/styles/panel = SubResource("StyleBoxFlat_uohru")
 YellowButton/base_type = &"Button"
 YellowButton/constants/h_separation = 2
 YellowButton/constants/icon_max_width = 340
