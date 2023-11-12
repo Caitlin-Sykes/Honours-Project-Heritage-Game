@@ -5,7 +5,18 @@ public partial class OptionsMenu : Control
 {
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
-	{	}
+	{	
+		//If GetFontDefault returns Dyslexie, sets theme to dyslexie
+		//Else sets Theme to cascadia
+		if (OptionsVisualsGUI.GetFontDefault() == "Dyslexie") {
+			Theme = (Theme)GD.Load("res://resources/themes/main_theme_dyslexie.tres");
+		}
+
+		else {
+			Theme = (Theme)GD.Load("res://resources/themes/main_theme_cascadia.tres");
+		}
+
+	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)

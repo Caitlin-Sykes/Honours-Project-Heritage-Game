@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://btorfjg240pgu"]
 
 [ext_resource type="Theme" uid="uid://c8ikhuofmlww0" path="res://resources/themes/main_theme_cascadia.tres" id="1_iwmbv"]
-[ext_resource type="Script" path="res://scenes/menus/OptionsVisualsGUI.cs" id="1_o4arp"]
+[ext_resource type="Script" path="res://scripts/menus/OptionsVisualsGUI.cs" id="2_2jr8a"]
 [ext_resource type="FontFile" uid="uid://5fctrf5wofwi" path="res://resources/fonts/CascadiaCode-Bold.ttf" id="2_u8fjs"]
 [ext_resource type="Texture2D" uid="uid://dvvwqu54gnk2q" path="res://resources/icons/font.png" id="3_fucqk"]
 [ext_resource type="Texture2D" uid="uid://1rjhww4502vr" path="res://resources/icons/size.png" id="4_3dfs0"]
@@ -57,7 +57,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_iwmbv")
-script = ExtResource("1_o4arp")
+script = ExtResource("2_2jr8a")
 
 [node name="Menu_Panel" type="Panel" parent="."]
 layout_mode = 0

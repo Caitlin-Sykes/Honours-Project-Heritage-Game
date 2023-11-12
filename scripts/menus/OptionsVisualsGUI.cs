@@ -14,6 +14,21 @@ public partial class OptionsVisualsGUI : Control
 		Biggest
 	} 
 
+	// Called when the node enters the scene tree for the first time.
+	public override void _Ready()
+	{
+		//If GetFontDefault returns Dyslexie, sets theme to dyslexie
+		//Else sets Theme to cascadia
+		if (OptionsVisualsGUI.GetFontDefault() == "Dyslexie") {
+			Theme = (Theme)GD.Load("res://resources/themes/main_theme_dyslexie.tres");
+		}
+
+		else {
+			Theme = (Theme)GD.Load("res://resources/themes/main_theme_cascadia.tres");
+		}
+		}
+
+
 	/**
 	*---------------------------------------------------------------- 
 	*Sets default menu options
@@ -67,10 +82,12 @@ public partial class OptionsVisualsGUI : Control
 	private void OnFontsItemSelected(int index) {
 		if (index == 0) {
 			OptionsFileHandler.ReplaceInFile("DYSLEXIE", "CASCADIA");
+			Theme = (Theme)GD.Load("res://resources/themes/main_theme_cascadia.tres");
 		}
 
 		else {
 			OptionsFileHandler.ReplaceInFile("CASCADIA", "DYSLEXIE");
+			Theme = (Theme)GD.Load("res://resources/themes/main_theme_dyslexie.tres");
 		}	
 	}
 
