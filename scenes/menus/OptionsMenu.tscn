@@ -1,19 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://dq2js4c06x6de"]
+[gd_scene load_steps=7 format=3 uid="uid://dq2js4c06x6de"]
 
+[ext_resource type="Theme" uid="uid://c8ikhuofmlww0" path="res://resources/themes/main_theme.tres" id="1_1bx5f"]
 [ext_resource type="Script" path="res://scripts/menus/OptionsMenu.cs" id="1_yqk5y"]
-[ext_resource type="Theme" uid="uid://dctcjbvtvuvys" path="res://resources/themes/red_visual_settings.tres" id="2_5q7um"]
 [ext_resource type="Texture2D" uid="uid://mfhe2dv33dkx" path="res://resources/icons/vision.png" id="3_jjb1t"]
-[ext_resource type="Theme" uid="uid://cdfd23e2exkr4" path="res://resources/themes/orange_audio_settings.tres" id="4_iq587"]
 [ext_resource type="Texture2D" uid="uid://dsswwcd6my60a" path="res://resources/icons/volume.png" id="5_o1fo6"]
-[ext_resource type="Theme" uid="uid://0x82uhdynem6" path="res://resources/themes/yellow_credits_settings.tres" id="6_pwsye"]
 [ext_resource type="Texture2D" uid="uid://duccjpwl4mq3j" path="res://resources/icons/movie.png" id="7_ko46v"]
-[ext_resource type="Theme" uid="uid://b77bvmwnkc8a5" path="res://resources/themes/back_button.tres" id="8_p48k4"]
 [ext_resource type="Texture2D" uid="uid://dsdt4amufrxcn" path="res://resources/icons/arrow.png" id="9_5x8bt"]
-
-[sub_resource type="SystemFont" id="SystemFont_i6pmk"]
-
-[sub_resource type="Theme" id="Theme_raslq"]
-default_font = SubResource("SystemFont_i6pmk")
 
 [node name="OptionsMenu" type="Control"]
 layout_mode = 3
@@ -22,17 +14,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_1bx5f")
 script = ExtResource("1_yqk5y")
 
-[node name="Canvas_Layer" type="CanvasLayer" parent="."]
-
-[node name="Menu_Panel" type="Panel" parent="Canvas_Layer"]
+[node name="Menu_Panel" type="Panel" parent="."]
 offset_right = 1152.0
 offset_bottom = 648.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Settings_Buttons" type="MarginContainer" parent="Canvas_Layer/Menu_Panel"]
+[node name="Settings_Buttons" type="MarginContainer" parent="Menu_Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -41,46 +32,79 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = SubResource("Theme_raslq")
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 150
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 50
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Canvas_Layer/Menu_Panel/Settings_Buttons"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Menu_Panel/Settings_Buttons"]
 layout_mode = 2
+theme_override_constants/separation = 15
 
-[node name="Visuals" type="Button" parent="Canvas_Layer/Menu_Panel/Settings_Buttons/HBoxContainer"]
+[node name="Visuals" type="Button" parent="Menu_Panel/Settings_Buttons/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme = ExtResource("2_5q7um")
+theme_type_variation = &"RedButton"
 text = "Visuals"
 icon = ExtResource("3_jjb1t")
 icon_alignment = 1
 vertical_icon_alignment = 2
 expand_icon = true
 
-[node name="Audio" type="Button" parent="Canvas_Layer/Menu_Panel/Settings_Buttons/HBoxContainer"]
+[node name="Shadow" type="Panel" parent="Menu_Panel/Settings_Buttons/HBoxContainer/Visuals"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Audio" type="Button" parent="Menu_Panel/Settings_Buttons/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme = ExtResource("4_iq587")
+theme_type_variation = &"OrangeButton"
 text = "Audio"
 icon = ExtResource("5_o1fo6")
 icon_alignment = 1
 vertical_icon_alignment = 2
 expand_icon = true
 
-[node name="Credits" type="Button" parent="Canvas_Layer/Menu_Panel/Settings_Buttons/HBoxContainer"]
+[node name="Shadow" type="Panel" parent="Menu_Panel/Settings_Buttons/HBoxContainer/Audio"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Credits" type="Button" parent="Menu_Panel/Settings_Buttons/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme = ExtResource("6_pwsye")
+theme_type_variation = &"YellowButton"
 text = "Credits"
 icon = ExtResource("7_ko46v")
 icon_alignment = 1
 vertical_icon_alignment = 2
 expand_icon = true
 
-[node name="Back_Button" type="MarginContainer" parent="Canvas_Layer/Menu_Panel"]
+[node name="Shadow" type="Panel" parent="Menu_Panel/Settings_Buttons/HBoxContainer/Credits"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Back_Button" type="MarginContainer" parent="Menu_Panel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
@@ -91,9 +115,9 @@ offset_right = -20.0
 offset_bottom = 93.0
 grow_horizontal = 0
 
-[node name="Back" type="Button" parent="Canvas_Layer/Menu_Panel/Back_Button"]
+[node name="Back" type="Button" parent="Menu_Panel/Back_Button"]
 layout_mode = 2
-theme = ExtResource("8_p48k4")
+theme_type_variation = &"GreenButton"
 text = "Back"
 icon = ExtResource("9_5x8bt")
 icon_alignment = 1
@@ -101,5 +125,16 @@ vertical_icon_alignment = 2
 expand_icon = true
 metadata/_edit_use_anchors_ = true
 
-[connection signal="pressed" from="Canvas_Layer/Menu_Panel/Settings_Buttons/HBoxContainer/Visuals" to="." method="OnVisualPressed"]
-[connection signal="pressed" from="Canvas_Layer/Menu_Panel/Back_Button/Back" to="." method="OnBackPressed"]
+[node name="Shadow" type="Panel" parent="Menu_Panel/Back_Button/Back"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 15.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="pressed" from="Menu_Panel/Settings_Buttons/HBoxContainer/Visuals" to="." method="OnVisualPressed"]
+[connection signal="pressed" from="Menu_Panel/Back_Button/Back" to="." method="OnBackPressed"]

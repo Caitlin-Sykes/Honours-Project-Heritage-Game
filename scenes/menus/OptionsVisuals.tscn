@@ -1,16 +1,72 @@
-[gd_scene load_steps=9 format=3 uid="uid://btorfjg240pgu"]
+[gd_scene load_steps=19 format=3 uid="uid://btorfjg240pgu"]
 
 [ext_resource type="Script" path="res://scenes/menus/OptionsVisualsGUI.cs" id="1_o4arp"]
-[ext_resource type="Theme" uid="uid://dctcjbvtvuvys" path="res://resources/themes/red_visual_settings.tres" id="2_2t4ix"]
+[ext_resource type="FontFile" uid="uid://5fctrf5wofwi" path="res://resources/fonts/CascadiaCode-Bold.ttf" id="2_u8fjs"]
 [ext_resource type="Texture2D" uid="uid://dvvwqu54gnk2q" path="res://resources/icons/font.png" id="3_fucqk"]
 [ext_resource type="Texture2D" uid="uid://1rjhww4502vr" path="res://resources/icons/size.png" id="4_3dfs0"]
-[ext_resource type="Theme" uid="uid://b77bvmwnkc8a5" path="res://resources/themes/back_button.tres" id="8_dpik7"]
 [ext_resource type="Texture2D" uid="uid://dsdt4amufrxcn" path="res://resources/icons/arrow.png" id="9_fwufp"]
 
 [sub_resource type="SystemFont" id="SystemFont_i6pmk"]
 
 [sub_resource type="Theme" id="Theme_raslq"]
 default_font = SubResource("SystemFont_i6pmk")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o2mui"]
+bg_color = Color(0.898039, 0.00392157, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6qiso"]
+bg_color = Color(0.509804, 0.184314, 0.176471, 1)
+border_width_left = 2
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_crdhl"]
+bg_color = Color(1, 0.415686, 0.34902, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aa48y"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ct4x6"]
+bg_color = Color(0.509804, 0.184314, 0.176471, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0utiy"]
+bg_color = Color(0.415686, 0.0509804, 0, 1)
+border_width_left = 4
+border_width_bottom = 5
+border_color = Color(0.172549, 0.172549, 0.172549, 1)
+border_blend = true
+
+[sub_resource type="Theme" id="Theme_gl6r7"]
+default_font = ExtResource("2_u8fjs")
+Button/constants/icon_max_width = 340
+Button/font_sizes/font_size = 38
+Button/styles/hover = SubResource("StyleBoxFlat_o2mui")
+Button/styles/normal = SubResource("StyleBoxFlat_6qiso")
+Button/styles/pressed = SubResource("StyleBoxFlat_crdhl")
+ItemList/styles/panel = SubResource("StyleBoxFlat_aa48y")
+ItemList/styles/selected = SubResource("StyleBoxFlat_ct4x6")
+Panel/styles/panel = SubResource("StyleBoxFlat_0utiy")
+RichTextLabel/font_sizes/bold_font_size = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x427k"]
+bg_color = Color(0.552941, 0.760784, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_axtj5"]
+bg_color = Color(0.364706, 0.509804, 0, 1)
+border_width_left = 2
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7pe3w"]
+bg_color = Color(0.65098, 0.890196, 0, 1)
+
+[sub_resource type="Theme" id="Theme_fot1y"]
+default_font = ExtResource("2_u8fjs")
+Button/font_sizes/font_size = 38
+Button/styles/hover = SubResource("StyleBoxFlat_x427k")
+Button/styles/normal = SubResource("StyleBoxFlat_axtj5")
+Button/styles/pressed = SubResource("StyleBoxFlat_7pe3w")
 
 [node name="OptionsMenu" type="Control"]
 layout_mode = 3
@@ -49,7 +105,7 @@ layout_mode = 2
 
 [node name="Panel" type="Panel" parent="Canvas_Layer/Menu_Panel/Visual Buttons/PanelContainer"]
 layout_mode = 2
-theme = ExtResource("2_2t4ix")
+theme = SubResource("Theme_gl6r7")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Canvas_Layer/Menu_Panel/Visual Buttons/PanelContainer/Panel"]
 layout_mode = 1
@@ -104,7 +160,7 @@ theme_override_constants/margin_left = 10
 [node name="RichTextLabel" type="RichTextLabel" parent="Canvas_Layer/Menu_Panel/Visual Buttons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/Fonts/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 0
-theme = ExtResource("2_2t4ix")
+theme = SubResource("Theme_gl6r7")
 text = "Game Font:"
 fit_content = true
 
@@ -146,7 +202,7 @@ theme_override_constants/margin_left = 10
 [node name="RichTextLabel" type="RichTextLabel" parent="Canvas_Layer/Menu_Panel/Visual Buttons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/Font_Size/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 0
-theme = ExtResource("2_2t4ix")
+theme = SubResource("Theme_gl6r7")
 text = "Font Size:"
 fit_content = true
 
@@ -163,7 +219,7 @@ grow_horizontal = 0
 
 [node name="Back" type="Button" parent="Canvas_Layer/Menu_Panel/Back_Button"]
 layout_mode = 2
-theme = ExtResource("8_dpik7")
+theme = SubResource("Theme_fot1y")
 text = "Back"
 icon = ExtResource("9_fwufp")
 icon_alignment = 1
