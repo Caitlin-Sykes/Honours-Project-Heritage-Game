@@ -31,6 +31,16 @@ public partial class MainMenu : Control
 	{
 			DecideMainMenuLogo();
 			OptionsFileHandler.InitConfigFile();
+
+			//If GetFontDefault returns Dyslexie, sets theme to dyslexie
+			//Else sets Theme to cascadia
+			if (OptionsVisualsGUI.GetFontDefault() == "Dyslexie") {
+				Theme = (Theme)GD.Load("res://resources/themes/main_theme_dyslexie.tres");
+			}
+
+			else {
+				Theme = (Theme)GD.Load("res://resources/themes/main_theme_cascadia.tres");
+			}
 		
 	}
 

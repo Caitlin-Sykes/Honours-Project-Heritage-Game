@@ -24,11 +24,9 @@ public partial class OptionsVisualsGUI : Control
 	* Selects the default options
 	**/
 	private void SetFontDefault() {
-		
-		//If font "Dyslexie" is found in config
-		//Sets default setting to Dyslexie
+		//Sets default setting to Dyslexie if CURRENT_FONT is Dyslexie
 		//Otherwise sets it to Cascadia
-		if (OptionsFileHandler.FindInFile("DYSLEXIE")) {
+		if (GetFontDefault() == "Dyslexie") {
 			GetNode<OptionButton>(OPTION_BUTTON_PATH).Select(1); //with 1 being the index of dyslexie
 		}
 
@@ -36,8 +34,18 @@ public partial class OptionsVisualsGUI : Control
 		else {
 			GetNode<OptionButton>(OPTION_BUTTON_PATH).Select(0); //with 0 being the index of cascadia
 		}
-
 	}
+
+	//Gets the current font default
+	public static string GetFontDefault() {
+		//If DYSLEXIE is found in file, current font is set to dyslexie
+		if (OptionsFileHandler.FindInFile("DYSLEXIE")) {
+			return "Dyslexie";
+		}
+
+		return "Cascadia";
+	}
+
 	/**
 	*----------------------------------------------------------------
 	* Start of Menu Buttons

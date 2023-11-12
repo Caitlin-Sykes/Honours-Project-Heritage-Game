@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dq2js4c06x6de"]
 
-[ext_resource type="Theme" uid="uid://c8ikhuofmlww0" path="res://resources/themes/main_theme.tres" id="1_1bx5f"]
+[ext_resource type="Theme" uid="uid://c8ikhuofmlww0" path="res://resources/themes/main_theme_cascadia.tres" id="1_1nvqn"]
 [ext_resource type="Script" path="res://scripts/menus/OptionsMenu.cs" id="1_yqk5y"]
 [ext_resource type="Texture2D" uid="uid://mfhe2dv33dkx" path="res://resources/icons/vision.png" id="3_jjb1t"]
 [ext_resource type="Texture2D" uid="uid://dsswwcd6my60a" path="res://resources/icons/volume.png" id="5_o1fo6"]
@@ -14,10 +14,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_1bx5f")
+theme = ExtResource("1_1nvqn")
 script = ExtResource("1_yqk5y")
 
 [node name="Menu_Panel" type="Panel" parent="."]
+layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 grow_horizontal = 2

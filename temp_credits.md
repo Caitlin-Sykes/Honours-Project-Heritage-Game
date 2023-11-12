@@ -1,7 +1,8 @@
 
 
 [FONTS]
-https://github.com/microsoft/cascadia-code/releases - Cascadia Code, Microsoft, main font of the game
+https://github.com/microsoft/cascadia-code/releases - Cascadia Code, Microsoft, default font of the game
+https://dyslexiefont.com/ - Dyslexie, Christian Boer, font that can help those who are dyslexic
 
 
 [ICONS]
