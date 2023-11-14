@@ -29,7 +29,11 @@ public partial class MainMenu : Control
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+			
+			//Logo 
 			DecideMainMenuLogo();
+
+			//Inits config file
 			OptionsFileHandler.InitConfigFile();
 
 			//If GetFontDefault returns Dyslexie, sets theme to dyslexie
@@ -41,6 +45,17 @@ public partial class MainMenu : Control
 			else {
 				Theme = (Theme)GD.Load("res://resources/themes/main_theme_cascadia.tres");
 			}
+
+			//Converts GetFontSizeDefault to int (as it returns the default size)
+			Theme.DefaultFontSize = OptionsVisualsGUI.GetFontSizeDefault().ToInt();
+
+	
+
+			// TODO: update tooltips
+			// TODO: persistent fullscreen check
+			// TODO: optimise this spaghetti junction of code for init
+			// BUG: it doesnt resize the gui properly and leaves it the same size whilst making the window bigger
+
 		
 	}
 

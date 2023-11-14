@@ -66,6 +66,7 @@ public partial class OptionsFileHandler : Node2D
 		OptionsFileHandler.CreateOptionsDirectory();
 
 		//If the file doesn't exist or is empty, will initialise it to defaults
+		//TODO: change it to the size of the config file when completed
 		if (!File.Exists(OptionsFileHandler.CONFIG_PATH) || (new FileInfo(CONFIG_PATH).Length == 0)) {
 			StreamWriter sw = OptionsFileHandler.CreateConfigFile();
 
@@ -73,6 +74,7 @@ public partial class OptionsFileHandler : Node2D
 			sw.WriteLine("[VISUAL]");
 			sw.WriteLine("[FONT] : CASCADIA");
 			sw.WriteLine("[FONT_SIZE] : DEFAULT");
+			sw.WriteLine("[FULL_SCREEN] : FALSE");
 
 			CloseConfigFile(sw);
 
