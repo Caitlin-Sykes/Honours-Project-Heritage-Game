@@ -18,9 +18,10 @@ theme = ExtResource("1_1nvqn")
 script = ExtResource("1_yqk5y")
 
 [node name="Menu_Panel" type="Panel" parent="."]
-layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 648.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -45,7 +46,9 @@ theme_override_constants/separation = 15
 [node name="Visuals" type="Button" parent="Menu_Panel/Settings_Buttons/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+tooltip_text = "Select this to modify the visual effects for the game"
 theme_type_variation = &"RedButton"
+theme_override_font_sizes/font_size = 47
 text = "Visuals"
 icon = ExtResource("3_jjb1t")
 icon_alignment = 1
@@ -66,7 +69,9 @@ grow_vertical = 2
 [node name="Audio" type="Button" parent="Menu_Panel/Settings_Buttons/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+tooltip_text = "Select this to modify the audio effects for the game"
 theme_type_variation = &"OrangeButton"
+theme_override_font_sizes/font_size = 47
 text = "Audio"
 icon = ExtResource("5_o1fo6")
 icon_alignment = 1
@@ -87,7 +92,9 @@ grow_vertical = 2
 [node name="Credits" type="Button" parent="Menu_Panel/Settings_Buttons/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+tooltip_text = "Select this to view the credits for the game"
 theme_type_variation = &"YellowButton"
+theme_override_font_sizes/font_size = 47
 text = "Credits"
 icon = ExtResource("7_ko46v")
 icon_alignment = 1
@@ -118,6 +125,7 @@ grow_horizontal = 0
 
 [node name="Back" type="Button" parent="Menu_Panel/Back_Button"]
 layout_mode = 2
+tooltip_text = "Go back to the main menu"
 theme_type_variation = &"GreenButton"
 text = "Back"
 icon = ExtResource("9_5x8bt")

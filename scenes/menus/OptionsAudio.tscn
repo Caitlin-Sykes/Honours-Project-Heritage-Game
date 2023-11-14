@@ -1,11 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://btorfjg240pgu"]
+[gd_scene load_steps=16 format=3 uid="uid://bpkhvruma7haq"]
 
-[ext_resource type="Theme" uid="uid://c8ikhuofmlww0" path="res://resources/themes/main_theme_cascadia.tres" id="1_iwmbv"]
-[ext_resource type="Script" path="res://scripts/menus/OptionsVisualsGUI.cs" id="2_2jr8a"]
-[ext_resource type="FontFile" uid="uid://5fctrf5wofwi" path="res://resources/fonts/CascadiaCode-Bold.ttf" id="2_u8fjs"]
-[ext_resource type="Texture2D" uid="uid://dvvwqu54gnk2q" path="res://resources/icons/font.png" id="3_fucqk"]
-[ext_resource type="Texture2D" uid="uid://1rjhww4502vr" path="res://resources/icons/size.png" id="4_3dfs0"]
-[ext_resource type="Texture2D" uid="uid://dsdt4amufrxcn" path="res://resources/icons/arrow.png" id="9_fwufp"]
+[ext_resource type="Theme" uid="uid://c8ikhuofmlww0" path="res://resources/themes/main_theme_cascadia.tres" id="1_25s4b"]
+[ext_resource type="Script" path="res://scripts/menus/OptionsVisualsGUI.cs" id="2_8asgb"]
+[ext_resource type="FontFile" uid="uid://5fctrf5wofwi" path="res://resources/fonts/CascadiaCode-Bold.ttf" id="3_j3ygm"]
+[ext_resource type="Texture2D" uid="uid://dvvwqu54gnk2q" path="res://resources/icons/font.png" id="4_v0iaj"]
+[ext_resource type="Texture2D" uid="uid://1rjhww4502vr" path="res://resources/icons/size.png" id="5_1esgn"]
+[ext_resource type="Texture2D" uid="uid://dsdt4amufrxcn" path="res://resources/icons/arrow.png" id="6_o1bwl"]
 
 [sub_resource type="SystemFont" id="SystemFont_i6pmk"]
 
@@ -38,7 +38,7 @@ border_color = Color(0.172549, 0.172549, 0.172549, 1)
 border_blend = true
 
 [sub_resource type="Theme" id="Theme_gl6r7"]
-default_font = ExtResource("2_u8fjs")
+default_font = ExtResource("3_j3ygm")
 Button/constants/icon_max_width = 340
 Button/styles/hover = SubResource("StyleBoxFlat_o2mui")
 Button/styles/normal = SubResource("StyleBoxFlat_6qiso")
@@ -55,8 +55,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_iwmbv")
-script = ExtResource("2_2jr8a")
+theme = ExtResource("1_25s4b")
+script = ExtResource("2_8asgb")
 
 [node name="Menu_Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -120,10 +120,10 @@ icon_alignment = 2
 item_count = 2
 selected = 1
 popup/item_0/text = "Cascadia"
-popup/item_0/icon = ExtResource("3_fucqk")
+popup/item_0/icon = ExtResource("4_v0iaj")
 popup/item_0/id = 0
 popup/item_1/text = "Dyslexie"
-popup/item_1/icon = ExtResource("3_fucqk")
+popup/item_1/icon = ExtResource("4_v0iaj")
 popup/item_1/id = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/Fonts"]
@@ -157,13 +157,13 @@ icon_alignment = 2
 item_count = 3
 selected = 1
 popup/item_0/text = "Default"
-popup/item_0/icon = ExtResource("4_3dfs0")
+popup/item_0/icon = ExtResource("5_1esgn")
 popup/item_0/id = 0
 popup/item_1/text = "Bigger"
-popup/item_1/icon = ExtResource("4_3dfs0")
+popup/item_1/icon = ExtResource("5_1esgn")
 popup/item_1/id = 1
 popup/item_2/text = "Biggest"
-popup/item_2/icon = ExtResource("4_3dfs0")
+popup/item_2/icon = ExtResource("5_1esgn")
 popup/item_2/id = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/Font_Size"]
@@ -198,10 +198,10 @@ icon_alignment = 2
 item_count = 2
 selected = 1
 popup/item_0/text = "True"
-popup/item_0/icon = ExtResource("3_fucqk")
+popup/item_0/icon = ExtResource("4_v0iaj")
 popup/item_0/id = 0
 popup/item_1/text = "False"
-popup/item_1/icon = ExtResource("3_fucqk")
+popup/item_1/icon = ExtResource("4_v0iaj")
 popup/item_1/id = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/Full_Screen"]
@@ -240,7 +240,7 @@ layout_mode = 2
 tooltip_text = "Go back the settings menu"
 theme_type_variation = &"GreenButton"
 text = "Back"
-icon = ExtResource("9_fwufp")
+icon = ExtResource("6_o1bwl")
 icon_alignment = 1
 vertical_icon_alignment = 2
 expand_icon = true

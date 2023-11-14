@@ -50,9 +50,9 @@ public partial class MainMenu : Control
 			Theme.DefaultFontSize = OptionsVisualsGUI.GetFontSizeDefault().ToInt();
 
 	
-
-			// TODO: update tooltips
-			// TODO: persistent fullscreen check
+			if (OptionsVisualsGUI.GetFullScreenDefault() == true) {
+				DisplayServer.WindowSetMode(DisplayServer.WindowMode.Fullscreen);
+			}
 			// TODO: optimise this spaghetti junction of code for init
 			// BUG: it doesnt resize the gui properly and leaves it the same size whilst making the window bigger
 

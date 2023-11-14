@@ -18,12 +18,6 @@ public partial class OptionsMenu : Control
 
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-	}
-
-
 	/**
 	*----------------------------------------------------------------
 	* Start of Menu Buttons
@@ -41,10 +35,19 @@ public partial class OptionsMenu : Control
 
 	/**
 	* A function to control the button "Visuals" on the Options
-	* Sends you back to the visual settings screen
+	* Sends you to the visual settings screen
 	**/
 	private void OnVisualPressed()
 	{ 
 		GetTree().ChangeSceneToFile("res://scenes/menus/OptionsVisuals.tscn");
+	}
+
+	/**
+	* A function to control the button "Options" on the Options
+	* Sends you to the audio settings screen
+	**/
+	private void OnAudioPressed()
+	{ 
+		GetTree().ChangeSceneToFile("res://scenes/menus/OptionsAudio.tscn");
 	}
 }
