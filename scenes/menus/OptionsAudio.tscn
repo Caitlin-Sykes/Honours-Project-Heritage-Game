@@ -99,7 +99,7 @@ theme_override_constants/margin_left = 10
 [node name="RichTextLabel" type="RichTextLabel" parent="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/Maximum_Volume/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 0
-text = "Volume Slider"
+text = "Main Volume:"
 fit_content = true
 
 [node name="Music_Effects" type="OptionButton" parent="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer"]
@@ -140,7 +140,7 @@ theme_override_constants/margin_left = 10
 [node name="RichTextLabel" type="RichTextLabel" parent="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/Music_Effects/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 0
-text = "Additional Sound-Effects"
+text = "Additional Effects:"
 fit_content = true
 
 [node name="Additional_Captions" type="OptionButton" parent="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer"]

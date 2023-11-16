@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=15 format=3 uid="uid://c8ikhuofmlww0"]
+[gd_resource type="Theme" load_steps=18 format=3 uid="uid://c8ikhuofmlww0"]
 
 [ext_resource type="FontFile" uid="uid://5fctrf5wofwi" path="res://resources/fonts/CascadiaCode-Bold.ttf" id="1_sflrq"]
 
@@ -9,6 +9,15 @@ bg_color = Color(0.552941, 0.760784, 0, 1)
 bg_color = Color(0.364706, 0.509804, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_id5vk"]
+bg_color = Color(0.65098, 0.890196, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6llsc"]
+bg_color = Color(0.552941, 0.760784, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m304p"]
+bg_color = Color(0.364706, 0.509804, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6ppwb"]
 bg_color = Color(0.65098, 0.890196, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w6rnp"]
@@ -53,6 +62,10 @@ GreenButton/styles/focus = null
 GreenButton/styles/hover = SubResource("StyleBoxFlat_4cpy2")
 GreenButton/styles/normal = SubResource("StyleBoxFlat_cbh2r")
 GreenButton/styles/pressed = SubResource("StyleBoxFlat_id5vk")
+GreenButtonMenu/base_type = &"Button"
+GreenButtonMenu/styles/hover = SubResource("StyleBoxFlat_6llsc")
+GreenButtonMenu/styles/normal = SubResource("StyleBoxFlat_m304p")
+GreenButtonMenu/styles/pressed = SubResource("StyleBoxFlat_6ppwb")
 OrangeButton/base_type = &"Button"
 OrangeButton/constants/h_separation = 2
 OrangeButton/constants/icon_max_width = 340

@@ -36,7 +36,15 @@ public partial class MainMenu : Control
 			//Inits config file
 			OptionsFileHandler.InitConfigFile();
 
-			//If GetFontDefault returns Dyslexie, sets theme to dyslexie
+			InitSettings();		
+	}
+
+	/**
+	* Init Settings for Scene
+	**/
+
+	private void InitSettings() {
+		//If GetFontDefault returns Dyslexie, sets theme to dyslexie
 			//Else sets Theme to cascadia
 			if (OptionsVisualsGUI.GetFontDefault() == "Dyslexie") {
 				Theme = (Theme)GD.Load("res://resources/themes/main_theme_dyslexie.tres");
@@ -54,9 +62,6 @@ public partial class MainMenu : Control
 				DisplayServer.WindowSetMode(DisplayServer.WindowMode.Fullscreen);
 			}
 			// TODO: optimise this spaghetti junction of code for init
-			// BUG: it doesnt resize the gui properly and leaves it the same size whilst making the window bigger
-
-		
 	}
 
 	/**
