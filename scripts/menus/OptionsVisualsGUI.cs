@@ -71,17 +71,21 @@ public partial class OptionsVisualsGUI : Control
 	public void SetFontSizeDefault() {
 		//Sets default setting to Dyslexie if CURRENT_FONT is Dyslexie
 		//Otherwise sets it to Cascadia
-		if (GetFontSizeDefault() == "16") {
+		if (GetFontSizeDefault() == "26") {
 			GetNode<OptionButton>(FONT_SIZE_OPTION_BUTTON_PATH).Select(0); //with 0 being the index of default
+			Theme.DefaultFontSize = 26;
 		}
 
-		if (GetFontSizeDefault() == "20") {
+		if (GetFontSizeDefault() == "30") {
 			GetNode<OptionButton>(FONT_SIZE_OPTION_BUTTON_PATH).Select(1); //with 1 being the index of bigger
+			Theme.DefaultFontSize = 30;
 		}
 
 		//If it finds biggest in the config file, sets setting to be replaced to biggest
 		else {
 			GetNode<OptionButton>(FONT_SIZE_OPTION_BUTTON_PATH).Select(2); //with 2 being the index of biggest
+			Theme.DefaultFontSize = 34;
+
 		}
 	}
 
@@ -89,14 +93,14 @@ public partial class OptionsVisualsGUI : Control
 	public static string GetFontSizeDefault() {
 		//If DYSLEXIE is found in file, current font is set to dyslexie
 		if (OptionsFileHandler.FindInFile("[FONT_SIZE] : DEFAULT")) {
-			return "16";
+			return "26";
 		}
 
 		else if (OptionsFileHandler.FindInFile("[FONT_SIZE] : BIGGER")) {
-			return "20";
+			return "30";
 		}
 
-		return "24";
+		return "34";
 	}
 
 
@@ -176,21 +180,21 @@ public partial class OptionsVisualsGUI : Control
 					OptionsFileHandler.ReplaceInFile(rs.ToString().ToUpper(), "DEFAULT");
 
 					//Sets new size
-					Theme.DefaultFontSize = 16;
+					Theme.DefaultFontSize = 26;
 	 
 					break;	
 			case 1:
 					OptionsFileHandler.ReplaceInFile(rs.ToString().ToUpper(), "BIGGER");
 					
 					//Sets new size
-					Theme.DefaultFontSize = 20;
+					Theme.DefaultFontSize = 30;
 
 					break;
 			case 2:
 					OptionsFileHandler.ReplaceInFile(rs.ToString().ToUpper(), "BIGGEST");
 
 					//Sets new size
-					Theme.DefaultFontSize = 24;
+					Theme.DefaultFontSize = 34;
 
 					break;
 			default: 

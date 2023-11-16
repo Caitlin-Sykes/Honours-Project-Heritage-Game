@@ -43,6 +43,7 @@ bg_color = Color(1, 0.866667, 0.458824, 1)
 
 [resource]
 default_font = ExtResource("1_a7r61")
+default_font_size = 26
 Button/constants/h_separation = 45
 GreenButton/base_type = &"Button"
 GreenButton/constants/h_separation = 2

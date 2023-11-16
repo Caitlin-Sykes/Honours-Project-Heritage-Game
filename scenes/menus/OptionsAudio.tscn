@@ -1,52 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://bpkhvruma7haq"]
+[gd_scene load_steps=6 format=3 uid="uid://bsulcr51vorig"]
 
 [ext_resource type="Theme" uid="uid://c8ikhuofmlww0" path="res://resources/themes/main_theme_cascadia.tres" id="1_25s4b"]
 [ext_resource type="Script" path="res://scripts/menus/OptionsVisualsGUI.cs" id="2_8asgb"]
-[ext_resource type="FontFile" uid="uid://5fctrf5wofwi" path="res://resources/fonts/CascadiaCode-Bold.ttf" id="3_j3ygm"]
 [ext_resource type="Texture2D" uid="uid://dvvwqu54gnk2q" path="res://resources/icons/font.png" id="4_v0iaj"]
 [ext_resource type="Texture2D" uid="uid://1rjhww4502vr" path="res://resources/icons/size.png" id="5_1esgn"]
 [ext_resource type="Texture2D" uid="uid://dsdt4amufrxcn" path="res://resources/icons/arrow.png" id="6_o1bwl"]
-
-[sub_resource type="SystemFont" id="SystemFont_i6pmk"]
-
-[sub_resource type="Theme" id="Theme_raslq"]
-default_font = SubResource("SystemFont_i6pmk")
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o2mui"]
-bg_color = Color(0.898039, 0.00392157, 0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6qiso"]
-bg_color = Color(0.509804, 0.184314, 0.176471, 1)
-border_width_left = 2
-border_width_bottom = 3
-border_color = Color(0, 0, 0, 1)
-border_blend = true
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_crdhl"]
-bg_color = Color(1, 0.415686, 0.34902, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aa48y"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ct4x6"]
-bg_color = Color(0.509804, 0.184314, 0.176471, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0utiy"]
-bg_color = Color(0.415686, 0.0509804, 0, 1)
-border_width_left = 4
-border_width_bottom = 5
-border_color = Color(0.172549, 0.172549, 0.172549, 1)
-border_blend = true
-
-[sub_resource type="Theme" id="Theme_gl6r7"]
-default_font = ExtResource("3_j3ygm")
-Button/constants/icon_max_width = 340
-Button/styles/hover = SubResource("StyleBoxFlat_o2mui")
-Button/styles/normal = SubResource("StyleBoxFlat_6qiso")
-Button/styles/pressed = SubResource("StyleBoxFlat_crdhl")
-ItemList/styles/panel = SubResource("StyleBoxFlat_aa48y")
-ItemList/styles/selected = SubResource("StyleBoxFlat_ct4x6")
-Panel/styles/panel = SubResource("StyleBoxFlat_0utiy")
-RichTextLabel/font_sizes/bold_font_size = 16
 
 [node name="OptionsMenu" type="Control"]
 layout_mode = 3
@@ -75,7 +33,6 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = SubResource("Theme_raslq")
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 150
 theme_override_constants/margin_right = 20
@@ -86,7 +43,6 @@ layout_mode = 2
 
 [node name="Panel" type="Panel" parent="Menu_Panel/VisualButtons/PanelContainer"]
 layout_mode = 2
-theme = SubResource("Theme_gl6r7")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Menu_Panel/VisualButtons/PanelContainer/Panel"]
 layout_mode = 1
@@ -109,24 +65,24 @@ theme_override_constants/margin_bottom = 20
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 
-[node name="Fonts" type="OptionButton" parent="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="Maximum_Volume" type="OptionButton" parent="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 tooltip_text = "Choose the font for the game (Dialogue, etc)"
-theme_type_variation = &"RedButton"
+theme_type_variation = &"OrangeButton"
 theme_override_constants/h_separation = 15
 alignment = 1
 icon_alignment = 2
 item_count = 2
 selected = 1
-popup/item_0/text = "Cascadia"
+popup/item_0/text = "WIP"
 popup/item_0/icon = ExtResource("4_v0iaj")
 popup/item_0/id = 0
-popup/item_1/text = "Dyslexie"
+popup/item_1/text = "WIP - to be implemented"
 popup/item_1/icon = ExtResource("4_v0iaj")
 popup/item_1/id = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/Fonts"]
+[node name="MarginContainer" type="MarginContainer" parent="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/Maximum_Volume"]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -140,17 +96,17 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 10
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/Fonts/MarginContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/Maximum_Volume/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 0
-text = "Game Font:"
+text = "Volume Slider"
 fit_content = true
 
-[node name="Font_Size" type="OptionButton" parent="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="Music_Effects" type="OptionButton" parent="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 tooltip_text = "Choose the font size for the game"
-theme_type_variation = &"RedButton"
+theme_type_variation = &"OrangeButton"
 theme_override_constants/h_separation = 15
 alignment = 1
 icon_alignment = 2
@@ -166,7 +122,7 @@ popup/item_2/text = "Biggest"
 popup/item_2/icon = ExtResource("5_1esgn")
 popup/item_2/id = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/Font_Size"]
+[node name="MarginContainer" type="MarginContainer" parent="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/Music_Effects"]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -181,17 +137,17 @@ grow_vertical = 2
 tooltip_text = "To change the size of the game font"
 theme_override_constants/margin_left = 10
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/Font_Size/MarginContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/Music_Effects/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 0
-text = "Font Size:"
+text = "Additional Sound-Effects"
 fit_content = true
 
-[node name="Full_Screen" type="OptionButton" parent="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="Additional_Captions" type="OptionButton" parent="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-tooltip_text = "Toggle fullscreen for the game"
-theme_type_variation = &"RedButton"
+tooltip_text = "Toggle additional captions for the game (like captions for sound effects)"
+theme_type_variation = &"OrangeButton"
 theme_override_constants/h_separation = 15
 alignment = 1
 icon_alignment = 2
@@ -204,7 +160,7 @@ popup/item_1/text = "False"
 popup/item_1/icon = ExtResource("4_v0iaj")
 popup/item_1/id = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/Full_Screen"]
+[node name="MarginContainer" type="MarginContainer" parent="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/Additional_Captions"]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -218,10 +174,10 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 10
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/Full_Screen/MarginContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/Additional_Captions/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 0
-text = "Full Screen:"
+text = "Additional Captions:"
 fit_content = true
 
 [node name="Back_Button" type="MarginContainer" parent="Menu_Panel"]
@@ -237,7 +193,7 @@ grow_horizontal = 0
 
 [node name="Back" type="Button" parent="Menu_Panel/Back_Button"]
 layout_mode = 2
-tooltip_text = "Go back the settings menu"
+tooltip_text = "Go back to the settings menu"
 theme_type_variation = &"GreenButton"
 text = "Back"
 icon = ExtResource("6_o1bwl")
@@ -257,10 +213,4 @@ offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[connection signal="item_selected" from="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/Fonts" to="." method="OnFontsItemSelected"]
-[connection signal="ready" from="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/Fonts" to="." method="SetFontDefault"]
-[connection signal="item_selected" from="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/Font_Size" to="." method="OnFontSizeItemSelected"]
-[connection signal="ready" from="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/Font_Size" to="." method="SetFontSizeDefault"]
-[connection signal="item_selected" from="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/Full_Screen" to="." method="OnFullScreenSelected"]
-[connection signal="ready" from="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/Full_Screen" to="." method="SetFullScreenDefault"]
 [connection signal="pressed" from="Menu_Panel/Back_Button/Back" to="." method="OnBackPressed"]

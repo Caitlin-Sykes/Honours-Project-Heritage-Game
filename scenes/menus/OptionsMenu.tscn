@@ -146,4 +146,5 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [connection signal="pressed" from="Menu_Panel/Settings_Buttons/HBoxContainer/Visuals" to="." method="OnVisualPressed"]
+[connection signal="pressed" from="Menu_Panel/Settings_Buttons/HBoxContainer/Audio" to="." method="OnAudioPressed"]
 [connection signal="pressed" from="Menu_Panel/Back_Button/Back" to="." method="OnBackPressed"]
