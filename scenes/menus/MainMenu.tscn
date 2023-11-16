@@ -49,6 +49,7 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="Play" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+z_as_relative = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -115,6 +116,7 @@ text = "Exit"
 
 [node name="Shadow" type="Panel" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/Exit"]
 show_behind_parent = true
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
