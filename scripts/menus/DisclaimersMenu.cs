@@ -9,11 +9,9 @@ public partial class DisclaimersMenu : Control
 		InitSettings();
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-	}
-
+	/**
+	* Init Settings for Scene
+	**/
 	private void InitSettings() {
 		//If GetFontDefault returns Dyslexie, sets theme to dyslexie
 			//Else sets Theme to cascadia
