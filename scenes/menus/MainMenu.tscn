@@ -1,12 +1,34 @@
-[gd_scene load_steps=8 format=3 uid="uid://3x7tubsa2wal"]
+[gd_scene load_steps=11 format=3 uid="uid://3x7tubsa2wal"]
 
 [ext_resource type="Script" path="res://scripts/menus/MainMenu.cs" id="1_4m1ny"]
 [ext_resource type="Theme" uid="uid://c8ikhuofmlww0" path="res://resources/themes/main_theme_cascadia.tres" id="1_df4f6"]
 [ext_resource type="Texture2D" uid="uid://mw7ayma0m24r" path="res://resources/logos/intersex_inclusive.png" id="2_phrki"]
 [ext_resource type="Texture2D" uid="uid://c3way72bjjemo" path="res://resources/logos/philly_2017.png" id="3_5x0fc"]
+[ext_resource type="Script" path="res://scenes/menus/Transitions.cs" id="3_ni0ey"]
 [ext_resource type="Texture2D" uid="uid://cbon2wexfkb7o" path="res://resources/logos/PrideProgress.png" id="4_sq0yg"]
 [ext_resource type="Texture2D" uid="uid://bqdowa8y02amp" path="res://resources/logos/pride_1979.png" id="5_ewfec"]
 [ext_resource type="Texture2D" uid="uid://bjbs6wlfdnnlq" path="res://resources/logos/original_pride.png" id="5_ib41u"]
+
+[sub_resource type="Animation" id="Animation_7a53q"]
+resource_name = "Transition_Fade_In"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nuk71"]
+_data = {
+"Transition_Fade": SubResource("Animation_7a53q")
+}
 
 [node name="Main_Menu" type="Control" node_paths=PackedStringArray("intersexInclusive", "philly", "originalPride", "prideProgress", "prideSeventyNine")]
 layout_mode = 3
@@ -23,7 +45,25 @@ originalPride = NodePath("Panel/MarginContainer/VBoxContainer/HBoxContainer/Prid
 prideProgress = NodePath("Panel/MarginContainer/VBoxContainer/HBoxContainer/PrideFlags/PrideProgress")
 prideSeventyNine = NodePath("Panel/MarginContainer/VBoxContainer/HBoxContainer/PrideFlags/Pride1979")
 
+[node name="Transition" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("3_ni0ey")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Transition"]
+libraries = {
+"": SubResource("AnimationLibrary_nuk71")
+}
+
 [node name="Panel" type="Panel" parent="."]
+show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
