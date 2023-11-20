@@ -20,6 +20,7 @@ public partial class MainMenu : Control
 	[Export]
     public Sprite2D prideSeventyNine { get; set; } //pride1979 logo
 
+	private Transitions TRANSITION;
 
 	
 	/**
@@ -29,7 +30,8 @@ public partial class MainMenu : Control
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-			
+			TRANSITION = GetNode<Transitions>("Transition");
+
 			//Logo 
 			DecideMainMenuLogo();
 
@@ -118,7 +120,7 @@ public partial class MainMenu : Control
 	**/
 	private void OnStartPressed()
 	{ 
-		GetTree().ChangeSceneToFile("res://scenes/menus/Disclaimers.tscn");
+		TRANSITION.NextScene("res://scenes/menus/Disclaimers.tscn");
 
 	}
 
@@ -127,7 +129,7 @@ public partial class MainMenu : Control
 	**/
 	private void OnOptionsPressed()
 	{
-		GetTree().ChangeSceneToFile("res://scenes/menus/OptionsMenu.tscn");
+		TRANSITION.NextScene("res://scenes/menus/OptionsMenu.tscn");
 	}
 
 	/**
@@ -135,7 +137,7 @@ public partial class MainMenu : Control
 	**/
 	private void OnSourcesPressed()
 	{
-
+		// TRANSITION.NextScene
 	}
 
 	/**

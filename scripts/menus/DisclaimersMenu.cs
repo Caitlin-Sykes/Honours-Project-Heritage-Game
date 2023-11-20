@@ -3,9 +3,11 @@ using System;
 
 public partial class DisclaimersMenu : Control
 {
+	private Transitions TRANSITION;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		TRANSITION = GetNode<Transitions>("Transition");
 		InitSettings();
 	}
 
@@ -40,6 +42,6 @@ public partial class DisclaimersMenu : Control
 	**/   
 
 	private void OnContinuePressed() { 
-		GetTree().ChangeSceneToFile("res://scenes/intro_scene/IntroductionScene.tscn");
+		TRANSITION.NextScene("res://scenes/intro_scene/IntroductionScene.tscn");
 	}
 }

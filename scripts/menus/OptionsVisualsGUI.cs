@@ -12,6 +12,9 @@ public partial class OptionsVisualsGUI : Control
 
 	private static readonly string FULL_SCREEN_OPTION_BUTTON_PATH = "Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/Full_Screen";
 
+	private Transitions TRANSITION;
+
+
 	//An enum for replacing the default sizes
 	enum ReplacingSize {
 		Default,
@@ -22,6 +25,8 @@ public partial class OptionsVisualsGUI : Control
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		TRANSITION = GetNode<Transitions>("Transition");
+
 		InitSettings();
 	}
 
@@ -157,7 +162,7 @@ public partial class OptionsVisualsGUI : Control
 	**/
 	private void OnBackPressed()
 	{ 
-		GetTree().ChangeSceneToFile("res://scenes/menus/OptionsMenu.tscn");
+		TRANSITION.NextScene("res://scenes/menus/OptionsMenu.tscn");
 	}
 
 	/**

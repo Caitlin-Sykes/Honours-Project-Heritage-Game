@@ -3,9 +3,14 @@ using System;
 
 public partial class OptionsMenu : Control
 {
+	private Transitions TRANSITION;
+
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{	
+		TRANSITION = GetNode<Transitions>("Transition");
+		
 		//If GetFontDefault returns Dyslexie, sets theme to dyslexie
 		//Else sets Theme to cascadia
 		if (OptionsVisualsGUI.GetFontDefault() == "Dyslexie") {
@@ -30,7 +35,7 @@ public partial class OptionsMenu : Control
 	**/
 	private void OnBackPressed()
 	{ 
-		GetTree().ChangeSceneToFile("res://scenes/menus/MainMenu.tscn");
+		TRANSITION.NextScene("res://scenes/menus/MainMenu.tscn");
 	}
 
 	/**
@@ -39,7 +44,7 @@ public partial class OptionsMenu : Control
 	**/
 	private void OnVisualPressed()
 	{ 
-		GetTree().ChangeSceneToFile("res://scenes/menus/OptionsVisuals.tscn");
+		TRANSITION.NextScene("res://scenes/menus/OptionsVisuals.tscn");
 	}
 
 	/**
@@ -48,6 +53,6 @@ public partial class OptionsMenu : Control
 	**/
 	private void OnAudioPressed()
 	{ 
-		GetTree().ChangeSceneToFile("res://scenes/menus/OptionsAudio.tscn");
+		TRANSITION.NextScene("res://scenes/menus/OptionsAudio.tscn");
 	}
 }

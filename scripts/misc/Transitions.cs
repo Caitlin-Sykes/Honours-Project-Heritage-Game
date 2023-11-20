@@ -1,11 +1,9 @@
 using Godot;
 using System;
-using System.Runtime.CompilerServices;
 
-public partial class Transitions : ColorRect
+public partial class Transitions : Control
 {
-	[Export]
-	public static  AnimationPlayer ANIMATION_PLAYER;
+	private static  AnimationPlayer ANIMATION_PLAYER;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -18,9 +16,11 @@ public partial class Transitions : ColorRect
 	*	A function to change to the next scene
 	* @param - path to the scene
 	**/
-	public async void nextScene(String path) {
+	public async void NextScene(String path) {
 		ANIMATION_PLAYER.PlayBackwards("Transition_Fade");
 		await ToSignal(ANIMATION_PLAYER, "animation_finished");
-		GetTree().ChangeSceneToFile(path);
+		GD.Print(path);
+		var nextScene = (PackedScene)ResourceLoader.Load(path);
+    	GetTree().ChangeSceneToFile(path);
 	}
 }

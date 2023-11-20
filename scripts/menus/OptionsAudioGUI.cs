@@ -3,9 +3,13 @@ using System;
 
 public partial class OptionsAudioGUI : Control
 {
+	private Transitions TRANSITION;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		TRANSITION = GetNode<Transitions>("Transition");
+
 		InitSettings();
 	}
 
@@ -46,7 +50,7 @@ public partial class OptionsAudioGUI : Control
 	**/
 	private void OnBackPressed()
 	{ 
-		GetTree().ChangeSceneToFile("res://scenes/menus/OptionsMenu.tscn");
+		TRANSITION.NextScene("res://scenes/menus/OptionsMenu.tscn");
 	}
 
 	
