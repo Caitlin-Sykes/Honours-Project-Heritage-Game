@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=3 uid="uid://btmuto64fpkoq"]
+
+[ext_resource type="PackedScene" uid="uid://ckh7k06daoqx2" path="res://resources/models/mainRoom/mainRoom.blend" id="1_8h4uf"]
+[ext_resource type="Shader" path="res://outline.gdshader" id="2_sdbi6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s14xq"]
+blend_mode = 3
+albedo_color = Color(0.784314, 0.858824, 0.803922, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jcpwc"]
+render_priority = 0
+shader = ExtResource("2_sdbi6")
+
+[node name="mainRoom" instance=ExtResource("1_8h4uf")]
+
+[node name="glass window" parent="." index="5"]
+surface_material_override/0 = SubResource("StandardMaterial3D_s14xq")
+
+[node name="curtains_002" parent="." index="12"]
+transform = Transform3D(1.19209e-07, 1.5766, 1.69191e-07, 0, 1.87945e-07, -1.41928, -1, 1.87945e-07, 0, -0.863484, 0.84413, 1.96501)
+
+[node name="bookshelf" parent="." index="17"]
+surface_material_override/1 = SubResource("ShaderMaterial_jcpwc")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="30"]
+transform = Transform3D(0.847548, 0, 0.530718, 0, 1, 0, -0.530718, 0, 0.847548, -0.0574387, 0.731229, -0.0296783)
+light_energy = 1.366
+light_specular = 0.0
+omni_range = 164.289
+
+[node name="North" type="Camera3D" parent="." index="31"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.288003, 1.10821, -0.211393)
+current = true
+fov = 76.3
+
+[node name="South" type="Camera3D" parent="." index="32"]
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 0.288003, 1.10821, -0.211393)
+current = true
+fov = 76.3
+
+[node name="East" type="Camera3D" parent="." index="33"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.288003, 1.10821, -0.211393)
+current = true
+fov = 76.3
+
+[node name="West" type="Camera3D" parent="." index="34"]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0.288003, 1.10821, -0.211393)
+current = true
+fov = 76.3
+
+[node name="IntroCam" type="Camera3D" parent="." index="35"]
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, -0.982971, 0.736017, -0.211393)
+fov = 76.3

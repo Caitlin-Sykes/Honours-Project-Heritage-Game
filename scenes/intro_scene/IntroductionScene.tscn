@@ -1,3 +1,22 @@
-[gd_scene format=3 uid="uid://c834oj6n7b152"]
+[gd_scene load_steps=2 format=3 uid="uid://e1dmsm486kun"]
 
-[node name="Node3D" type="Node3D"]
+[ext_resource type="PackedScene" uid="uid://btmuto64fpkoq" path="res://scenes/intro_scene/main_room.tscn" id="1_gvlay"]
+
+[node name="IntroductionScene" type="Node3D"]
+
+[node name="mainRoom" parent="." instance=ExtResource("1_gvlay")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69, 80, 98)
+
+[node name="North" parent="mainRoom" index="31"]
+current = false
+
+[node name="East" parent="mainRoom" index="33"]
+current = false
+
+[node name="West" parent="mainRoom" index="34"]
+current = false
+
+[node name="IntroCam" parent="mainRoom" index="35"]
+current = true
+
+[editable path="mainRoom"]

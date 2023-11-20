@@ -1,3 +1,6 @@
+[PLAYER'S BEDROOM]
+"Persona 5 Poster", modelled by me, poster image originally from https://www.amazon.com/Persona-Official-Setting-Picture-JAPANESE/dp/4047331902. All rights reserved.
+"Schoolbag", modelled by https://www.turbosquid.com/3d-models/3d-backpack-lowpoly-2024285, by Wolfy640
 
 
 [FONTS]
@@ -12,3 +15,6 @@ https://www.flaticon.com/free-icons/credit - Credit icons, Freepik, icon for cre
 https://www.flaticon.com/free-icons/arrow Arrow icons, Kirill Kazachek, icon for going back
 https://www.flaticon.com/free-icons/text-box" - Text box icons, Freepik, icon for selecting fonts
 https://www.flaticon.com/free-icons/font - Size icon, Freepik, icon for selecting font size</a>
+
+[SHADERS]
+https://github.com/eldskald/godot4-cel-shader/tree/main - Cell Shader, includes "includes" folder and the two gdshader files in project root
