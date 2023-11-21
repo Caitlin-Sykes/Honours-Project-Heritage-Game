@@ -1,0 +1,258 @@
+[gd_scene load_steps=9 format=3 uid="uid://bsulcr51vorig"]
+
+[ext_resource type="Theme" uid="uid://c8ikhuofmlww0" path="res://resources/themes/main_theme_cascadia.tres" id="1_25s4b"]
+[ext_resource type="Script" path="res://scripts/menus/OptionsVisualsGUI.cs" id="2_8asgb"]
+[ext_resource type="Script" path="res://scripts/misc/Transitions.cs" id="3_7hjst"]
+[ext_resource type="Texture2D" uid="uid://dvvwqu54gnk2q" path="res://resources/icons/font.png" id="4_v0iaj"]
+[ext_resource type="Texture2D" uid="uid://1rjhww4502vr" path="res://resources/icons/size.png" id="5_1esgn"]
+[ext_resource type="Texture2D" uid="uid://dsdt4amufrxcn" path="res://resources/icons/arrow.png" id="6_o1bwl"]
+
+[sub_resource type="Animation" id="Animation_7a53q"]
+resource_name = "Transition_Fade_In"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nuk71"]
+_data = {
+"Transition_Fade": SubResource("Animation_7a53q")
+}
+
+[node name="OptionsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_25s4b")
+script = ExtResource("2_8asgb")
+
+[node name="Transition" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+top_level = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("3_7hjst")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Transition"]
+libraries = {
+"": SubResource("AnimationLibrary_nuk71")
+}
+
+[node name="Menu_Panel" type="Panel" parent="."]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VisualButtons" type="MarginContainer" parent="Menu_Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 150
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 50
+
+[node name="PanelContainer" type="PanelContainer" parent="Menu_Panel/VisualButtons"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Menu_Panel/VisualButtons/PanelContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Menu_Panel/VisualButtons/PanelContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="Maximum_Volume" type="OptionButton" parent="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+tooltip_text = "Choose the font for the game (Dialogue, etc)"
+theme_type_variation = &"OrangeButton"
+theme_override_constants/h_separation = 15
+alignment = 1
+icon_alignment = 2
+item_count = 2
+selected = 1
+popup/item_0/text = "WIP"
+popup/item_0/icon = ExtResource("4_v0iaj")
+popup/item_0/id = 0
+popup/item_1/text = "WIP - to be implemented"
+popup/item_1/icon = ExtResource("4_v0iaj")
+popup/item_1/id = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/Maximum_Volume"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 2.0
+offset_top = -11.0
+offset_right = 2.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/Maximum_Volume/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Main Volume:"
+fit_content = true
+
+[node name="Music_Effects" type="OptionButton" parent="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+tooltip_text = "Choose the font size for the game"
+theme_type_variation = &"OrangeButton"
+theme_override_constants/h_separation = 15
+alignment = 1
+icon_alignment = 2
+item_count = 3
+selected = 1
+popup/item_0/text = "Default"
+popup/item_0/icon = ExtResource("5_1esgn")
+popup/item_0/id = 0
+popup/item_1/text = "Bigger"
+popup/item_1/icon = ExtResource("5_1esgn")
+popup/item_1/id = 1
+popup/item_2/text = "Biggest"
+popup/item_2/icon = ExtResource("5_1esgn")
+popup/item_2/id = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/Music_Effects"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 2.0
+offset_top = -11.0
+offset_right = 2.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "To change the size of the game font"
+theme_override_constants/margin_left = 10
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/Music_Effects/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Additional Effects:"
+fit_content = true
+
+[node name="Additional_Captions" type="OptionButton" parent="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+tooltip_text = "Toggle additional captions for the game (like captions for sound effects)"
+theme_type_variation = &"OrangeButton"
+theme_override_constants/h_separation = 15
+alignment = 1
+icon_alignment = 2
+item_count = 2
+selected = 1
+popup/item_0/text = "True"
+popup/item_0/icon = ExtResource("4_v0iaj")
+popup/item_0/id = 0
+popup/item_1/text = "False"
+popup/item_1/icon = ExtResource("4_v0iaj")
+popup/item_1/id = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/Additional_Captions"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 2.0
+offset_top = -11.0
+offset_right = 2.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/Additional_Captions/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Additional Captions:"
+fit_content = true
+
+[node name="Back_Button" type="MarginContainer" parent="Menu_Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -200.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 93.0
+grow_horizontal = 0
+
+[node name="Back" type="Button" parent="Menu_Panel/Back_Button"]
+layout_mode = 2
+tooltip_text = "Go back to the settings menu"
+theme_type_variation = &"GreenButton"
+text = "Back"
+icon = ExtResource("6_o1bwl")
+icon_alignment = 1
+vertical_icon_alignment = 2
+expand_icon = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Shadow" type="Panel" parent="Menu_Panel/Back_Button/Back"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 94.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[connection signal="pressed" from="Menu_Panel/Back_Button/Back" to="." method="OnBackPressed"]

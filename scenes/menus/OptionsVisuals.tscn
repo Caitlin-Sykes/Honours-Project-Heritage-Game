@@ -1,0 +1,264 @@
+[gd_scene load_steps=9 format=3 uid="uid://btorfjg240pgu"]
+
+[ext_resource type="Theme" uid="uid://c8ikhuofmlww0" path="res://resources/themes/main_theme_cascadia.tres" id="1_iwmbv"]
+[ext_resource type="Script" path="res://scripts/menus/OptionsVisualsGUI.cs" id="2_2jr8a"]
+[ext_resource type="Texture2D" uid="uid://dvvwqu54gnk2q" path="res://resources/icons/font.png" id="3_fucqk"]
+[ext_resource type="Script" path="res://scripts/misc/Transitions.cs" id="3_q21ec"]
+[ext_resource type="Texture2D" uid="uid://1rjhww4502vr" path="res://resources/icons/size.png" id="4_3dfs0"]
+[ext_resource type="Texture2D" uid="uid://dsdt4amufrxcn" path="res://resources/icons/arrow.png" id="9_fwufp"]
+
+[sub_resource type="Animation" id="Animation_7a53q"]
+resource_name = "Transition_Fade_In"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nuk71"]
+_data = {
+"Transition_Fade": SubResource("Animation_7a53q")
+}
+
+[node name="OptionsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_iwmbv")
+script = ExtResource("2_2jr8a")
+
+[node name="Transition" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+top_level = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("3_q21ec")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Transition"]
+libraries = {
+"": SubResource("AnimationLibrary_nuk71")
+}
+
+[node name="Menu_Panel" type="Panel" parent="."]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VisualButtons" type="MarginContainer" parent="Menu_Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 150
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 50
+
+[node name="PanelContainer" type="PanelContainer" parent="Menu_Panel/VisualButtons"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Menu_Panel/VisualButtons/PanelContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Menu_Panel/VisualButtons/PanelContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="Fonts" type="OptionButton" parent="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+tooltip_text = "Choose the font for the game (Dialogue, etc)"
+theme_type_variation = &"RedButton"
+theme_override_constants/h_separation = 15
+alignment = 1
+icon_alignment = 2
+item_count = 2
+selected = 1
+popup/item_0/text = "Cascadia"
+popup/item_0/icon = ExtResource("3_fucqk")
+popup/item_0/id = 0
+popup/item_1/text = "Dyslexie"
+popup/item_1/icon = ExtResource("3_fucqk")
+popup/item_1/id = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/Fonts"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 2.0
+offset_top = -11.0
+offset_right = 2.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/Fonts/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Game Font:"
+fit_content = true
+
+[node name="Font_Size" type="OptionButton" parent="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+tooltip_text = "Choose the font size for the game"
+theme_type_variation = &"RedButton"
+theme_override_constants/h_separation = 15
+alignment = 1
+icon_alignment = 2
+item_count = 3
+selected = 1
+popup/item_0/text = "Default"
+popup/item_0/icon = ExtResource("4_3dfs0")
+popup/item_0/id = 0
+popup/item_1/text = "Bigger"
+popup/item_1/icon = ExtResource("4_3dfs0")
+popup/item_1/id = 1
+popup/item_2/text = "Biggest"
+popup/item_2/icon = ExtResource("4_3dfs0")
+popup/item_2/id = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/Font_Size"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 2.0
+offset_top = -11.0
+offset_right = 2.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "To change the size of the game font"
+theme_override_constants/margin_left = 10
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/Font_Size/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Font Size:"
+fit_content = true
+
+[node name="Full_Screen" type="OptionButton" parent="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+tooltip_text = "Toggle fullscreen for the game"
+theme_type_variation = &"RedButton"
+theme_override_constants/h_separation = 15
+alignment = 1
+icon_alignment = 2
+item_count = 2
+selected = 1
+popup/item_0/text = "True"
+popup/item_0/icon = ExtResource("3_fucqk")
+popup/item_0/id = 0
+popup/item_1/text = "False"
+popup/item_1/icon = ExtResource("3_fucqk")
+popup/item_1/id = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/Full_Screen"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 2.0
+offset_top = -11.0
+offset_right = 2.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/Full_Screen/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Full Screen:"
+fit_content = true
+
+[node name="Back_Button" type="MarginContainer" parent="Menu_Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -200.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 93.0
+grow_horizontal = 0
+
+[node name="Back" type="Button" parent="Menu_Panel/Back_Button"]
+layout_mode = 2
+tooltip_text = "Go back to the settings menu"
+theme_type_variation = &"GreenButton"
+text = "Back"
+icon = ExtResource("9_fwufp")
+icon_alignment = 1
+vertical_icon_alignment = 2
+expand_icon = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Shadow" type="Panel" parent="Menu_Panel/Back_Button/Back"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 94.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[connection signal="item_selected" from="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/Fonts" to="." method="OnFontsItemSelected"]
+[connection signal="ready" from="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/Fonts" to="." method="SetFontDefault"]
+[connection signal="item_selected" from="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/Font_Size" to="." method="OnFontSizeItemSelected"]
+[connection signal="ready" from="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/Font_Size" to="." method="SetFontSizeDefault"]
+[connection signal="item_selected" from="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/Full_Screen" to="." method="OnFullScreenSelected"]
+[connection signal="ready" from="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/Full_Screen" to="." method="SetFullScreenDefault"]
+[connection signal="pressed" from="Menu_Panel/Back_Button/Back" to="." method="OnBackPressed"]
