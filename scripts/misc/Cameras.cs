@@ -13,3 +13,8 @@ public partial class Cameras : Node
 	{
 	}
 }
+
+//TODO: implement camera switch
+// will need to disable previous cam
+// will need to enable current cam
+// will need to swap to correct camera

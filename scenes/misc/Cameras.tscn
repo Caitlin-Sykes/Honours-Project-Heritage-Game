@@ -13,6 +13,36 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="North" type="Camera3D" parent="UI"]
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/North"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="UI/North/MarginContainer"]
+
+[node name="Arrows" type="BoxContainer" parent="UI/North/MarginContainer"]
+layout_mode = 2
+
+[node name="Up_Arrow" parent="UI/North/MarginContainer/Arrows" instance=ExtResource("2_gn02r")]
+transform = Transform3D(0.05, 0, 0, 0, -2.18557e-09, -0.05, 0, 0.05, -2.18557e-09, 0, 0.55, -0.8)
+
+[node name="Down_Arrow" parent="UI/North/MarginContainer/Arrows" instance=ExtResource("2_gn02r")]
+transform = Transform3D(0.05, 0, 0, 0, 5.96244e-10, 0.05, 0, -0.05, 5.96244e-10, 0, -0.55, -0.8)
+
+[node name="Right_Arrow" parent="UI/North/MarginContainer/Arrows" instance=ExtResource("2_gn02r")]
+transform = Transform3D(9.55343e-17, -2.18557e-09, 0.05, -0.05, -2.18557e-09, -6.61744e-24, 2.18557e-09, -0.05, -2.18557e-09, -1.02, 0, -0.8)
+
+[node name="Left_Arrow" parent="UI/North/MarginContainer/Arrows" instance=ExtResource("2_gn02r")]
+transform = Transform3D(-2.60627e-17, 5.96244e-10, -0.05, -0.05, -2.18557e-09, 0, -2.18557e-09, 0.05, 5.96244e-10, 1.02, 0, -0.8)
+
 [node name="South" type="Camera3D" parent="UI"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
@@ -27,28 +57,82 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="BoxContainer" type="BoxContainer" parent="UI/South/MarginContainer"]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="UI/South/MarginContainer"]
+
+[node name="Arrows" type="BoxContainer" parent="UI/South/MarginContainer"]
 layout_mode = 2
 
-[node name="Up_Arrow" parent="UI/South/MarginContainer/BoxContainer" instance=ExtResource("2_gn02r")]
+[node name="Up_Arrow" parent="UI/South/MarginContainer/Arrows" instance=ExtResource("2_gn02r")]
 transform = Transform3D(0.05, 0, 0, 0, -2.18557e-09, -0.05, 0, 0.05, -2.18557e-09, 0, 0.55, 0.8)
 
-[node name="Down_Arrow" parent="UI/South/MarginContainer/BoxContainer" instance=ExtResource("2_gn02r")]
+[node name="Down_Arrow" parent="UI/South/MarginContainer/Arrows" instance=ExtResource("2_gn02r")]
 transform = Transform3D(0.05, 0, 0, 0, 5.96244e-10, 0.05, 0, -0.05, 5.96244e-10, 0, -0.55, 0.8)
 
-[node name="Right_Arrow" parent="UI/South/MarginContainer/BoxContainer" instance=ExtResource("2_gn02r")]
+[node name="Right_Arrow" parent="UI/South/MarginContainer/Arrows" instance=ExtResource("2_gn02r")]
 transform = Transform3D(9.55343e-17, -2.18557e-09, 0.05, -0.05, -2.18557e-09, -6.61744e-24, 2.18557e-09, -0.05, -2.18557e-09, -1.02, 0, 0.8)
 
-[node name="Left_Arrow" parent="UI/South/MarginContainer/BoxContainer" instance=ExtResource("2_gn02r")]
+[node name="Left_Arrow" parent="UI/South/MarginContainer/Arrows" instance=ExtResource("2_gn02r")]
 transform = Transform3D(-2.60627e-17, 5.96244e-10, -0.05, -0.05, -2.18557e-09, 0, -2.18557e-09, 0.05, 5.96244e-10, 1.02, 0, 0.8)
 
-[node name="North" type="Camera3D" parent="."]
-visible = false
-
-[node name="West" type="Camera3D" parent="."]
+[node name="Arrows" type="Camera3D" parent="UI"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
-visible = false
 
-[node name="East" type="Camera3D" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="UI/Arrows"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="UI/Arrows/MarginContainer"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="Arrows" type="BoxContainer" parent="UI/Arrows/MarginContainer"]
+layout_mode = 2
+
+[node name="Up_Arrow" parent="UI/Arrows/MarginContainer/Arrows" instance=ExtResource("2_gn02r")]
+transform = Transform3D(4.36087e-06, -0.05, 2.18557e-09, 0, -2.18557e-09, -0.05, 0.05, 4.36087e-06, -1.9062e-13, -0.795, 0.55, -0.08)
+
+[node name="Down_Arrow" parent="UI/Arrows/MarginContainer/Arrows" instance=ExtResource("2_gn02r")]
+transform = Transform3D(4.36087e-06, 0.05, 2.18557e-09, 0, -2.18557e-09, 0.05, 0.05, -4.36087e-06, -1.9062e-13, -0.795, -0.55, -0.008)
+
+[node name="Right_Arrow" parent="UI/Arrows/MarginContainer/Arrows" instance=ExtResource("2_gn02r")]
+transform = Transform3D(-2.18557e-09, 0.05, 4.36306e-06, -0.05, -2.18557e-09, -1.58819e-23, 1.90715e-13, -4.36306e-06, 0.05, -0.795162, 0, -1.02193)
+
+[node name="Left_Arrow" parent="UI/Arrows/MarginContainer/Arrows" instance=ExtResource("2_gn02r")]
+transform = Transform3D(2.18557e-09, -0.05, -4.35869e-06, -0.05, -2.18557e-09, 7.27919e-24, -1.90524e-13, 4.35869e-06, -0.05, -0.794984, 0, 1.01807)
+
+[node name="East" type="Camera3D" parent="UI"]
 transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 0, 0, 0)
-visible = false
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/East"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="UI/East/MarginContainer"]
+
+[node name="Arrows" type="BoxContainer" parent="UI/East/MarginContainer"]
+layout_mode = 2
+
+[node name="Up_Arrow" parent="UI/East/MarginContainer/Arrows" instance=ExtResource("2_gn02r")]
+transform = Transform3D(4.36087e-06, -0.05, 2.18557e-09, 0, -2.18557e-09, -0.05, 0.05, 4.36087e-06, -1.9062e-13, 0.789302, 0.55, -0.00192885)
+
+[node name="Down_Arrow" parent="UI/East/MarginContainer/Arrows" instance=ExtResource("2_gn02r")]
+transform = Transform3D(4.36087e-06, 0.05, 2.18557e-09, 0, -2.18557e-09, 0.05, 0.05, -4.36087e-06, -1.9062e-13, 0.789302, -0.55, -0.00192885)
+
+[node name="Right_Arrow" parent="UI/East/MarginContainer/Arrows" instance=ExtResource("2_gn02r")]
+transform = Transform3D(-2.18557e-09, 0.05, 4.36306e-06, -0.05, -2.18557e-09, -1.58819e-23, 1.90715e-13, -4.36306e-06, 0.05, 0.789213, 0, -1.02193)
+
+[node name="Left_Arrow" parent="UI/East/MarginContainer/Arrows" instance=ExtResource("2_gn02r")]
+transform = Transform3D(2.18557e-09, -0.05, -4.35869e-06, -0.05, -2.18557e-09, 7.27919e-24, -1.90524e-13, 4.35869e-06, -0.05, 0.789391, 0, 1.01807)
