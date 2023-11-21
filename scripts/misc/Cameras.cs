@@ -11,12 +11,20 @@ public partial class Cameras : Node
 		West
 	} //enum for directions
 
+	private Camera3D NORTH_CAMERA; //NORTH CAMERA
+	private Camera3D EAST_CAMERA; //EAST CAMERA
+	private Camera3D SOUTH_CAMERA; //SOUTH CAMERA
+	private Camera3D WEST_CAMERA; //WEST CAMERA
 	public Direction dir; // instance of direction
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		dir = Direction.North; // starts off north by default but can be overriden by calling SetDefaultDirection
+		NORTH_CAMERA = GetNode<Camera3D>("North"); // Gets North camera
+		EAST_CAMERA = GetNode<Camera3D>("East");   // Gets East camera
+		SOUTH_CAMERA = GetNode<Camera3D>("South"); // Gets South camera
+		WEST_CAMERA = GetNode<Camera3D>("West");   // Gets West camera
 	}
 
 
@@ -51,8 +59,54 @@ public partial class Cameras : Node
 	* ----------------------------------------------------------------
 	*	Handles moving the cameras
 	* ----------------------------------------------------------------
-	**/   
-	
+	**/
+
+	//Method to handle turning left
+	public void TurnLeft() {
+		// Cameras/Controls/UI/North
+        
+		//Changes camera depending on what the current direction is
+        switch(dir) {
+            case Cameras.Direction.North:
+
+				WEST_CAMERA.Visible = true; //sets West Camera to True
+				WEST_CAMERA.Current = true;
+				NORTH_CAMERA.Visible = false; //sets North Camera to False
+				// NORTH_CAMERA.Current = false; //sets North Camera to False
+
+                //Sets current camera to West
+                dir = Cameras.Direction.West;
+                break;
+            case Cameras.Direction.East:
+                break;
+            case Cameras.Direction.South:
+                break;
+            case Cameras.Direction.West:
+                break;
+            default:
+                throw new ArgumentException("Not a valid direction");
+        }
+
+	}
+
+	//TODO: Method to handle looking right
+    internal void TurnRight()
+    {
+        throw new NotImplementedException();
+    }
+
+	//TODO: Method to handle looking up (for scenes that are allowed)
+    internal void TurnUp()
+    {
+        throw new NotImplementedException();
+    }
+
+	//TODO: Method to handle looking down
+    internal void TurnDown()
+    {
+        throw new NotImplementedException();
+    }
+
 }
 
 //TODO: implement camera switch

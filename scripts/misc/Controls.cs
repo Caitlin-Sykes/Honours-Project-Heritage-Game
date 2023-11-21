@@ -5,11 +5,16 @@ public partial class Controls : Node3D
 {
 
     private Cameras CAMERAS; // Instance of cameras script
+
+    private Transitions TRANSITION; //Handles screen transitions
+
 	
     // Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-        CAMERAS = GetNode<Cameras>("Cameras");
+        TRANSITION = GetNode<Transitions>("../../Transition");
+
+        CAMERAS = GetNode<Cameras>("../../Cameras");
 	}
 		
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -37,6 +42,71 @@ public partial class Controls : Node3D
         }
 	}
 
+    /** 
+    *   ----------------------------------------------------------------
+	*	Start of "W" and Up Gui Buttons
+	*	----------------------------------------------------------------
+	**/   
+
+    // A handler to control clicking on the up gui arrow
+    private void OnUpArrow(Node camera, InputEvent @evnt, Vector3 position, Vector3 normal, int shape_idx) {
+
+        //If trigger is left click
+        if (@evnt is InputEventMouseButton mouse) {
+            if (mouse.ButtonIndex == MouseButton.Left) {
+                    OnUpArrow();
+                }
+    }}
+
+    
+    // A function to handle Up arrow movement, prompted by the W key
+    private void OnUpArrow() {
+        CAMERAS.TurnUp();
+    }
+
+    /** 
+    *   ----------------------------------------------------------------
+	*	Start of "D" and Right Gui Buttons
+	*	----------------------------------------------------------------
+	**/   
+
+    // A handler to control clicking on the left gui arrow
+    private void OnRightArrow(Node camera, InputEvent @evnt, Vector3 position, Vector3 normal, int shape_idx) {
+
+        //If trigger is left click
+        if (@evnt is InputEventMouseButton mouse) {
+            if (mouse.ButtonIndex == MouseButton.Left) {
+                    OnRightArrow();
+                }
+    }}
+
+    
+    // A function to handle right arrow movement, prompted by the D key
+    private void OnRightArrow() {
+        CAMERAS.TurnRight();
+    }
+
+    /** ----------------------------------------------------------------
+	*	Start of "S" and Down Gui Buttons
+	*	----------------------------------------------------------------
+	**/   
+
+    // A handler to control clicking on the bottom gui arrow
+    private void OnDownArrow(Node camera, InputEvent @evnt, Vector3 position, Vector3 normal, int shape_idx) {
+
+        //If trigger is left click
+        if (@evnt is InputEventMouseButton mouse) {
+            if (mouse.ButtonIndex == MouseButton.Left) {
+                    OnDownArrow();
+                }
+    }}
+
+    
+    // A function to handle down arrow movement, prompted by the S key
+    private void OnDownArrow() {
+        CAMERAS.TurnDown();
+    }
+
     /** ----------------------------------------------------------------
 	*	Start of "A" and Left Gui Buttons
 	*	----------------------------------------------------------------
@@ -55,25 +125,7 @@ public partial class Controls : Node3D
     
     // A function to handle left arrow movement, prompted by the A key
     private void OnLeftArrow() {
-
-        // Cameras/Controls/UI/North
-        //Changes camera depending on what the current direction is
-        switch(CAMERAS.dir) {
-            case Cameras.Direction.North:
-
-
-                //Sets current camera to West
-                CAMERAS.dir = Cameras.Direction.West;
-                break;
-            case Cameras.Direction.East:
-                break;
-            case Cameras.Direction.South:
-                break;
-            case Cameras.Direction.West:
-                break;
-            default:
-                throw new ArgumentException("Not a valid direction");
-        }
+        CAMERAS.TurnLeft();
     }
 }
 

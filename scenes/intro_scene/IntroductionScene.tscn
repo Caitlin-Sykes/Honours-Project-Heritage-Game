@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://cok4snixun3l8"]
+[gd_scene load_steps=9 format=3 uid="uid://cok4snixun3l8"]
 
+[ext_resource type="Script" path="res://scripts/misc/Transitions.cs" id="1_8iq14"]
 [ext_resource type="Script" path="res://scripts/misc/Controls.cs" id="1_ebull"]
 [ext_resource type="Script" path="res://scripts/misc/Cameras.cs" id="1_g7amt"]
 [ext_resource type="PackedScene" uid="uid://btmuto64fpkoq" path="res://scenes/intro_scene/main_room.tscn" id="1_p57ao"]
@@ -7,6 +8,27 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fojjl"]
 size = Vector3(1.72941, 0.285691, 1.90045)
+
+[sub_resource type="Animation" id="Animation_7a53q"]
+resource_name = "Transition_Fade_In"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nuk71"]
+_data = {
+"Transition_Fade": SubResource("Animation_7a53q")
+}
 
 [node name="IntroductionScene" type="Node3D"]
 
@@ -134,5 +156,22 @@ transform = Transform3D(2.18557e-09, -0.05, -4.35869e-06, -0.05, -2.18557e-09, 7
 
 [node name="MainRoom" parent="." instance=ExtResource("1_p57ao")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="Transition" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+top_level = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("1_8iq14")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Transition"]
+libraries = {
+"": SubResource("AnimationLibrary_nuk71")
+}
 
 [connection signal="input_event" from="Cameras/Controls/UI/North/MarginContainer/Arrows/Left_Arrow" to="Cameras/Controls" method="OnLeftArrow"]
