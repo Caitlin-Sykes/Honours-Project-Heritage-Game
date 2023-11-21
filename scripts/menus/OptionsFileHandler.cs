@@ -16,9 +16,7 @@ public partial class OptionsFileHandler : Node2D
 	* ----------------------------------------------------------------
 	**/
 
-	 /**
-	 *Returns whether the file is present
-	 **/
+	 // Returns whether the file is present
 	public static bool IsOptionsPresent() {
 		if (Directory.Exists(OptionsFileHandler.PROJECT_PATH)) {
 			return true;
@@ -27,9 +25,8 @@ public partial class OptionsFileHandler : Node2D
 		return false;
 	}
 
-	/**
-	* Checks whether the config file is present
-	**/
+	
+	// Checks whether the config file is present
 	public static bool IsConfigFilePresent() {
 		if (File.Exists(OptionsFileHandler.CONFIG_PATH)) {
 			return true;
@@ -37,31 +34,23 @@ public partial class OptionsFileHandler : Node2D
 			return false;
 	}
 
-	/**
-	* Creates the options directory - 
-	* in C#, only does it if it already exists, hence the lack of validation
-	**/
+	// Creates the options directory - 
+	// in C#, only does it if it already exists, hence the lack of validation
 	public static void CreateOptionsDirectory() {
         Directory.CreateDirectory(OptionsFileHandler.PROJECT_PATH);
 	}
 
-	/**
-	* Creates the options file
-	**/
+	// Creates the options file
 	public static StreamWriter CreateConfigFile() {
 		return File.CreateText(OptionsFileHandler.CONFIG_PATH);
 	}
 
-	/**
-	* Closes the config file
-	**/
+	// Closes the config file
 	public static void CloseConfigFile(StreamWriter sw) {
 		sw.Close();
 	}
 
-	/**
-	* Reads the configuration
-	**/
+	// Reads the configuration
 	public static void InitConfigFile() {
 		OptionsFileHandler.CreateOptionsDirectory();
 
@@ -81,11 +70,9 @@ public partial class OptionsFileHandler : Node2D
 		}
 	}
 
-	/**
-	* A method to replace the setting in a file
-	* Borrowed from here: https://www.csharp411.com/searchreplace-in-files/
-	* Accessed on the 10/11/2023
-	*/
+	// A method to replace the setting in a file
+	// Borrowed from here: https://www.csharp411.com/searchreplace-in-files/
+	// Accessed on the 10/11/2023
 	public static void ReplaceInFile(string searchText, string replaceText )
 {
     StreamReader reader = new StreamReader(CONFIG_PATH);
@@ -98,9 +85,8 @@ public partial class OptionsFileHandler : Node2D
     writer.Write( content );
     writer.Close();
 }
-	/**
-	*	A method to find the line in a file
-	**/
+	
+	// A method to find the line in a file
 	public static bool FindInFile(string match)
 {
     StreamReader sr = new StreamReader(CONFIG_PATH);

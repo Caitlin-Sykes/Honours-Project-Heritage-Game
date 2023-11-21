@@ -3,7 +3,8 @@ using System;
 
 public partial class DisclaimersMenu : Control
 {
-	private Transitions TRANSITION;
+	private Transitions TRANSITION; //Controls screen transitions
+	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -11,9 +12,8 @@ public partial class DisclaimersMenu : Control
 		InitSettings();
 	}
 
-	/**
-	* Init Settings for Scene
-	**/
+	
+	// Init Settings for Scene
 	private void InitSettings() {
 		//If GetFontDefault returns Dyslexie, sets theme to dyslexie
 			//Else sets Theme to cascadia
@@ -36,9 +36,10 @@ public partial class DisclaimersMenu : Control
 	}
 
 
-	/** ----------------------------------------------------------------
+	/** 
+	* ----------------------------------------------------------------
 	*	Start of Menu Buttons
-	*	----------------------------------------------------------------
+	* ----------------------------------------------------------------
 	**/   
 
 	private void OnContinuePressed() { 

@@ -1,14 +1,138 @@
-[gd_scene load_steps=3 format=3 uid="uid://cok4snixun3l8"]
+[gd_scene load_steps=6 format=3 uid="uid://cok4snixun3l8"]
 
+[ext_resource type="Script" path="res://scripts/misc/Controls.cs" id="1_ebull"]
+[ext_resource type="Script" path="res://scripts/misc/Cameras.cs" id="1_g7amt"]
 [ext_resource type="PackedScene" uid="uid://btmuto64fpkoq" path="res://scenes/intro_scene/main_room.tscn" id="1_p57ao"]
-[ext_resource type="PackedScene" uid="uid://ui3tvchfafso" path="res://scenes/misc/Cameras.tscn" id="2_mqcij"]
+[ext_resource type="PackedScene" uid="uid://clkr3k18vcaai" path="res://resources/models/gui/arrow.blend" id="2_m8nm4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fojjl"]
+size = Vector3(1.72941, 0.285691, 1.90045)
 
 [node name="IntroductionScene" type="Node3D"]
 
-[node name="mainRoom" parent="." instance=ExtResource("1_p57ao")]
+[node name="Cameras" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.258563, 0, 0.225509)
+script = ExtResource("1_g7amt")
 
-[node name="Cameras" parent="." instance=ExtResource("2_mqcij")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2)
-visible = false
+[node name="Controls" type="Node3D" parent="Cameras"]
+script = ExtResource("1_ebull")
 
-[editable path="Cameras"]
+[node name="UI" type="Panel" parent="Cameras/Controls"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="North" type="Camera3D" parent="Cameras/Controls/UI"]
+current = true
+
+[node name="MarginContainer" type="MarginContainer" parent="Cameras/Controls/UI/North"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Cameras/Controls/UI/North/MarginContainer"]
+
+[node name="Arrows" type="BoxContainer" parent="Cameras/Controls/UI/North/MarginContainer"]
+layout_mode = 2
+
+[node name="Left_Arrow" type="Area3D" parent="Cameras/Controls/UI/North/MarginContainer/Arrows"]
+transform = Transform3D(9.55343e-17, -2.18557e-09, 0.05, -0.05, -2.18557e-09, -6.61744e-24, 2.18557e-09, -0.05, -2.18557e-09, -1.02, 0, -0.8)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cameras/Controls/UI/North/MarginContainer/Arrows/Left_Arrow"]
+transform = Transform3D(1, 7.10543e-15, -2.11758e-22, -7.10543e-15, 1, 7.10543e-15, 0, -7.10543e-15, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_fojjl")
+
+[node name="Left_Arrow" parent="Cameras/Controls/UI/North/MarginContainer/Arrows/Left_Arrow/CollisionShape3D" instance=ExtResource("2_m8nm4")]
+transform = Transform3D(1, 0, -2.11758e-22, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Right_Arrow" parent="Cameras/Controls/UI/North/MarginContainer/Arrows" instance=ExtResource("2_m8nm4")]
+transform = Transform3D(-2.60627e-17, 5.96244e-10, -0.05, -0.05, -2.18557e-09, 0, -2.18557e-09, 0.05, 5.96244e-10, 1.02, 0, -0.8)
+
+[node name="South" type="Camera3D" parent="Cameras/Controls/UI"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="MarginContainer" type="MarginContainer" parent="Cameras/Controls/UI/South"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Cameras/Controls/UI/South/MarginContainer"]
+
+[node name="Arrows" type="BoxContainer" parent="Cameras/Controls/UI/South/MarginContainer"]
+layout_mode = 2
+
+[node name="Right_Arrow" parent="Cameras/Controls/UI/South/MarginContainer/Arrows" instance=ExtResource("2_m8nm4")]
+transform = Transform3D(9.55343e-17, -2.18557e-09, 0.05, -0.05, -2.18557e-09, -6.61744e-24, 2.18557e-09, -0.05, -2.18557e-09, -1.02, 0, 0.8)
+
+[node name="Left_Arrow" parent="Cameras/Controls/UI/South/MarginContainer/Arrows" instance=ExtResource("2_m8nm4")]
+transform = Transform3D(-2.60627e-17, 5.96244e-10, -0.05, -0.05, -2.18557e-09, 0, -2.18557e-09, 0.05, 5.96244e-10, 1.02, 0, 0.8)
+
+[node name="West" type="Camera3D" parent="Cameras/Controls/UI"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="MarginContainer" type="MarginContainer" parent="Cameras/Controls/UI/West"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Cameras/Controls/UI/West/MarginContainer"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="Arrows" type="BoxContainer" parent="Cameras/Controls/UI/West/MarginContainer"]
+layout_mode = 2
+
+[node name="Right_Arrow" parent="Cameras/Controls/UI/West/MarginContainer/Arrows" instance=ExtResource("2_m8nm4")]
+transform = Transform3D(-2.18557e-09, 0.05, 4.36306e-06, -0.05, -2.18557e-09, -1.58819e-23, 1.90715e-13, -4.36306e-06, 0.05, -0.795162, 0, -1.02193)
+
+[node name="Left_Arrow" parent="Cameras/Controls/UI/West/MarginContainer/Arrows" instance=ExtResource("2_m8nm4")]
+transform = Transform3D(2.18557e-09, -0.05, -4.35869e-06, -0.05, -2.18557e-09, 7.27919e-24, -1.90524e-13, 4.35869e-06, -0.05, -0.794984, 0, 1.01807)
+
+[node name="East" type="Camera3D" parent="Cameras/Controls/UI"]
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 0, 0, 0)
+
+[node name="MarginContainer" type="MarginContainer" parent="Cameras/Controls/UI/East"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Cameras/Controls/UI/East/MarginContainer"]
+
+[node name="Arrows" type="BoxContainer" parent="Cameras/Controls/UI/East/MarginContainer"]
+layout_mode = 2
+
+[node name="Right_Arrow" parent="Cameras/Controls/UI/East/MarginContainer/Arrows" instance=ExtResource("2_m8nm4")]
+transform = Transform3D(-2.18557e-09, 0.05, 4.36306e-06, -0.05, -2.18557e-09, -1.58819e-23, 1.90715e-13, -4.36306e-06, 0.05, 0.789213, 0, -1.02193)
+
+[node name="Left_Arrow" parent="Cameras/Controls/UI/East/MarginContainer/Arrows" instance=ExtResource("2_m8nm4")]
+transform = Transform3D(2.18557e-09, -0.05, -4.35869e-06, -0.05, -2.18557e-09, 7.27919e-24, -1.90524e-13, 4.35869e-06, -0.05, 0.789391, 0, 1.01807)
+
+[node name="MainRoom" parent="." instance=ExtResource("1_p57ao")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[connection signal="input_event" from="Cameras/Controls/UI/North/MarginContainer/Arrows/Left_Arrow" to="Cameras/Controls" method="OnLeftArrow"]
