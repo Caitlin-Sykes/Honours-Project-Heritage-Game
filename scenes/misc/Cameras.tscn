@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=3 uid="uid://ui3tvchfafso"]
+
+[ext_resource type="Script" path="res://scripts/misc/Cameras.cs" id="1_21ti4"]
+[ext_resource type="PackedScene" uid="uid://clkr3k18vcaai" path="res://resources/models/gui/arrow.blend" id="2_gn02r"]
+
+[node name="Cameras" type="Node3D"]
+script = ExtResource("1_21ti4")
+
+[node name="UI" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="South" type="Camera3D" parent="UI"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/South"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="BoxContainer" type="BoxContainer" parent="UI/South/MarginContainer"]
+layout_mode = 2
+
+[node name="Up_Arrow" parent="UI/South/MarginContainer/BoxContainer" instance=ExtResource("2_gn02r")]
+transform = Transform3D(0.05, 0, 0, 0, -2.18557e-09, -0.05, 0, 0.05, -2.18557e-09, 0, 0.55, 0.8)
+
+[node name="Down_Arrow" parent="UI/South/MarginContainer/BoxContainer" instance=ExtResource("2_gn02r")]
+transform = Transform3D(0.05, 0, 0, 0, 5.96244e-10, 0.05, 0, -0.05, 5.96244e-10, 0, -0.55, 0.8)
+
+[node name="Right_Arrow" parent="UI/South/MarginContainer/BoxContainer" instance=ExtResource("2_gn02r")]
+transform = Transform3D(9.55343e-17, -2.18557e-09, 0.05, -0.05, -2.18557e-09, -6.61744e-24, 2.18557e-09, -0.05, -2.18557e-09, -1.02, 0, 0.8)
+
+[node name="Left_Arrow" parent="UI/South/MarginContainer/BoxContainer" instance=ExtResource("2_gn02r")]
+transform = Transform3D(-2.60627e-17, 5.96244e-10, -0.05, -0.05, -2.18557e-09, 0, -2.18557e-09, 0.05, 5.96244e-10, 1.02, 0, 0.8)
+
+[node name="North" type="Camera3D" parent="."]
+visible = false
+
+[node name="West" type="Camera3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+visible = false
+
+[node name="East" type="Camera3D" parent="."]
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 0, 0, 0)
+visible = false

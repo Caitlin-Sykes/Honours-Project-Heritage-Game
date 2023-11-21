@@ -19,8 +19,6 @@ public partial class Transitions : Control
 	public async void NextScene(String path) {
 		ANIMATION_PLAYER.PlayBackwards("Transition_Fade");
 		await ToSignal(ANIMATION_PLAYER, "animation_finished");
-		GD.Print(path);
-		var nextScene = (PackedScene)ResourceLoader.Load(path);
     	GetTree().ChangeSceneToFile(path);
 	}
 }

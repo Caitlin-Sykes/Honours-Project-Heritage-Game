@@ -15,6 +15,3 @@ https://www.flaticon.com/free-icons/credit - Credit icons, Freepik, icon for cre
 https://www.flaticon.com/free-icons/arrow Arrow icons, Kirill Kazachek, icon for going back
 https://www.flaticon.com/free-icons/text-box" - Text box icons, Freepik, icon for selecting fonts
 https://www.flaticon.com/free-icons/font - Size icon, Freepik, icon for selecting font size</a>
-
-[SHADERS]
-https://github.com/eldskald/godot4-cel-shader/tree/main - Cell Shader, includes "includes" folder and the two gdshader files in project root

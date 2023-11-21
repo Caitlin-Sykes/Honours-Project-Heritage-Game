@@ -1,61 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://e1dmsm486kun"]
+[gd_scene load_steps=3 format=3 uid="uid://cok4snixun3l8"]
 
-[ext_resource type="Script" path="res://scripts/misc/Transitions.cs" id="1_83dfa"]
-[ext_resource type="PackedScene" uid="uid://btmuto64fpkoq" path="res://scenes/intro_scene/main_room.tscn" id="1_gvlay"]
-
-[sub_resource type="Animation" id="Animation_7a53q"]
-resource_name = "Transition_Fade_In"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_nuk71"]
-_data = {
-"Transition_Fade": SubResource("Animation_7a53q")
-}
+[ext_resource type="PackedScene" uid="uid://btmuto64fpkoq" path="res://scenes/intro_scene/main_room.tscn" id="1_p57ao"]
+[ext_resource type="PackedScene" uid="uid://ui3tvchfafso" path="res://scenes/misc/Cameras.tscn" id="2_mqcij"]
 
 [node name="IntroductionScene" type="Node3D"]
 
-[node name="Transition" type="ColorRect" parent="."]
-modulate = Color(1, 1, 1, 0)
-top_level = true
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 1)
-script = ExtResource("1_83dfa")
+[node name="mainRoom" parent="." instance=ExtResource("1_p57ao")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Transition"]
-libraries = {
-"": SubResource("AnimationLibrary_nuk71")
-}
+[node name="Cameras" parent="." instance=ExtResource("2_mqcij")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2)
 
-[node name="mainRoom" parent="." instance=ExtResource("1_gvlay")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69, 80, 98)
-
-[node name="North" parent="mainRoom" index="31"]
-current = false
-
-[node name="East" parent="mainRoom" index="33"]
-current = false
-
-[node name="West" parent="mainRoom" index="34"]
-current = false
-
-[node name="IntroCam" parent="mainRoom" index="35"]
-current = true
-
-[editable path="mainRoom"]
+[editable path="Cameras"]
