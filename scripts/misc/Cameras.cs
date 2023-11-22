@@ -21,10 +21,10 @@ public partial class Cameras : Node
 	public override void _Ready()
 	{
 		dir = Direction.North; // starts off north by default but can be overriden by calling SetDefaultDirection
-		NORTH_CAMERA = GetNode<Camera3D>("North"); // Gets North camera
-		EAST_CAMERA = GetNode<Camera3D>("East");   // Gets East camera
-		SOUTH_CAMERA = GetNode<Camera3D>("South"); // Gets South camera
-		WEST_CAMERA = GetNode<Camera3D>("West");   // Gets West camera
+		NORTH_CAMERA = GetNode<Camera3D>("/UI/North"); // Gets North camera
+		EAST_CAMERA = GetNode<Camera3D>("/UI/East");   // Gets East camera
+		SOUTH_CAMERA = GetNode<Camera3D>("/UI/South"); // Gets South camera
+		WEST_CAMERA = GetNode<Camera3D>("/UI/West");   // Gets West camera
 	}
 
 
@@ -61,31 +61,32 @@ public partial class Cameras : Node
 	* ----------------------------------------------------------------
 	**/
 
+	//BUG: cameras in top constructor are not defined. Actual function is being pinged correctly. Check how it is getting the camera.
 	//Method to handle turning left
 	public void TurnLeft() {
 		// Cameras/Controls/UI/North
-        
+        GD.Print("Should be turning left");
 		//Changes camera depending on what the current direction is
-        switch(dir) {
-            case Cameras.Direction.North:
+        // switch(dir) {
+        //     case Cameras.Direction.North:
 
-				WEST_CAMERA.Visible = true; //sets West Camera to True
-				WEST_CAMERA.Current = true;
-				NORTH_CAMERA.Visible = false; //sets North Camera to False
-				// NORTH_CAMERA.Current = false; //sets North Camera to False
+		// 		WEST_CAMERA.Visible = true; //sets West Camera to True
+		// 		WEST_CAMERA.Current = true;
+		// 		NORTH_CAMERA.Visible = false; //sets North Camera to False
+		// 		// NORTH_CAMERA.Current = false; //sets North Camera to False
 
-                //Sets current camera to West
-                dir = Cameras.Direction.West;
-                break;
-            case Cameras.Direction.East:
-                break;
-            case Cameras.Direction.South:
-                break;
-            case Cameras.Direction.West:
-                break;
-            default:
-                throw new ArgumentException("Not a valid direction");
-        }
+        //         //Sets current camera to West
+        //         dir = Cameras.Direction.West;
+        //         break;
+        //     case Cameras.Direction.East:
+        //         break;
+        //     case Cameras.Direction.South:
+        //         break;
+        //     case Cameras.Direction.West:
+        //         break;
+        //     default:
+        //         throw new ArgumentException("Not a valid direction");
+        // }
 
 	}
 
