@@ -50,6 +50,7 @@ libraries = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
 [node name="Cameras" parent="." instance=ExtResource("1_76gud")]
+metadata/UpDownEnabled = true
 
 [node name="UI" parent="Cameras/Controls" index="0"]
 theme_override_styles/panel = SubResource("StyleBoxEmpty_jlakg")

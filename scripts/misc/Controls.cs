@@ -45,7 +45,7 @@ public partial class Controls : Node3D
 
         else if (Input.IsKeyPressed(Key.S) && CAMERAS.GetMeta("UpDownEnabled").AsBool() == true)
         {
-            GD.Print("S key pressed! Down Enabled!");
+           OnDownArrow();
         }
 
     }

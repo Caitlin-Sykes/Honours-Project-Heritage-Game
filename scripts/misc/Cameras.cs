@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Reflection.Metadata.Ecma335;
 
 
 public partial class Cameras : Node
@@ -10,13 +11,17 @@ public partial class Cameras : Node
 		North,
 		East,
 		South,
-		West
+		West,
+		Up,
+		Down,
 	} //enum for directions
 
 	[Export]
 	private Godot.Collections.Array<Camera3D> CAMERAS { get; set; }
 
 	public Direction dir; // instance of direction
+	public Direction previousDir { get; set; } // used only when going up and down
+	private int cameraVisible { get; set; } //holds array position of camera to display
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -51,6 +56,10 @@ public partial class Cameras : Node
 				return Direction.South;
 			case "West":
 				return Direction.West;
+			case "Up":
+				return Direction.Up;
+			case "Down":
+				return Direction.Down;
 			default:
 				throw new ArgumentException("Not of type Direction");
 		}
@@ -63,12 +72,14 @@ public partial class Cameras : Node
 		foreach (Node3D arrow in cam.FindChildren("*Arrow_Parent"))
 		{
 			//If node matches Up_Arrow_Parent or Down_Arrow_Parent and metadata for camera has UpDown as not enabled
-			if ((arrow.Name == "Up_Arrow_Parent" || arrow.Name == "Down_Arrow_Parent") && GetMeta("UpDownEnabled").AsBool() == false) {
+			if ((arrow.Name == "Up_Arrow_Parent" || arrow.Name == "Down_Arrow_Parent") && GetMeta("UpDownEnabled").AsBool() == false)
+			{
 				break;
 			}
 
 			//Else sets visible
-			else {
+			else
+			{
 				GD.Print(arrow.Name);
 				arrow.Visible = true;
 				arrow.SetProcessInput(true);
@@ -82,8 +93,32 @@ public partial class Cameras : Node
 		//If node matches "*Arrow_Parent" then disables input and visibility
 		foreach (Node3D arrow in cam.FindChildren("*Arrow_Parent"))
 		{
-				arrow.Visible = false;
-				arrow.SetProcessInput(false);
+			arrow.Visible = false;
+			arrow.SetProcessInput(false);
+		}
+	}
+
+
+	//A handler for getting array index of direction 
+	// returns -1 if invalid direction
+	private int GetIndexOfDirection(Direction dir)
+	{
+		switch (dir)
+		{
+			case Direction.North:
+				return 0;
+			case Direction.East:
+				return 1;
+			case Direction.South:
+				return 2;
+			case Direction.West:
+				return 3;
+			case Direction.Up:
+				return 4;
+			case Direction.Down:
+				return 5;
+			default:
+				return -1;
 		}
 	}
 
@@ -97,7 +132,6 @@ public partial class Cameras : Node
 	//Method to handle turning left
 	public void TurnLeft()
 	{
-
 		//Changes camera depending on what the current direction is
 		switch (dir)
 		{
@@ -118,7 +152,7 @@ public partial class Cameras : Node
 				break;
 
 			//If current camera is south, set current camera to East
-			case Cameras.Direction.South:
+			case Direction.South:
 				dir = Direction.East;
 				SetArrowsInvisible(CAMERAS[2]);
 				SetArrowsVisible(CAMERAS[1]);
@@ -126,7 +160,7 @@ public partial class Cameras : Node
 				break;
 
 			//If current camera is west, set current camera to south
-			case Cameras.Direction.West:
+			case Direction.West:
 				dir = Direction.South;
 				SetArrowsInvisible(CAMERAS[3]);
 				SetArrowsVisible(CAMERAS[2]);
@@ -162,7 +196,7 @@ public partial class Cameras : Node
 				break;
 
 			//If current camera is south, set current camera to East
-			case Cameras.Direction.South:
+			case Direction.South:
 				dir = Direction.West;
 				SetArrowsInvisible(CAMERAS[2]);
 				SetArrowsVisible(CAMERAS[3]);
@@ -170,7 +204,7 @@ public partial class Cameras : Node
 				break;
 
 			//If current camera is west, set current camera to south
-			case Cameras.Direction.West:
+			case Direction.West:
 				dir = Direction.North;
 				SetArrowsInvisible(CAMERAS[3]);
 				SetArrowsVisible(CAMERAS[0]);
@@ -183,65 +217,92 @@ public partial class Cameras : Node
 
 	}
 
-	//TODO: Method to handle looking up (for scenes that are allowed)
-	internal void TurnUp()
+	//Method to handle looking up (for scenes that are allowed)
+	public void TurnUp()
 	{
-		throw new NotImplementedException();
+		//If direction is up, moves camera to previous position
+		if (dir == Direction.Down)
+		{
+
+			//Enables camera arrows and makes it main camera
+			SetArrowsVisible(CAMERAS[GetIndexOfDirection(previousDir)]);
+			CAMERAS[GetIndexOfDirection(previousDir)].Current = true;
+
+			//Sets camera arrows for down camera invisible
+			SetArrowsInvisible(CAMERAS[5]);
+
+			//Sets current dir to previousDir
+			dir = previousDir;
+		}
+
+		//If direction is not down
+		else if (dir != Direction.Up)
+		{
+
+			//Sets down camera visible
+			SetArrowsVisible(CAMERAS[4]);
+
+			//Sets current direction arrows invisible
+			SetArrowsInvisible(CAMERAS[GetIndexOfDirection(dir)]);
+
+			//Sets down camera to visible
+			CAMERAS[4].Current = true;
+			previousDir = dir;
+			dir = Direction.Up;
+		}
+
+		//todo: else later play "oof doesnt work" sound, or a sound indicative of that
 	}
 
-	//TODO: Method to handle looking down
-	internal void TurnDown()
+
+
+
+	//Method to handle looking down
+	public void TurnDown()
 	{
-		throw new NotImplementedException();
+		//If direction is up, moves camera to previous position
+		if (dir == Direction.Up)
+		{
+
+			//Enables camera arrows and makes it main camera
+			SetArrowsVisible(CAMERAS[GetIndexOfDirection(previousDir)]);
+			CAMERAS[GetIndexOfDirection(previousDir)].Current = true;
+
+			//Sets camera arrows for down camera invisible
+			SetArrowsInvisible(CAMERAS[4]);
+
+			//Sets new current dir
+			dir = previousDir;
+		}
+
+		//If direction is not down
+		else if (dir != Direction.Down)
+		{
+
+			//Sets down camera visible
+			SetArrowsVisible(CAMERAS[5]);
+
+			//Sets current direction arrows invisible
+			SetArrowsInvisible(CAMERAS[GetIndexOfDirection(dir)]);
+
+			//Sets down camera to visible
+			CAMERAS[5].Current = true;
+			previousDir = dir;
+			dir = Direction.Down;
+		}
+
+		//todo: else later play "oof doesnt work" sound, or a sound indicative of that
 	}
 
 }
 
-//TODO: implement camera switch
-// will need to disable previous cam
-// will need to enable current cam
-// will need to swap to correct camera
 
-// either on arrow click or on d press
-// use an enum to get previous direction and change depending on that?
-// e.g
-/**
-*	public void OnRightButtonClick() {
-		if enum currentDir == North {
-			then go to camera east
-			set CurrentDir to East
-		}
-		else if currentDir == east {
-			then go to camera south
-			set CurrentDir to South
 
-		}
 
-		etc
-}
 
-//
-// little bit repetive but all right buttons ccan use rightbuttonclick
-*
-*
-**/
-//TODO: Directions for Camera angles
-// North, Right arrow -> East
-// North, left arrow -> west
-// North, down arrow -> floor -- these wont ever change
-// North, up arrow -> ceiling -- these wont ever change
 
-// East, Right arrow -> South
-// East, left arrow -> North
-// East, down arrow -> floor -- these wont ever change
-// East, up arrow -> ceiling -- these wont ever change
 
-// South, Right arrow -> West
-// South, left arrow -> East
-// South, down arrow -> floor -- these wont ever change
-// South, up arrow -> ceiling -- these wont ever change
 
-// West, Right arrow -> North
-// West, left arrow -> South
-// West, down arrow -> floor -- these wont ever change
-// West, up arrow -> ceiling -- these wont ever change
+
+
+

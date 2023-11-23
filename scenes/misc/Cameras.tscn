@@ -8,7 +8,7 @@
 
 [node name="Cameras" type="Node3D" node_paths=PackedStringArray("CAMERAS")]
 script = ExtResource("1_21ti4")
-CAMERAS = [NodePath("Controls/UI/North"), NodePath("Controls/UI/East"), NodePath("Controls/UI/South"), NodePath("Controls/UI/West")]
+CAMERAS = [NodePath("Controls/UI/North"), NodePath("Controls/UI/East"), NodePath("Controls/UI/South"), NodePath("Controls/UI/West"), NodePath("Controls/UI/Up"), NodePath("Controls/UI/Down")]
 metadata/UpDownEnabled = false
 
 [node name="Controls" type="Node3D" parent="."]
@@ -289,28 +289,6 @@ sky_mode = 1
 [node name="Arrows" type="BoxContainer" parent="Controls/UI/Up/MarginContainer"]
 layout_mode = 2
 
-[node name="Right_Arrow_Parent" type="Area3D" parent="Controls/UI/Up/MarginContainer/Arrows"]
-transform = Transform3D(2.18557e-09, 4.37114e-09, -0.05, -4.37114e-09, 0.05, 4.37114e-09, 0.05, 4.37114e-09, 2.18557e-09, 1, 0.82, -0.426)
-visible = false
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Controls/UI/Up/MarginContainer/Arrows/Right_Arrow_Parent"]
-transform = Transform3D(1, 1.42109e-14, -4.23516e-22, -1.42109e-14, 1, 1.42109e-14, 0, -1.42109e-14, 1, 0, 0, 0)
-shape = SubResource("BoxShape3D_8pmu7")
-
-[node name="Right_Arrow" parent="Controls/UI/Up/MarginContainer/Arrows/Right_Arrow_Parent/CollisionShape3D" instance=ExtResource("2_gn02r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.2762, 3.65078e-07, 0)
-
-[node name="Left_Arrow_Parent" type="Area3D" parent="Controls/UI/Up/MarginContainer/Arrows"]
-transform = Transform3D(2.18557e-09, 1.91069e-16, -0.05, 4.37114e-09, -0.05, 0, -0.05, -4.37114e-09, -2.18557e-09, -1, 0.82, 0)
-visible = false
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Controls/UI/Up/MarginContainer/Arrows/Left_Arrow_Parent"]
-transform = Transform3D(1, 1.42109e-14, -4.23516e-22, -1.42109e-14, 1, 1.42109e-14, 0, -1.42109e-14, 1, 0, 0, 0)
-shape = SubResource("BoxShape3D_8pmu7")
-
-[node name="Left_Arrow" parent="Controls/UI/Up/MarginContainer/Arrows/Left_Arrow_Parent/CollisionShape3D" instance=ExtResource("2_gn02r")]
-transform = Transform3D(1, 8.74228e-08, -4.37114e-08, 8.74228e-08, -1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 0, 0, 0)
-
 [node name="Up_Arrow_Parent" type="Area3D" parent="Controls/UI/Up/MarginContainer/Arrows"]
 transform = Transform3D(-0.05, 4.37114e-09, 4.37114e-09, -4.37114e-09, -0.05, 4.37114e-09, 4.37114e-09, 4.37114e-09, 0.05, 0, 0.82, 0.55)
 visible = false
@@ -355,28 +333,6 @@ sky_mode = 1
 [node name="Arrows" type="BoxContainer" parent="Controls/UI/Down/MarginContainer"]
 layout_mode = 2
 
-[node name="Right_Arrow_Parent" type="Area3D" parent="Controls/UI/Down/MarginContainer/Arrows"]
-transform = Transform3D(2.18557e-09, 4.37114e-09, -0.05, -4.37114e-09, 0.05, 4.37114e-09, 0.05, 4.37114e-09, 2.18557e-09, 1.05, -0.82, -0.426)
-visible = false
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Controls/UI/Down/MarginContainer/Arrows/Right_Arrow_Parent"]
-transform = Transform3D(1, 1.42109e-14, -4.23516e-22, -1.42109e-14, 1, 1.42109e-14, 0, -1.42109e-14, 1, 0, 0, 0)
-shape = SubResource("BoxShape3D_8pmu7")
-
-[node name="Right_Arrow" parent="Controls/UI/Down/MarginContainer/Arrows/Right_Arrow_Parent/CollisionShape3D" instance=ExtResource("2_gn02r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.2762, 3.65078e-07, 0)
-
-[node name="Left_Arrow_Parent" type="Area3D" parent="Controls/UI/Down/MarginContainer/Arrows"]
-transform = Transform3D(2.18557e-09, 1.91069e-16, -0.05, 4.37114e-09, -0.05, 0, -0.05, -4.37114e-09, -2.18557e-09, -1.05, -0.82, 0)
-visible = false
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Controls/UI/Down/MarginContainer/Arrows/Left_Arrow_Parent"]
-transform = Transform3D(1, 1.42109e-14, -4.23516e-22, -1.42109e-14, 1, 1.42109e-14, 0, -1.42109e-14, 1, 0, 0, 0)
-shape = SubResource("BoxShape3D_8pmu7")
-
-[node name="Left_Arrow" parent="Controls/UI/Down/MarginContainer/Arrows/Left_Arrow_Parent/CollisionShape3D" instance=ExtResource("2_gn02r")]
-transform = Transform3D(1, 8.74228e-08, -4.37114e-08, 8.74228e-08, -1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 0, 0, 0)
-
 [node name="Up_Arrow_Parent" type="Area3D" parent="Controls/UI/Down/MarginContainer/Arrows"]
 transform = Transform3D(-0.05, 0, -4.37114e-09, 0, 0.05, 0, 4.37114e-09, 0, -0.05, 0, -0.82, -0.55)
 visible = false
@@ -415,11 +371,7 @@ transform = Transform3D(1, 1.50996e-07, -1.50996e-07, 1.50996e-07, -1, 4.37114e-
 [connection signal="input_event" from="Controls/UI/West/MarginContainer/Arrows/Left_Arrow_Parent" to="Controls" method="OnLeftArrow"]
 [connection signal="input_event" from="Controls/UI/West/MarginContainer/Arrows/Up_Arrow_Parent" to="Controls" method="OnUpArrow"]
 [connection signal="input_event" from="Controls/UI/West/MarginContainer/Arrows/Down_Arrow_Parent" to="Controls" method="OnDownArrow"]
-[connection signal="input_event" from="Controls/UI/Up/MarginContainer/Arrows/Right_Arrow_Parent" to="Controls" method="OnRightArrow"]
-[connection signal="input_event" from="Controls/UI/Up/MarginContainer/Arrows/Left_Arrow_Parent" to="Controls" method="OnLeftArrow"]
 [connection signal="input_event" from="Controls/UI/Up/MarginContainer/Arrows/Up_Arrow_Parent" to="Controls" method="OnUpArrow"]
 [connection signal="input_event" from="Controls/UI/Up/MarginContainer/Arrows/Down_Arrow_Parent" to="Controls" method="OnDownArrow"]
-[connection signal="input_event" from="Controls/UI/Down/MarginContainer/Arrows/Right_Arrow_Parent" to="Controls" method="OnRightArrow"]
-[connection signal="input_event" from="Controls/UI/Down/MarginContainer/Arrows/Left_Arrow_Parent" to="Controls" method="OnLeftArrow"]
 [connection signal="input_event" from="Controls/UI/Down/MarginContainer/Arrows/Up_Arrow_Parent" to="Controls" method="OnUpArrow"]
 [connection signal="input_event" from="Controls/UI/Down/MarginContainer/Arrows/Down_Arrow_Parent" to="Controls" method="OnDownArrow"]
