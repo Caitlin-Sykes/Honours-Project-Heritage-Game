@@ -28,24 +28,26 @@ public partial class Controls : Node3D
     public override void _Input(InputEvent @event)
     {
         //Checks for key presses
-		if (Input.IsKeyPressed(Key.W))
-        {
-            GD.Print("W key pressed!");
-        }
-
-		else if (Input.IsKeyPressed(Key.A))
+		if (Input.IsKeyPressed(Key.A))
         {
             OnLeftArrow();
-        }
-        else if (Input.IsKeyPressed(Key.S))
-        {
-            GD.Print("S key pressed!");
         }
 
 		else if (Input.IsKeyPressed(Key.D))
         {
-            GD.Print("D key pressed!");
+            OnRightArrow();
         }
+
+		// else if (Input.IsKeyPressed(Key.W))
+        // {
+        //     GD.Print("W key pressed!");
+        // }
+
+        // else if (Input.IsKeyPressed(Key.S))
+        // {
+        //     GD.Print("S key pressed!");
+        // }
+
     }
 
     /** 

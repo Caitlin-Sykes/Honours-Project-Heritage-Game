@@ -6,7 +6,8 @@ using System.Linq;
 public partial class Cameras : Node
 {
 
-	public enum Direction {
+	public enum Direction
+	{
 		North,
 		East,
 		South,
@@ -17,11 +18,12 @@ public partial class Cameras : Node
 	private Godot.Collections.Array<Camera3D> CAMERAS { get; set; }
 
 	public Direction dir; // instance of direction
-	
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		dir = Direction.North; // starts off north by default but can be overriden by calling SetDefaultDirection
+		SetArrowsVisible(CAMERAS[0]); //turns on North's GUI arrows
 	}
 
 
@@ -29,16 +31,19 @@ public partial class Cameras : Node
 	* ----------------------------------------------------------------
 	*	Misc Handlers
 	* ----------------------------------------------------------------
-	**/   
+	**/
 
 	//Will overwrite default direction if called
-	public void SetDefaultDirection(String direction) {
+	public void SetDefaultDirection(String direction)
+	{
 		dir = ToDirection(direction);
 	}
 
 	//A function to convert string to type Direction
-	private Direction ToDirection(string dir) {
-		switch(dir) {
+	private Direction ToDirection(string dir)
+	{
+		switch (dir)
+		{
 			case "North":
 				return Direction.North;
 			case "East":
@@ -52,6 +57,36 @@ public partial class Cameras : Node
 		}
 	}
 
+	//A handler to set the arrows visible when in use
+	private void SetArrowsVisible(Camera3D cam)
+	{
+		//If node matches "*Arrow_Parent" then enables input and visibility
+		foreach (Node3D arrow in cam.FindChildren("*Arrow_Parent"))
+		{
+			// if (arrow.ha Node3D) {
+			arrow.Visible = true;
+			arrow.SetProcessInput(false);
+			// }
+
+
+		}
+	}
+
+	//A handler to set the arrows invisble when not in use
+	private void SetArrowsInvisible(Camera3D cam)
+	{
+		//If node matches "*Arrow_Parent" then disables input and visibility
+		foreach (Node3D arrow in cam.FindChildren("*Arrow_Parent"))
+		{
+			// if (arrow.ha Node3D) {
+				arrow.Visible = false;
+				arrow.SetProcessInput(false);
+			// }
+
+
+		}
+	}
+
 	/** 
 	* ----------------------------------------------------------------
 	*	Handles moving the cameras
@@ -60,58 +95,105 @@ public partial class Cameras : Node
 	//TODO: much later- but when selecting something, show a circle which slowly gets smaller.
 	//BUG: cameras in top constructor are not defined. Actual function is being pinged correctly. Check how it is getting the camera.
 	//Method to handle turning left
-	public void TurnLeft() {
-		// Cameras/Controls/UI/North
-        GD.Print("Should be turning left");
+	public void TurnLeft()
+	{
+
 		//Changes camera depending on what the current direction is
-        switch(dir) {
+		switch (dir)
+		{
 			//If current camera is north, set current camera to west
-            case Direction.North:
-                dir = Direction.West;
+			case Direction.North:
+				dir = Direction.West;
+				SetArrowsInvisible(CAMERAS[0]);
+				SetArrowsVisible(CAMERAS[3]);
 				CAMERAS[3].Current = true;
-                break;
+				break;
 
 			//If current camera is east, set current camera to north
-            case Direction.East:
+			case Direction.East:
 				dir = Direction.North;
+				SetArrowsInvisible(CAMERAS[1]);
+				SetArrowsVisible(CAMERAS[0]);
 				CAMERAS[0].Current = true;
-                break;
-			
+				break;
+
 			//If current camera is south, set current camera to East
-            case Cameras.Direction.South:
+			case Cameras.Direction.South:
 				dir = Direction.East;
+				SetArrowsInvisible(CAMERAS[2]);
+				SetArrowsVisible(CAMERAS[1]);
 				CAMERAS[1].Current = true;
-                break;
+				break;
 
 			//If current camera is west, set current camera to south
-            case Cameras.Direction.West:
+			case Cameras.Direction.West:
 				dir = Direction.South;
+				SetArrowsInvisible(CAMERAS[3]);
+				SetArrowsVisible(CAMERAS[2]);
 				CAMERAS[2].Current = true;
-                break;
-            
+				break;
+
 			default:
-                throw new ArgumentException("Not a valid direction");
-        }
+				throw new ArgumentException("Not a valid direction");
+		}
 
 	}
 
-	//TODO: Method to handle looking right
-    internal void TurnRight()
-    {
-        throw new NotImplementedException();
-    }
+	//Method to handle turning right
+	public void TurnRight()
+	{
+		//Changes camera depending on what the current direction is
+		switch (dir)
+		{
+			//If current camera is north, set current camera to east
+			case Direction.North:
+				dir = Direction.East;
+				SetArrowsInvisible(CAMERAS[0]);
+				SetArrowsVisible(CAMERAS[1]);
+				CAMERAS[1].Current = true;
+				break;
+
+			//If current camera is east, set current camera to north
+			case Direction.East:
+				dir = Direction.South;
+				SetArrowsInvisible(CAMERAS[1]);
+				SetArrowsVisible(CAMERAS[2]);
+				CAMERAS[2].Current = true;
+				break;
+
+			//If current camera is south, set current camera to East
+			case Cameras.Direction.South:
+				dir = Direction.West;
+				SetArrowsInvisible(CAMERAS[2]);
+				SetArrowsVisible(CAMERAS[3]);
+				CAMERAS[3].Current = true;
+				break;
+
+			//If current camera is west, set current camera to south
+			case Cameras.Direction.West:
+				dir = Direction.North;
+				SetArrowsInvisible(CAMERAS[3]);
+				SetArrowsVisible(CAMERAS[0]);
+				CAMERAS[0].Current = true;
+				break;
+
+			default:
+				throw new ArgumentException("Not a valid direction");
+		}
+
+	}
 
 	//TODO: Method to handle looking up (for scenes that are allowed)
-    internal void TurnUp()
-    {
-        throw new NotImplementedException();
-    }
+	internal void TurnUp()
+	{
+		throw new NotImplementedException();
+	}
 
 	//TODO: Method to handle looking down
-    internal void TurnDown()
-    {
-        throw new NotImplementedException();
-    }
+	internal void TurnDown()
+	{
+		throw new NotImplementedException();
+	}
 
 }
 
