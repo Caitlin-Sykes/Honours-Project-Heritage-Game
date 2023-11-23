@@ -21,7 +21,13 @@ public partial class Controls : Node3D
 	public override void _Process(double delta)
 	{
 
-		//Checks for key presses
+		
+	}
+
+    //Handles inputs
+    public override void _Input(InputEvent @event)
+    {
+        //Checks for key presses
 		if (Input.IsKeyPressed(Key.W))
         {
             GD.Print("W key pressed!");
@@ -40,15 +46,16 @@ public partial class Controls : Node3D
         {
             GD.Print("D key pressed!");
         }
-	}
+    }
 
     /** 
     *   ----------------------------------------------------------------
 	*	Start of "W" and Up Gui Buttons
 	*	----------------------------------------------------------------
-	**/   
+	**/
 
     // A handler to control clicking on the up gui arrow
+
     private void OnUpArrow(Node camera, InputEvent @evnt, Vector3 position, Vector3 normal, int shape_idx) {
 
         //If trigger is left click

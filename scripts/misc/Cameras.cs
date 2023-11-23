@@ -1,5 +1,7 @@
 using Godot;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 public partial class Cameras : Node
 {
@@ -11,20 +13,15 @@ public partial class Cameras : Node
 		West
 	} //enum for directions
 
-	private Camera3D NORTH_CAMERA; //NORTH CAMERA
-	private Camera3D EAST_CAMERA; //EAST CAMERA
-	private Camera3D SOUTH_CAMERA; //SOUTH CAMERA
-	private Camera3D WEST_CAMERA; //WEST CAMERA
+	[Export]
+	private Godot.Collections.Array<Camera3D> CAMERAS { get; set; }
+
 	public Direction dir; // instance of direction
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		dir = Direction.North; // starts off north by default but can be overriden by calling SetDefaultDirection
-		NORTH_CAMERA = GetNode<Camera3D>("/UI/North"); // Gets North camera
-		EAST_CAMERA = GetNode<Camera3D>("/UI/East");   // Gets East camera
-		SOUTH_CAMERA = GetNode<Camera3D>("/UI/South"); // Gets South camera
-		WEST_CAMERA = GetNode<Camera3D>("/UI/West");   // Gets West camera
 	}
 
 
@@ -60,33 +57,41 @@ public partial class Cameras : Node
 	*	Handles moving the cameras
 	* ----------------------------------------------------------------
 	**/
-
+	//TODO: much later- but when selecting something, show a circle which slowly gets smaller.
 	//BUG: cameras in top constructor are not defined. Actual function is being pinged correctly. Check how it is getting the camera.
 	//Method to handle turning left
 	public void TurnLeft() {
 		// Cameras/Controls/UI/North
         GD.Print("Should be turning left");
 		//Changes camera depending on what the current direction is
-        // switch(dir) {
-        //     case Cameras.Direction.North:
+        switch(dir) {
+			//If current camera is north, set current camera to west
+            case Direction.North:
+                dir = Direction.West;
+				CAMERAS[3].Current = true;
+                break;
 
-		// 		WEST_CAMERA.Visible = true; //sets West Camera to True
-		// 		WEST_CAMERA.Current = true;
-		// 		NORTH_CAMERA.Visible = false; //sets North Camera to False
-		// 		// NORTH_CAMERA.Current = false; //sets North Camera to False
+			//If current camera is east, set current camera to north
+            case Direction.East:
+				dir = Direction.North;
+				CAMERAS[0].Current = true;
+                break;
+			
+			//If current camera is south, set current camera to East
+            case Cameras.Direction.South:
+				dir = Direction.East;
+				CAMERAS[1].Current = true;
+                break;
 
-        //         //Sets current camera to West
-        //         dir = Cameras.Direction.West;
-        //         break;
-        //     case Cameras.Direction.East:
-        //         break;
-        //     case Cameras.Direction.South:
-        //         break;
-        //     case Cameras.Direction.West:
-        //         break;
-        //     default:
-        //         throw new ArgumentException("Not a valid direction");
-        // }
+			//If current camera is west, set current camera to south
+            case Cameras.Direction.West:
+				dir = Direction.South;
+				CAMERAS[2].Current = true;
+                break;
+            
+			default:
+                throw new ArgumentException("Not a valid direction");
+        }
 
 	}
 
@@ -132,6 +137,8 @@ public partial class Cameras : Node
 
 		etc
 }
+
+//
 // little bit repetive but all right buttons ccan use rightbuttonclick
 *
 *

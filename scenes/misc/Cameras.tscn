@@ -6,8 +6,9 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8pmu7"]
 
-[node name="Cameras" type="Node3D"]
+[node name="Cameras" type="Node3D" node_paths=PackedStringArray("CAMERAS")]
 script = ExtResource("1_21ti4")
+CAMERAS = [NodePath("Controls/UI/North"), NodePath("Controls/UI/East"), NodePath("Controls/UI/South"), NodePath("Controls/UI/West")]
 
 [node name="Controls" type="Node3D" parent="."]
 script = ExtResource("2_v3orv")
