@@ -63,12 +63,17 @@ public partial class Cameras : Node
 		//If node matches "*Arrow_Parent" then enables input and visibility
 		foreach (Node3D arrow in cam.FindChildren("*Arrow_Parent"))
 		{
-			// if (arrow.ha Node3D) {
-			arrow.Visible = true;
-			arrow.SetProcessInput(false);
-			// }
+			//If node matches Up_Arrow_Parent or Down_Arrow_Parent and metadata for camera has UpDown as not enabled
+			if ((arrow.Name == "Up_Arrow_Parent" || arrow.Name == "Down_Arrow_Parent") && GetMeta("UpDownEnabled").AsBool() == false) {
+				break;
+			}
 
-
+			//Else sets visible
+			else {
+				GD.Print(arrow.Name);
+				arrow.Visible = true;
+				arrow.SetProcessInput(true);
+			}
 		}
 	}
 
@@ -78,12 +83,8 @@ public partial class Cameras : Node
 		//If node matches "*Arrow_Parent" then disables input and visibility
 		foreach (Node3D arrow in cam.FindChildren("*Arrow_Parent"))
 		{
-			// if (arrow.ha Node3D) {
 				arrow.Visible = false;
 				arrow.SetProcessInput(false);
-			// }
-
-
 		}
 	}
 
@@ -93,7 +94,7 @@ public partial class Cameras : Node
 	* ----------------------------------------------------------------
 	**/
 	//TODO: much later- but when selecting something, show a circle which slowly gets smaller.
-	//BUG: cameras in top constructor are not defined. Actual function is being pinged correctly. Check how it is getting the camera.
+	//BUG: camera moving can be a bit buggy if clicked fast in quick succession
 	//Method to handle turning left
 	public void TurnLeft()
 	{

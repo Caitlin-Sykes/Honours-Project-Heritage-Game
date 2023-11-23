@@ -38,15 +38,15 @@ public partial class Controls : Node3D
             OnRightArrow();
         }
 
-		// else if (Input.IsKeyPressed(Key.W))
-        // {
-        //     GD.Print("W key pressed!");
-        // }
+        else if (Input.IsKeyPressed(Key.W) && CAMERAS.GetMeta("UpDownEnabled").AsBool() == true)
+        {
+            GD.Print("W key pressed! Up Enabled!");
+        }
 
-        // else if (Input.IsKeyPressed(Key.S))
-        // {
-        //     GD.Print("S key pressed!");
-        // }
+        else if (Input.IsKeyPressed(Key.S) && CAMERAS.GetMeta("UpDownEnabled").AsBool() == true)
+        {
+            GD.Print("S key pressed! Down Enabled!");
+        }
 
     }
 

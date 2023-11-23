@@ -73,17 +73,17 @@ albedo_color = Color(0, 0, 0, 1)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Room" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0416205, 0.0883697, 0.0287206)
-light_energy = 7.4
+light_energy = 4.822
 light_indirect_energy = 16.0
-light_volumetric_fog_energy = 0.889
 light_size = 1.0
 light_specular = 0.0
-light_cull_mask = 4294967291
+light_cull_mask = 4294950907
 shadow_enabled = true
-shadow_blur = 6.12
+shadow_opacity = 0.8
+shadow_blur = 3.453
 distance_fade_begin = 4089.85
 distance_fade_length = 20.45
-omni_attenuation = 1.77962
+omni_attenuation = 0.674348
 
 [node name="skirting" parent="." index="4"]
 surface_material_override/1 = SubResource("StandardMaterial3D_gf8s7")

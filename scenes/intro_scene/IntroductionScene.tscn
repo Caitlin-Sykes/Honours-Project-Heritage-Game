@@ -54,4 +54,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 [node name="UI" parent="Cameras/Controls" index="0"]
 theme_override_styles/panel = SubResource("StyleBoxEmpty_jlakg")
 
+[node name="Up_Arrow_Parent" parent="Cameras/Controls/UI/North/MarginContainer/Arrows" index="2"]
+visible = false
+
+[node name="Down_Arrow_Parent" parent="Cameras/Controls/UI/North/MarginContainer/Arrows" index="3"]
+visible = false
+
 [editable path="Cameras"]
