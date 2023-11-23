@@ -122,6 +122,14 @@ public partial class Cameras : Node
 		}
 	}
 
+	//A function to make a single arrow visible
+	private void SetSingleArrowVisible(Camera3D cam, string arrowName) {
+
+		//If node matches "*Arrow_Parent" then enables input and visibility
+		foreach (Node3D arrow in cam.FindChildren(arrowName))
+		{
+			arrow.Visible = true; }
+	}
 	/** 
 	* ----------------------------------------------------------------
 	*	Handles moving the cameras
@@ -240,7 +248,7 @@ public partial class Cameras : Node
 		{
 
 			//Sets down camera visible
-			SetArrowsVisible(CAMERAS[4]);
+			SetSingleArrowVisible(CAMERAS[4], "*Down_Arrow_Parent");
 
 			//Sets current direction arrows invisible
 			SetArrowsInvisible(CAMERAS[GetIndexOfDirection(dir)]);
@@ -280,7 +288,7 @@ public partial class Cameras : Node
 		{
 
 			//Sets down camera visible
-			SetArrowsVisible(CAMERAS[5]);
+			SetSingleArrowVisible(CAMERAS[5], "*Up_Arrow_Parent");
 
 			//Sets current direction arrows invisible
 			SetArrowsInvisible(CAMERAS[GetIndexOfDirection(dir)]);
