@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cok4snixun3l8"]
+[gd_scene load_steps=7 format=3 uid="uid://cok4snixun3l8"]
 
 [ext_resource type="Script" path="res://scripts/misc/Transitions.cs" id="1_8iq14"]
 [ext_resource type="PackedScene" uid="uid://ui3tvchfafso" path="res://scenes/misc/Cameras.tscn" id="1_76gud"]
@@ -25,6 +25,8 @@ _data = {
 "Transition_Fade": SubResource("Animation_7a53q")
 }
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jlakg"]
+
 [node name="IntroductionScene" type="Node3D"]
 
 [node name="Transition" type="ColorRect" parent="."]
@@ -44,9 +46,12 @@ libraries = {
 "": SubResource("AnimationLibrary_nuk71")
 }
 
-[node name="Cameras" parent="." instance=ExtResource("1_76gud")]
-
 [node name="MainRoom" parent="." instance=ExtResource("1_p57ao")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="Cameras" parent="." instance=ExtResource("1_76gud")]
+
+[node name="UI" parent="Cameras/Controls" index="0"]
+theme_override_styles/panel = SubResource("StyleBoxEmpty_jlakg")
 
 [editable path="Cameras"]
