@@ -40,7 +40,7 @@ public partial class Controls : Node3D
 
         else if (Input.IsKeyPressed(Key.W) && CAMERAS.GetMeta("UpDownEnabled").AsBool() == true)
         {
-            GD.Print("W key pressed! Up Enabled!");
+            OnUpArrow();
         }
 
         else if (Input.IsKeyPressed(Key.S) && CAMERAS.GetMeta("UpDownEnabled").AsBool() == true)
