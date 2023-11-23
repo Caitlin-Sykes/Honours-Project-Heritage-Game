@@ -62,7 +62,7 @@ public partial class Controls : Node3D
 
         //If trigger is left click
         if (@evnt is InputEventMouseButton mouse) {
-            if (mouse.ButtonIndex == MouseButton.Left) {
+            if (mouse.ButtonIndex == MouseButton.Left && @evnt.IsPressed()) {
                     OnUpArrow();
                 }
     }}
@@ -84,7 +84,7 @@ public partial class Controls : Node3D
 
         //If trigger is left click
         if (@evnt is InputEventMouseButton mouse) {
-            if (mouse.ButtonIndex == MouseButton.Left) {
+            if (mouse.ButtonIndex == MouseButton.Left && @evnt.IsPressed()) {
                     OnRightArrow();
                 }
     }}
@@ -105,7 +105,7 @@ public partial class Controls : Node3D
 
         //If trigger is left click
         if (@evnt is InputEventMouseButton mouse) {
-            if (mouse.ButtonIndex == MouseButton.Left) {
+            if (mouse.ButtonIndex == MouseButton.Left && @evnt.IsPressed()) {
                     OnDownArrow();
                 }
     }}
@@ -126,7 +126,7 @@ public partial class Controls : Node3D
 
         //If trigger is left click
         if (@evnt is InputEventMouseButton mouse) {
-            if (mouse.ButtonIndex == MouseButton.Left) {
+            if (mouse.ButtonIndex == MouseButton.Left && @evnt.IsPressed()) {
                     OnLeftArrow();
                 }
     }}
