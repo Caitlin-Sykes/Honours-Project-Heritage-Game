@@ -28,7 +28,7 @@ public partial class Player_Intro : Control
 	public override void _Ready()
 	{
 		TRANSITION = GetNode<Transitions>("Transition");
-		// InitSettings();
+		// InitSettings(); //TODO: uncomment this
 
 
 		//Sets random id number
@@ -41,7 +41,7 @@ public partial class Player_Intro : Control
 	//Handles inputs
 	public override void _Input(InputEvent @event) {
 
-		//BUG: scaling is broken for player_intro
+		//BUG: scaling is broken for player_intro -- fixed scaling, need to fix font size. replace png of folk with svg
 		//TODO: lock input when typing in "name" field - so dont spam through charac
 		if (Input.IsKeyPressed(Key.D))
 		{
