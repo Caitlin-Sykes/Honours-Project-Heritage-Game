@@ -18,3 +18,6 @@ https://www.flaticon.com/free-icons/font - Size icon, Freepik, icon for selectin
 
 [AUDIO]
 https://pixabay.com/sound-effects//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=140881 - ClickButton.mp3, UNIVERSFIELD from Pixabay, button selection
+
+[SPRITES]
+https://www.dicebear.com/playground/ - for character speaking sprites

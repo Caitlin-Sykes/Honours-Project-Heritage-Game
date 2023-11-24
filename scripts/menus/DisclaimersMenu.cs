@@ -43,6 +43,6 @@ public partial class DisclaimersMenu : Control
 	**/   
 
 	private void OnContinuePressed() { 
-		TRANSITION.NextScene("res://scenes/intro_scene/IntroductionScene.tscn");
+		TRANSITION.NextScene("res://scenes/misc/PlayerIntro.tscn");
 	}
 }

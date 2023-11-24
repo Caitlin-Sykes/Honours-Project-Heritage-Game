@@ -20,12 +20,13 @@ public partial class PlayerData : Node
 public struct PlayerDataStruct
 {
 
-	public PlayerDataStruct(String name, DateTime dateTime, String pronoun, string id)
+	public PlayerDataStruct(String name, DateTime dateTime, String pronoun, string id, int avatar)
 	{
 		Name = name;
 		Date = dateTime;
 		Pronouns = pronoun;
 		ID = id;
+		Avatar = avatar;
 	}
 
 	public string Name { get; init; }
@@ -33,6 +34,8 @@ public struct PlayerDataStruct
 	public string Pronouns { get; init; }
 
 	public string ID {get; init;}
+	public int Avatar { get; init; }
+
 
 
 }

@@ -1,0 +1,674 @@
+[gd_scene load_steps=27 format=3 uid="uid://0ixj46o4a1t5"]
+
+[ext_resource type="Theme" uid="uid://c8ikhuofmlww0" path="res://resources/themes/main_theme_cascadia.tres" id="1_v3bs1"]
+[ext_resource type="Script" path="res://scripts/misc/Player_Intro.cs" id="2_3mtwi"]
+[ext_resource type="Texture2D" uid="uid://da4c80ucv2cny" path="res://resources/textures/player_card/random_barcode.png" id="3_jycvt"]
+[ext_resource type="Script" path="res://scripts/misc/Transitions.cs" id="3_lw6ni"]
+[ext_resource type="Texture2D" uid="uid://ccyue54ljk7n2" path="res://resources/textures/sprites/main_char/1.png" id="4_ct0c0"]
+[ext_resource type="Texture2D" uid="uid://clv27h6wj3q5f" path="res://resources/textures/sprites/main_char/2.png" id="6_ts1f8"]
+[ext_resource type="Texture2D" uid="uid://b7qeojxrgstk0" path="res://resources/textures/sprites/main_char/3.png" id="7_e5x4i"]
+[ext_resource type="Texture2D" uid="uid://ce2wnxnxcgith" path="res://resources/textures/sprites/main_char/4.png" id="8_8u7k8"]
+[ext_resource type="Texture2D" uid="uid://83wo3xpx2ciu" path="res://resources/textures/sprites/main_char/5.png" id="9_pmo80"]
+[ext_resource type="Texture2D" uid="uid://q5gtooov6tvg" path="res://resources/textures/sprites/main_char/6.png" id="10_1djuk"]
+[ext_resource type="Texture2D" uid="uid://43asdfmu35lb" path="res://resources/textures/sprites/main_char/7.png" id="11_fljr5"]
+[ext_resource type="Texture2D" uid="uid://c51j2owvi30uc" path="res://resources/textures/sprites/main_char/8.png" id="12_chl5o"]
+[ext_resource type="Texture2D" uid="uid://csjjnw34lc8hu" path="res://resources/textures/sprites/main_char/9.png" id="13_u800h"]
+[ext_resource type="Texture2D" uid="uid://d1ef3yfm6d4gc" path="res://resources/textures/sprites/main_char/10.png" id="14_0o7oq"]
+[ext_resource type="Texture2D" uid="uid://dhl1swg7hrsnd" path="res://resources/textures/sprites/main_char/11.png" id="15_6sr5a"]
+[ext_resource type="Texture2D" uid="uid://d23rqqwlnrtqa" path="res://resources/textures/sprites/main_char/12.png" id="16_ncurp"]
+[ext_resource type="Texture2D" uid="uid://demmvarplrbcj" path="res://resources/textures/sprites/main_char/13.png" id="17_3oelr"]
+[ext_resource type="Texture2D" uid="uid://noiarjo32vt" path="res://resources/textures/sprites/main_char/14.png" id="18_yfyoa"]
+[ext_resource type="Texture2D" uid="uid://cop84gjohqdfm" path="res://resources/textures/sprites/main_char/15.png" id="19_x6oo2"]
+[ext_resource type="Texture2D" uid="uid://dd56wlhugj37q" path="res://resources/textures/sprites/main_char/16.png" id="20_6y7wa"]
+[ext_resource type="Texture2D" uid="uid://dau7f7qpufuuv" path="res://resources/textures/sprites/main_char/17.png" id="21_fsaqe"]
+[ext_resource type="Texture2D" uid="uid://clcm8t1ualoa1" path="res://resources/textures/sprites/main_char/18.png" id="22_vcp0q"]
+[ext_resource type="Texture2D" uid="uid://dpjc0vfmueqr3" path="res://resources/textures/sprites/main_char/19.png" id="23_mb0w0"]
+[ext_resource type="Texture2D" uid="uid://daiq562v6lvrx" path="res://resources/textures/sprites/main_char/20.png" id="24_3vwuj"]
+
+[sub_resource type="Animation" id="Animation_7a53q"]
+resource_name = "Transition_Fade_In"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nuk71"]
+_data = {
+"Transition_Fade": SubResource("Animation_7a53q")
+}
+
+[node name="Player_Intro" type="Control" node_paths=PackedStringArray("id", "name", "pronouns", "avatar")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_v3bs1")
+script = ExtResource("2_3mtwi")
+id = NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Info/ID_Input")
+name = NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Info/Name_Input")
+pronouns = NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Info/Pronouns")
+avatar = [NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/1"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/2"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/3"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/4"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/5"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/6"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/7"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/8"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/9"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/10"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/11"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/12"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/13"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/14"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/15"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/16"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/17"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/18"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/19"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/20")]
+
+[node name="Transition" type="ColorRect" parent="."]
+visible = false
+top_level = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("3_lw6ni")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Transition"]
+libraries = {
+"": SubResource("AnimationLibrary_nuk71")
+}
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="Panel" type="Panel" parent="Panel/MarginContainer"]
+layout_mode = 2
+theme_type_variation = &"StudentIDPanel"
+
+[node name="Info" type="MarginContainer" parent="Panel/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/Panel/Info"]
+layout_mode = 2
+
+[node name="Info" type="VBoxContainer" parent="Panel/MarginContainer/Panel/Info/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="ID_Input" type="LineEdit" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Info"]
+layout_direction = 2
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"StudentIDLineEdit"
+alignment = 1
+max_length = 7
+editable = false
+
+[node name="lbl" type="Label" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Info/ID_Input"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 51.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "  ID No:"
+vertical_alignment = 1
+
+[node name="Name_Input" type="LineEdit" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Info"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"StudentIDLineEdit"
+text = " "
+placeholder_text = "Enter your character name here"
+alignment = 1
+max_length = 20
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Info/Name_Input"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 51.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "  Name:"
+vertical_alignment = 1
+
+[node name="Pronouns" type="OptionButton" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Info"]
+layout_mode = 2
+size_flags_vertical = 3
+tooltip_text = "Please select your pronouns"
+theme_type_variation = &"StudentIDMulti"
+alignment = 1
+item_count = 3
+selected = 0
+popup/item_0/text = "She/Her"
+popup/item_0/id = 0
+popup/item_1/text = "He/Him"
+popup/item_1/id = 1
+popup/item_2/text = "They/Them"
+popup/item_2/id = 2
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Info/Pronouns"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 51.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "  Pronouns:"
+vertical_alignment = 1
+
+[node name="DOB" type="LineEdit" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Info"]
+layout_direction = 2
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"StudentIDLineEdit"
+text = " "
+alignment = 1
+max_length = 20
+editable = false
+
+[node name="DOB" type="Label" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Info/DOB"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 51.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "  D.o.B:"
+vertical_alignment = 1
+
+[node name="misc" type="Label" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Info/DOB"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.0
+offset_top = -13.0
+offset_right = 31.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "xx.xx.xx"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Photos" type="VBoxContainer" parent="Panel/MarginContainer/Panel/Info/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 30
+
+[node name="1" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("4_ct0c0")
+
+[node name="RandomBarcode" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/1"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+texture = ExtResource("3_jycvt")
+expand_mode = 1
+
+[node name="2" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("6_ts1f8")
+
+[node name="RandomBarcode" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/2"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+texture = ExtResource("3_jycvt")
+expand_mode = 1
+
+[node name="3" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("7_e5x4i")
+
+[node name="RandomBarcode" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/3"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+texture = ExtResource("3_jycvt")
+expand_mode = 1
+
+[node name="4" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("8_8u7k8")
+
+[node name="RandomBarcode" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/4"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+texture = ExtResource("3_jycvt")
+expand_mode = 1
+
+[node name="5" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("9_pmo80")
+
+[node name="RandomBarcode" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/5"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+texture = ExtResource("3_jycvt")
+expand_mode = 1
+
+[node name="6" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("10_1djuk")
+
+[node name="RandomBarcode" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/6"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+texture = ExtResource("3_jycvt")
+expand_mode = 1
+
+[node name="7" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("11_fljr5")
+
+[node name="RandomBarcode" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/7"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+texture = ExtResource("3_jycvt")
+expand_mode = 1
+
+[node name="8" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("12_chl5o")
+
+[node name="RandomBarcode" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/8"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+texture = ExtResource("3_jycvt")
+expand_mode = 1
+
+[node name="9" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("13_u800h")
+
+[node name="RandomBarcode" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/9"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+texture = ExtResource("3_jycvt")
+expand_mode = 1
+
+[node name="10" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("14_0o7oq")
+
+[node name="RandomBarcode" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/10"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+texture = ExtResource("3_jycvt")
+expand_mode = 1
+
+[node name="11" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("15_6sr5a")
+
+[node name="RandomBarcode" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/11"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+texture = ExtResource("3_jycvt")
+expand_mode = 1
+
+[node name="12" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("16_ncurp")
+
+[node name="RandomBarcode" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/12"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+texture = ExtResource("3_jycvt")
+expand_mode = 1
+
+[node name="13" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("17_3oelr")
+
+[node name="RandomBarcode" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/13"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+texture = ExtResource("3_jycvt")
+expand_mode = 1
+
+[node name="14" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("18_yfyoa")
+
+[node name="RandomBarcode" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/14"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+texture = ExtResource("3_jycvt")
+expand_mode = 1
+
+[node name="15" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("19_x6oo2")
+
+[node name="RandomBarcode" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/15"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+texture = ExtResource("3_jycvt")
+expand_mode = 1
+
+[node name="16" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("20_6y7wa")
+
+[node name="RandomBarcode" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/16"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+texture = ExtResource("3_jycvt")
+expand_mode = 1
+
+[node name="17" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("21_fsaqe")
+
+[node name="RandomBarcode" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/17"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+texture = ExtResource("3_jycvt")
+expand_mode = 1
+
+[node name="18" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("22_vcp0q")
+
+[node name="RandomBarcode" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/18"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+texture = ExtResource("3_jycvt")
+expand_mode = 1
+
+[node name="19" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("23_mb0w0")
+
+[node name="RandomBarcode" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/19"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+texture = ExtResource("3_jycvt")
+expand_mode = 1
+
+[node name="20" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("24_3vwuj")
+
+[node name="RandomBarcode" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/20"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+texture = ExtResource("3_jycvt")
+expand_mode = 1
+
+[node name="Submit" type="Button" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_type_variation = &"GreenButton"
+text = "Submit"
+
+[node name="Shadow" type="Panel" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/Submit"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 47.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[connection signal="pressed" from="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/Submit" to="." method="OnSubmitPressed"]
