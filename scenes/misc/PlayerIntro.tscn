@@ -1,10 +1,12 @@
-[gd_scene load_steps=27 format=3 uid="uid://0ixj46o4a1t5"]
+[gd_scene load_steps=29 format=3 uid="uid://0ixj46o4a1t5"]
 
 [ext_resource type="Theme" uid="uid://c8ikhuofmlww0" path="res://resources/themes/main_theme_cascadia.tres" id="1_v3bs1"]
 [ext_resource type="Script" path="res://scripts/misc/Player_Intro.cs" id="2_3mtwi"]
+[ext_resource type="Texture2D" uid="uid://bku0as445173n" path="res://resources/textures/gui/arrow.png" id="3_gxco4"]
 [ext_resource type="Texture2D" uid="uid://da4c80ucv2cny" path="res://resources/textures/player_card/random_barcode.png" id="3_jycvt"]
 [ext_resource type="Script" path="res://scripts/misc/Transitions.cs" id="3_lw6ni"]
 [ext_resource type="Texture2D" uid="uid://ccyue54ljk7n2" path="res://resources/textures/sprites/main_char/1.png" id="4_ct0c0"]
+[ext_resource type="Texture2D" uid="uid://3hsy4d2vkbnd" path="res://resources/textures/gui/arrow_clicked.png" id="4_p87j3"]
 [ext_resource type="Texture2D" uid="uid://clv27h6wj3q5f" path="res://resources/textures/sprites/main_char/2.png" id="6_ts1f8"]
 [ext_resource type="Texture2D" uid="uid://b7qeojxrgstk0" path="res://resources/textures/sprites/main_char/3.png" id="7_e5x4i"]
 [ext_resource type="Texture2D" uid="uid://ce2wnxnxcgith" path="res://resources/textures/sprites/main_char/4.png" id="8_8u7k8"]
@@ -59,6 +61,34 @@ id = NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Info/ID_Input")
 name = NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Info/Name_Input")
 pronouns = NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Info/Pronouns")
 avatar = [NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/1"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/2"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/3"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/4"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/5"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/6"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/7"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/8"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/9"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/10"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/11"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/12"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/13"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/14"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/15"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/16"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/17"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/18"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/19"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/20")]
+
+[node name="ArrowLeft" type="TextureButton" parent="."]
+top_level = true
+offset_left = 783.0
+offset_top = 203.0
+offset_right = 1295.0
+offset_bottom = 715.0
+scale = Vector2(0.1, 0.1)
+mouse_filter = 1
+texture_normal = ExtResource("3_gxco4")
+texture_pressed = ExtResource("4_p87j3")
+ignore_texture_size = true
+stretch_mode = 0
+flip_h = true
+
+[node name="ArrowRight" type="TextureButton" parent="."]
+top_level = true
+layout_mode = 0
+offset_left = 1027.0
+offset_top = 203.0
+offset_right = 1539.0
+offset_bottom = 715.0
+scale = Vector2(0.1, 0.1)
+mouse_filter = 1
+texture_normal = ExtResource("3_gxco4")
+texture_pressed = ExtResource("4_p87j3")
+ignore_texture_size = true
+stretch_mode = 0
 
 [node name="Transition" type="ColorRect" parent="."]
 visible = false
@@ -671,4 +701,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
+[connection signal="pressed" from="ArrowLeft" to="." method="MoveAvatarLeft"]
+[connection signal="pressed" from="ArrowRight" to="." method="MoveAvatarRight"]
 [connection signal="pressed" from="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/Submit" to="." method="OnSubmitPressed"]

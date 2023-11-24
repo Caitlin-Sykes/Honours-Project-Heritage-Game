@@ -11,7 +11,9 @@ public partial class Player_Intro : Control
 	private OptionButton pronouns; //for the pronouns of the player
 
 	[Export]
-	private TextureRect[] avatar;
+	private TextureRect[] avatar; //array of avatars
+
+	private int currentAvatar = 0; //current index of avatar
 	private Random rdm; //random number generator
 	public PlayerDataStruct player;
 	private Transitions TRANSITION; //Handles screen transitions
@@ -26,7 +28,7 @@ public partial class Player_Intro : Control
 	public override void _Ready()
 	{
 		TRANSITION = GetNode<Transitions>("Transition");
-		InitSettings();
+		// InitSettings();
 
 
 		//Sets random id number
@@ -34,6 +36,22 @@ public partial class Player_Intro : Control
 			id.Text += rdm.Next(0, 9).ToString();
 		}
 		
+	}
+
+	//Handles inputs
+	public override void _Input(InputEvent @event) {
+
+		//BUG: scaling is broken for player_intro
+		//TODO: lock input when typing in "name" field - so dont spam through charac
+		if (Input.IsKeyPressed(Key.D))
+		{
+			MoveAvatarRight();
+		}
+
+		else if (Input.IsKeyPressed(Key.A))
+		{
+			MoveAvatarLeft();
+		}
 	}
 
 	// Init Settings for Scene
@@ -72,9 +90,50 @@ public partial class Player_Intro : Control
 	//TODO: add proper error handling
 	private void OnSubmitPressed() {
 		if (name.Text.Length > 0) {
-			player = new PlayerDataStruct(name.Text, DateTime.Now, pronouns.Text, id.Text, 1);
+			player = new PlayerDataStruct(name.Text, DateTime.Now, pronouns.Text, id.Text, currentAvatar);
 		}
 
 		TRANSITION.NextScene("res://scenes/intro_scene/IntroductionScene.tscn");
 	}
+
+	/**
+	* ----------------------------------------------------------------
+	* Avatar Selection Stuff
+	* ----------------------------------------------------------------
+	**/
+
+	//Moves avatar selection right
+	private void MoveAvatarRight() {
+		if (currentAvatar != 19) {
+			avatar[currentAvatar].Visible = false;
+			avatar[currentAvatar+1].Visible = true;
+			currentAvatar++;
+		}
+
+		else {
+			avatar[currentAvatar].Visible = false;
+			avatar[0].Visible = true;
+			currentAvatar = 0;
+		}
+	}
+
+	//Moves avatar selection left
+	private void MoveAvatarLeft()
+	{
+		//If not 0
+		if (currentAvatar != 0)
+		{
+			avatar[currentAvatar].Visible = false;
+			avatar[currentAvatar - 1].Visible = true;
+			currentAvatar--;
+		}
+
+		else
+		{
+			avatar[currentAvatar].Visible = false;
+			avatar[19].Visible = true;
+			currentAvatar = 19;
+		}
+	}
+
 }
