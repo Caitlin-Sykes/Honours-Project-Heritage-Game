@@ -23,25 +23,11 @@ public partial class Cameras : Node
 	public Direction previousDir { get; set; } // used only when going up and down
 	private int cameraVisible { get; set; } //holds array position of camera to display
 
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-		dir = Direction.North; // starts off north by default but can be overriden by calling SetDefaultDirection
-		SetArrowsVisible(CAMERAS[0]); //turns on North's GUI arrows
-	}
-
-
 	/** 
 	* ----------------------------------------------------------------
 	*	Misc Handlers
 	* ----------------------------------------------------------------
 	**/
-
-	//Will overwrite default direction if called
-	public void SetDefaultDirection(String direction)
-	{
-		dir = ToDirection(direction);
-	}
 
 	//A function to convert string to type Direction
 	private Direction ToDirection(string dir)
@@ -129,6 +115,14 @@ public partial class Cameras : Node
 		foreach (Node3D arrow in cam.FindChildren(arrowName))
 		{
 			arrow.Visible = true; }
+	}
+
+	//A function to set the current camera
+	private void SetCurrentCamera(Camera3D cam) {
+		cam.Current = true;
+		SetArrowsVisible(cam);
+		dir = ToDirection(cam.Name);
+
 	}
 	/** 
 	* ----------------------------------------------------------------

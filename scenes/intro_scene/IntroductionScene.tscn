@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cok4snixun3l8"]
+[gd_scene load_steps=8 format=3 uid="uid://cok4snixun3l8"]
 
 [ext_resource type="Script" path="res://scripts/misc/Transitions.cs" id="1_8iq14"]
 [ext_resource type="PackedScene" uid="uid://ui3tvchfafso" path="res://scenes/misc/Cameras.tscn" id="1_76gud"]
 [ext_resource type="PackedScene" uid="uid://btmuto64fpkoq" path="res://scenes/intro_scene/main_room.tscn" id="1_p57ao"]
+[ext_resource type="Script" path="res://scripts/intro_scene/IntroductionScene.cs" id="1_wn8em"]
 
 [sub_resource type="Animation" id="Animation_7a53q"]
 resource_name = "Transition_Fade_In"
@@ -28,6 +29,7 @@ _data = {
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jlakg"]
 
 [node name="IntroductionScene" type="Node3D"]
+script = ExtResource("1_wn8em")
 
 [node name="Transition" type="ColorRect" parent="."]
 modulate = Color(1, 1, 1, 0)
@@ -50,7 +52,6 @@ libraries = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
 [node name="Cameras" parent="." instance=ExtResource("1_76gud")]
-metadata/UpDownEnabled = true
 
 [node name="UI" parent="Cameras/Controls" index="0"]
 theme_override_styles/panel = SubResource("StyleBoxEmpty_jlakg")

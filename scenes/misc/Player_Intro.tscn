@@ -1,0 +1,257 @@
+[gd_scene load_steps=8 format=3 uid="uid://0ixj46o4a1t5"]
+
+[ext_resource type="Texture2D" uid="uid://bjvua2e7gsqcf" path="res://resources/textures/player_card/student_card.png" id="1_gohbe"]
+[ext_resource type="Theme" uid="uid://c8ikhuofmlww0" path="res://resources/themes/main_theme_cascadia.tres" id="1_v3bs1"]
+[ext_resource type="Script" path="res://scripts/misc/Player_Intro.cs" id="2_3mtwi"]
+[ext_resource type="Texture2D" uid="uid://da4c80ucv2cny" path="res://resources/textures/player_card/random_barcode.png" id="3_jycvt"]
+[ext_resource type="Script" path="res://scripts/misc/Transitions.cs" id="3_lw6ni"]
+
+[sub_resource type="Animation" id="Animation_7a53q"]
+resource_name = "Transition_Fade_In"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nuk71"]
+_data = {
+"Transition_Fade": SubResource("Animation_7a53q")
+}
+
+[node name="Player_Intro" type="Control" node_paths=PackedStringArray("id", "name", "pronouns")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_v3bs1")
+script = ExtResource("2_3mtwi")
+id = NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Info/ID_Input")
+name = NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Info/Name_Input")
+pronouns = NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Info/Pronouns")
+
+[node name="Transition" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+top_level = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("3_lw6ni")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Transition"]
+libraries = {
+"": SubResource("AnimationLibrary_nuk71")
+}
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="Panel" type="Panel" parent="Panel/MarginContainer"]
+layout_mode = 2
+theme_type_variation = &"StudentIDPanel"
+
+[node name="Info" type="MarginContainer" parent="Panel/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/Panel/Info"]
+layout_mode = 2
+
+[node name="Info" type="VBoxContainer" parent="Panel/MarginContainer/Panel/Info/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="ID_Input" type="LineEdit" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Info"]
+layout_direction = 2
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"StudentIDLineEdit"
+alignment = 1
+max_length = 7
+editable = false
+
+[node name="lbl" type="Label" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Info/ID_Input"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 51.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "  ID No:"
+vertical_alignment = 1
+
+[node name="Name_Input" type="LineEdit" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Info"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"StudentIDLineEdit"
+text = " "
+placeholder_text = "Enter your character name here"
+alignment = 1
+max_length = 20
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Info/Name_Input"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 51.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "  Name:"
+vertical_alignment = 1
+
+[node name="Pronouns" type="OptionButton" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Info"]
+layout_mode = 2
+size_flags_vertical = 3
+tooltip_text = "Please select your pronouns"
+theme_type_variation = &"StudentIDMulti"
+alignment = 1
+item_count = 3
+selected = 0
+popup/item_0/text = "She/Her"
+popup/item_0/id = 0
+popup/item_1/text = "He/Him"
+popup/item_1/id = 1
+popup/item_2/text = "They/Them"
+popup/item_2/id = 2
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Info/Pronouns"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 51.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "  Pronouns:"
+vertical_alignment = 1
+
+[node name="DOB" type="LineEdit" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Info"]
+layout_direction = 2
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"StudentIDLineEdit"
+text = " "
+alignment = 1
+max_length = 20
+editable = false
+
+[node name="DOB" type="Label" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Info/DOB"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 51.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "  D.o.B:"
+vertical_alignment = 1
+
+[node name="misc" type="Label" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Info/DOB"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.0
+offset_top = -13.0
+offset_right = 31.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "xx.xx.xx"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Photos" type="VBoxContainer" parent="Panel/MarginContainer/Panel/Info/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 30
+
+[node name="StudentCard" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("1_gohbe")
+
+[node name="RandomBarcode" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/StudentCard"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -107.5
+offset_top = -30.0
+offset_right = 107.5
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+texture = ExtResource("3_jycvt")
+expand_mode = 1
+
+[node name="Submit" type="Button" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_type_variation = &"GreenButton"
+text = "Submit"
+
+[node name="Shadow" type="Panel" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/Submit"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 47.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[connection signal="pressed" from="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/MarginContainer/Submit" to="." method="OnSubmitPressed"]
