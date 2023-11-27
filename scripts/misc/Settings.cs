@@ -12,17 +12,19 @@ public partial class Settings : Control
 	// Init Settings for Scene
 	private void InitSettings()
 	{
+
+		//TODO: uncomment
 		//If GetFontDefault returns Dyslexie, sets theme to dyslexie
 		//Else sets Theme to cascadia
 		if (OptionsVisualsGUI.GetFontDefault() == "Dyslexie")
-		{
-			Theme = (Theme)GD.Load("res://resources/themes/main_theme_dyslexie.tres");
-		}
+		// {
+		// 	Theme = (Theme)GD.Load("res://resources/themes/main_theme_dyslexie.tres");
+		// }
 
-		else
-		{
-			Theme = (Theme)GD.Load("res://resources/themes/main_theme_cascadia.tres");
-		}
+		// else
+		// {
+		// 	Theme = (Theme)GD.Load("res://resources/themes/main_theme_cascadia.tres");
+		// }
 
 		//Converts GetFontSizeDefault to int (as it returns the default size)
 		Theme.DefaultFontSize = OptionsVisualsGUI.GetFontSizeDefault().ToInt();

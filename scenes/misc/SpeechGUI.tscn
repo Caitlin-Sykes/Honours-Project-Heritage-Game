@@ -1,6 +1,5 @@
-[gd_scene load_steps=4 format=3 uid="uid://2qs8cdh8nf1k"]
+[gd_scene load_steps=3 format=3 uid="uid://2qs8cdh8nf1k"]
 
-[ext_resource type="Theme" uid="uid://c8ikhuofmlww0" path="res://resources/themes/main_theme_cascadia.tres" id="1_5pplm"]
 [ext_resource type="Script" path="res://scripts/misc/SpeechGUI.cs" id="2_kldss"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_k5am3"]
@@ -12,7 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_5pplm")
+theme_type_variation = &"SpeechPanel"
 script = ExtResource("2_kldss")
 
 [node name="Main_Dialogue" type="Panel" parent="."]

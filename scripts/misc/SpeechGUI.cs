@@ -12,7 +12,7 @@ public partial class SpeechGUI : Control
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		ToggleGUIVisible();
+		// ToggleGUIVisible();
 		AvatarNode = GetNode<TextureRect>("Main_Dialogue/Avatar"); //Gets instance of Avatar
 		NameNode = GetNode<Label>("Main_Dialogue/Name Container/Name_Box/Name_Label");
 		SpeechNode = GetNode<Label>("Main_Dialogue/Speech_Container/Speech"); //Gets instance of Speech
