@@ -9,6 +9,9 @@ public partial class SpeechGUI : Control
 
 	public Label SpeechNode; //node to hold the speech of the speaker
 
+	[Signal]
+	public delegate void DialogueProgressEventHandler(); //handler for progressing scene text
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -51,6 +54,20 @@ public partial class SpeechGUI : Control
 	public void SetAvatarNode(string path)
 	{
 		AvatarNode.Texture = (Texture2D) GD.Load(path);
+	}
+
+	/**
+	* ----------------------------------------------------------------
+	*	GUI Input Handlers
+	* ----------------------------------------------------------------
+	**/
+
+	//BUG: this does not trigger in IntroductionScene for some reason. Works fine in its own scene.
+	public void OnGUIClick(InputEvent @evnt) {
+		if (@evnt is InputEventMouseButton mouse && @evnt.IsPressed()) {
+			GD.Print("CLICKED");
+			EmitSignal("DialogueProgress");
+		}
 	}
 
 
