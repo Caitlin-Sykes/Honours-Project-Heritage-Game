@@ -119,6 +119,8 @@ public partial class Cameras : Node
 
 	//A function to set the current camera
 	private void SetCurrentCamera(Camera3D cam) {
+
+		SetArrowsInvisible(GetViewport().GetCamera3D());
 		cam.Current = true;
 		SetArrowsVisible(cam);
 		dir = ToDirection(cam.Name);

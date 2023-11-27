@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=23 format=3 uid="uid://c8ikhuofmlww0"]
+[gd_resource type="Theme" load_steps=24 format=3 uid="uid://c8ikhuofmlww0"]
 
 [ext_resource type="FontFile" uid="uid://5fctrf5wofwi" path="res://resources/fonts/CascadiaCode-Bold.ttf" id="1_sflrq"]
 
@@ -43,6 +43,9 @@ bg_color = Color(1, 0.415686, 0.34902, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uohru"]
 bg_color = Color(0.509804, 0.184314, 0.176471, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dmibg"]
+bg_color = Color(0.160784, 0.160784, 0.172549, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b5y6x"]
 bg_color = Color(0.113725, 0.180392, 0.239216, 1)
@@ -96,6 +99,8 @@ RedPanel/base_type = &"Panel"
 RedPanel/styles/panel = SubResource("StyleBoxFlat_uohru")
 Speech/base_type = &"Label"
 Speech/font_sizes/font_size = 29
+SpeechPanel/base_type = &"Panel"
+SpeechPanel/styles/panel = SubResource("StyleBoxFlat_dmibg")
 StudentIDLineEdit/base_type = &"LineEdit"
 StudentIDLineEdit/styles/normal = SubResource("StyleBoxFlat_b5y6x")
 StudentIDLineEdit/styles/read_only = SubResource("StyleBoxFlat_nprsr")
