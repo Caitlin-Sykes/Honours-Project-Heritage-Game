@@ -7,7 +7,7 @@ public partial class PlayerData : Node
 	public static PlayerDataStruct Player;
 
 	public static void CreatePlayer(String name, DateTime time, string pronouns, string id, int currentAvatar) {
-		Player = new PlayerDataStruct(name, time, pronouns, id, currentAvatar);
+		Player = new PlayerDataStruct(name.Trim(), time, pronouns, id, currentAvatar);
 	}
 }
 
