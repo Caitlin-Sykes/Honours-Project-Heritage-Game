@@ -146,6 +146,7 @@ vertical_alignment = 1
 [node name="Name_Input" type="LineEdit" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Info"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 1
 theme_type_variation = &"StudentIDLineEdit"
 text = " "
 placeholder_text = "Enter your character name here"
@@ -706,6 +707,8 @@ texture_normal = ExtResource("3_gxco4")
 texture_pressed = ExtResource("4_p87j3")
 ignore_texture_size = true
 
+[connection signal="focus_entered" from="Panel/MarginContainer/Panel/Info/HBoxContainer/Info/Name_Input" to="." method="OnLineEditInputStart"]
+[connection signal="focus_exited" from="Panel/MarginContainer/Panel/Info/HBoxContainer/Info/Name_Input" to="." method="OnLineEditInputEnd"]
 [connection signal="pressed" from="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/Left" to="." method="MoveAvatarLeft"]
 [connection signal="pressed" from="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/Submit" to="." method="OnSubmitPressed"]
 [connection signal="pressed" from="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/Right" to="." method="MoveAvatarRight"]

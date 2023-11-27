@@ -18,6 +18,7 @@ public partial class Player_Intro : Control
 	public PlayerDataStruct player;
 	private Transitions TRANSITION; //Handles screen transitions
 
+	private bool currentlyEditing = false;
 
 
 	public Player_Intro() {
@@ -28,7 +29,7 @@ public partial class Player_Intro : Control
 	public override void _Ready()
 	{
 		TRANSITION = GetNode<Transitions>("Transition");
-		// InitSettings(); //TODO: uncomment this
+		InitSettings();
 
 
 		//Sets random id number
@@ -41,13 +42,12 @@ public partial class Player_Intro : Control
 	//Handles inputs
 	public override void _Input(InputEvent @event) {
 
-		//TODO: lock input when typing in "name" field - so dont spam through charac
-		if (Input.IsKeyPressed(Key.D))
+		if (Input.IsKeyPressed(Key.D) && currentlyEditing == false)
 		{
 			MoveAvatarRight();
 		}
 
-		else if (Input.IsKeyPressed(Key.A))
+		else if (Input.IsKeyPressed(Key.A) && currentlyEditing == false)
 		{
 			MoveAvatarLeft();
 		}
@@ -90,9 +90,24 @@ public partial class Player_Intro : Control
 	private void OnSubmitPressed() {
 		if (name.Text.Length > 0) {
 			player = new PlayerDataStruct(name.Text, DateTime.Now, pronouns.Text, id.Text, currentAvatar);
+			TRANSITION.NextScene("res://scenes/intro_scene/IntroductionScene.tscn");
 		}
 
-		TRANSITION.NextScene("res://scenes/intro_scene/IntroductionScene.tscn");
+		
+	}
+
+	/**
+	* ----------------------------------------------------------------
+	* Currently Editing Handlers
+	* ----------------------------------------------------------------
+	**/
+
+	private void OnLineEditInputStart() {
+		currentlyEditing = true;
+	}
+
+	private void OnLineEditInputEnd() { 
+		currentlyEditing = false;
 	}
 
 	/**
