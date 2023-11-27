@@ -90,7 +90,7 @@ public partial class Player_Intro : Control
 	//TODO: add proper error handling
 	private void OnSubmitPressed() {
 		if (name.Text.Length > 0) {
-			player = new PlayerDataStruct(name.Text, DateTime.Now, pronouns.Text, id.Text, currentAvatar);
+			PlayerData.CreatePlayer(name.Text, DateTime.Now, pronouns.Text, id.Text, currentAvatar);
 			TRANSITION.NextScene("res://scenes/intro_scene/IntroductionScene.tscn");
 		}
 

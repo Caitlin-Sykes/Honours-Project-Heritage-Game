@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cok4snixun3l8"]
+[gd_scene load_steps=12 format=3 uid="uid://cok4snixun3l8"]
 
 [ext_resource type="Script" path="res://scripts/misc/Transitions.cs" id="1_8iq14"]
 [ext_resource type="PackedScene" uid="uid://ui3tvchfafso" path="res://scenes/misc/Cameras.tscn" id="1_76gud"]
@@ -24,18 +24,37 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_32iq4"]
+resource_name = "Wake"
+length = 3.0
+step = 0.02
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.56, 1.28, 2, 2.66, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0.329412, 0.329412, 0.329412, 0.682353), Color(0.0862745, 0.113725, 0.14902, 1), Color(0.282353, 0.345098, 0.423529, 0.611765), Color(0.160784, 0.2, 0.254902, 1), Color(0, 0, 0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nuk71"]
 _data = {
-"Transition_Fade": SubResource("Animation_7a53q")
+"Transition_Fade": SubResource("Animation_7a53q"),
+"Wake": SubResource("Animation_32iq4")
 }
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jlakg"]
 
-[node name="IntroductionScene" type="Node3D"]
+[node name="IntroductionScene" type="Node3D" node_paths=PackedStringArray("dialogue")]
 script = ExtResource("1_wn8em")
+dialogue = NodePath("Settings/SpeechGUI")
 
 [node name="Transition" type="ColorRect" parent="."]
-modulate = Color(1, 1, 1, 0)
+modulate = Color(0.131765, 0.131765, 0.131765, 0.872941)
 top_level = true
 anchors_preset = 15
 anchor_right = 1.0
@@ -65,12 +84,6 @@ layout_mode = 1
 mouse_filter = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Name_Label" parent="Settings/SpeechGUI/Main_Dialogue/Name Container/Name_Box" index="0"]
-text = "Cait"
-
-[node name="Speech" parent="Settings/SpeechGUI/Main_Dialogue/Speech_Container" index="0"]
-text = "Testing one two three i want cake"
-
 [node name="IntroCam" type="Camera3D" parent="."]
 transform = Transform3D(-1, 0, 1.39091e-08, 0, 1, 0, -1.39091e-08, 0, -1, -1.36588, 0.0403199, -1.80732)
 current = true
@@ -98,6 +111,10 @@ visible = false
 
 [node name="Down_Arrow_Parent" parent="Cameras/Controls/UI/North/MarginContainer/Arrows" index="3"]
 visible = false
+
+[connection signal="StartScene" from="." to="." method="FirstDialogue"]
+[connection signal="StartScene" from="." to="Transition" method="PlayWakeAnim"]
+[connection signal="StartScene" from="." to="Settings/SpeechGUI" method="ToggleGUIVisible"]
 
 [editable path="Settings/SpeechGUI"]
 [editable path="Cameras"]
