@@ -65,7 +65,6 @@ public partial class SpeechGUI : Control
 	//BUG: this does not trigger in IntroductionScene for some reason. Works fine in its own scene.
 	public void OnGUIClick(InputEvent @evnt) {
 		if (@evnt is InputEventMouseButton mouse && @evnt.IsPressed()) {
-			GD.Print("CLICKED");
 			EmitSignal("DialogueProgress");
 		}
 	}

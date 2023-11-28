@@ -51,7 +51,26 @@ _data = {
 
 [node name="IntroductionScene" type="Node3D" node_paths=PackedStringArray("dialogue")]
 script = ExtResource("1_wn8em")
-dialogue = NodePath("Settings/SpeechGUI")
+dialogue = NodePath("CanvasLayer/Settings/SpeechGUI")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Settings" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme = ExtResource("2_ycenm")
+script = ExtResource("2_vwuwl")
+
+[node name="SpeechGUI" parent="CanvasLayer/Settings" instance=ExtResource("4_x2lrc")]
+visible = false
+layout_mode = 1
+mouse_filter = 2
 
 [node name="Transition" type="ColorRect" parent="."]
 modulate = Color(0.131765, 0.131765, 0.131765, 0.872941)
@@ -69,30 +88,6 @@ script = ExtResource("1_8iq14")
 libraries = {
 "": SubResource("AnimationLibrary_nuk71")
 }
-
-[node name="Settings" type="Control" parent="."]
-top_level = true
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-mouse_force_pass_scroll_events = false
-theme = ExtResource("2_ycenm")
-script = ExtResource("2_vwuwl")
-
-[node name="SpeechGUI" parent="Settings" instance=ExtResource("4_x2lrc")]
-layout_mode = 1
-mouse_filter = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="Main_Dialogue" parent="Settings/SpeechGUI" index="0"]
-top_level = true
-anchors_preset = -1
-anchor_top = 0.691
-offset_top = 0.231964
 
 [node name="IntroCam" type="Camera3D" parent="."]
 transform = Transform3D(-1, 0, 1.39091e-08, 0, 1, 0, -1.39091e-08, 0, -1, -1.36588, 0.0403199, -1.80732)
@@ -124,7 +119,6 @@ visible = false
 
 [connection signal="StartScene" from="." to="." method="FirstDialogue"]
 [connection signal="StartScene" from="." to="Transition" method="PlayWakeAnim"]
-[connection signal="StartScene" from="." to="Settings/SpeechGUI" method="ToggleGUIVisible"]
 
-[editable path="Settings/SpeechGUI"]
+[editable path="CanvasLayer/Settings/SpeechGUI"]
 [editable path="Cameras"]

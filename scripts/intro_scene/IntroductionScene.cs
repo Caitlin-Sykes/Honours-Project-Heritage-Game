@@ -44,7 +44,7 @@ public partial class IntroductionScene : Node3D
 		dialogue.SetSpeechNode(string.Format("I mean it, {0}! Don't make me come in with the bucket of water!", PlayerData.Player.Name));
 		dialogue.SetAvatarNode(MOTHER_AVATAR);
 
-		await ToSignal(dialogue, "dialogue_progress");
+		await ToSignal(dialogue, "DialogueProgress");
 
 		dialogue.SetNameNode(PlayerData.Player.Name);
 		dialogue.SetSpeechNode("I suppose I better get up..");
