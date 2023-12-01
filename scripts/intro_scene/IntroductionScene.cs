@@ -27,35 +27,34 @@ public partial class IntroductionScene : Node3D
 		dialogue.ToggleGUIVisible(); //toggles the gui visible
 
 		//Sets up first bit of dialogue
-		dialogue.SetNameNode("Mum");
-		dialogue.SetSpeechNode(string.Format("{0}, Wake up! It's getting late and we have stuff to do!", PlayerData.Player.Name));
-		dialogue.SetAvatarNode(MOTHER_AVATAR);
+		// dialogue.SetNameNode("Mum");
+		// dialogue.SetSpeechNode(string.Format("{0}, Wake up! It's getting late and we have stuff to do!", PlayerData.Player.Name));
+		// dialogue.SetAvatarNode(MOTHER_AVATAR);
 
         await ToSignal(dialogue, "DialogueProgress");
 
 
-		dialogue.SetNameNode(PlayerData.Player.Name);
-		dialogue.SetSpeechNode("Nghhhhhh...");
-		dialogue.SetAvatarNode(PLAYER_AVATAR);
+		// dialogue.SetNameNode(PlayerData.Player.Name);
+		// dialogue.SetSpeechNode("Nghhhhhh...");
+		// dialogue.SetAvatarNode(PLAYER_AVATAR);
 
 		await ToSignal(dialogue, "DialogueProgress");
 
-		dialogue.SetNameNode("Mum");
-		dialogue.SetSpeechNode(string.Format("I mean it, {0}! Don't make me come in with the bucket of water!", PlayerData.Player.Name));
-		dialogue.SetAvatarNode(MOTHER_AVATAR);
+		// dialogue.SetNameNode("Mum");
+		// dialogue.SetSpeechNode(string.Format("I mean it, {0}! Don't make me come in with the bucket of water!", PlayerData.Player.Name));
+		// dialogue.SetAvatarNode(MOTHER_AVATAR);
 
 		await ToSignal(dialogue, "DialogueProgress");
 
-		dialogue.SetNameNode(PlayerData.Player.Name);
-		dialogue.SetSpeechNode("I suppose I better get up..");
-		dialogue.SetAvatarNode(PLAYER_AVATAR);
+		// dialogue.SetNameNode(PlayerData.Player.Name);
+		// dialogue.SetSpeechNode("I suppose I better get up..");
+		// dialogue.SetAvatarNode(PLAYER_AVATAR);
 
 		await ToSignal(dialogue, "DialogueProgress");
 
 		dialogue.ToggleGUIVisible();
 
-
-
+		// TODO: fix json parsing
 
 	}
 }
