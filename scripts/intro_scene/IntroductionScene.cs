@@ -10,9 +10,9 @@ public partial class IntroductionScene : Node3D
 	[Export]
 	private SpeechGUI dialogue; //instance of speechGUI
 
-	private String MOTHER_AVATAR = "res://resources/textures/sprites/main_char/12.svg"; //todo: replace
+	private String MOTHER_AVATAR = "res://resources/textures/sprites/mother/" + PlayerData.Player.Avatar + ".svg";
 
-	private String PLAYER_AVATAR = "res://resources/textures/sprites/main_char/" + PlayerData.Player.Avatar + ".svg"; //players default avatar
+	private String PLAYER_AVATAR = "res://resources/textures/sprites/main_char/" + PlayerData.Player.Avatar + ".svg"; //players avatar default avatar
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -26,35 +26,25 @@ public partial class IntroductionScene : Node3D
 		await ToSignal(GetTree().CreateTimer(3), SceneTreeTimer.SignalName.Timeout); //timer so it waits out the animations
 		dialogue.ToggleGUIVisible(); //toggles the gui visible
 
-		//Sets up first bit of dialogue
-		// dialogue.SetNameNode("Mum");
-		// dialogue.SetSpeechNode(string.Format("{0}, Wake up! It's getting late and we have stuff to do!", PlayerData.Player.Name));
-		// dialogue.SetAvatarNode(MOTHER_AVATAR);
 
-        await ToSignal(dialogue, "DialogueProgress");
+		//If not null then iterate through the dialogue
+		if (JsonHandler.Speech.IntroductionScene != null) {
 
+			foreach (var Speech in JsonHandler.Speech.IntroductionScene)
+			{
 
-		// dialogue.SetNameNode(PlayerData.Player.Name);
-		// dialogue.SetSpeechNode("Nghhhhhh...");
-		// dialogue.SetAvatarNode(PLAYER_AVATAR);
+				dialogue.SetNameNode(string.Format(Speech.Speaker, PlayerData.Player.Name));
+				dialogue.SetSpeechNode(string.Format(Speech.Dialogue, PlayerData.Player.Name));
+				dialogue.SetAvatarNode(string.Format(Speech.Avatar, PlayerData.Player.Avatar));
+				await ToSignal(dialogue, "DialogueProgress");
+			}
+		}
 
-		await ToSignal(dialogue, "DialogueProgress");
-
-		// dialogue.SetNameNode("Mum");
-		// dialogue.SetSpeechNode(string.Format("I mean it, {0}! Don't make me come in with the bucket of water!", PlayerData.Player.Name));
-		// dialogue.SetAvatarNode(MOTHER_AVATAR);
-
-		await ToSignal(dialogue, "DialogueProgress");
-
-		// dialogue.SetNameNode(PlayerData.Player.Name);
-		// dialogue.SetSpeechNode("I suppose I better get up..");
-		// dialogue.SetAvatarNode(PLAYER_AVATAR);
-
-		await ToSignal(dialogue, "DialogueProgress");
+		else {
+			throw new InvalidOperationException("Error: something has gone wrong with parsing the dialogue.json");
+		}
+		
 
 		dialogue.ToggleGUIVisible();
-
-		// TODO: fix json parsing
-
 	}
 }

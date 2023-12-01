@@ -1,33 +1,61 @@
 {
-   "Introduction_Scene": [
+  "Introduction_Scene": [
+    {
+      "Id": "1",
+      "Speaker": "Mum",
+      "Dialogue": "{0}, wake up! It's getting late and we have stuff to do!",
+      "Avatar": "res://resources/textures/sprites/mother/{0}.svg"
+    },
 
-      {
-         "Id": "1",
-         "Speaker": "Mum",
-         "Dialogue": "{0}, wake up! It's getting late and we have stuff to do!",
-         "Avatar": "res://resources/textures/sprites/mother/{0}.svg"
-      },
+    {
+      "Id": "2",
+      "Speaker": "{0}",
+      "Dialogue": "Nghhhhhh...",
+      "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
+    },
 
-      {
-        "Id": "2",
-        "Speaker": "{0}",
-        "Dialogue": "Nghhhhhh...",
-        "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
-      },
+    {
+      "Id": "3",
+      "Speaker": "Mum",
+      "Dialogue": "I mean it, {0}! Don't make me come in with the bucket of water!",
+      "Avatar": "res://resources/textures/sprites/mother/{0}.svg"
+    },
 
-      {
-         "Id": "3",
-         "Speaker": "Mum",
-         "Dialogue": "I mean it, {0}! Don't make me come in with the bucket of water!",
-         "Avatar": "res://resources/textures/sprites/mother/{0}.svg"
-      },
+    {
+      "Id": "4",
+      "Speaker": "{0}",
+      "Dialogue": "I suppose I better get up..",
+      "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
+    }
+  ],
 
-      {
-        "Id": "4",
-        "Speaker": "{0}",
-        "Dialogue": "I suppose I better get up..",
-        "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
-      }
+  "Debug_Scene": [
+    {
+      "Id": "1",
+      "Speaker": "The Author",
+      "Dialogue": "Woah this is debug code",
+      "Avatar": "res://resources/textures/sprites/mother/{0}.svg"
+    },
 
-   ]
+    {
+      "Id": "2",
+      "Speaker": "Adam",
+      "Dialogue": "Idea bouncer offer extraordinaire",
+      "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
+    },
+
+    {
+      "Id": "3",
+      "Speaker": "A Headache",
+      "Dialogue": "Cait gets a lot of them",
+      "Avatar": "res://resources/textures/sprites/mother/{0}.svg"
+    },
+
+    {
+      "Id": "4",
+      "Speaker": "{0}",
+      "Dialogue": "I suppose I better get up..",
+      "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
+    }
+  ]
 }

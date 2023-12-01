@@ -34,6 +34,8 @@ public partial class MainMenu : Control
 			OptionsFileHandler.InitConfigFile();
 
 			InitSettings();		
+	
+			JsonHandler.PreLoadDialogue();
 	}
 
 	// Init scene settings
