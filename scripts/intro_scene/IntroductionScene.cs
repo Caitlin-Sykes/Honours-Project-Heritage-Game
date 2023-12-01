@@ -10,10 +10,6 @@ public partial class IntroductionScene : Node3D
 	[Export]
 	private SpeechGUI dialogue; //instance of speechGUI
 
-	private String MOTHER_AVATAR = "res://resources/textures/sprites/mother/" + PlayerData.Player.Avatar + ".svg";
-
-	private String PLAYER_AVATAR = "res://resources/textures/sprites/main_char/" + PlayerData.Player.Avatar + ".svg"; //players avatar default avatar
-
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
