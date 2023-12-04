@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cok4snixun3l8"]
+[gd_scene load_steps=14 format=3 uid="uid://cok4snixun3l8"]
 
 [ext_resource type="Script" path="res://scripts/misc/Transitions.cs" id="1_8iq14"]
 [ext_resource type="PackedScene" uid="uid://ui3tvchfafso" path="res://scenes/misc/Cameras.tscn" id="1_76gud"]
@@ -8,6 +8,7 @@
 [ext_resource type="Theme" uid="uid://c8ikhuofmlww0" path="res://resources/themes/main_theme_cascadia.tres" id="2_ycenm"]
 [ext_resource type="Texture2D" uid="uid://cad83160m5qo2" path="res://resources/textures/gui/OnItemSelect.png" id="4_fj71e"]
 [ext_resource type="PackedScene" uid="uid://2qs8cdh8nf1k" path="res://scenes/misc/SpeechGUI.tscn" id="4_x2lrc"]
+[ext_resource type="PackedScene" uid="uid://b6wkhglgiynah" path="res://resources/models/gui/circle_select.blend" id="9_0tx7x"]
 
 [sub_resource type="Animation" id="Animation_7a53q"]
 resource_name = "Transition_Fade_In"
@@ -69,7 +70,6 @@ theme = ExtResource("2_ycenm")
 script = ExtResource("2_vwuwl")
 
 [node name="OnItemSelect" type="TextureButton" parent="CanvasLayer/Settings"]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -180,6 +180,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Up_Arrow" parent="Cameras/Controls/UI/Down/MarginContainer/Arrows/Down_Arrow_Parent/CollisionShape3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="circle_select" parent="." instance=ExtResource("9_0tx7x")]
+transform = Transform3D(0.0258819, 0, -0.0965926, 0, 0.1, 0, 0.0965926, 0, 0.0258819, 0, 0, 0)
 
 [connection signal="StartScene" from="." to="." method="FirstDialogue"]
 [connection signal="StartScene" from="." to="Transition" method="PlayWakeAnim"]
