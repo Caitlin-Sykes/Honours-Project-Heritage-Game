@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmf1t0hpgtcmo"]
+
+[ext_resource type="Script" path="res://scripts/misc/ButtonOverwrite.cs" id="1_jk4je"]
+[ext_resource type="AudioStream" uid="uid://e8bg7v1buqm" path="res://resources/audio/gui/ClickButton.mp3" id="2_nxjiu"]
+
+[node name="AudioClickButton" type="TextureButton"]
+offset_right = 8.0
+offset_bottom = 8.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_jk4je")
+
+[node name="ClickButton" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_nxjiu")

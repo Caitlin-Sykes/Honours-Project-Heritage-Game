@@ -30,9 +30,7 @@ public partial class OptionsVisualsGUI : Control
 		InitSettings();
 	}
 
-	/**
-	* Init Settings for Scene
-	**/
+	// Init Settings for Scene
 	private void InitSettings() {
 		//If GetFontDefault returns Dyslexie, sets theme to dyslexie
 			//Else sets Theme to cascadia
@@ -61,9 +59,7 @@ public partial class OptionsVisualsGUI : Control
 	*----------------------------------------------------------------
 	**/
 
-	/**
-	* Selects the default options
-	**/
+	// Selects the default options
 	private void SetFontDefault() {
 		//Sets default setting to Dyslexie if CURRENT_FONT is Dyslexie
 		//Otherwise sets it to Cascadia
@@ -87,9 +83,7 @@ public partial class OptionsVisualsGUI : Control
 		return "Cascadia";
 	}
 
-	/**
-	* Selects the default options
-	**/
+	// Selects the default options
 	public void SetFontSizeDefault() {
 		//Sets default setting to Dyslexie if CURRENT_FONT is Dyslexie
 		//Otherwise sets it to Cascadia
@@ -125,10 +119,7 @@ public partial class OptionsVisualsGUI : Control
 		return "34";
 	}
 
-
-	/**
-	* Selects the default options
-	**/
+	// Selects the default options
 	public void SetFullScreenDefault() {
 		//Sets default setting to False if FULL_SCREEN is false
 		//Otherwise sets it to true
@@ -156,18 +147,15 @@ public partial class OptionsVisualsGUI : Control
 	*----------------------------------------------------------------
 	**/
 	
-	/**
-	* A function to control the button "Back" on the Options
-	* Sends you back to the Options menu
-	**/
+	
+	// A function to control the button "Back" on the Options
+	// Sends you back to the Options menu
 	private void OnBackPressed()
 	{ 
 		TRANSITION.NextScene("res://scenes/menus/OptionsMenu.tscn");
 	}
 
-	/**
-	* A function to control the font toggle
-	**/
+	// A function to control the font toggle
 	private void OnFontsItemSelected(int index) {
 		if (index == 0) {
 			OptionsFileHandler.ReplaceInFile("DYSLEXIE", "CASCADIA");
@@ -180,9 +168,8 @@ public partial class OptionsVisualsGUI : Control
 		}	
 	}
 
-	/**
-	* A function to control the font toggle
-	**/
+	
+	// A function to control the font toggle
 	private void OnFontSizeItemSelected(int index) {
 		ReplacingSize rs = ReplacingSize.Default;
 		
@@ -225,9 +212,7 @@ public partial class OptionsVisualsGUI : Control
 		}
 	}
 
-	/**
-	* A function to control the full screen
-	**/
+	// A function to control the full screen
 	private void OnFullScreenSelected(int index) {
 
 		//Depending on what screen is in settings, replaces old config with new config

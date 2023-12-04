@@ -6,45 +6,41 @@ public partial class MainMenu : Control
 {
 
 	[Export]
-    public Sprite2D intersexInclusive { get; set; } //IntersexInclusive logo
+    public TextureRect intersexInclusive { get; set; } //IntersexInclusive logo
 	
 	[Export]
-    public Sprite2D philly { get; set; } //Philly2017 logo
+    public TextureRect philly { get; set; } //Philly2017 logo
 
 	[Export]
-    public Sprite2D originalPride { get; set; } //originalPride logo
+    public TextureRect originalPride { get; set; } //originalPride logo
 
 	[Export]
-    public Sprite2D prideProgress { get; set; } //prideProgress logo
+    public TextureRect prideProgress { get; set; } //prideProgress logo
 
 	[Export]
-    public Sprite2D prideSeventyNine { get; set; } //pride1979 logo
+    public TextureRect prideSeventyNine { get; set; } //pride1979 logo
 
-	private Transitions TRANSITION;
-
-	
-	/**
-	* On Node Load
-	*/
+	private Transitions TRANSITION; //Handles screen transitions
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 			TRANSITION = GetNode<Transitions>("Transition");
 
-			//Logo 
-			DecideMainMenuLogo();
+		DisplayServer.WindowSetMode(DisplayServer.WindowMode.Maximized);
+
+		//Logo 
+		DecideMainMenuLogo();
 
 			//Inits config file
 			OptionsFileHandler.InitConfigFile();
 
 			InitSettings();		
+	
+			JsonHandler.PreLoadDialogue();
 	}
 
-	/**
-	* Init Settings for Scene
-	**/
-
+	// Init scene settings
 	private void InitSettings() {
 		//If GetFontDefault returns Dyslexie, sets theme to dyslexie
 			//Else sets Theme to cascadia
@@ -72,10 +68,7 @@ public partial class MainMenu : Control
 	* ----------------------------------------------------------------
 	**/
 
-	/**
-	* Decides the logo for the main menu
-	**/
-
+	// Decides the logo for the main menu
 	private void DecideMainMenuLogo() {
 		Random rdm = new Random();
 		int logo = rdm.Next(5); //0,1,2,3,4
@@ -109,40 +102,35 @@ public partial class MainMenu : Control
 		}
 	}
 
-	/** ----------------------------------------------------------------
+	/** 
+	* ----------------------------------------------------------------
 	*	Start of Menu Buttons
-	*	----------------------------------------------------------------
+	* ----------------------------------------------------------------
 	**/   
 
 
-	/**
-	* A function to control the button "Start" on the main menu
-	**/
+	
+	// A function to control the button "Start" on the main menu
 	private void OnStartPressed()
 	{ 
 		TRANSITION.NextScene("res://scenes/menus/Disclaimers.tscn");
 
 	}
 
-	/**
-	* A function to control the button "Options" on the main menu
-	**/
+	// A function to control the button "Options" on the main menu
 	private void OnOptionsPressed()
 	{
 		TRANSITION.NextScene("res://scenes/menus/OptionsMenu.tscn");
 	}
 
-	/**
-	* A function to control the button "Sources" on the main menu
-	**/
+	
+	// A function to control the button "Sources" on the main menu
 	private void OnSourcesPressed()
 	{
 		// TRANSITION.NextScene
 	}
 
-	/**
-	* A function to control the button "Exit" on the main menu
-	**/
+	// A function to control the button "Exit" on the main menu
 	private void OnExitPressed()
 	{
 		GetTree().Quit();

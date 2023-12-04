@@ -3,7 +3,7 @@ using System;
 
 public partial class OptionsAudioGUI : Control
 {
-	private Transitions TRANSITION;
+	private Transitions TRANSITION; //Controls screen transitions
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -13,9 +13,7 @@ public partial class OptionsAudioGUI : Control
 		InitSettings();
 	}
 
-	/**
-	* Init Settings for Scene
-	**/
+	// Init Settings for Scene
 	private void InitSettings() {
 		//If GetFontDefault returns Dyslexie, sets theme to dyslexie
 			//Else sets Theme to cascadia
@@ -39,15 +37,13 @@ public partial class OptionsAudioGUI : Control
 
 
 	/**
-	*----------------------------------------------------------------
+	* ----------------------------------------------------------------
 	* Start of Menu Buttons
-	*----------------------------------------------------------------
+	* ----------------------------------------------------------------
 	**/
 	
-	/**
-	* A function to control the button "Back" on the Options
-	* Sends you back to the options main menu
-	**/
+	// A function to control the button "Back" on the Options
+	// Sends you back to the options main menu
 	private void OnBackPressed()
 	{ 
 		TRANSITION.NextScene("res://scenes/menus/OptionsMenu.tscn");

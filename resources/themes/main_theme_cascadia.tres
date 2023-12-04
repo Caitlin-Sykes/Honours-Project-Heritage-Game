@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=18 format=3 uid="uid://c8ikhuofmlww0"]
+[gd_resource type="Theme" load_steps=24 format=3 uid="uid://c8ikhuofmlww0"]
 
 [ext_resource type="FontFile" uid="uid://5fctrf5wofwi" path="res://resources/fonts/CascadiaCode-Bold.ttf" id="1_sflrq"]
 
@@ -19,6 +19,9 @@ bg_color = Color(0.364706, 0.509804, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6ppwb"]
 bg_color = Color(0.65098, 0.890196, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_71ybw"]
+bg_color = Color(0, 0.243137, 0.298039, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w6rnp"]
 bg_color = Color(1, 0.603922, 0.215686, 1)
@@ -41,6 +44,21 @@ bg_color = Color(1, 0.415686, 0.34902, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uohru"]
 bg_color = Color(0.509804, 0.184314, 0.176471, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dmibg"]
+bg_color = Color(0, 0.184314, 0.227451, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b5y6x"]
+bg_color = Color(0.113725, 0.180392, 0.239216, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nprsr"]
+bg_color = Color(0.113725, 0.180392, 0.239216, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0lxmq"]
+bg_color = Color(0.113725, 0.180392, 0.239216, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2fi3b"]
+bg_color = Color(0.588235, 0.572549, 0.776471, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ak360"]
 bg_color = Color(0.996078, 0.807843, 0, 1)
 
@@ -53,8 +71,6 @@ bg_color = Color(1, 0.866667, 0.458824, 1)
 [resource]
 default_font = ExtResource("1_sflrq")
 default_font_size = 26
-Button/constants/h_separation = 45
-GreenButton/base_type = &"Button"
 GreenButton/constants/h_separation = 2
 GreenButton/constants/icon_max_width = 340
 GreenButton/font_sizes/font_size = 39
@@ -62,17 +78,18 @@ GreenButton/styles/focus = null
 GreenButton/styles/hover = SubResource("StyleBoxFlat_4cpy2")
 GreenButton/styles/normal = SubResource("StyleBoxFlat_cbh2r")
 GreenButton/styles/pressed = SubResource("StyleBoxFlat_id5vk")
-GreenButtonMenu/base_type = &"Button"
 GreenButtonMenu/styles/hover = SubResource("StyleBoxFlat_6llsc")
 GreenButtonMenu/styles/normal = SubResource("StyleBoxFlat_m304p")
 GreenButtonMenu/styles/pressed = SubResource("StyleBoxFlat_6ppwb")
-OrangeButton/base_type = &"Button"
+IDCardLabel/base_type = &"Label"
+IDCardLabel/font_sizes/font_size = 32
+Name_Panel/base_type = &"Panel"
+Name_Panel/styles/panel = SubResource("StyleBoxFlat_71ybw")
 OrangeButton/constants/h_separation = 2
 OrangeButton/constants/icon_max_width = 340
 OrangeButton/styles/hover = SubResource("StyleBoxFlat_w6rnp")
 OrangeButton/styles/normal = SubResource("StyleBoxFlat_ktosf")
 OrangeButton/styles/pressed = SubResource("StyleBoxFlat_yl5gp")
-RedButton/base_type = &"Button"
 RedButton/constants/h_separation = 2
 RedButton/constants/icon_max_width = 340
 RedButton/styles/hover = SubResource("StyleBoxFlat_yo1w3")
@@ -80,7 +97,17 @@ RedButton/styles/normal = SubResource("StyleBoxFlat_cxjym")
 RedButton/styles/pressed = SubResource("StyleBoxFlat_nra4v")
 RedPanel/base_type = &"Panel"
 RedPanel/styles/panel = SubResource("StyleBoxFlat_uohru")
-YellowButton/base_type = &"Button"
+Speech/base_type = &"Label"
+Speech/font_sizes/font_size = 29
+SpeechPanel/base_type = &"Panel"
+SpeechPanel/styles/panel = SubResource("StyleBoxFlat_dmibg")
+StudentIDLineEdit/base_type = &"LineEdit"
+StudentIDLineEdit/styles/normal = SubResource("StyleBoxFlat_b5y6x")
+StudentIDLineEdit/styles/read_only = SubResource("StyleBoxFlat_nprsr")
+StudentIDMulti/base_type = &"OptionButton"
+StudentIDMulti/styles/normal = SubResource("StyleBoxFlat_0lxmq")
+StudentIDPanel/base_type = &"Panel"
+StudentIDPanel/styles/panel = SubResource("StyleBoxFlat_2fi3b")
 YellowButton/constants/h_separation = 2
 YellowButton/constants/icon_max_width = 340
 YellowButton/styles/hover = SubResource("StyleBoxFlat_ak360")

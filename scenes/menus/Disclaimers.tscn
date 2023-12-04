@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bslgfj78g58sn"]
+[gd_scene load_steps=7 format=3 uid="uid://bslgfj78g58sn"]
 
 [ext_resource type="Theme" uid="uid://c8ikhuofmlww0" path="res://resources/themes/main_theme_cascadia.tres" id="1_pqhet"]
 [ext_resource type="Script" path="res://scripts/menus/DisclaimersMenu.cs" id="2_if62d"]
 [ext_resource type="Script" path="res://scripts/misc/Transitions.cs" id="3_muub8"]
+[ext_resource type="PackedScene" uid="uid://c3yc0s2xdcxsu" path="res://scenes/misc/AudioButtons.tscn" id="4_01slw"]
 
 [sub_resource type="Animation" id="Animation_7a53q"]
 resource_name = "Transition_Fade_In"
@@ -88,6 +89,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 size_flags_stretch_ratio = 5.0
+theme_override_font_sizes/font_size = 41
 text = "DISCLAIMER
 
 Though attempted to be handled in respectful manner, this game 
@@ -103,31 +105,31 @@ itself, under both \"sources\" in the menu, and within the file \"sources.md\",
 available in the game root (where you ran the exe)."
 horizontal_alignment = 1
 
-[node name="Continue" type="Button" parent="Panel/MarginContainer/BoxContainer/Label"]
+[node name="Continue" parent="Panel/MarginContainer/BoxContainer/Label" instance=ExtResource("4_01slw")]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = -96.0
+offset_right = 0.0
 offset_bottom = -49.0
 grow_horizontal = 2
 grow_vertical = 0
-size_flags_horizontal = 3
-size_flags_vertical = 8
 theme_type_variation = &"GreenButton"
 text = "Continue"
 
 [node name="Shadow" type="Panel" parent="Panel/MarginContainer/BoxContainer/Label/Continue"]
 show_behind_parent = true
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 12
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 47.0
-offset_bottom = 25.0
+offset_bottom = 24.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 mouse_filter = 2
 
 [connection signal="pressed" from="Panel/MarginContainer/BoxContainer/Label/Continue" to="." method="OnContinuePressed"]

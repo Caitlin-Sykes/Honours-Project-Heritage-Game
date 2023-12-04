@@ -1,17 +1,155 @@
-[gd_scene load_steps=2 format=3 uid="uid://btmuto64fpkoq"]
+[gd_scene load_steps=23 format=3 uid="uid://btmuto64fpkoq"]
 
 [ext_resource type="PackedScene" uid="uid://ckh7k06daoqx2" path="res://resources/models/mainRoom/mainRoom.blend" id="1_dqy33"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gf8s7"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3o7gw"]
+transparency = 2
+alpha_scissor_threshold = 1.0
+alpha_antialiasing_mode = 2
+alpha_antialiasing_edge = 0.3
+albedo_color = Color(0.760784, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jyou1"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lwgp0"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ua0th"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_54xh3"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4ouxg"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1x32i"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iqn8m"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wfrhf"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b0dum"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ny0v"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2oynq"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fs31o"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_85ex6"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d48su"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gyawr"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2qtrb"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8vyix"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1p2lx"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tnefd"]
+albedo_color = Color(0, 0, 0, 1)
+
 [node name="MainRoom" instance=ExtResource("1_dqy33")]
 
-[node name="OmniLight3D" type="OmniLight3D" parent="." index="0"]
-light_volumetric_fog_energy = 0.0
+[node name="OmniLight3D" type="OmniLight3D" parent="Room" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0416205, 0.0883697, 0.0287206)
+light_energy = 4.822
+light_indirect_energy = 16.0
 light_size = 1.0
 light_specular = 0.0
-light_bake_mode = 1
-shadow_blur = 6.12
+light_cull_mask = 4294950907
+shadow_enabled = true
+shadow_opacity = 0.8
+shadow_blur = 3.453
 distance_fade_begin = 4089.85
 distance_fade_length = 20.45
-omni_range = 4.467
-omni_attenuation = 0.757856
-omni_shadow_mode = 0
+omni_attenuation = 0.674348
+
+[node name="skirting" parent="." index="4"]
+surface_material_override/1 = SubResource("StandardMaterial3D_gf8s7")
+
+[node name="glass window" parent="." index="5"]
+surface_material_override/0 = SubResource("StandardMaterial3D_3o7gw")
+
+[node name="light" parent="." index="6"]
+surface_material_override/2 = SubResource("StandardMaterial3D_jyou1")
+
+[node name="drawer" parent="." index="8"]
+surface_material_override/2 = SubResource("StandardMaterial3D_lwgp0")
+
+[node name="rucksack" parent="." index="9"]
+surface_material_override/1 = SubResource("StandardMaterial3D_ua0th")
+
+[node name="curtains" parent="." index="10"]
+surface_material_override/1 = SubResource("StandardMaterial3D_54xh3")
+
+[node name="curtains_001" parent="." index="11"]
+surface_material_override/1 = SubResource("StandardMaterial3D_54xh3")
+
+[node name="curtains_002" parent="." index="12"]
+surface_material_override/1 = SubResource("StandardMaterial3D_54xh3")
+
+[node name="curtains_003" parent="." index="13"]
+surface_material_override/1 = SubResource("StandardMaterial3D_54xh3")
+
+[node name="curtainpoles" parent="." index="14"]
+surface_material_override/1 = SubResource("StandardMaterial3D_4ouxg")
+
+[node name="border" parent="." index="17"]
+surface_material_override/1 = SubResource("StandardMaterial3D_1x32i")
+
+[node name="bookshelf" parent="." index="18"]
+surface_material_override/1 = SubResource("StandardMaterial3D_iqn8m")
+
+[node name="books" parent="." index="19"]
+surface_material_override/6 = SubResource("StandardMaterial3D_wfrhf")
+
+[node name="picture frame" parent="." index="20"]
+surface_material_override/2 = SubResource("StandardMaterial3D_b0dum")
+
+[node name="chair" parent="." index="21"]
+surface_material_override/5 = SubResource("StandardMaterial3D_7ny0v")
+
+[node name="desktop" parent="." index="22"]
+surface_material_override/1 = SubResource("StandardMaterial3D_2oynq")
+
+[node name="code_book" parent="." index="23"]
+surface_material_override/1 = SubResource("StandardMaterial3D_fs31o")
+surface_material_override/3 = SubResource("StandardMaterial3D_85ex6")
+surface_material_override/5 = SubResource("StandardMaterial3D_d48su")
+
+[node name="Cube_003" parent="." index="26"]
+surface_material_override/2 = SubResource("StandardMaterial3D_gyawr")
+
+[node name="bedrest" parent="." index="27"]
+surface_material_override/1 = SubResource("StandardMaterial3D_2qtrb")
+
+[node name="pillow" parent="." index="28"]
+surface_material_override/1 = SubResource("StandardMaterial3D_8vyix")
+
+[node name="bed_cover" parent="." index="29"]
+surface_material_override/1 = SubResource("StandardMaterial3D_1p2lx")
+
+[node name="bin" parent="." index="30"]
+transform = Transform3D(0.785871, 0, 0, 0, 0.937706, 0, 0, 0, 0.867105, 1.8708, 0.125424, -1.01748)
+surface_material_override/1 = SubResource("StandardMaterial3D_tnefd")

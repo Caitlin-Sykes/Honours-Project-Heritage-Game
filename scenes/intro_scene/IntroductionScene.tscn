@@ -1,14 +1,191 @@
-[gd_scene load_steps=3 format=3 uid="uid://cok4snixun3l8"]
+[gd_scene load_steps=14 format=3 uid="uid://cok4snixun3l8"]
 
+[ext_resource type="Script" path="res://scripts/misc/Transitions.cs" id="1_8iq14"]
+[ext_resource type="PackedScene" uid="uid://ui3tvchfafso" path="res://scenes/misc/Cameras.tscn" id="1_76gud"]
 [ext_resource type="PackedScene" uid="uid://btmuto64fpkoq" path="res://scenes/intro_scene/main_room.tscn" id="1_p57ao"]
-[ext_resource type="PackedScene" uid="uid://ui3tvchfafso" path="res://scenes/misc/Cameras.tscn" id="2_mqcij"]
+[ext_resource type="Script" path="res://scripts/intro_scene/IntroductionScene.cs" id="1_wn8em"]
+[ext_resource type="Script" path="res://scripts/misc/Settings.cs" id="2_vwuwl"]
+[ext_resource type="Theme" uid="uid://c8ikhuofmlww0" path="res://resources/themes/main_theme_cascadia.tres" id="2_ycenm"]
+[ext_resource type="Texture2D" uid="uid://cad83160m5qo2" path="res://resources/textures/gui/OnItemSelect.png" id="4_fj71e"]
+[ext_resource type="PackedScene" uid="uid://2qs8cdh8nf1k" path="res://scenes/misc/SpeechGUI.tscn" id="4_x2lrc"]
+[ext_resource type="PackedScene" uid="uid://b6wkhglgiynah" path="res://resources/models/gui/circle_select.blend" id="9_0tx7x"]
 
-[node name="IntroductionScene" type="Node3D"]
+[sub_resource type="Animation" id="Animation_7a53q"]
+resource_name = "Transition_Fade_In"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
 
-[node name="mainRoom" parent="." instance=ExtResource("1_p57ao")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+[sub_resource type="Animation" id="Animation_32iq4"]
+resource_name = "Wake"
+length = 3.0
+step = 0.02
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.56, 1.28, 2, 2.66, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0.329412, 0.329412, 0.329412, 0.682353), Color(0.0862745, 0.113725, 0.14902, 1), Color(0.282353, 0.345098, 0.423529, 0.611765), Color(0.160784, 0.2, 0.254902, 1), Color(0, 0, 0, 0)]
+}
 
-[node name="Cameras" parent="." instance=ExtResource("2_mqcij")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2)
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nuk71"]
+_data = {
+"Transition_Fade": SubResource("Animation_7a53q"),
+"Wake": SubResource("Animation_32iq4")
+}
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jlakg"]
+
+[node name="IntroductionScene" type="Node3D" node_paths=PackedStringArray("dialogue")]
+script = ExtResource("1_wn8em")
+dialogue = NodePath("CanvasLayer/Settings/SpeechGUI")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Settings" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme = ExtResource("2_ycenm")
+script = ExtResource("2_vwuwl")
+
+[node name="OnItemSelect" type="TextureButton" parent="CanvasLayer/Settings"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 100.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("4_fj71e")
+
+[node name="SpeechGUI" parent="CanvasLayer/Settings" instance=ExtResource("4_x2lrc")]
+visible = false
+layout_mode = 1
+mouse_filter = 2
+
+[node name="Transition" type="ColorRect" parent="."]
+modulate = Color(0.131765, 0.131765, 0.131765, 0.872941)
+top_level = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("1_8iq14")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Transition"]
+libraries = {
+"": SubResource("AnimationLibrary_nuk71")
+}
+
+[node name="IntroCam" type="Camera3D" parent="."]
+transform = Transform3D(-1, 0, 1.39091e-08, 0, 1, 0, -1.39091e-08, 0, -1, -1.36588, 0.0403199, -1.80732)
+current = true
+
+[node name="MainRoom" parent="." instance=ExtResource("1_p57ao")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="Cameras" parent="." instance=ExtResource("1_76gud")]
+
+[node name="UI" parent="Cameras/Controls" index="0"]
+theme_override_styles/panel = SubResource("StyleBoxEmpty_jlakg")
+
+[node name="North" parent="Cameras/Controls/UI" index="0"]
+visible = false
+current = false
+
+[node name="Right_Arrow_Parent" parent="Cameras/Controls/UI/North/MarginContainer/Arrows" index="0"]
+visible = false
+
+[node name="Right_Arrow" parent="Cameras/Controls/UI/North/MarginContainer/Arrows/Right_Arrow_Parent/CollisionShape3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Left_Arrow_Parent" parent="Cameras/Controls/UI/North/MarginContainer/Arrows" index="1"]
+visible = false
+
+[node name="Left_Arrow" parent="Cameras/Controls/UI/North/MarginContainer/Arrows/Left_Arrow_Parent/CollisionShape3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Up_Arrow_Parent" parent="Cameras/Controls/UI/North/MarginContainer/Arrows" index="2"]
+visible = false
+
+[node name="Up_Arrow" parent="Cameras/Controls/UI/North/MarginContainer/Arrows/Up_Arrow_Parent/CollisionShape3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Down_Arrow_Parent" parent="Cameras/Controls/UI/North/MarginContainer/Arrows" index="3"]
+visible = false
+
+[node name="Down_Arrow" parent="Cameras/Controls/UI/North/MarginContainer/Arrows/Down_Arrow_Parent/CollisionShape3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Left_Arrow" parent="Cameras/Controls/UI/South/MarginContainer/Arrows/Right_Arrow_Parent/CollisionShape3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Right_Arrow" parent="Cameras/Controls/UI/South/MarginContainer/Arrows/Left_Arrow_Parent/CollisionShape3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Up_Arrow" parent="Cameras/Controls/UI/South/MarginContainer/Arrows/Up_Arrow_Parent/CollisionShape3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Up_Arrow" parent="Cameras/Controls/UI/South/MarginContainer/Arrows/Down_Arrow_Parent/CollisionShape3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Up_Arrow" parent="Cameras/Controls/UI/East/MarginContainer/Arrows/Down_Arrow_Parent/CollisionShape3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Right_Arrow" parent="Cameras/Controls/UI/West/MarginContainer/Arrows/Right_Arrow_Parent/CollisionShape3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Up_Arrow" parent="Cameras/Controls/UI/West/MarginContainer/Arrows/Down_Arrow_Parent/CollisionShape3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Up_Arrow" parent="Cameras/Controls/UI/Up/MarginContainer/Arrows/Up_Arrow_Parent/CollisionShape3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Down_Arrow" parent="Cameras/Controls/UI/Up/MarginContainer/Arrows/Down_Arrow_Parent/CollisionShape3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Down_Arrow" parent="Cameras/Controls/UI/Down/MarginContainer/Arrows/Up_Arrow_Parent/CollisionShape3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Up_Arrow" parent="Cameras/Controls/UI/Down/MarginContainer/Arrows/Down_Arrow_Parent/CollisionShape3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="circle_select" parent="." instance=ExtResource("9_0tx7x")]
+transform = Transform3D(0.0258819, 0, -0.0965926, 0, 0.1, 0, 0.0965926, 0, 0.0258819, 0, 0, 0)
+
+[connection signal="StartScene" from="." to="." method="FirstDialogue"]
+[connection signal="StartScene" from="." to="Transition" method="PlayWakeAnim"]
+
+[editable path="CanvasLayer/Settings/SpeechGUI"]
 [editable path="Cameras"]

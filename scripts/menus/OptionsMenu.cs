@@ -1,9 +1,10 @@
 using Godot;
 using System;
+using System.Runtime.CompilerServices;
 
 public partial class OptionsMenu : Control
 {
-	private Transitions TRANSITION;
+	private Transitions TRANSITION; // Controls screen transitions
 
 
 	// Called when the node enters the scene tree for the first time.
@@ -29,30 +30,32 @@ public partial class OptionsMenu : Control
 	*----------------------------------------------------------------
 	**/
 	
-	/**
-	* A function to control the button "Back" on the Options
-	* Sends you back to the main menu
-	**/
+	
+	// A function to control the button "Back" on the Options
+	// Sends you back to the main menu
 	private void OnBackPressed()
 	{ 
 		TRANSITION.NextScene("res://scenes/menus/MainMenu.tscn");
 	}
 
-	/**
-	* A function to control the button "Visuals" on the Options
-	* Sends you to the visual settings screen
-	**/
+	// A function to control the button "Visuals" on the Options
+	// Sends you to the visual settings screen
 	private void OnVisualPressed()
 	{ 
 		TRANSITION.NextScene("res://scenes/menus/OptionsVisuals.tscn");
 	}
 
-	/**
-	* A function to control the button "Options" on the Options
-	* Sends you to the audio settings screen
-	**/
+	
+	// A function to control the button "Options" on the Options
+	// Sends you to the audio settings screen
 	private void OnAudioPressed()
 	{ 
 		TRANSITION.NextScene("res://scenes/menus/OptionsAudio.tscn");
+	}
+
+	//A function to control the button "Credits" on the Options
+	//Sends you to the credits screen
+	private void OnCreditsPressed() {
+		throw new NotImplementedException();
 	}
 }
