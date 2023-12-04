@@ -26,6 +26,7 @@ public partial class IntroductionScene : Node3D
 		//If not null then iterate through the dialogue
 		if (JsonHandler.Speech.IntroductionScene != null) {
 
+			//For every bit of speech in the scene
 			foreach (var Speech in JsonHandler.Speech.IntroductionScene)
 			{
 
@@ -41,6 +42,6 @@ public partial class IntroductionScene : Node3D
 		}
 		
 
-		dialogue.ToggleGUIVisible();
+		dialogue.ToggleGUIVisible(); //toggles the gui invisible
 	}
 }

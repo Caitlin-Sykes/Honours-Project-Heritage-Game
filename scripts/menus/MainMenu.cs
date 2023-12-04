@@ -6,19 +6,19 @@ public partial class MainMenu : Control
 {
 
 	[Export]
-    public Sprite2D intersexInclusive { get; set; } //IntersexInclusive logo
+    public TextureRect intersexInclusive { get; set; } //IntersexInclusive logo
 	
 	[Export]
-    public Sprite2D philly { get; set; } //Philly2017 logo
+    public TextureRect philly { get; set; } //Philly2017 logo
 
 	[Export]
-    public Sprite2D originalPride { get; set; } //originalPride logo
+    public TextureRect originalPride { get; set; } //originalPride logo
 
 	[Export]
-    public Sprite2D prideProgress { get; set; } //prideProgress logo
+    public TextureRect prideProgress { get; set; } //prideProgress logo
 
 	[Export]
-    public Sprite2D prideSeventyNine { get; set; } //pride1979 logo
+    public TextureRect prideSeventyNine { get; set; } //pride1979 logo
 
 	private Transitions TRANSITION; //Handles screen transitions
 

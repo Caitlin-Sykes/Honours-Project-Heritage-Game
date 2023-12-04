@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dsswwcd6my60a"
-path="res://.godot/imported/volume.png-8565a7d585826668361d9fced65869b6.ctex"
+uid="uid://c3way72bjjemo"
+path="res://.godot/imported/philly_2017.png-8cca02f9f01b76a7ec044a1b15230faa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/icons/volume.png"
-dest_files=["res://.godot/imported/volume.png-8565a7d585826668361d9fced65869b6.ctex"]
+source_file="res://resources/textures/logos/philly_2017.png"
+dest_files=["res://.godot/imported/philly_2017.png-8cca02f9f01b76a7ec044a1b15230faa.ctex"]
 
 [params]
 

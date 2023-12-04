@@ -39,8 +39,8 @@
 
     {
       "Id": "2",
-      "Speaker": "Adam",
-      "Dialogue": "Idea bouncer offer extraordinaire",
+      "Speaker": "Pie",
+      "Dialogue": "hungry",
       "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
     },
 

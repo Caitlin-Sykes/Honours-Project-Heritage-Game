@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqdowa8y02amp"
-path="res://.godot/imported/pride_1979.png-ea7e460655df683cc516d37e4e7e3fb9.ctex"
+uid="uid://1rjhww4502vr"
+path="res://.godot/imported/size.png-07c01b53c1fbcd0ae4e4713e0ab7fdae.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/logos/pride_1979.png"
-dest_files=["res://.godot/imported/pride_1979.png-ea7e460655df683cc516d37e4e7e3fb9.ctex"]
+source_file="res://resources/textures/icons/size.png"
+dest_files=["res://.godot/imported/size.png-07c01b53c1fbcd0ae4e4713e0ab7fdae.ctex"]
 
 [params]
 
