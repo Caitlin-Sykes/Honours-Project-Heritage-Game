@@ -6,8 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://mw7ayma0m24r" path="res://resources/textures/logos/intersex_inclusive.png" id="4_opvpt"]
 [ext_resource type="Texture2D" uid="uid://bjbs6wlfdnnlq" path="res://resources/textures/logos/original_pride.png" id="5_g02bf"]
 [ext_resource type="Texture2D" uid="uid://c3way72bjjemo" path="res://resources/textures/logos/philly_2017.png" id="6_7nkt2"]
-[ext_resource type="Texture2D" uid="uid://c8hmn8vh0byr0" path="res://resources/textures/logos/pride_1979.svg" id="7_am012"]
 [ext_resource type="Texture2D" uid="uid://bjsarg7oxgj3h" path="res://resources/textures/logos/pride_progress.png" id="7_d05u0"]
+[ext_resource type="Texture2D" uid="uid://bqdowa8y02amp" path="res://resources/textures/logos/pride_1979.png" id="8_fi3p1"]
 
 [sub_resource type="Animation" id="Animation_7a53q"]
 resource_name = "Transition_Fade_In"
@@ -39,11 +39,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_df4f6")
 script = ExtResource("1_4m1ny")
-intersexInclusive = NodePath("Panel/MarginContainer/VBoxContainer/HBoxContainer/PrideFlags/IntersexInclusive")
-philly = NodePath("Panel/MarginContainer/VBoxContainer/HBoxContainer/PrideFlags/Philly2017")
-originalPride = NodePath("Panel/MarginContainer/VBoxContainer/HBoxContainer/PrideFlags/OriginalPride")
-prideProgress = NodePath("Panel/MarginContainer/VBoxContainer/HBoxContainer/PrideFlags/PrideProgress")
-prideSeventyNine = NodePath("Panel/MarginContainer/VBoxContainer/HBoxContainer/PrideFlags/Pride1979")
+intersexInclusive = NodePath("Panel/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/PrideFlags/IntersexInclusive")
+philly = NodePath("Panel/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/PrideFlags/Philly2017")
+originalPride = NodePath("Panel/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/PrideFlags/OriginalPride")
+prideProgress = NodePath("Panel/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/PrideFlags/PrideProgress")
+prideSeventyNine = NodePath("Panel/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/PrideFlags/Pride1979")
 
 [node name="Transition" type="ColorRect" parent="."]
 modulate = Color(1, 1, 1, 0)
@@ -71,6 +71,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel"]
 layout_mode = 1
@@ -80,14 +81,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
+mouse_filter = 2
 theme_override_constants/margin_bottom = 40
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2
 
 [node name="Play" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
 z_as_relative = false
@@ -108,6 +112,7 @@ offset_top = 608.0
 offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Options" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -127,6 +132,7 @@ offset_top = 608.0
 offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Sources" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -146,6 +152,7 @@ offset_top = 608.0
 offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Exit" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -166,39 +173,47 @@ offset_top = 608.0
 offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
-[node name="PrideFlags" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="PrideFlags" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="IntersexInclusive" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/PrideFlags"]
+[node name="IntersexInclusive" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/PrideFlags"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 6
 texture = ExtResource("4_opvpt")
 expand_mode = 5
 
-[node name="Philly2017" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/PrideFlags"]
+[node name="Philly2017" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/PrideFlags"]
 visible = false
 layout_mode = 2
 size_flags_vertical = 6
 texture = ExtResource("6_7nkt2")
 expand_mode = 5
 
-[node name="Pride1979" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/PrideFlags"]
-visible = false
-layout_mode = 2
-size_flags_vertical = 6
-texture = ExtResource("7_am012")
-expand_mode = 5
-
-[node name="PrideProgress" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/PrideFlags"]
+[node name="PrideProgress" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/PrideFlags"]
 visible = false
 layout_mode = 2
 size_flags_vertical = 6
 texture = ExtResource("7_d05u0")
 expand_mode = 5
 
-[node name="OriginalPride" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/PrideFlags"]
+[node name="Pride1979" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/PrideFlags"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 6
+texture = ExtResource("8_fi3p1")
+expand_mode = 5
+
+[node name="OriginalPride" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/PrideFlags"]
 visible = false
 layout_mode = 2
 size_flags_vertical = 6

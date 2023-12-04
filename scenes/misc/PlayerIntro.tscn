@@ -63,6 +63,7 @@ pronouns = NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Info/Pronoun
 avatar = [NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/1"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/2"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/3"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/4"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/5"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/6"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/7"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/8"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/9"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/10"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/11"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/12"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/13"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/14"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/15"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/16"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/17"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/18"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/19"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/20")]
 
 [node name="Transition" type="ColorRect" parent="."]
+visible = false
 top_level = true
 layout_mode = 1
 anchors_preset = 15
@@ -167,6 +168,7 @@ layout_mode = 2
 size_flags_vertical = 3
 tooltip_text = "Please select your pronouns"
 theme_type_variation = &"StudentIDMulti"
+theme_override_font_sizes/font_size = 26
 alignment = 1
 item_count = 3
 selected = 0
@@ -235,14 +237,14 @@ size_flags_vertical = 3
 alignment = 1
 
 [node name="Left" type="TextureButton" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer"]
-custom_minimum_size = Vector2(50, 50)
+custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 3
 size_flags_vertical = 4
 mouse_filter = 1
 texture_normal = ExtResource("3_gxco4")
 texture_pressed = ExtResource("4_p87j3")
-ignore_texture_size = true
+stretch_mode = 0
 flip_h = true
 
 [node name="folk" type="VBoxContainer" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer"]
@@ -270,7 +272,7 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = 30.0
+offset_bottom = 61.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 8
@@ -697,14 +699,14 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="Right" type="TextureButton" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer"]
-custom_minimum_size = Vector2(50, 50)
+custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 10
 size_flags_vertical = 4
 mouse_filter = 1
 texture_normal = ExtResource("3_gxco4")
 texture_pressed = ExtResource("4_p87j3")
-ignore_texture_size = true
+stretch_mode = 0
 
 [connection signal="focus_entered" from="Panel/MarginContainer/Panel/Info/HBoxContainer/Info/Name_Input" to="." method="OnLineEditInputStart"]
 [connection signal="focus_exited" from="Panel/MarginContainer/Panel/Info/HBoxContainer/Info/Name_Input" to="." method="OnLineEditInputEnd"]

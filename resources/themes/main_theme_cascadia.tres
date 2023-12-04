@@ -70,7 +70,7 @@ bg_color = Color(1, 0.866667, 0.458824, 1)
 
 [resource]
 default_font = ExtResource("1_sflrq")
-default_font_size = 26
+default_font_size = 30
 GreenButton/constants/h_separation = 2
 GreenButton/constants/icon_max_width = 340
 GreenButton/font_sizes/font_size = 39

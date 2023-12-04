@@ -27,8 +27,10 @@ public partial class MainMenu : Control
 	{
 			TRANSITION = GetNode<Transitions>("Transition");
 
-			//Logo 
-			DecideMainMenuLogo();
+		DisplayServer.WindowSetMode(DisplayServer.WindowMode.Maximized);
+
+		//Logo 
+		DecideMainMenuLogo();
 
 			//Inits config file
 			OptionsFileHandler.InitConfigFile();

@@ -24,7 +24,7 @@
     {
       "Id": "4",
       "Speaker": "{0}",
-      "Dialogue": "I suppose I better get up..",
+      "Dialogue": "I suppose I better get up...",
       "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
     }
   ],

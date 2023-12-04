@@ -88,6 +88,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 size_flags_stretch_ratio = 5.0
+theme_override_font_sizes/font_size = 50
 text = "DISCLAIMER
 
 Though attempted to be handled in respectful manner, this game 
