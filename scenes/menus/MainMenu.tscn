@@ -4,7 +4,7 @@
 [ext_resource type="Theme" uid="uid://c8ikhuofmlww0" path="res://resources/themes/main_theme_cascadia.tres" id="1_df4f6"]
 [ext_resource type="Script" path="res://scripts/misc/Transitions.cs" id="3_yuryi"]
 [ext_resource type="Texture2D" uid="uid://mw7ayma0m24r" path="res://resources/textures/logos/intersex_inclusive.png" id="4_opvpt"]
-[ext_resource type="PackedScene" uid="uid://c3yc0s2xdcxsu" path="res://scenes/misc/AudioEffects.tscn" id="4_p8q2k"]
+[ext_resource type="PackedScene" uid="uid://c3yc0s2xdcxsu" path="res://scenes/misc/AudioButtons.tscn" id="4_p8q2k"]
 [ext_resource type="Texture2D" uid="uid://bjbs6wlfdnnlq" path="res://resources/textures/logos/original_pride.png" id="5_g02bf"]
 [ext_resource type="Texture2D" uid="uid://c3way72bjjemo" path="res://resources/textures/logos/philly_2017.png" id="6_7nkt2"]
 [ext_resource type="Texture2D" uid="uid://bjsarg7oxgj3h" path="res://resources/textures/logos/pride_progress.png" id="7_d05u0"]
@@ -100,11 +100,35 @@ size_flags_stretch_ratio = 0.5
 theme_type_variation = &"RedButton"
 text = "Play"
 
+[node name="Shadow" type="Panel" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/Play"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 94.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
 [node name="Options" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("4_p8q2k")]
 layout_mode = 2
 size_flags_stretch_ratio = 0.5
 theme_type_variation = &"OrangeButton"
 text = "Options"
+
+[node name="Shadow" type="Panel" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/Options"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 94.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="Sources" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("4_p8q2k")]
 layout_mode = 2
@@ -112,11 +136,35 @@ size_flags_stretch_ratio = 0.5
 theme_type_variation = &"YellowButton"
 text = "Sources"
 
+[node name="Shadow" type="Panel" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/Sources"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 94.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
 [node name="Exit" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("4_p8q2k")]
 layout_mode = 2
 size_flags_stretch_ratio = 0.5
 theme_type_variation = &"GreenButtonMenu"
 text = "Exit"
+
+[node name="Shadow" type="Panel" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/Exit"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 94.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2

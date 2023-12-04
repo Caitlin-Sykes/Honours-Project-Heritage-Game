@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Runtime.CompilerServices;
 
 public partial class OptionsMenu : Control
 {
@@ -50,5 +51,11 @@ public partial class OptionsMenu : Control
 	private void OnAudioPressed()
 	{ 
 		TRANSITION.NextScene("res://scenes/menus/OptionsAudio.tscn");
+	}
+
+	//A function to control the button "Credits" on the Options
+	//Sends you to the credits screen
+	private void OnCreditsPressed() {
+		throw new NotImplementedException();
 	}
 }

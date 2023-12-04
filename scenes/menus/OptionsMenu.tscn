@@ -1,12 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://dq2js4c06x6de"]
+[gd_scene load_steps=11 format=3 uid="uid://dq2js4c06x6de"]
 
 [ext_resource type="Theme" uid="uid://c8ikhuofmlww0" path="res://resources/themes/main_theme_cascadia.tres" id="1_1nvqn"]
 [ext_resource type="Script" path="res://scripts/menus/OptionsMenu.cs" id="1_yqk5y"]
 [ext_resource type="Script" path="res://scripts/misc/Transitions.cs" id="3_du217"]
-[ext_resource type="Texture2D" uid="uid://mfhe2dv33dkx" path="res://resources/icons/vision.png" id="3_jjb1t"]
-[ext_resource type="Texture2D" uid="uid://dsswwcd6my60a" path="res://resources/icons/volume.png" id="5_o1fo6"]
-[ext_resource type="Texture2D" uid="uid://duccjpwl4mq3j" path="res://resources/icons/movie.png" id="7_ko46v"]
-[ext_resource type="Texture2D" uid="uid://dsdt4amufrxcn" path="res://resources/icons/arrow.png" id="9_5x8bt"]
+[ext_resource type="Texture2D" uid="uid://mfhe2dv33dkx" path="res://resources/textures/icons/vision.png" id="3_jjb1t"]
+[ext_resource type="PackedScene" uid="uid://c3yc0s2xdcxsu" path="res://scenes/misc/AudioButtons.tscn" id="4_mmthf"]
+[ext_resource type="Texture2D" uid="uid://dsswwcd6my60a" path="res://resources/textures/icons/volume.png" id="5_o1fo6"]
+[ext_resource type="Texture2D" uid="uid://duccjpwl4mq3j" path="res://resources/textures/icons/movie.png" id="7_ko46v"]
+[ext_resource type="Texture2D" uid="uid://dsdt4amufrxcn" path="res://resources/textures/icons/arrow.png" id="9_5x8bt"]
 
 [sub_resource type="Animation" id="Animation_7a53q"]
 resource_name = "Transition_Fade_In"
@@ -76,7 +77,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 150
+theme_override_constants/margin_top = 200
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 50
 
@@ -84,9 +85,9 @@ theme_override_constants/margin_bottom = 50
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="Visuals" type="Button" parent="Menu_Panel/Settings_Buttons/HBoxContainer"]
+[node name="Visuals" parent="Menu_Panel/Settings_Buttons/HBoxContainer" instance=ExtResource("4_mmthf")]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_vertical = 1
 tooltip_text = "Select this to modify the visual effects for the game"
 theme_type_variation = &"RedButton"
 theme_override_font_sizes/font_size = 47
@@ -98,19 +99,20 @@ expand_icon = true
 
 [node name="Shadow" type="Panel" parent="Menu_Panel/Settings_Buttons/HBoxContainer/Visuals"]
 show_behind_parent = true
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 12
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 448.0
-offset_bottom = 25.0
+offset_bottom = 24.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 mouse_filter = 2
 
-[node name="Audio" type="Button" parent="Menu_Panel/Settings_Buttons/HBoxContainer"]
+[node name="Audio" parent="Menu_Panel/Settings_Buttons/HBoxContainer" instance=ExtResource("4_mmthf")]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_vertical = 1
 tooltip_text = "Select this to modify the audio effects for the game"
 theme_type_variation = &"OrangeButton"
 theme_override_font_sizes/font_size = 47
@@ -122,19 +124,21 @@ expand_icon = true
 
 [node name="Shadow" type="Panel" parent="Menu_Panel/Settings_Buttons/HBoxContainer/Audio"]
 show_behind_parent = true
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 12
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 448.0
-offset_bottom = 25.0
+offset_right = -1.0
+offset_bottom = 24.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 mouse_filter = 2
 
-[node name="Credits" type="Button" parent="Menu_Panel/Settings_Buttons/HBoxContainer"]
+[node name="Credits" parent="Menu_Panel/Settings_Buttons/HBoxContainer" instance=ExtResource("4_mmthf")]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_vertical = 1
 tooltip_text = "Select this to view the credits for the game"
 theme_type_variation = &"YellowButton"
 theme_override_font_sizes/font_size = 47
@@ -146,14 +150,16 @@ expand_icon = true
 
 [node name="Shadow" type="Panel" parent="Menu_Panel/Settings_Buttons/HBoxContainer/Credits"]
 show_behind_parent = true
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 12
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 448.0
-offset_bottom = 25.0
+offset_right = -1.0
+offset_bottom = 24.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 mouse_filter = 2
 
 [node name="Back_Button" type="MarginContainer" parent="Menu_Panel"]
@@ -164,12 +170,17 @@ anchor_right = 1.0
 offset_left = -200.0
 offset_top = 20.0
 offset_right = -20.0
-offset_bottom = 93.0
+offset_bottom = 114.0
 grow_horizontal = 0
+size_flags_horizontal = 8
+size_flags_vertical = 0
 
-[node name="Back" type="Button" parent="Menu_Panel/Back_Button"]
+[node name="Back" parent="Menu_Panel/Back_Button" instance=ExtResource("4_mmthf")]
+custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
-tooltip_text = "Go back to the main menu"
+size_flags_horizontal = 1
+size_flags_vertical = 1
+tooltip_text = "Go back to the settings menu"
 theme_type_variation = &"GreenButton"
 text = "Back"
 icon = ExtResource("9_5x8bt")
@@ -192,4 +203,5 @@ mouse_filter = 2
 
 [connection signal="pressed" from="Menu_Panel/Settings_Buttons/HBoxContainer/Visuals" to="." method="OnVisualPressed"]
 [connection signal="pressed" from="Menu_Panel/Settings_Buttons/HBoxContainer/Audio" to="." method="OnAudioPressed"]
+[connection signal="pressed" from="Menu_Panel/Settings_Buttons/HBoxContainer/Credits" to="." method="OnCreditsPressed"]
 [connection signal="pressed" from="Menu_Panel/Back_Button/Back" to="." method="OnBackPressed"]

@@ -1,11 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://bsulcr51vorig"]
+[gd_scene load_steps=10 format=3 uid="uid://bsulcr51vorig"]
 
 [ext_resource type="Theme" uid="uid://c8ikhuofmlww0" path="res://resources/themes/main_theme_cascadia.tres" id="1_25s4b"]
 [ext_resource type="Script" path="res://scripts/menus/OptionsVisualsGUI.cs" id="2_8asgb"]
 [ext_resource type="Script" path="res://scripts/misc/Transitions.cs" id="3_7hjst"]
-[ext_resource type="Texture2D" uid="uid://dvvwqu54gnk2q" path="res://resources/icons/font.png" id="4_v0iaj"]
-[ext_resource type="Texture2D" uid="uid://1rjhww4502vr" path="res://resources/icons/size.png" id="5_1esgn"]
-[ext_resource type="Texture2D" uid="uid://dsdt4amufrxcn" path="res://resources/icons/arrow.png" id="6_o1bwl"]
+[ext_resource type="Texture2D" uid="uid://dvvwqu54gnk2q" path="res://resources/textures/icons/font.png" id="4_v0iaj"]
+[ext_resource type="Texture2D" uid="uid://1rjhww4502vr" path="res://resources/textures/icons/size.png" id="5_1esgn"]
+[ext_resource type="PackedScene" uid="uid://c3yc0s2xdcxsu" path="res://scenes/misc/AudioButtons.tscn" id="6_41b36"]
+[ext_resource type="Texture2D" uid="uid://dsdt4amufrxcn" path="res://resources/textures/icons/arrow.png" id="6_o1bwl"]
 
 [sub_resource type="Animation" id="Animation_7a53q"]
 resource_name = "Transition_Fade_In"
@@ -75,7 +76,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 150
+theme_override_constants/margin_top = 200
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 50
 
@@ -232,8 +233,11 @@ offset_right = -20.0
 offset_bottom = 93.0
 grow_horizontal = 0
 
-[node name="Back" type="Button" parent="Menu_Panel/Back_Button"]
+[node name="Back" parent="Menu_Panel/Back_Button" instance=ExtResource("6_41b36")]
+custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 1
 tooltip_text = "Go back to the settings menu"
 theme_type_variation = &"GreenButton"
 text = "Back"
