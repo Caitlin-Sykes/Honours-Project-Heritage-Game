@@ -57,7 +57,7 @@ public partial class Controls : Node3D
     private void OnUpArrow(Node camera, InputEvent @evnt, Vector3 position, Vector3 normal, int shape_idx) {
 
         //If trigger is left click
-        if (@evnt is InputEventMouseButton mouse) {
+        if (@evnt is InputEventMouseButton mouse && lockCameras == false) {
             if (mouse.ButtonIndex == MouseButton.Left && @evnt.IsPressed()) {
                     OnUpArrow();
                 }
@@ -79,7 +79,7 @@ public partial class Controls : Node3D
     private void OnRightArrow(Node camera, InputEvent @evnt, Vector3 position, Vector3 normal, int shape_idx) {
 
         //If trigger is left click
-        if (@evnt is InputEventMouseButton mouse) {
+        if (@evnt is InputEventMouseButton mouse && lockCameras == false) {
             if (mouse.ButtonIndex == MouseButton.Left && @evnt.IsPressed()) {
                     OnRightArrow();
                 }
@@ -100,7 +100,7 @@ public partial class Controls : Node3D
     private void OnDownArrow(Node camera, InputEvent @evnt, Vector3 position, Vector3 normal, int shape_idx) {
 
         //If trigger is left click
-        if (@evnt is InputEventMouseButton mouse) {
+        if (@evnt is InputEventMouseButton mouse && lockCameras == false) {
             if (mouse.ButtonIndex == MouseButton.Left && @evnt.IsPressed()) {
                     OnDownArrow();
                 }
@@ -122,7 +122,7 @@ public partial class Controls : Node3D
     private void OnLeftArrow(Node camera, InputEvent @evnt, Vector3 position, Vector3 normal, int shape_idx) {
 
         //If trigger is left click
-        if (@evnt is InputEventMouseButton mouse) {
+        if (@evnt is InputEventMouseButton mouse && lockCameras == false) {
             if (mouse.ButtonIndex == MouseButton.Left && @evnt.IsPressed()) {
                     OnLeftArrow();
                 }

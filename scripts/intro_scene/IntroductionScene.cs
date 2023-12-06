@@ -50,14 +50,14 @@ public partial class IntroductionScene : Node3D
 		await ToSignal(GetTree().CreateTimer(3), SceneTreeTimer.SignalName.Timeout); //timer so it waits out the animations
 		DIALOGUE.ToggleGUIVisible(); //toggles the gui visible
 
-		DIALOGUE.Dialogue(JsonHandler.Speech.IntroductionScene, "Introduction_Scene", "5");
+		DIALOGUE.Dialogue(JsonHandler.Speech.IntroductionScene, "Introduction_Scene", new string[] { "5" });
 	}
 
 	// A function to handle the second dialogue
 	private void SecondDialogue() {
 		
 		DIALOGUE.ToggleGUIVisible(); //toggles the gui visible
-		DIALOGUE.Dialogue(JsonHandler.Speech.Controls, "Controls", "2"); //Starts playing through the controls dialogue
+		DIALOGUE.Dialogue(JsonHandler.Speech.Controls, "Controls", new string[] {"1", "3"}); //Starts playing through the controls dialogue
 	}
 	
 

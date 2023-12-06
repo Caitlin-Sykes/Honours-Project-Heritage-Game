@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Godot;
 
 public partial class SpeechGUI : Control
@@ -8,12 +9,15 @@ public partial class SpeechGUI : Control
 
 	public Label SpeechNode; //node to hold the speech of the speaker
 
+	private Cameras CAMERAS; //node to hold instance of cameras
+
 	[Signal]
 	public delegate void DialogueProgressEventHandler(); //handler for progressing scene text
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		CAMERAS = GetNode<Cameras>("../../../Cameras"); //Gets camera and animation nodes
 		AvatarNode = GetNode<TextureRect>("Main_Dialogue/Avatar"); //Gets instance of Avatar
 		NameNode = GetNode<Label>("Main_Dialogue/Name Container/Name_Box/Name_Label");
 		SpeechNode = GetNode<Label>("Main_Dialogue/Speech_Container/Speech"); //Gets instance of Speech
@@ -78,7 +82,7 @@ public partial class SpeechGUI : Control
 	}
 
 	//Handles the dialogue if you pass in the Scene. This version handles triggering events at certain IDs
-	public async void Dialogue(JsonHandler.DialogueStructData[] Scene, string name, string triggerID)
+	public async void Dialogue(JsonHandler.DialogueStructData[] Scene, string name, string[] triggerID)
 	{
 		if (Scene != null)
 		{
@@ -87,10 +91,16 @@ public partial class SpeechGUI : Control
 			foreach (var Speech in Scene)
 			{
 				//If SpeechID == triggerID && Speech.Name matches the name given
-				if (name == "Introduction_Scene")
+				if (name == "Introduction_Scene" && triggerID.Contains(Speech.Id))
 				{
-					IntroductionSceneEvents(triggerID);
+					IntroductionSceneEvents(Speech.Id);
 				}
+
+				else if (name == "Controls" && triggerID.Contains(Speech.Id))
+				{
+					ControlsEvents(Speech.Id);
+				}
+
 
 				SetNameNode(string.Format(Speech.Speaker, PlayerData.Player.Name));
 				SetSpeechNode(string.Format(Speech.Dialogue, PlayerData.Player.Name));
@@ -128,12 +138,33 @@ public partial class SpeechGUI : Control
 		switch (id) {
 			case "5":
 					GetNode<IntroductionScene>("../../..").ToggleWakeUpButton();
-					// introductionScene.ToggleWakeUpButton();	
 				return;
 		
 			default:
 				return;
 		}
+	}
 
+	//Handles all control scene events
+	private void ControlsEvents(string id)
+	{
+		switch (id)
+		{
+			//If one, makes the top and bottom arrows visible
+			case "2":
+				CAMERAS.SetSingleArrowVisible(GetViewport().GetCamera3D(), "*Up_Arrow_Parent");
+				CAMERAS.SetSingleArrowVisible(GetViewport().GetCamera3D(), "*Down_Arrow_Parent");
+				return;
+
+			case "3":
+				CAMERAS.SetSingleArrowInvisible(GetViewport().GetCamera3D(), "*Up_Arrow_Parent");
+				CAMERAS.SetSingleArrowInvisible(GetViewport().GetCamera3D(), "*Down_Arrow_Parent");
+				return;
+
+			default:
+				return;
+		}
+// TODO: add circles to interact with, appended with the current camera enabled. This can be perhaps stored in CAMERAS as opposed to SPeechGUI
+//BUG:  id no 5 in controls too much text- downsize to smaller :D
 	}
 }

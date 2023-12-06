@@ -109,12 +109,21 @@ public partial class Cameras : Node
 	}
 
 	//A function to make a single arrow visible
-	private void SetSingleArrowVisible(Camera3D cam, string arrowName) {
-
+	public void SetSingleArrowVisible(Camera3D cam, string arrowName) {
 		//If node matches "*Arrow_Parent" then enables input and visibility
 		foreach (Node3D arrow in cam.FindChildren(arrowName))
 		{
 			arrow.Visible = true; }
+	}
+
+	//A function to make a single arrow visible
+	public void SetSingleArrowInvisible(Camera3D cam, string arrowName)
+	{
+		//If node matches "*Arrow_Parent" then enables input and visibility
+		foreach (Node3D arrow in cam.FindChildren(arrowName))
+		{
+			arrow.Visible = false;
+		}
 	}
 
 	//A function to set the current camera
