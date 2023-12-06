@@ -8,42 +8,38 @@ public partial class Controls : Node3D
 
     private Transitions TRANSITION; //Handles screen transitions
 
-	
+    public bool lockCameras = false; //locks the cameras from moving
+
+
+
     // Called when the node enters the scene tree for the first time.
-	public override void _Ready()
+    public override void _Ready()
 	{
         TRANSITION = GetNode<Transitions>("../../Transition");
 
         CAMERAS = GetNode<Cameras>("../../Cameras");
-	}
-		
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-
-		
 	}
 
     //Handles inputs
     public override void _Input(InputEvent @event)
     {
         //Checks for key presses
-		if (Input.IsKeyPressed(Key.A))
+		if (Input.IsKeyPressed(Key.A) && lockCameras == false)
         {
             OnLeftArrow();
         }
 
-		else if (Input.IsKeyPressed(Key.D))
+		else if (Input.IsKeyPressed(Key.D) && lockCameras == false)
         {
             OnRightArrow();
         }
 
-        else if (Input.IsKeyPressed(Key.W) && CAMERAS.GetMeta("UpDownEnabled").AsBool() == true)
+        else if (Input.IsKeyPressed(Key.W) && CAMERAS.GetMeta("UpDownEnabled").AsBool() == true && lockCameras == false)
         {
             OnUpArrow();
         }
 
-        else if (Input.IsKeyPressed(Key.S) && CAMERAS.GetMeta("UpDownEnabled").AsBool() == true)
+        else if (Input.IsKeyPressed(Key.S) && CAMERAS.GetMeta("UpDownEnabled").AsBool() == true && lockCameras == false)
         {
            OnDownArrow();
         }
@@ -116,7 +112,8 @@ public partial class Controls : Node3D
         CAMERAS.TurnDown();
     }
 
-    /** ----------------------------------------------------------------
+    /** 
+    *   ----------------------------------------------------------------
 	*	Start of "A" and Left Gui Buttons
 	*	----------------------------------------------------------------
 	**/   
@@ -135,6 +132,18 @@ public partial class Controls : Node3D
     // A function to handle left arrow movement, prompted by the A key
     private void OnLeftArrow() {
         CAMERAS.TurnLeft();
+    }
+
+
+    /** 
+    * ----------------------------------------------------------------
+    * Misc Handlers
+    * ----------------------------------------------------------------
+    **/
+
+    //Toggles camera lock
+    public void CameraLockToggle() {
+        lockCameras = !lockCameras;
     }
 }
 

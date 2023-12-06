@@ -17,31 +17,9 @@ public static class JsonHandler
 
 	public static void PreLoadDialogue()
 	{
-		//Reads all
+		//Reads all in and stores in Speech variable
 		string jsonString = File.ReadAllText(FILE_PATH);
 		Speech = System.Text.Json.JsonSerializer.Deserialize<DialogueStruct>(jsonString)!;
-
-		GD.Print("Speech: " + Speech);
-		GD.Print("Dialogue: " + Speech.IntroductionScene);
-
-
-
-		// try {
-
-		// 	// for iterating through
-		// 	// foreach (var entry in Speech.IntroductionScene)
-		// 	// {
-		// 	// 	GD.Print($"ID: {entry.Id}");
-		// 	// 	GD.Print($"Speaker: {entry.Speaker}");
-		// 	// 	GD.Print($"Dialogue: {entry.Dialogue}");
-		// 	// 	GD.Print($"Avatar: {entry.Avatar}");
-		// 	// }
-		// }
-
-		// catch (Exception e) {
-		// 	GD.Print($"Error: {e.Message}. Is dialogue.json present?");
-		// }	
-		// }
 	}
 
 
@@ -55,13 +33,15 @@ public static class JsonHandler
 		public DialogueStructData[] IntroductionScene { get; set; }
 
 		//An array to hold the Dialogue information matching property "Testing"
-		[JsonPropertyName("Debug_Scene")]
-		public DialogueStructData[] Testing { get; set; }
+		[JsonPropertyName("Controls")]
+		public DialogueStructData[] Controls { get; set; }
 }
 
 	//A class to contain the variables to store dialogue read in from Dialogue.Json
 	public class DialogueStructData
 	{
+		[JsonPropertyName("SceneName")]
+		public string SceneName { get; set; }
 
 		[JsonPropertyName("Id")]
 

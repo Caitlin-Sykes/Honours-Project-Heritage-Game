@@ -1,6 +1,3 @@
-using System.IO;
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using Godot;
 
 public partial class SpeechGUI : Control
@@ -14,10 +11,12 @@ public partial class SpeechGUI : Control
 	[Signal]
 	public delegate void DialogueProgressEventHandler(); //handler for progressing scene text
 
+	[Signal]
+	public delegate void GUIEOneEventHandler(); //handler for enabling certain gui events
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		// ToggleGUIVisible();
 		AvatarNode = GetNode<TextureRect>("Main_Dialogue/Avatar"); //Gets instance of Avatar
 		NameNode = GetNode<Label>("Main_Dialogue/Name Container/Name_Box/Name_Label");
 		SpeechNode = GetNode<Label>("Main_Dialogue/Speech_Container/Speech"); //Gets instance of Speech
@@ -56,6 +55,58 @@ public partial class SpeechGUI : Control
 	{
 		AvatarNode.Texture = (Texture2D) GD.Load(path);
 	}
+
+	//Handles the dialogue if you pass in the Scene
+	public async void Dialogue(JsonHandler.DialogueStructData[] Scene)
+	{
+		if (Scene != null)
+		{
+
+			//For every bit of speech in the scene
+			foreach (var Speech in Scene)
+			{				
+				SetNameNode(string.Format(Speech.Speaker, PlayerData.Player.Name));
+				SetSpeechNode(string.Format(Speech.Dialogue, PlayerData.Player.Name));
+				SetAvatarNode(string.Format(Speech.Avatar, PlayerData.Player.Avatar));
+				await ToSignal(this, "DialogueProgress");
+
+				
+			}
+		}
+
+		else
+		{
+			throw new System.InvalidOperationException("Error: something has gone wrong with parsing the dialogue.json");
+		}
+	}
+
+	//Handles the dialogue if you pass in the Scene. This version handles triggering events at certain IDs
+	public async void Dialogue(JsonHandler.DialogueStructData[] Scene, string name, string triggerID)
+	{
+		if (Scene != null)
+		{
+
+			//For every bit of speech in the scene
+			foreach (var Speech in Scene)
+			{
+				//If SpeechID == triggerID && Speech.Name matches the name given
+				if (Speech.Id == triggerID && Speech.SceneName == name)
+				{
+					EmitSignal(SignalName.GUIEOne);
+				}
+
+				SetNameNode(string.Format(Speech.Speaker, PlayerData.Player.Name));
+				SetSpeechNode(string.Format(Speech.Dialogue, PlayerData.Player.Name));
+				SetAvatarNode(string.Format(Speech.Avatar, PlayerData.Player.Avatar));
+				await ToSignal(this, "DialogueProgress");
+			}
+		}
+
+		else
+		{
+			throw new System.InvalidOperationException("Error: something has gone wrong with parsing the dialogue.json");
+		}
+	}				
 
 	/**
 	* ----------------------------------------------------------------

@@ -15,12 +15,14 @@ public partial class Cameras : Node
 		Down,
 	} //enum for directions
 
+
 	[Export]
 	private Godot.Collections.Array<Camera3D> CAMERAS { get; set; }
 
 	public Direction dir; // instance of direction
 	public Direction previousDir { get; set; } // used only when going up and down
 	private int cameraVisible { get; set; } //holds array position of camera to display
+	
 
 	/** 
 	* ----------------------------------------------------------------
@@ -65,7 +67,6 @@ public partial class Cameras : Node
 			//Else sets visible
 			else
 			{
-				GD.Print(arrow.Name);
 				arrow.Visible = true;
 				arrow.SetProcessInput(true);
 			}
@@ -117,7 +118,7 @@ public partial class Cameras : Node
 	}
 
 	//A function to set the current camera
-	private void SetCurrentCamera(Camera3D cam) {
+	public void SetCurrentCamera(Camera3D cam) {
 
 		SetArrowsInvisible(GetViewport().GetCamera3D());
 		cam.Current = true;

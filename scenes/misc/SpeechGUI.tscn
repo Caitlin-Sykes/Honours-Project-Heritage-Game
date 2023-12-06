@@ -29,11 +29,12 @@ theme_type_variation = &"SpeechPanel"
 
 [node name="Avatar" type="TextureRect" parent="Main_Dialogue"]
 clip_contents = true
-layout_mode = 2
-offset_left = 952.0
-offset_top = -200.0
-offset_right = 1252.0
-offset_bottom = -200.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -400.0
+offset_top = -400.0
 grow_horizontal = 0
 texture = SubResource("ImageTexture_k5am3")
 expand_mode = 3
