@@ -10,9 +10,12 @@ public partial class IntroductionScene : Node3D
 	[Export]
 	private SpeechGUI dialogue; //instance of speechGUI
 
+	private BaseButton getUpButton; // a button used solely for getting up from the bed
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		getUpButton = GetNode<BaseButton>("CanvasLayer/Settings/OnItemSelect");
 		EmitSignal(SignalName.StartScene);
 	}
 
@@ -33,15 +36,28 @@ public partial class IntroductionScene : Node3D
 				dialogue.SetNameNode(string.Format(Speech.Speaker, PlayerData.Player.Name));
 				dialogue.SetSpeechNode(string.Format(Speech.Dialogue, PlayerData.Player.Name));
 				dialogue.SetAvatarNode(string.Format(Speech.Avatar, PlayerData.Player.Avatar));
+
+				if (Speech.Id == "5") {
+					getUpButton.Visible = true;
+				}
+
 				await ToSignal(dialogue, "DialogueProgress");
+
 			}
 		}
 
 		else {
 			throw new InvalidOperationException("Error: something has gone wrong with parsing the dialogue.json");
 		}
+
 		
 
-		dialogue.ToggleGUIVisible(); //toggles the gui invisible
+	}
+
+	// The 2D selecting icon, different icon for 3D scenes
+	// in this scene, handles getting up from the bed
+	private void OnItemSelect()
+	{
+		
 	}
 }

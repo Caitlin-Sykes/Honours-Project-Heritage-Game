@@ -26,6 +26,13 @@
       "Speaker": "{0}",
       "Dialogue": "I suppose I better get up...",
       "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
+    },
+
+    {
+      "Id": "5",
+      "Speaker": "Guide",
+      "Dialogue": "When you see a circle like this, this is something you can click. This can either be to get a better view, something you can interact with, or something to progress the scene. Try clicking on it now.",
+      "Avatar": "res://resources/textures/sprites/guide/1.svg"
     }
   ],
 

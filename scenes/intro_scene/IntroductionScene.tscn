@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cok4snixun3l8"]
+[gd_scene load_steps=16 format=3 uid="uid://cok4snixun3l8"]
 
 [ext_resource type="Script" path="res://scripts/misc/Transitions.cs" id="1_8iq14"]
 [ext_resource type="PackedScene" uid="uid://ui3tvchfafso" path="res://scenes/misc/Cameras.tscn" id="1_76gud"]
@@ -6,8 +6,10 @@
 [ext_resource type="Script" path="res://scripts/intro_scene/IntroductionScene.cs" id="1_wn8em"]
 [ext_resource type="Script" path="res://scripts/misc/Settings.cs" id="2_vwuwl"]
 [ext_resource type="Theme" uid="uid://c8ikhuofmlww0" path="res://resources/themes/main_theme_cascadia.tres" id="2_ycenm"]
+[ext_resource type="PackedScene" uid="uid://dmf1t0hpgtcmo" path="res://scenes/misc/AudioButtonsTexture.tscn" id="4_4mlkj"]
 [ext_resource type="Texture2D" uid="uid://cad83160m5qo2" path="res://resources/textures/gui/OnItemSelect.png" id="4_fj71e"]
 [ext_resource type="PackedScene" uid="uid://2qs8cdh8nf1k" path="res://scenes/misc/SpeechGUI.tscn" id="4_x2lrc"]
+[ext_resource type="Texture2D" uid="uid://btfl3l2c4rluv" path="res://resources/textures/gui/OnItemSelected.png" id="6_05m2d"]
 [ext_resource type="PackedScene" uid="uid://b6wkhglgiynah" path="res://resources/models/gui/circle_select.blend" id="9_0tx7x"]
 
 [sub_resource type="Animation" id="Animation_7a53q"]
@@ -55,42 +57,6 @@ _data = {
 script = ExtResource("1_wn8em")
 dialogue = NodePath("CanvasLayer/Settings/SpeechGUI")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Settings" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-mouse_force_pass_scroll_events = false
-theme = ExtResource("2_ycenm")
-script = ExtResource("2_vwuwl")
-
-[node name="OnItemSelect" type="TextureButton" parent="CanvasLayer/Settings"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = -100.0
-offset_right = 100.0
-offset_bottom = 100.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture_normal = ExtResource("4_fj71e")
-
-[node name="SpeechGUI" parent="CanvasLayer/Settings" instance=ExtResource("4_x2lrc")]
-visible = false
-layout_mode = 1
-mouse_filter = 2
-
 [node name="Transition" type="ColorRect" parent="."]
 modulate = Color(0.131765, 0.131765, 0.131765, 0.872941)
 top_level = true
@@ -107,6 +73,42 @@ script = ExtResource("1_8iq14")
 libraries = {
 "": SubResource("AnimationLibrary_nuk71")
 }
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Settings" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme = ExtResource("2_ycenm")
+script = ExtResource("2_vwuwl")
+
+[node name="OnItemSelect" parent="CanvasLayer/Settings" instance=ExtResource("4_4mlkj")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 100.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("4_fj71e")
+texture_pressed = ExtResource("6_05m2d")
+
+[node name="SpeechGUI" parent="CanvasLayer/Settings" instance=ExtResource("4_x2lrc")]
+visible = false
+layout_mode = 1
+mouse_filter = 2
 
 [node name="IntroCam" type="Camera3D" parent="."]
 transform = Transform3D(-1, 0, 1.39091e-08, 0, 1, 0, -1.39091e-08, 0, -1, -1.36588, 0.0403199, -1.80732)
@@ -183,9 +185,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="circle_select" parent="." instance=ExtResource("9_0tx7x")]
 transform = Transform3D(0.0258819, 0, -0.0965926, 0, 0.1, 0, 0.0965926, 0, 0.0258819, 0, 0, 0)
+visible = false
 
 [connection signal="StartScene" from="." to="." method="FirstDialogue"]
 [connection signal="StartScene" from="." to="Transition" method="PlayWakeAnim"]
+[connection signal="pressed" from="CanvasLayer/Settings/OnItemSelect" to="." method="OnItemSelect"]
 
 [editable path="CanvasLayer/Settings/SpeechGUI"]
 [editable path="Cameras"]
