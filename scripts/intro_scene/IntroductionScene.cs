@@ -57,7 +57,7 @@ public partial class IntroductionScene : Node3D
 	private void SecondDialogue() {
 		
 		DIALOGUE.ToggleGUIVisible(); //toggles the gui visible
-		DIALOGUE.Dialogue(JsonHandler.Speech.Controls, "Controls", "5"); //Starts playing through the controls dialogue
+		DIALOGUE.Dialogue(JsonHandler.Speech.Controls, "Controls", "2"); //Starts playing through the controls dialogue
 	}
 	
 

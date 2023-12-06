@@ -1,8 +1,8 @@
+using System;
 using Godot;
 
 public partial class SpeechGUI : Control
 {
-
 	public TextureRect AvatarNode; //node to hold avatar image
 	public Label NameNode; //node to hold the name of the speaker
 
@@ -10,9 +10,6 @@ public partial class SpeechGUI : Control
 
 	[Signal]
 	public delegate void DialogueProgressEventHandler(); //handler for progressing scene text
-
-	[Signal]
-	public delegate void GUIEOneEventHandler(); //handler for enabling certain gui events
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -90,9 +87,9 @@ public partial class SpeechGUI : Control
 			foreach (var Speech in Scene)
 			{
 				//If SpeechID == triggerID && Speech.Name matches the name given
-				if (Speech.Id == triggerID && Speech.SceneName == name)
+				if (name == "Introduction_Scene")
 				{
-					EmitSignal(SignalName.GUIEOne);
+					IntroductionSceneEvents(triggerID);
 				}
 
 				SetNameNode(string.Format(Speech.Speaker, PlayerData.Player.Name));
@@ -118,5 +115,25 @@ public partial class SpeechGUI : Control
 		if (@evnt is InputEventMouseButton mouse && @evnt.IsPressed()) {
 			EmitSignal("DialogueProgress");
 		}
+	}
+
+	/**
+	* ----------------------------------------------------------------
+	*	Specific Scene Events
+	* ----------------------------------------------------------------
+	**/
+
+	//Handles all introduction scene events
+	private void IntroductionSceneEvents(string id) {
+		switch (id) {
+			case "5":
+					GetNode<IntroductionScene>("../../..").ToggleWakeUpButton();
+					// introductionScene.ToggleWakeUpButton();	
+				return;
+		
+			default:
+				return;
+		}
+
 	}
 }

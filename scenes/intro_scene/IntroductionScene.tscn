@@ -218,7 +218,6 @@ visible = false
 [connection signal="StartScene" from="." to="." method="FirstDialogue"]
 [connection signal="StartScene" from="." to="Transition" method="PlayWakeAnim"]
 [connection signal="pressed" from="CanvasLayer/Settings/OnItemSelect" to="." method="OnItemSelect"]
-[connection signal="GUIEOne" from="CanvasLayer/Settings/SpeechGUI" to="." method="ToggleWakeUpButton"]
 
 [editable path="CanvasLayer/Settings/SpeechGUI"]
 [editable path="Cameras"]

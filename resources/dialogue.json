@@ -1,7 +1,6 @@
 {
   "Introduction_Scene": [
     {
-      "SceneName": "Introduction_Scene",      
       "Id": "1",
       "Speaker": "Mum",
       "Dialogue": "{0}, wake up! It's getting late and we have stuff to do!",
@@ -9,7 +8,6 @@
     },
 
     {
-      "SceneName": "Introduction_Scene",
       "Id": "2",
       "Speaker": "{0}",
       "Dialogue": "Nghhhhhh...",
@@ -17,7 +15,6 @@
     },
 
     {
-      "SceneName": "Introduction_Scene",
       "Id": "3",
       "Speaker": "Mum",
       "Dialogue": "I mean it, {0}! Don't make me come in with the bucket of water!",
@@ -25,7 +22,6 @@
     },
 
     {
-      "SceneName": "Introduction_Scene",
       "Id": "4",
       "Speaker": "{0}",
       "Dialogue": "I suppose I better get up...",
@@ -33,7 +29,6 @@
     },
 
     {
-      "SceneName": "Introduction_Scene",
       "Id": "5",
       "Speaker": "Guide",
       "Dialogue": "When you see a circle like this, this is something you can click. This can either be to get a better view, something you can interact with, or something to progress the scene. Try clicking on it now.",
@@ -43,7 +38,6 @@
 
   "Controls": [
     {
-      "SceneName": "Controls",
       "Id": "1",
       "Speaker": "Guide",
       "Dialogue": "Using the arrows on your screen, or by using WASD, you can move around the room and interact with things. Some rooms will allow you to look up, in which case your screen will look like this:",
@@ -51,7 +45,6 @@
     },
 
     {
-      "SceneName": "Controls",
       "Id": "2",
       "Speaker": "Guide",
       "Dialogue": "You can see the up and down arrows have now appeared. In this scene, you won't have to worry about looking up and down, so I will turn them off again.",
@@ -59,7 +52,6 @@
     },
 
     {
-      "SceneName": "Controls",
       "Id": "3",
       "Speaker": "Guide",
       "Dialogue": "Similarly to before, anywhere you can see a circle-like object, this is something you can interact with. Try interacting with the closet.",
@@ -67,7 +59,6 @@
     },
 
     {
-      "SceneName": "Controls",
       "Id": "4",
       "Speaker": "{0}",
       "Dialogue": "I'd better get ready before Mum makes good on her threat... *shivers*",
@@ -75,7 +66,6 @@
     },
 
     {
-      "SceneName": "Controls",
       "Id": "5",
       "Speaker": "Guide",
       "Dialogue": "Any time during the game, if you would like to see the source of any information provided, such as a fact, you can press the 'J' key. This will show a list of sources that the information was obtained from. This is also available from within the game menu and the game source files- 'Sources.md'",
@@ -83,7 +73,6 @@
     },
 
     {
-      "SceneName": "Controls",
       "Id": "6",
       "Speaker": "Guide",
       "Dialogue": "The 'J' key may also provide extra information not originally shown. Try pressing 'J' whilst clicking on the poster by the desk.",
@@ -91,7 +80,6 @@
     },
 
     {
-      "SceneName": "Controls",
       "Id": "7",
       "Speaker": "Guide",
       "Dialogue": "If you are stuck at any time, or forget what you are supposed to be doing, press the 'K' key to prompt you.",
@@ -99,7 +87,6 @@
     },
 
     {
-      "SceneName": "Controls",
       "Id": "8",
       "Speaker": "Guide",
       "Dialogue": "I think that's about it in terms of controls. Have fun- and I think you should interact with the door to tell your mum you're coming.",
