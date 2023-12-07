@@ -4,6 +4,8 @@ using Godot;
 
 public partial class SpeechGUI : Control
 {
+	[Export]
+	private InteractCircles CIRCLES; //instance of circles
 	public TextureRect AvatarNode; //node to hold avatar image
 	public Label NameNode; //node to hold the name of the speaker
 
@@ -156,10 +158,12 @@ public partial class SpeechGUI : Control
 				CAMERAS.SetSingleArrowVisible(GetViewport().GetCamera3D(), "*Down_Arrow_Parent");
 				return;
 
-			//If three, hides the top and bottom arrows
+			//If three, hides the top and bottom arrows, enables the wardrobe icon
 			case "3":
 				CAMERAS.SetSingleArrowInvisible(GetViewport().GetCamera3D(), "*Up_Arrow_Parent");
 				CAMERAS.SetSingleArrowInvisible(GetViewport().GetCamera3D(), "*Down_Arrow_Parent");
+				CIRCLES.ToggleSpecificDirection(GetNode<Area3D>("../../../InteractableItems/East/1"));
+
 				return;
 
 			//If five, downsizes the text

@@ -22,6 +22,11 @@ public partial class Cameras : Node
 	public Direction dir; // instance of direction
 	public Direction previousDir { get; set; } // used only when going up and down
 	private int cameraVisible { get; set; } //holds array position of camera to display
+
+	public bool EnableEvents {get; set; } = false; //;
+
+	[Export]
+	private InteractCircles INTERACT_CIRCLES; //instance of InteractCircles
 	
 
 	/** 
@@ -52,6 +57,28 @@ public partial class Cameras : Node
 		}
 	}
 
+	//A function to convert direction to string
+	private static string ToDirection(Direction dir)
+	{
+		switch (dir)
+		{
+			case Direction.North:
+				return "North";
+			case Direction.East:
+				return "East";
+			case Direction.South:
+				return "South";
+			case Direction.West:
+				return "West";
+			case Direction.Up:
+				return "Up";
+			case Direction.Down:
+				return "Down";
+			default:
+				throw new ArgumentException("Not of type Direction");
+		}
+	}
+	
 	//A handler to set the arrows visible when in use
 	private void SetArrowsVisible(Camera3D cam)
 	{
@@ -134,6 +161,14 @@ public partial class Cameras : Node
 		SetArrowsVisible(cam);
 		dir = ToDirection(cam.Name);
 
+		if (EnableEvents == true) {
+			EmitSignal(string.Format("Toggle{}Events", (dir)));
+		}
+	}
+	
+	//A function to toggle events
+	public void ToggleEvents() {
+		EnableEvents = !EnableEvents;
 	}
 	/** 
 	* ----------------------------------------------------------------
@@ -153,6 +188,10 @@ public partial class Cameras : Node
 				dir = Direction.West;
 				SetArrowsInvisible(CAMERAS[0]);
 				SetArrowsVisible(CAMERAS[3]);
+				if (EnableEvents == true) {
+					EmitSignal("ToggleNorthEvents");
+					EmitSignal("ToggleWestEvents");
+				}
 				CAMERAS[3].Current = true;
 				break;
 
@@ -161,6 +200,11 @@ public partial class Cameras : Node
 				dir = Direction.North;
 				SetArrowsInvisible(CAMERAS[1]);
 				SetArrowsVisible(CAMERAS[0]);
+				if (EnableEvents == true)
+				{
+					EmitSignal("ToggleEastEvents");
+					EmitSignal("ToggleNorthEvents");
+				}
 				CAMERAS[0].Current = true;
 				break;
 
@@ -169,6 +213,11 @@ public partial class Cameras : Node
 				dir = Direction.East;
 				SetArrowsInvisible(CAMERAS[2]);
 				SetArrowsVisible(CAMERAS[1]);
+				if (EnableEvents == true)
+				{
+					EmitSignal("ToggleSouthEvents");
+					EmitSignal("ToggleEastEvents");
+				}
 				CAMERAS[1].Current = true;
 				break;
 
@@ -177,6 +226,11 @@ public partial class Cameras : Node
 				dir = Direction.South;
 				SetArrowsInvisible(CAMERAS[3]);
 				SetArrowsVisible(CAMERAS[2]);
+				if (EnableEvents == true)
+				{
+					EmitSignal("ToggleWestEvents");
+					EmitSignal("ToggleSouthEvents");
+				}
 				CAMERAS[2].Current = true;
 				break;
 
@@ -197,6 +251,11 @@ public partial class Cameras : Node
 				dir = Direction.East;
 				SetArrowsInvisible(CAMERAS[0]);
 				SetArrowsVisible(CAMERAS[1]);
+				if (EnableEvents == true)
+				{
+					EmitSignal("ToggleNorthEvents");
+					EmitSignal("ToggleEastEvents");
+				}
 				CAMERAS[1].Current = true;
 				break;
 
@@ -205,6 +264,11 @@ public partial class Cameras : Node
 				dir = Direction.South;
 				SetArrowsInvisible(CAMERAS[1]);
 				SetArrowsVisible(CAMERAS[2]);
+				if (EnableEvents == true)
+				{
+					EmitSignal("ToggleEastEvents");
+					EmitSignal("ToggleSouthEvents");
+				}
 				CAMERAS[2].Current = true;
 				break;
 
@@ -213,6 +277,11 @@ public partial class Cameras : Node
 				dir = Direction.West;
 				SetArrowsInvisible(CAMERAS[2]);
 				SetArrowsVisible(CAMERAS[3]);
+				if (EnableEvents == true)
+				{
+					EmitSignal("ToggleSouthEvents");
+					EmitSignal("ToggleWestEvents");
+				}
 				CAMERAS[3].Current = true;
 				break;
 
@@ -221,6 +290,11 @@ public partial class Cameras : Node
 				dir = Direction.North;
 				SetArrowsInvisible(CAMERAS[3]);
 				SetArrowsVisible(CAMERAS[0]);
+				if (EnableEvents == true)
+				{
+					EmitSignal("ToggleWestEvents");
+					EmitSignal("ToggleNorthEvents");
+				}
 				CAMERAS[0].Current = true;
 				break;
 
@@ -233,13 +307,19 @@ public partial class Cameras : Node
 	//Method to handle looking up (for scenes that are allowed)
 	public void TurnUp()
 	{
-		//If direction is up, moves camera to previous position
+		//If direction is down, moves camera to previous position
 		if (dir == Direction.Down)
 		{
 
 			//Enables camera arrows and makes it main camera
 			SetArrowsVisible(CAMERAS[GetIndexOfDirection(previousDir)]);
 			CAMERAS[GetIndexOfDirection(previousDir)].Current = true;
+
+			if (EnableEvents == true)
+			{
+				EmitSignal("ToggleDownEvents");
+				EmitSignal(string.Format("Toggle{}Events", ToDirection(previousDir)));
+			}
 
 			//Sets camera arrows for down camera invisible
 			SetArrowsInvisible(CAMERAS[5]);
@@ -248,12 +328,18 @@ public partial class Cameras : Node
 			dir = previousDir;
 		}
 
-		//If direction is not down
+		//If direction is not up
 		else if (dir != Direction.Up)
 		{
 
 			//Sets down camera visible
 			SetSingleArrowVisible(CAMERAS[4], "*Down_Arrow_Parent");
+
+			if (EnableEvents == true)
+			{
+				EmitSignal("ToggleUpEvents");
+				EmitSignal(string.Format("Toggle{}Events", ToDirection(dir)));
+			}
 
 			//Sets current direction arrows invisible
 			SetArrowsInvisible(CAMERAS[GetIndexOfDirection(dir)]);
@@ -284,6 +370,13 @@ public partial class Cameras : Node
 			//Sets camera arrows for down camera invisible
 			SetArrowsInvisible(CAMERAS[4]);
 
+			if (EnableEvents == true)
+			{
+				EmitSignal("ToggleUpEvents");
+				EmitSignal(string.Format("Toggle{}Events", ToDirection(previousDir)));
+			}
+
+
 			//Sets new current dir
 			dir = previousDir;
 		}
@@ -297,6 +390,12 @@ public partial class Cameras : Node
 
 			//Sets current direction arrows invisible
 			SetArrowsInvisible(CAMERAS[GetIndexOfDirection(dir)]);
+
+			if (EnableEvents == true)
+			{
+				EmitSignal("ToggleUpEvents");
+				EmitSignal(string.Format("Toggle{}Events", ToDirection(dir)));
+			}
 
 			//Sets down camera to visible
 			CAMERAS[5].Current = true;

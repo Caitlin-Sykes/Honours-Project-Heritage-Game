@@ -3,9 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://b6wkhglgiynah" path="res://resources/models/gui/circle_select.blend" id="1_x7nf5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wjwa2"]
-transparency = 1
-blend_mode = 1
-albedo_color = Color(0.141176, 1, 0.129412, 0.721569)
+albedo_color = Color(0.145098, 1, 0.12549, 1)
 
 [node name="circle_select" instance=ExtResource("1_x7nf5")]
 

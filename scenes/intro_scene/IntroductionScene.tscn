@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cad83160m5qo2" path="res://resources/textures/gui/OnItemSelect.png" id="4_fj71e"]
 [ext_resource type="PackedScene" uid="uid://2qs8cdh8nf1k" path="res://scenes/misc/SpeechGUI.tscn" id="4_x2lrc"]
 [ext_resource type="Texture2D" uid="uid://btfl3l2c4rluv" path="res://resources/textures/gui/OnItemSelected.png" id="6_05m2d"]
-[ext_resource type="PackedScene" uid="uid://b6wkhglgiynah" path="res://resources/models/gui/circle_select.blend" id="9_0tx7x"]
+[ext_resource type="PackedScene" uid="uid://crsfpi7xpwrd2" path="res://scenes/misc/InteractableItems.tscn" id="11_8dhfr"]
 
 [sub_resource type="Animation" id="Animation_7a53q"]
 resource_name = "Transition_Fade_In"
@@ -128,10 +128,11 @@ grow_vertical = 2
 texture_normal = ExtResource("4_fj71e")
 texture_pressed = ExtResource("6_05m2d")
 
-[node name="SpeechGUI" parent="CanvasLayer/Settings" instance=ExtResource("4_x2lrc")]
+[node name="SpeechGUI" parent="CanvasLayer/Settings" node_paths=PackedStringArray("CIRCLES") instance=ExtResource("4_x2lrc")]
 visible = false
 layout_mode = 1
 mouse_filter = 2
+CIRCLES = NodePath("../../../InteractableItems")
 
 [node name="IntroCam" type="Camera3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.36588, 0.0403199, -1.80732)
@@ -145,7 +146,8 @@ libraries = {
 [node name="MainRoom" parent="." instance=ExtResource("1_p57ao")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
-[node name="Cameras" parent="." instance=ExtResource("1_76gud")]
+[node name="Cameras" parent="." node_paths=PackedStringArray("INTERACT_CIRCLES") instance=ExtResource("1_76gud")]
+INTERACT_CIRCLES = NodePath("../InteractableItems")
 
 [node name="UI" parent="Cameras/Controls" index="0"]
 theme_override_styles/panel = SubResource("StyleBoxEmpty_jlakg")
@@ -211,9 +213,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 [node name="Up_Arrow" parent="Cameras/Controls/UI/Down/MarginContainer/Arrows/Down_Arrow_Parent/CollisionShape3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
-[node name="circle_select" parent="." instance=ExtResource("9_0tx7x")]
-transform = Transform3D(0.0258819, 0, -0.0965926, 0, 0.1, 0, 0.0965926, 0, 0.0258819, 0, 0, 0)
-visible = false
+[node name="InteractableItems" parent="." instance=ExtResource("11_8dhfr")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.0366205, 0, -0.699829)
+
+[node name="1" parent="InteractableItems/North" index="0"]
+transform = Transform3D(1.33748e-17, -3.0598e-10, 0.007, -0.007, -3.0598e-10, -3.54213e-24, 3.0598e-10, -0.007, -3.0598e-10, -0.597644, -0.315959, -0.671766)
+metadata/Object = "Bed"
+
+[node name="1" parent="InteractableItems/East" index="0"]
+transform = Transform3D(-3.0598e-10, 0.007, 9.32587e-17, -0.007, -3.0598e-10, -3.15003e-24, 9.26441e-25, -9.32587e-17, 0.007, 0.5, 0, 2.3)
+metadata/Object = "Wardrobr"
+
+[node name="circle_select" parent="InteractableItems/East/1/CollisionShape3D" index="0"]
+transform = Transform3D(3.82137e-14, -20, 8.74228e-07, -8.74228e-07, -8.74228e-07, -20, 20, -9.92616e-21, -8.74228e-07, 33.357, 57.4317, -249.426)
 
 [connection signal="StartScene" from="." to="." method="FirstDialogue"]
 [connection signal="StartScene" from="." to="Transition" method="PlayWakeAnim"]
@@ -221,3 +233,4 @@ visible = false
 
 [editable path="CanvasLayer/Settings/SpeechGUI"]
 [editable path="Cameras"]
+[editable path="InteractableItems"]

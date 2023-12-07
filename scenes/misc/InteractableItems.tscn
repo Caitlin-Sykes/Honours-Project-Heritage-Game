@@ -1,20 +1,130 @@
-[gd_scene load_steps=3 format=3 uid="uid://crsfpi7xpwrd2"]
+[gd_scene load_steps=4 format=3 uid="uid://crsfpi7xpwrd2"]
 
 [ext_resource type="PackedScene" uid="uid://c4jwl2wes28a0" path="res://scenes/misc/SelectCircles.tscn" id="1_3si8w"]
+[ext_resource type="Script" path="res://scripts/misc/InteractCircles.cs" id="1_vbacw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ajac6"]
 
 [node name="InteractableItems" type="Node3D"]
+script = ExtResource("1_vbacw")
 
 [node name="North" type="BoxContainer" parent="."]
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="1" type="Area3D" parent="North"]
-transform = Transform3D(9.55343e-17, -2.18557e-09, 0.05, -0.05, -2.18557e-09, -6.61744e-24, 2.18557e-09, -0.05, -2.18557e-09, 0.9, 0, -0.7)
+transform = Transform3D(9.55343e-17, -2.18557e-09, 0.05, -0.05, -2.18557e-09, -1.04117e-23, 2.18557e-09, -0.05, -2.18557e-09, 2.54835, 0, -4.7)
+visible = false
+metadata/Object = ""
+metadata/Descriptions = {}
+metadata/Sources = {}
+metadata/ExtraInfo = {}
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="North/1"]
 shape = SubResource("BoxShape3D_ajac6")
 
 [node name="circle_select" parent="North/1/CollisionShape3D" instance=ExtResource("1_3si8w")]
-transform = Transform3D(3.82137e-14, -20, 8.74228e-07, -8.74228e-07, -8.74228e-07, -20, 20, -9.92617e-21, -8.74228e-07, -2.88495e-06, 66, -58)
+transform = Transform3D(3.82137e-14, -20, 8.74228e-07, -8.74228e-07, -8.74228e-07, -20, 20, -9.92617e-21, -8.74228e-07, -2.01072e-06, 46, -58)
+
+[node name="East" type="BoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="1" type="Area3D" parent="East"]
+transform = Transform3D(-2.18557e-09, 0.05, 6.66134e-16, -0.05, -2.18557e-09, -1.43821e-23, 6.61744e-24, -6.66134e-16, 0.05, 0.9, 0, 2.3)
+visible = false
+metadata/Object = ""
+metadata/Descriptions = {}
+metadata/Sources = {}
+metadata/ExtraInfo = {}
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="East/1"]
+shape = SubResource("BoxShape3D_ajac6")
+
+[node name="circle_select" parent="East/1/CollisionShape3D" instance=ExtResource("1_3si8w")]
+transform = Transform3D(3.82137e-14, -20, 8.74228e-07, -8.74228e-07, -8.74228e-07, -20, 20, -9.92617e-21, -8.74228e-07, -6.03124e-06, 137.979, -58)
+
+[node name="South" type="BoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="1" type="Area3D" parent="South"]
+transform = Transform3D(1.11022e-16, -4.65661e-09, -0.05, -0.05, -2.18557e-09, 8.88712e-17, -2.18557e-09, 0.05, -4.65661e-09, -3.1, 0, 5.08676)
+visible = false
+metadata/Object = ""
+metadata/Descriptions = {}
+metadata/Sources = {}
+metadata/ExtraInfo = {}
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="South/1"]
+shape = SubResource("BoxShape3D_ajac6")
+
+[node name="circle_select" parent="South/1/CollisionShape3D" instance=ExtResource("1_3si8w")]
+transform = Transform3D(3.82137e-14, -20, 8.74228e-07, -8.74228e-07, -8.74228e-07, -20, 20, -9.92617e-21, -8.74228e-07, -2.01072e-06, 46, -58)
+
+[node name="West" type="BoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="1" type="Area3D" parent="West"]
+transform = Transform3D(2.18557e-09, -0.05, 5.58794e-09, -0.05, -2.18557e-09, -2.87643e-23, 2.77556e-16, -5.58794e-09, -0.05, -1.19572, 0, -0.351956)
+visible = false
+metadata/Object = ""
+metadata/Descriptions = {}
+metadata/Sources = {}
+metadata/ExtraInfo = {}
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="West/1"]
+shape = SubResource("BoxShape3D_ajac6")
+
+[node name="circle_select" parent="West/1/CollisionShape3D" instance=ExtResource("1_3si8w")]
+transform = Transform3D(3.82137e-14, -20, 8.74228e-07, -8.74228e-07, -8.74228e-07, -20, 20, -1.88986e-20, -8.74228e-07, -5.50764e-06, 126, -18)
+
+[node name="Up" type="BoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="1" type="Area3D" parent="Up"]
+transform = Transform3D(9.55343e-17, -2.18557e-09, 0.05, -6.66134e-16, 0.05, 2.18557e-09, -0.05, -6.66134e-16, 9.55343e-17, 2.8868, 4.92833, -1.38843)
+visible = false
+metadata/Object = ""
+metadata/Descriptions = {}
+metadata/Sources = {}
+metadata/ExtraInfo = {}
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Up/1"]
+shape = SubResource("BoxShape3D_ajac6")
+
+[node name="circle_select" parent="Up/1/CollisionShape3D" instance=ExtResource("1_3si8w")]
+transform = Transform3D(3.82137e-14, -20, 8.74228e-07, -8.74228e-07, -8.74228e-07, -20, 20, -9.92617e-21, -8.74228e-07, -2.01072e-06, 46, -58)
+
+[node name="Down" type="BoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="1" type="Area3D" parent="Down"]
+transform = Transform3D(9.55343e-17, -2.18557e-09, 0.05, 4.37114e-09, -0.05, -2.18557e-09, 0.05, 4.37114e-09, 9.55343e-17, 2.47423, 0, 1.16507)
+visible = false
+metadata/Object = ""
+metadata/Descriptions = {}
+metadata/Sources = {}
+metadata/ExtraInfo = {}
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Down/1"]
+shape = SubResource("BoxShape3D_ajac6")
+
+[node name="circle_select" parent="Down/1/CollisionShape3D" instance=ExtResource("1_3si8w")]
+transform = Transform3D(3.82137e-14, -20, 8.74228e-07, -8.74228e-07, -8.74228e-07, -20, 20, -9.92617e-21, -8.74228e-07, -2.01072e-06, 46, -58)
+
+[connection signal="ToggleDownEvents" from="." to="." method="ToggleEventsDirection" binds= [NodePath("/root/@EditorNode@17664/@Control@697/@Panel@698/@VBoxContainer@706/@HSplitContainer@709/@HSplitContainer@717/@HSplitContainer@725/@VBoxContainer@726/@VSplitContainer@728/@VSplitContainer@754/@VBoxContainer@755/@PanelContainer@800/MainScreen/@CanvasItemEditor@10090/@VSplitContainer@9915/@HSplitContainer@9917/@HSplitContainer@9919/@Control@9920/@SubViewportContainer@9921/@SubViewport@9922/InteractableItems/Down")]]
+[connection signal="ToggleEastEvents" from="." to="." method="ToggleEventsDirection" binds= [NodePath("/root/@EditorNode@17664/@Control@697/@Panel@698/@VBoxContainer@706/@HSplitContainer@709/@HSplitContainer@717/@HSplitContainer@725/@VBoxContainer@726/@VSplitContainer@728/@VSplitContainer@754/@VBoxContainer@755/@PanelContainer@800/MainScreen/@CanvasItemEditor@10090/@VSplitContainer@9915/@HSplitContainer@9917/@HSplitContainer@9919/@Control@9920/@SubViewportContainer@9921/@SubViewport@9922/InteractableItems/East")]]
+[connection signal="ToggleNorthEvents" from="." to="." method="ToggleEventsDirection" binds= [NodePath("/root/@EditorNode@17664/@Control@697/@Panel@698/@VBoxContainer@706/@HSplitContainer@709/@HSplitContainer@717/@HSplitContainer@725/@VBoxContainer@726/@VSplitContainer@728/@VSplitContainer@754/@VBoxContainer@755/@PanelContainer@800/MainScreen/@CanvasItemEditor@10090/@VSplitContainer@9915/@HSplitContainer@9917/@HSplitContainer@9919/@Control@9920/@SubViewportContainer@9921/@SubViewport@9922/InteractableItems/North")]]
+[connection signal="ToggleSouthEvents" from="." to="." method="ToggleEventsDirection" binds= [NodePath("/root/@EditorNode@17664/@Control@697/@Panel@698/@VBoxContainer@706/@HSplitContainer@709/@HSplitContainer@717/@HSplitContainer@725/@VBoxContainer@726/@VSplitContainer@728/@VSplitContainer@754/@VBoxContainer@755/@PanelContainer@800/MainScreen/@CanvasItemEditor@10090/@VSplitContainer@9915/@HSplitContainer@9917/@HSplitContainer@9919/@Control@9920/@SubViewportContainer@9921/@SubViewport@9922/InteractableItems/South")]]
+[connection signal="ToggleUpEvents" from="." to="." method="ToggleEventsDirection" binds= [NodePath("/root/@EditorNode@17664/@Control@697/@Panel@698/@VBoxContainer@706/@HSplitContainer@709/@HSplitContainer@717/@HSplitContainer@725/@VBoxContainer@726/@VSplitContainer@728/@VSplitContainer@754/@VBoxContainer@755/@PanelContainer@800/MainScreen/@CanvasItemEditor@10090/@VSplitContainer@9915/@HSplitContainer@9917/@HSplitContainer@9919/@Control@9920/@SubViewportContainer@9921/@SubViewport@9922/InteractableItems/Up")]]
+[connection signal="ToggleWestEvents" from="." to="." method="ToggleEventsDirection" binds= [NodePath("/root/@EditorNode@17664/@Control@697/@Panel@698/@VBoxContainer@706/@HSplitContainer@709/@HSplitContainer@717/@HSplitContainer@725/@VBoxContainer@726/@VSplitContainer@728/@VSplitContainer@754/@VBoxContainer@755/@PanelContainer@800/MainScreen/@CanvasItemEditor@10090/@VSplitContainer@9915/@HSplitContainer@9917/@HSplitContainer@9919/@Control@9920/@SubViewportContainer@9921/@SubViewport@9922/InteractableItems/West")]]
+[connection signal="input_event" from="North/1" to="." method="CirclesPressed"]
+[connection signal="input_event" from="East/1" to="." method="CirclesPressed"]
+[connection signal="input_event" from="South/1" to="." method="CirclesPressed"]
+[connection signal="input_event" from="West/1" to="." method="CirclesPressed"]
+[connection signal="input_event" from="Up/1" to="." method="CirclesPressed"]
+[connection signal="input_event" from="Down/1" to="." method="CirclesPressed"]

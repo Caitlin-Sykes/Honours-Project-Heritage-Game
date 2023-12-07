@@ -17,7 +17,13 @@ public partial class IntroductionScene : Node3D
 	private Cameras CAMERAS; //instance of cameraScript
 
 	private Camera3D introCam; //the camera you start viewing from
-	private AnimationPlayer ANIMATION_PLAYER_INTROCAM; // the animation handler for intro cam
+	private AnimationPlayer ANIMATION_PLAYER_INTROCAM; // the animation handler for intro 
+
+	public enum SceneState {
+		Tutorial, //tutorial scene, bunch of misc data
+		Stage_1, // stage 2
+		Stage_2, //stage 3
+	}
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
