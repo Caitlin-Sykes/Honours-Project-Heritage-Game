@@ -70,7 +70,7 @@ bg_color = Color(1, 0.866667, 0.458824, 1)
 
 [resource]
 default_font = ExtResource("1_8hwvl")
-default_font_size = 26
+default_font_size = 40
 GreenButton/constants/h_separation = 2
 GreenButton/constants/icon_max_width = 340
 GreenButton/font_sizes/font_size = 39
@@ -82,7 +82,6 @@ GreenButtonMenu/styles/hover = SubResource("StyleBoxFlat_6llsc")
 GreenButtonMenu/styles/normal = SubResource("StyleBoxFlat_m304p")
 GreenButtonMenu/styles/pressed = SubResource("StyleBoxFlat_6ppwb")
 IDCardLabel/base_type = &"Label"
-IDCardLabel/font_sizes/font_size = 32
 Name_Panel/base_type = &"Panel"
 Name_Panel/styles/panel = SubResource("StyleBoxFlat_71ybw")
 OrangeButton/constants/h_separation = 2
@@ -102,6 +101,7 @@ Speech/font_sizes/font_size = 29
 SpeechPanel/base_type = &"Panel"
 SpeechPanel/styles/panel = SubResource("StyleBoxFlat_dmibg")
 StudentIDLineEdit/base_type = &"LineEdit"
+StudentIDLineEdit/colors/font_uneditable_color = Color(1, 1, 1, 1)
 StudentIDLineEdit/styles/normal = SubResource("StyleBoxFlat_b5y6x")
 StudentIDLineEdit/styles/read_only = SubResource("StyleBoxFlat_nprsr")
 StudentIDMulti/base_type = &"OptionButton"

@@ -33,7 +33,5 @@ public partial class Settings : Control
 		{
 			DisplayServer.WindowSetMode(DisplayServer.WindowMode.Fullscreen);
 		}
-		// TODO: optimise this spaghetti junction of code for init
 	}
-
 }

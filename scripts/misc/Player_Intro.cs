@@ -28,7 +28,7 @@ public partial class Player_Intro : Control
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		TRANSITION = GetNode<Transitions>("Transition");
+		TRANSITION = GetNode<Transitions>("Settings/Transition");
 		InitSettings();
 
 

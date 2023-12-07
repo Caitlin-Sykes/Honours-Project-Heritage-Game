@@ -150,15 +150,21 @@ public partial class SpeechGUI : Control
 	{
 		switch (id)
 		{
-			//If one, makes the top and bottom arrows visible
-			case "2":
+			//If two, makes the top and bottom arrows visible
+			case "1":
 				CAMERAS.SetSingleArrowVisible(GetViewport().GetCamera3D(), "*Up_Arrow_Parent");
 				CAMERAS.SetSingleArrowVisible(GetViewport().GetCamera3D(), "*Down_Arrow_Parent");
 				return;
 
+			//If three, hides the top and bottom arrows
 			case "3":
 				CAMERAS.SetSingleArrowInvisible(GetViewport().GetCamera3D(), "*Up_Arrow_Parent");
 				CAMERAS.SetSingleArrowInvisible(GetViewport().GetCamera3D(), "*Down_Arrow_Parent");
+				return;
+
+			//If five, downsizes the text
+			case "5":
+				// previousFontSize = GetThemeDefaultFontSize();
 				return;
 
 			default:
