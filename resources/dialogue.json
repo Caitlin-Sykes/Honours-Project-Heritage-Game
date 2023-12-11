@@ -60,41 +60,34 @@
 
     {
       "Id": "4",
-      "Speaker": "{0}",
-      "Dialogue": "I'd better get ready before Mum makes good on her threat... *shivers*",
-      "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
-    },
-
-    {
-      "Id": "5",
       "Speaker": "Guide",
       "Dialogue": "Any time during the game, if you would like to see the source of any information provided, such as a fact, you can press the 'J' key.",
       "Avatar": "res://resources/textures/sprites/guide/1.svg"
     },
 
     {
-      "Id": "6",
+      "Id": "5",
       "Speaker": "Guide",
       "Dialogue": "This will show a list of sources that the information was obtained from. This is also available from within the game menu and the game source files- 'Sources.md'",
       "Avatar": "res://resources/textures/sprites/guide/1.svg"
     },
 
     {
-      "Id": "7",
+      "Id": "6",
       "Speaker": "Guide",
       "Dialogue": "The 'J' key may also provide extra information not originally shown. Try pressing 'J' whilst clicking on the poster by the desk.",
       "Avatar": "res://resources/textures/sprites/guide/1.svg"
     },
 
     {
-      "Id": "8",
+      "Id": "7",
       "Speaker": "Guide",
       "Dialogue": "If you are stuck at any time, or forget what you are supposed to be doing, press the 'K' key to prompt you.",
       "Avatar": "res://resources/textures/sprites/guide/1.svg"
     },
 
     {
-      "Id": "9",
+      "Id": "8",
       "Speaker": "Guide",
       "Dialogue": "I think that's about it in terms of controls. Have fun- and I think you should interact with the door to tell your mum you're coming.",
       "Avatar": "res://resources/textures/sprites/guide/1.svg"
