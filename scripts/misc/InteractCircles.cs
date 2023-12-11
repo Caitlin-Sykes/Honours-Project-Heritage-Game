@@ -87,7 +87,7 @@ public partial class InteractCircles : Node3D
 	**/
 
 	//TODO: bug, wont trigger
-	private void CirclesPressed(InputEvent @evnt, String path)
+	private async void CirclesPressed(InputEvent @evnt, String path)
 	{
 		//If trigger is left click
 		if (@evnt is InputEventMouseButton mouse)
@@ -103,7 +103,15 @@ public partial class InteractCircles : Node3D
 				if (SceneState.sceneState == SceneState.CurrentSceneState.Tutorial)
 				{
 					DIALOGUE.Dialogue(PlayerData.Player.Name, meta["Tutorial"], string.Format(PLAYER_AVATAR, PlayerData.Player.Avatar));
+
+					//Swap back to gui speech and unlock the dialogue
 					DIALOGUE.SwapOverlay();
+					DIALOGUE.DialogueLocked = false;
+
+					await ToSignal(DIALOGUE, "SceneProgress");
+					{
+						
+					}
 				}
 			}
 		}

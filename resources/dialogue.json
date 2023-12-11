@@ -54,14 +54,14 @@
     {
       "Id": "3",
       "Speaker": "Guide",
-      "Dialogue": "Similarly to before, anywhere you can see a circle-like object, this is something you can interact with. Try interacting with the closet.",
+      "Dialogue": "Similarly to before, anywhere you can see a circle-like object, this is something you can interact with. Try interacting with the wardrobe.",
       "Avatar": "res://resources/textures/sprites/guide/1.svg"
     },
 
     {
       "Id": "4",
       "Speaker": "Guide",
-      "Dialogue": "Any time during the game, if you would like to see the source of any information provided, such as a fact, you can press the 'J' key.",
+      "Dialogue": "There we go. Any time during the game, if you would like to see the source of any information provided, such as a fact, you can press the 'J' key.",
       "Avatar": "res://resources/textures/sprites/guide/1.svg"
     },
 

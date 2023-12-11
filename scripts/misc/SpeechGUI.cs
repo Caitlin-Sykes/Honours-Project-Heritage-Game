@@ -16,8 +16,13 @@ public partial class SpeechGUI : Control
 	private CanvasLayer Select_Items; //node to hold instance of select items overlay
 	private CanvasLayer Speech_Overlay; //node to hold instance of overlay
 
+	public bool DialogueLocked {get; set;} = false; //to lock the dialogue
+
 	[Signal]
 	public delegate void DialogueProgressEventHandler(); //handler for progressing scene text
+
+	[Signal]
+	public delegate void SceneProgressEventHandler(); //handler for progressing scene
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -77,7 +82,7 @@ public partial class SpeechGUI : Control
 	public async void Dialogue(JsonHandler.DialogueStructData[] Scene)
 	{
 		//Skips the whole thing if the speech overlay isn't visible
-		if (Scene != null && Speech_Overlay.Visible == true)
+		if (Scene != null && Speech_Overlay.Visible == true && DialogueLocked != true)
 		{
 
 			//For every bit of speech in the scene
@@ -101,7 +106,7 @@ public partial class SpeechGUI : Control
 	//Handles the dialogue if you pass in the Scene. This version handles triggering events at certain IDs
 	public async void Dialogue(JsonHandler.DialogueStructData[] Scene, string name, string[] triggerID)
 	{
-		if (Scene != null && Speech_Overlay.Visible == true)
+		if (Scene != null && Speech_Overlay.Visible == true && DialogueLocked != true)
 		{
 
 			//For every bit of speech in the scene
@@ -128,18 +133,24 @@ public partial class SpeechGUI : Control
 
 		else
 		{
-			throw new System.InvalidOperationException("Error: something has gone wrong with parsing the dialogue.json");
+			throw new InvalidOperationException("Error: something has gone wrong with parsing the dialogue.json");
 		}
 	}
 
 	//Just displays
 	public async void Dialogue(String name, String description, string avatar)
-	{
-		
+	{	
 				SetNameNode(name);
 				SetSpeechNode(description);
 				SetAvatarNode(avatar);
-				await ToSignal(this, "DialogueProgress");
+
+				if (DialogueLocked) {
+					await ToSignal(this, "SceneProgress");
+				}
+
+				else {
+					await ToSignal(this, "DialogueProgress");
+				}
 	}
 	/**
 	* ----------------------------------------------------------------
@@ -148,8 +159,13 @@ public partial class SpeechGUI : Control
 	**/
 
 	public void OnGUIClick(InputEvent @evnt) {
-		if (@evnt is InputEventMouseButton mouse && @evnt.IsPressed()) {
+		if (@evnt is InputEventMouseButton mouse && @evnt.IsPressed() && DialogueLocked != true) {
 			EmitSignal("DialogueProgress");
+		}
+
+		else if (@evnt is InputEventMouseButton ms && @evnt.IsPressed() && DialogueLocked != false)
+		{
+			EmitSignal("SceneProgress");
 		}
 	}
 
@@ -187,7 +203,8 @@ public partial class SpeechGUI : Control
 				CAMERAS.SetSingleArrowInvisible(GetViewport().GetCamera3D(), "*Up_Arrow_Parent");
 				CAMERAS.SetSingleArrowInvisible(GetViewport().GetCamera3D(), "*Down_Arrow_Parent");
 				CIRCLES.ToggleSpecificDirection(GetNode<ButtonOverwrite>("../../../InteractableItems/Select_Items/Panel/East/1"));
-				await ToSignal(this, "DialogueProgress");
+				DialogueLocked = true;
+				await ToSignal(this, "SceneProgress");
 				SwapOverlay();
 
 				return;
