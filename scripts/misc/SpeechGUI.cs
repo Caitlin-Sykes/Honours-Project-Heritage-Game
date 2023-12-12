@@ -24,6 +24,9 @@ public partial class SpeechGUI : Control
 	[Signal]
 	public delegate void SceneProgressEventHandler(); //handler for progressing scene
 
+	[Signal]
+	public delegate void LookProgressEventHandler(); //handler for progressing looking at smth
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -54,6 +57,10 @@ public partial class SpeechGUI : Control
 		Select_Items.Visible = !Select_Items.Visible;
 	}
 
+	public void SkipDialogue() {
+		EmitSignal("DialogueProgress");
+	}
+
 
 	/**
 	* ----------------------------------------------------------------
@@ -82,7 +89,7 @@ public partial class SpeechGUI : Control
 	public async void Dialogue(JsonHandler.DialogueStructData[] Scene)
 	{
 		//Skips the whole thing if the speech overlay isn't visible
-		if (Scene != null && Speech_Overlay.Visible == true && DialogueLocked != true)
+		if (Scene != null && Speech_Overlay.Visible == true && SceneState.PlayerStatus == SceneState.StatusOfPlayer.InDialogue)
 		{
 
 			//For every bit of speech in the scene
@@ -106,7 +113,7 @@ public partial class SpeechGUI : Control
 	//Handles the dialogue if you pass in the Scene. This version handles triggering events at certain IDs
 	public async void Dialogue(JsonHandler.DialogueStructData[] Scene, string name, string[] triggerID)
 	{
-		if (Scene != null && Speech_Overlay.Visible == true && DialogueLocked != true)
+		if (Scene != null && Speech_Overlay.Visible == true && SceneState.PlayerStatus == SceneState.StatusOfPlayer.InDialogue)
 		{
 
 			//For every bit of speech in the scene
@@ -144,11 +151,12 @@ public partial class SpeechGUI : Control
 				SetSpeechNode(description);
 				SetAvatarNode(avatar);
 
-				if (DialogueLocked) {
+				if (SceneState.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam) {
 					await ToSignal(this, "SceneProgress");
 				}
 
-				else {
+				else if (SceneState.PlayerStatus == SceneState.StatusOfPlayer.InDialogue)
+		{
 					await ToSignal(this, "DialogueProgress");
 				}
 	}
@@ -159,13 +167,19 @@ public partial class SpeechGUI : Control
 	**/
 
 	public void OnGUIClick(InputEvent @evnt) {
-		if (@evnt is InputEventMouseButton mouse && @evnt.IsPressed() && DialogueLocked != true) {
+		if (@evnt is InputEventMouseButton mouse && @evnt.IsPressed() && SceneState.PlayerStatus == SceneState.StatusOfPlayer.InDialogue) {
 			EmitSignal("DialogueProgress");
 		}
 
-		else if (@evnt is InputEventMouseButton ms && @evnt.IsPressed() && DialogueLocked != false)
+		else if (@evnt is InputEventMouseButton ms && @evnt.IsPressed() && SceneState.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam)
 		{
 			EmitSignal("SceneProgress");
+		}
+
+		else if (@evnt is InputEventMouseButton moose && @evnt.IsPressed() && SceneState.PlayerStatus == SceneState.StatusOfPlayer.LookingAtSomething)
+		{
+			EmitSignal("LookProgress");
+
 		}
 	}
 
@@ -202,22 +216,33 @@ public partial class SpeechGUI : Control
 			case "3":
 				CAMERAS.SetSingleArrowInvisible(GetViewport().GetCamera3D(), "*Up_Arrow_Parent");
 				CAMERAS.SetSingleArrowInvisible(GetViewport().GetCamera3D(), "*Down_Arrow_Parent");
-				CIRCLES.ToggleSpecificDirection(GetNode<ButtonOverwrite>("../../../InteractableItems/Select_Items/Panel/East/1"));
-				DialogueLocked = true;
+				CIRCLES.ToggleSpecificDirection(GetNode<ButtonOverwrite>("../../../InteractableItems/Select_Items/Settings/Panel/East/2"));
+				SceneState.PlayerStatus = SceneState.StatusOfPlayer.FreeRoam;
 				await ToSignal(this, "SceneProgress");
+
 				SwapOverlay();
 
 				return;
 
-			//If five, downsizes the text
-			case "5":
-				// previousFontSize = GetThemeDefaultFontSize();
+			//If six, enables the selection
+			case "6":
+				CIRCLES.ToggleSpecificDirection(GetNode<ButtonOverwrite>("../../../InteractableItems/Select_Items/Settings/Panel/East/1")); //disables previous specific direction
+				CIRCLES.ToggleSpecificDirection(GetNode<ButtonOverwrite>("../../../InteractableItems/Select_Items/Settings/Panel/East/2")); //enables previous specific direction
+
+				DialogueLocked = true;
+				await ToSignal(this, "SceneProgress");
+				SwapOverlay();
 				return;
 
 			default:
 				return;
 		}
-// TODO: add circles to interact with, appended with the current camera enabled. This can be perhaps stored in CAMERAS as opposed to SPeechGUI
-//BUG:  id no 5 in controls too much text- downsize to smaller :D
 	}
 }
+
+//get current camera 
+// move to position
+// ie poster
+// set staring at "object" to be true
+// so if k is pressed, can open up specific information
+// store camera pos in meta

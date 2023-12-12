@@ -2,6 +2,7 @@ using Godot;
 using System;
 
 
+
 public partial class InteractCircles : Node3D
 {
 	[Signal]
@@ -28,14 +29,14 @@ public partial class InteractCircles : Node3D
 
 	private string PLAYER_AVATAR = "res://resources/textures/sprites/main_char/{0}.svg";
 
+	private string CURRENT_PATH_CIRCLES {get; set;}
+
+	private MarginContainer BackButtonContainer; //instance of the back button container
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
+		BackButtonContainer = GetNode<MarginContainer>("Select_Items/Settings/Panel/Back_Button");
 	}
 
 	// attach unique meta data to each circle imported 
@@ -49,14 +50,15 @@ public partial class InteractCircles : Node3D
 	**/
 
 	//Enables the events circle
-	private void ToggleEventsDirection(NodePath path)
+	private void ToggleEventsDirection(ButtonOverwrite cir)
 	{
 
-		//Gets the direction to be enabled, passed in by path
-		BoxContainer dir = GetNode<BoxContainer>(path);
+		//parNode is the parent of cir node
+		var parNode = (Control)cir.GetParent(); 
+		parNode.Visible = !parNode.Visible;
 
 		//For every circle in the direction container, toggles them
-		foreach (TextureButton circle in dir.GetChildren())
+		foreach (ButtonOverwrite circle in parNode.GetChildren())
 		{
 			circle.Visible = !circle.Visible;
 		}
@@ -68,7 +70,7 @@ public partial class InteractCircles : Node3D
 
 		//Gets the circle to be enabled, passed in by path
 		try {
-			cir.GetNode<PanelContainer>("..").Visible = true;
+			cir.GetNode<Control>("..").Visible = true;
 			cir.Visible = !cir.Visible;
 		}
 
@@ -80,42 +82,81 @@ public partial class InteractCircles : Node3D
 	}
 
 
-	/**
-	* ----------------------------------------------------------------
-	* Handles on circle click
-	* ----------------------------------------------------------------
-	**/
+	// Handles on circle click
 
-	//TODO: bug, wont trigger
-	private async void CirclesPressed(InputEvent @evnt, String path)
+	private async void CirclesPressed(String path)
 	{
-		//If trigger is left click
-		if (@evnt is InputEventMouseButton mouse)
-		{
-			GD.Print("ping");
-			if (mouse.ButtonIndex == MouseButton.Left && @evnt.IsPressed())
-			{
-	
-				//Gets meta of button clicked
-				var meta = (Godot.Collections.Dictionary<string, string>)GetNode<ButtonOverwrite>(path).GetMeta("Description");
+				SceneState.PlayerStatus = SceneState.StatusOfPlayer.LookingAtSomething;
+				CURRENT_PATH_CIRCLES = path;
+				//If it has a camera position then
+				if (GetNode<ButtonOverwrite>(path).GetMeta("NewCamPos").AsVector3() != Vector3.Zero) {
+
+					ToggleEventsDirection(GetNode<ButtonOverwrite>(path)); //turns off all the circles 
+					SetCam(GetNode<ButtonOverwrite>(path).GetMeta("NewCamPos").AsVector3(), (float)GetNode<ButtonOverwrite>(path).GetMeta("CamRotation")); //sets the camera to the position and rotation in the meta data
+					ToggleBackButton(); //shows the back button
+				}
+
+				//Gets meta descriptionof button clicked
+				var description = (Godot.Collections.Dictionary<string, string>)GetNode<ButtonOverwrite>(path).GetMeta("Description");
 
 				//If the scene state is Tutorial
 				if (SceneState.sceneState == SceneState.CurrentSceneState.Tutorial)
 				{
-					DIALOGUE.Dialogue(PlayerData.Player.Name, meta["Tutorial"], string.Format(PLAYER_AVATAR, PlayerData.Player.Avatar));
+					DIALOGUE.Dialogue(PlayerData.Player.Name, description["Tutorial"], string.Format(PLAYER_AVATAR, PlayerData.Player.Avatar));
 
-					//Swap back to gui speech and unlock the dialogue
+					//Swap back to gui speech
 					DIALOGUE.SwapOverlay();
-					DIALOGUE.DialogueLocked = false;
 
-					await ToSignal(DIALOGUE, "SceneProgress");
-					{
-						
-					}
-				}
-			}
+					//Awaits the dialogue progression
+					await ToSignal(DIALOGUE, "LookProgress");
+
+					//Swap back to casual view
+					DIALOGUE.SwapOverlay();
+
+
 		}
+			}
+		
+	
+
+	/**
+	* ----------------------------------------------------------------
+	* Misc Handlers
+	* ----------------------------------------------------------------
+	**/
+
+	//On back button click
+	// Returns to camera origin
+	private void OnBackPressed() 
+	{
+		ToggleBackButton(); //hides the back button
+		SetCam(Vector3.Zero, 0); //resets camera position
+
+		//Renables the circles
+		ToggleEventsDirection(GetNode<ButtonOverwrite>(CURRENT_PATH_CIRCLES));
+
+		//Swaps back to dialogue mode
+		SceneState.PlayerStatus = SceneState.StatusOfPlayer.InDialogue;
+		
+		//Skips dialogue so it doesnt repeat itself
+		DIALOGUE.SkipDialogue();
+
+		//Swap back to gui speech and unlock the dialogue
+		DIALOGUE.SwapOverlay();
+
 	}
 
+	//On back button click
+	// Returns to camera origin
+	private void ToggleBackButton()
+	{
+		BackButtonContainer.Visible = !BackButtonContainer.Visible;
+	}
 
-}
+	//Sets current Camera position
+	private void SetCam(Vector3 pos, float angle) {
+		Camera3D curCam = GetViewport().GetCamera3D(); //Gets the current active camera
+		curCam.Position = pos; //Sets current camera to the position
+		curCam.Rotate(curCam.Transform.Origin, angle); //rotates to the rotation
+
+}}

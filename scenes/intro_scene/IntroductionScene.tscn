@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cok4snixun3l8"]
+[gd_scene load_steps=21 format=3 uid="uid://cok4snixun3l8"]
 
 [ext_resource type="Script" path="res://scripts/misc/Transitions.cs" id="1_8iq14"]
 [ext_resource type="PackedScene" uid="uid://ui3tvchfafso" path="res://scenes/misc/Cameras.tscn" id="1_76gud"]
@@ -10,7 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://cad83160m5qo2" path="res://resources/textures/gui/OnItemSelect.png" id="4_fj71e"]
 [ext_resource type="PackedScene" uid="uid://2qs8cdh8nf1k" path="res://scenes/misc/SpeechGUI.tscn" id="4_x2lrc"]
 [ext_resource type="Texture2D" uid="uid://btfl3l2c4rluv" path="res://resources/textures/gui/OnItemSelected.png" id="6_05m2d"]
-[ext_resource type="PackedScene" uid="uid://crsfpi7xpwrd2" path="res://scenes/misc/InteractableItems.tscn" id="11_8dhfr"]
+[ext_resource type="Script" path="res://scripts/misc/InteractCircles.cs" id="11_www6o"]
+[ext_resource type="PackedScene" uid="uid://c3yc0s2xdcxsu" path="res://scenes/misc/AudioButtons.tscn" id="12_kcntl"]
+[ext_resource type="Texture2D" uid="uid://dsdt4amufrxcn" path="res://resources/textures/icons/arrow.png" id="13_lywhr"]
 
 [sub_resource type="Animation" id="Animation_7a53q"]
 resource_name = "Transition_Fade_In"
@@ -76,12 +78,13 @@ _data = {
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jlakg"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sngad"]
+
 [node name="IntroductionScene" type="Node3D" node_paths=PackedStringArray("DIALOGUE")]
 script = ExtResource("1_wn8em")
 DIALOGUE = NodePath("CanvasLayer/Settings/SpeechGUI")
 
 [node name="Transition" type="ColorRect" parent="."]
-visible = false
 modulate = Color(0.131765, 0.131765, 0.131765, 0.872941)
 top_level = true
 anchors_preset = 15
@@ -214,52 +217,491 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 [node name="Up_Arrow" parent="Cameras/Controls/UI/Down/MarginContainer/Arrows/Down_Arrow_Parent/CollisionShape3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
-[node name="InteractableItems" parent="." node_paths=PackedStringArray("DIALOGUE") instance=ExtResource("11_8dhfr")]
+[node name="InteractableItems" type="Node3D" parent="." node_paths=PackedStringArray("DIALOGUE")]
+script = ExtResource("11_www6o")
 DIALOGUE = NodePath("../CanvasLayer/Settings/SpeechGUI")
 
-[node name="Select_Items" parent="InteractableItems" index="0"]
-follow_viewport_enabled = false
+[node name="Select_Items" type="CanvasLayer" parent="InteractableItems"]
+visible = false
+follow_viewport_enabled = true
 
-[node name="North" parent="InteractableItems/Select_Items/Panel" index="0"]
-layout_mode = 0
-offset_left = 0.0
-offset_top = 0.0
+[node name="Settings" type="Control" parent="InteractableItems/Select_Items"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme = ExtResource("2_ycenm")
+script = ExtResource("2_vwuwl")
+
+[node name="Panel" type="Panel" parent="InteractableItems/Select_Items/Settings"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_sngad")
+
+[node name="Back_Button" type="MarginContainer" parent="InteractableItems/Select_Items/Settings/Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -420.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 114.0
+grow_horizontal = 0
+
+[node name="Back" parent="InteractableItems/Select_Items/Settings/Panel/Back_Button" instance=ExtResource("12_kcntl")]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 1
+tooltip_text = "Go back to the settings menu"
+theme_type_variation = &"GreenButton"
+text = "Back"
+icon = ExtResource("13_lywhr")
+icon_alignment = 1
+vertical_icon_alignment = 2
+expand_icon = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Shadow" type="Panel" parent="InteractableItems/Select_Items/Settings/Panel/Back_Button/Back"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 94.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="North" type="Control" parent="InteractableItems/Select_Items/Settings/Panel"]
+visible = false
+layout_mode = 2
+anchors_preset = 0
+offset_left = 887.0
+offset_top = 214.0
+offset_right = 927.0
+offset_bottom = 254.0
+
+[node name="1" parent="InteractableItems/Select_Items/Settings/Panel/North" instance=ExtResource("4_4mlkj")]
+visible = false
+layout_mode = 2
 offset_right = 200.0
 offset_bottom = 200.0
+texture_normal = ExtResource("4_fj71e")
+texture_pressed = ExtResource("6_05m2d")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
 
-[node name="East" parent="InteractableItems/Select_Items/Panel" index="1"]
+[node name="2" parent="InteractableItems/Select_Items/Settings/Panel/North" instance=ExtResource("4_4mlkj")]
+visible = false
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 200.0
+texture_normal = ExtResource("4_fj71e")
+texture_pressed = ExtResource("6_05m2d")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+
+[node name="3" parent="InteractableItems/Select_Items/Settings/Panel/North" instance=ExtResource("4_4mlkj")]
+visible = false
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 200.0
+texture_normal = ExtResource("4_fj71e")
+texture_pressed = ExtResource("6_05m2d")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+
+[node name="4" parent="InteractableItems/Select_Items/Settings/Panel/North" instance=ExtResource("4_4mlkj")]
+visible = false
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 200.0
+texture_normal = ExtResource("4_fj71e")
+texture_pressed = ExtResource("6_05m2d")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+
+[node name="5" parent="InteractableItems/Select_Items/Settings/Panel/North" instance=ExtResource("4_4mlkj")]
+visible = false
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 200.0
+texture_normal = ExtResource("4_fj71e")
+texture_pressed = ExtResource("6_05m2d")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+
+[node name="6" parent="InteractableItems/Select_Items/Settings/Panel/North" instance=ExtResource("4_4mlkj")]
+visible = false
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 200.0
+texture_normal = ExtResource("4_fj71e")
+texture_pressed = ExtResource("6_05m2d")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+
+[node name="East" type="Control" parent="InteractableItems/Select_Items/Settings/Panel"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 574.0
-offset_top = 76.0
-offset_right = 774.0
-offset_bottom = 276.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="1" parent="InteractableItems/Select_Items/Panel/East" index="0"]
+[node name="1" parent="InteractableItems/Select_Items/Settings/Panel/East" instance=ExtResource("4_4mlkj")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.202
+anchor_top = 0.325
+anchor_right = 0.209
+anchor_bottom = 0.374
+offset_right = 200.0
+offset_bottom = 200.0
+texture_normal = ExtResource("4_fj71e")
+texture_pressed = ExtResource("6_05m2d")
+metadata/Object = "Poster"
+metadata/Description = {
+"Tutorial": "I got this poster a while ago. Probably spent more time playing that then doing coursework..."
+}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(1.09332, 0.244675, -1.35129)
+metadata/CamRotation = -90
+
+[node name="2" parent="InteractableItems/Select_Items/Settings/Panel/East" instance=ExtResource("4_4mlkj")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.711
+anchor_top = 0.503
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 0
+grow_vertical = 2
+texture_normal = ExtResource("4_fj71e")
+texture_pressed = ExtResource("6_05m2d")
 metadata/Object = "Wardrobe"
 metadata/Description = {
 "Tutorial": "I'd better get ready before Mum makes good on her threat... *shivers*"
 }
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
 
-[node name="South" parent="InteractableItems/Select_Items/Panel" index="2"]
-layout_mode = 0
+[node name="3" parent="InteractableItems/Select_Items/Settings/Panel/East" instance=ExtResource("4_4mlkj")]
+visible = false
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 200.0
+texture_normal = ExtResource("4_fj71e")
+texture_pressed = ExtResource("6_05m2d")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
 
-[node name="Up" parent="InteractableItems/Select_Items/Panel" index="4"]
-layout_mode = 0
+[node name="4" parent="InteractableItems/Select_Items/Settings/Panel/East" instance=ExtResource("4_4mlkj")]
+visible = false
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 200.0
+texture_normal = ExtResource("4_fj71e")
+texture_pressed = ExtResource("6_05m2d")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
 
-[node name="Down" parent="InteractableItems/Select_Items/Panel" index="5"]
-layout_mode = 0
+[node name="5" parent="InteractableItems/Select_Items/Settings/Panel/East" instance=ExtResource("4_4mlkj")]
+visible = false
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 200.0
+texture_normal = ExtResource("4_fj71e")
+texture_pressed = ExtResource("6_05m2d")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+
+[node name="6" parent="InteractableItems/Select_Items/Settings/Panel/East" instance=ExtResource("4_4mlkj")]
+visible = false
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 200.0
+texture_normal = ExtResource("4_fj71e")
+texture_pressed = ExtResource("6_05m2d")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+
+[node name="South" type="Control" parent="InteractableItems/Select_Items/Settings/Panel"]
+visible = false
+layout_mode = 2
+anchors_preset = 0
+offset_left = 887.0
+offset_top = 214.0
+offset_right = 927.0
+offset_bottom = 254.0
+
+[node name="1" parent="InteractableItems/Select_Items/Settings/Panel/South" instance=ExtResource("4_4mlkj")]
+visible = false
+layout_mode = 2
+offset_left = -887.0
+offset_top = -214.0
+offset_right = -687.0
+offset_bottom = -14.0
+texture_normal = ExtResource("4_fj71e")
+texture_pressed = ExtResource("6_05m2d")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+
+[node name="2" parent="InteractableItems/Select_Items/Settings/Panel/South" instance=ExtResource("4_4mlkj")]
+visible = false
+layout_mode = 2
+offset_left = -887.0
+offset_top = -214.0
+offset_right = -687.0
+offset_bottom = -14.0
+texture_normal = ExtResource("4_fj71e")
+texture_pressed = ExtResource("6_05m2d")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+
+[node name="3" parent="InteractableItems/Select_Items/Settings/Panel/South" instance=ExtResource("4_4mlkj")]
+visible = false
+layout_mode = 2
+offset_left = -887.0
+offset_top = -214.0
+offset_right = -687.0
+offset_bottom = -14.0
+texture_normal = ExtResource("4_fj71e")
+texture_pressed = ExtResource("6_05m2d")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+
+[node name="4" parent="InteractableItems/Select_Items/Settings/Panel/South" instance=ExtResource("4_4mlkj")]
+visible = false
+layout_mode = 2
+offset_left = -887.0
+offset_top = -214.0
+offset_right = -687.0
+offset_bottom = -14.0
+texture_normal = ExtResource("4_fj71e")
+texture_pressed = ExtResource("6_05m2d")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+
+[node name="5" parent="InteractableItems/Select_Items/Settings/Panel/South" instance=ExtResource("4_4mlkj")]
+visible = false
+layout_mode = 2
+offset_left = -887.0
+offset_top = -214.0
+offset_right = -687.0
+offset_bottom = -14.0
+texture_normal = ExtResource("4_fj71e")
+texture_pressed = ExtResource("6_05m2d")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+
+[node name="6" parent="InteractableItems/Select_Items/Settings/Panel/South" instance=ExtResource("4_4mlkj")]
+visible = false
+layout_mode = 2
+offset_left = -887.0
+offset_top = -214.0
+offset_right = -687.0
+offset_bottom = -14.0
+texture_normal = ExtResource("4_fj71e")
+texture_pressed = ExtResource("6_05m2d")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+
+[node name="West" type="Control" parent="InteractableItems/Select_Items/Settings/Panel"]
+visible = false
+layout_mode = 2
+anchors_preset = 0
+offset_left = 887.0
+offset_top = 214.0
+offset_right = 927.0
+offset_bottom = 254.0
+
+[node name="1" parent="InteractableItems/Select_Items/Settings/Panel/West" instance=ExtResource("4_4mlkj")]
+visible = false
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 200.0
+texture_normal = ExtResource("4_fj71e")
+texture_pressed = ExtResource("6_05m2d")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+
+[node name="2" parent="InteractableItems/Select_Items/Settings/Panel/West" instance=ExtResource("4_4mlkj")]
+visible = false
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 200.0
+texture_normal = ExtResource("4_fj71e")
+texture_pressed = ExtResource("6_05m2d")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+
+[node name="3" parent="InteractableItems/Select_Items/Settings/Panel/West" instance=ExtResource("4_4mlkj")]
+visible = false
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 200.0
+texture_normal = ExtResource("4_fj71e")
+texture_pressed = ExtResource("6_05m2d")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+
+[node name="4" parent="InteractableItems/Select_Items/Settings/Panel/West" instance=ExtResource("4_4mlkj")]
+visible = false
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 200.0
+texture_normal = ExtResource("4_fj71e")
+texture_pressed = ExtResource("6_05m2d")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+
+[node name="5" parent="InteractableItems/Select_Items/Settings/Panel/West" instance=ExtResource("4_4mlkj")]
+visible = false
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 200.0
+texture_normal = ExtResource("4_fj71e")
+texture_pressed = ExtResource("6_05m2d")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+
+[node name="6" parent="InteractableItems/Select_Items/Settings/Panel/West" instance=ExtResource("4_4mlkj")]
+visible = false
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 200.0
+texture_normal = ExtResource("4_fj71e")
+texture_pressed = ExtResource("6_05m2d")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+
+[node name="testCam" type="Camera3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.09332, 0.244675, -1.35129)
+visible = false
 
 [connection signal="StartScene" from="." to="." method="FirstDialogue"]
 [connection signal="StartScene" from="." to="Transition" method="PlayWakeAnim"]
 [connection signal="pressed" from="CanvasLayer/Settings/OnItemSelect" to="." method="OnItemSelect"]
+[connection signal="ToggleDownEvents" from="InteractableItems" to="InteractableItems" method="ToggleEventsDirection" flags=18 binds= [NodePath("/root/@EditorNode@17664/@Control@697/@Panel@698/@VBoxContainer@706/@HSplitContainer@709/@HSplitContainer@717/@HSplitContainer@725/@VBoxContainer@726/@VSplitContainer@728/@VSplitContainer@754/@VBoxContainer@755/@PanelContainer@800/MainScreen/@CanvasItemEditor@10090/@VSplitContainer@9915/@HSplitContainer@9917/@HSplitContainer@9919/@Control@9920/@SubViewportContainer@9921/@SubViewport@9922/InteractableItems/Down")]]
+[connection signal="ToggleEastEvents" from="InteractableItems" to="InteractableItems" method="ToggleEventsDirection" flags=18 binds= [NodePath("/root/@EditorNode@17664/@Control@697/@Panel@698/@VBoxContainer@706/@HSplitContainer@709/@HSplitContainer@717/@HSplitContainer@725/@VBoxContainer@726/@VSplitContainer@728/@VSplitContainer@754/@VBoxContainer@755/@PanelContainer@800/MainScreen/@CanvasItemEditor@10090/@VSplitContainer@9915/@HSplitContainer@9917/@HSplitContainer@9919/@Control@9920/@SubViewportContainer@9921/@SubViewport@9922/InteractableItems/East")]]
+[connection signal="ToggleNorthEvents" from="InteractableItems" to="InteractableItems" method="ToggleEventsDirection" flags=18 binds= [NodePath("/root/@EditorNode@17664/@Control@697/@Panel@698/@VBoxContainer@706/@HSplitContainer@709/@HSplitContainer@717/@HSplitContainer@725/@VBoxContainer@726/@VSplitContainer@728/@VSplitContainer@754/@VBoxContainer@755/@PanelContainer@800/MainScreen/@CanvasItemEditor@10090/@VSplitContainer@9915/@HSplitContainer@9917/@HSplitContainer@9919/@Control@9920/@SubViewportContainer@9921/@SubViewport@9922/InteractableItems/North")]]
+[connection signal="ToggleSouthEvents" from="InteractableItems" to="InteractableItems" method="ToggleEventsDirection" flags=18 binds= [NodePath("/root/@EditorNode@17664/@Control@697/@Panel@698/@VBoxContainer@706/@HSplitContainer@709/@HSplitContainer@717/@HSplitContainer@725/@VBoxContainer@726/@VSplitContainer@728/@VSplitContainer@754/@VBoxContainer@755/@PanelContainer@800/MainScreen/@CanvasItemEditor@10090/@VSplitContainer@9915/@HSplitContainer@9917/@HSplitContainer@9919/@Control@9920/@SubViewportContainer@9921/@SubViewport@9922/InteractableItems/South")]]
+[connection signal="ToggleUpEvents" from="InteractableItems" to="InteractableItems" method="ToggleEventsDirection" flags=18 binds= [NodePath("/root/@EditorNode@17664/@Control@697/@Panel@698/@VBoxContainer@706/@HSplitContainer@709/@HSplitContainer@717/@HSplitContainer@725/@VBoxContainer@726/@VSplitContainer@728/@VSplitContainer@754/@VBoxContainer@755/@PanelContainer@800/MainScreen/@CanvasItemEditor@10090/@VSplitContainer@9915/@HSplitContainer@9917/@HSplitContainer@9919/@Control@9920/@SubViewportContainer@9921/@SubViewport@9922/InteractableItems/Up")]]
+[connection signal="ToggleWestEvents" from="InteractableItems" to="InteractableItems" method="ToggleEventsDirection" flags=18 binds= [NodePath("/root/@EditorNode@17664/@Control@697/@Panel@698/@VBoxContainer@706/@HSplitContainer@709/@HSplitContainer@717/@HSplitContainer@725/@VBoxContainer@726/@VSplitContainer@728/@VSplitContainer@754/@VBoxContainer@755/@PanelContainer@800/MainScreen/@CanvasItemEditor@10090/@VSplitContainer@9915/@HSplitContainer@9917/@HSplitContainer@9919/@Control@9920/@SubViewportContainer@9921/@SubViewport@9922/InteractableItems/West")]]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/Back_Button/Back" to="InteractableItems" method="OnBackPressed" flags=18]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/North/1" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/North/1"]]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/East/1" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/East/1"]]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/East/2" to="." method="CirclesPressed" binds= ["Select_Items/Settings/Panel/East/2"]]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/South/1" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/South/1"]]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/West/1" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/West/1"]]
 
 [editable path="CanvasLayer/Settings/SpeechGUI"]
 [editable path="Cameras"]
-[editable path="InteractableItems"]

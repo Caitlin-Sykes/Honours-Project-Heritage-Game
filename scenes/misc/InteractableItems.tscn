@@ -1,23 +1,15 @@
-[gd_scene load_steps=12 format=3 uid="uid://crsfpi7xpwrd2"]
+[gd_scene load_steps=10 format=3 uid="uid://crsfpi7xpwrd2"]
 
 [ext_resource type="Script" path="res://scripts/misc/InteractCircles.cs" id="1_vbacw"]
+[ext_resource type="Theme" uid="uid://c8ikhuofmlww0" path="res://resources/themes/main_theme_cascadia.tres" id="2_f5y3j"]
 [ext_resource type="PackedScene" uid="uid://dmf1t0hpgtcmo" path="res://scenes/misc/AudioButtonsTexture.tscn" id="2_o7um0"]
 [ext_resource type="Texture2D" uid="uid://cad83160m5qo2" path="res://resources/textures/gui/OnItemSelect.png" id="3_okuje"]
+[ext_resource type="Script" path="res://scripts/misc/Settings.cs" id="3_t8gr0"]
 [ext_resource type="Texture2D" uid="uid://btfl3l2c4rluv" path="res://resources/textures/gui/OnItemSelected.png" id="4_5t8g4"]
+[ext_resource type="PackedScene" uid="uid://c3yc0s2xdcxsu" path="res://scenes/misc/AudioButtons.tscn" id="4_6vruk"]
+[ext_resource type="Texture2D" uid="uid://dsdt4amufrxcn" path="res://resources/textures/icons/arrow.png" id="5_u3i27"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sngad"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u4lxr"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ois5w"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uimvk"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c4nk7"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4a2aa"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qilf5"]
 
 [node name="InteractableItems" type="Node3D"]
 script = ExtResource("1_vbacw")
@@ -26,7 +18,20 @@ script = ExtResource("1_vbacw")
 visible = false
 follow_viewport_enabled = true
 
-[node name="Panel" type="Panel" parent="Select_Items"]
+[node name="Settings" type="Control" parent="Select_Items"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme = ExtResource("2_f5y3j")
+script = ExtResource("3_t8gr0")
+
+[node name="Panel" type="Panel" parent="Select_Items/Settings"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -34,99 +39,637 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_sngad")
 
-[node name="North" type="PanelContainer" parent="Select_Items/Panel"]
+[node name="Back_Button" type="MarginContainer" parent="Select_Items/Settings/Panel"]
 visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -420.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 114.0
+grow_horizontal = 0
+
+[node name="Back" parent="Select_Items/Settings/Panel/Back_Button" instance=ExtResource("4_6vruk")]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 1
+tooltip_text = "Go back to the settings menu"
+theme_type_variation = &"GreenButton"
+text = "Back"
+icon = ExtResource("5_u3i27")
+icon_alignment = 1
+vertical_icon_alignment = 2
+expand_icon = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Shadow" type="Panel" parent="Select_Items/Settings/Panel/Back_Button/Back"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 94.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="North" type="Control" parent="Select_Items/Settings/Panel"]
+visible = false
+layout_mode = 2
+anchors_preset = 0
 offset_left = 887.0
 offset_top = 214.0
-offset_right = 1087.0
-offset_bottom = 414.0
-theme_override_styles/panel = SubResource("StyleBoxEmpty_u4lxr")
+offset_right = 927.0
+offset_bottom = 254.0
 
-[node name="1" parent="Select_Items/Panel/North" instance=ExtResource("2_o7um0")]
+[node name="1" parent="Select_Items/Settings/Panel/North" instance=ExtResource("2_o7um0")]
 visible = false
 layout_mode = 2
-texture_normal = ExtResource("3_okuje")
-texture_pressed = ExtResource("4_5t8g4")
-metadata/Object = ""
-metadata/Description = {}
-metadata/Hints = {}
-
-[node name="East" type="PanelContainer" parent="Select_Items/Panel"]
-visible = false
-layout_mode = 2
-offset_left = 887.0
-offset_top = 214.0
-offset_right = 1087.0
-offset_bottom = 414.0
-theme_override_styles/panel = SubResource("StyleBoxEmpty_ois5w")
-
-[node name="1" parent="Select_Items/Panel/East" instance=ExtResource("2_o7um0")]
-visible = false
-layout_mode = 2
-texture_normal = ExtResource("3_okuje")
-texture_pressed = ExtResource("4_5t8g4")
-metadata/Object = ""
-metadata/Description = {}
-metadata/Hints = {}
-
-[node name="South" type="PanelContainer" parent="Select_Items/Panel"]
-visible = false
 offset_right = 200.0
 offset_bottom = 200.0
-theme_override_styles/panel = SubResource("StyleBoxEmpty_uimvk")
-
-[node name="1" parent="Select_Items/Panel/South" instance=ExtResource("2_o7um0")]
-visible = false
-layout_mode = 2
 texture_normal = ExtResource("3_okuje")
 texture_pressed = ExtResource("4_5t8g4")
 metadata/Object = ""
 metadata/Description = {}
 metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
 
-[node name="West" type="PanelContainer" parent="Select_Items/Panel"]
+[node name="2" parent="Select_Items/Settings/Panel/North" instance=ExtResource("2_o7um0")]
 visible = false
 layout_mode = 2
+offset_right = 200.0
+offset_bottom = 200.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+
+[node name="3" parent="Select_Items/Settings/Panel/North" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 200.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+
+[node name="4" parent="Select_Items/Settings/Panel/North" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 200.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+
+[node name="5" parent="Select_Items/Settings/Panel/North" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 200.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+
+[node name="6" parent="Select_Items/Settings/Panel/North" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 200.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+
+[node name="East" type="Control" parent="Select_Items/Settings/Panel"]
+visible = false
+layout_mode = 2
+anchors_preset = 0
 offset_left = 887.0
 offset_top = 214.0
-offset_right = 1087.0
-offset_bottom = 414.0
-theme_override_styles/panel = SubResource("StyleBoxEmpty_c4nk7")
+offset_right = 927.0
+offset_bottom = 254.0
 
-[node name="1" parent="Select_Items/Panel/West" instance=ExtResource("2_o7um0")]
+[node name="1" parent="Select_Items/Settings/Panel/East" instance=ExtResource("2_o7um0")]
 visible = false
 layout_mode = 2
+offset_right = 200.0
+offset_bottom = 200.0
 texture_normal = ExtResource("3_okuje")
 texture_pressed = ExtResource("4_5t8g4")
 metadata/Object = ""
 metadata/Description = {}
 metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
 
-[node name="Up" type="PanelContainer" parent="Select_Items/Panel"]
-visible = false
-theme_override_styles/panel = SubResource("StyleBoxEmpty_4a2aa")
-
-[node name="1" parent="Select_Items/Panel/Up" instance=ExtResource("2_o7um0")]
+[node name="2" parent="Select_Items/Settings/Panel/East" instance=ExtResource("2_o7um0")]
 visible = false
 layout_mode = 2
+offset_right = 200.0
+offset_bottom = 200.0
 texture_normal = ExtResource("3_okuje")
 texture_pressed = ExtResource("4_5t8g4")
 metadata/Object = ""
 metadata/Description = {}
 metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
 
-[node name="Down" type="PanelContainer" parent="Select_Items/Panel"]
-visible = false
-theme_override_styles/panel = SubResource("StyleBoxEmpty_qilf5")
-
-[node name="1" parent="Select_Items/Panel/Down" instance=ExtResource("2_o7um0")]
+[node name="3" parent="Select_Items/Settings/Panel/East" instance=ExtResource("2_o7um0")]
 visible = false
 layout_mode = 2
+offset_right = 200.0
+offset_bottom = 200.0
 texture_normal = ExtResource("3_okuje")
 texture_pressed = ExtResource("4_5t8g4")
 metadata/Object = ""
 metadata/Description = {}
 metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+
+[node name="4" parent="Select_Items/Settings/Panel/East" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 200.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+
+[node name="5" parent="Select_Items/Settings/Panel/East" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 200.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+
+[node name="6" parent="Select_Items/Settings/Panel/East" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 200.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+
+[node name="South" type="Control" parent="Select_Items/Settings/Panel"]
+visible = false
+layout_mode = 2
+anchors_preset = 0
+offset_left = 887.0
+offset_top = 214.0
+offset_right = 927.0
+offset_bottom = 254.0
+
+[node name="1" parent="Select_Items/Settings/Panel/South" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_left = -887.0
+offset_top = -214.0
+offset_right = -687.0
+offset_bottom = -14.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+
+[node name="2" parent="Select_Items/Settings/Panel/South" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_left = -887.0
+offset_top = -214.0
+offset_right = -687.0
+offset_bottom = -14.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+
+[node name="3" parent="Select_Items/Settings/Panel/South" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_left = -887.0
+offset_top = -214.0
+offset_right = -687.0
+offset_bottom = -14.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+
+[node name="4" parent="Select_Items/Settings/Panel/South" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_left = -887.0
+offset_top = -214.0
+offset_right = -687.0
+offset_bottom = -14.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+
+[node name="5" parent="Select_Items/Settings/Panel/South" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_left = -887.0
+offset_top = -214.0
+offset_right = -687.0
+offset_bottom = -14.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+
+[node name="6" parent="Select_Items/Settings/Panel/South" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_left = -887.0
+offset_top = -214.0
+offset_right = -687.0
+offset_bottom = -14.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+
+[node name="West" type="Control" parent="Select_Items/Settings/Panel"]
+visible = false
+layout_mode = 2
+anchors_preset = 0
+offset_left = 887.0
+offset_top = 214.0
+offset_right = 927.0
+offset_bottom = 254.0
+
+[node name="1" parent="Select_Items/Settings/Panel/West" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 200.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+
+[node name="2" parent="Select_Items/Settings/Panel/West" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 200.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+
+[node name="3" parent="Select_Items/Settings/Panel/West" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 200.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+
+[node name="4" parent="Select_Items/Settings/Panel/West" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 200.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+
+[node name="5" parent="Select_Items/Settings/Panel/West" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 200.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+
+[node name="6" parent="Select_Items/Settings/Panel/West" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 200.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+
+[node name="Up" type="Control" parent="Select_Items/Settings/Panel"]
+visible = false
+layout_mode = 2
+anchors_preset = 0
+offset_left = 887.0
+offset_top = 214.0
+offset_right = 927.0
+offset_bottom = 254.0
+
+[node name="1" parent="Select_Items/Settings/Panel/Up" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_left = -887.0
+offset_top = -214.0
+offset_right = -687.0
+offset_bottom = -14.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+
+[node name="2" parent="Select_Items/Settings/Panel/Up" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_left = -887.0
+offset_top = -214.0
+offset_right = -687.0
+offset_bottom = -14.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+
+[node name="3" parent="Select_Items/Settings/Panel/Up" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_left = -887.0
+offset_top = -214.0
+offset_right = -687.0
+offset_bottom = -14.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+
+[node name="4" parent="Select_Items/Settings/Panel/Up" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_left = -887.0
+offset_top = -214.0
+offset_right = -687.0
+offset_bottom = -14.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+
+[node name="5" parent="Select_Items/Settings/Panel/Up" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_left = -887.0
+offset_top = -214.0
+offset_right = -687.0
+offset_bottom = -14.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+
+[node name="6" parent="Select_Items/Settings/Panel/Up" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_left = -887.0
+offset_top = -214.0
+offset_right = -687.0
+offset_bottom = -14.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+
+[node name="Down" type="Control" parent="Select_Items/Settings/Panel"]
+visible = false
+layout_mode = 2
+anchors_preset = 0
+offset_left = 887.0
+offset_top = 214.0
+offset_right = 927.0
+offset_bottom = 254.0
+
+[node name="1" parent="Select_Items/Settings/Panel/Down" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_left = -887.0
+offset_top = -214.0
+offset_right = -687.0
+offset_bottom = -14.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+
+[node name="2" parent="Select_Items/Settings/Panel/Down" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_left = -887.0
+offset_top = -214.0
+offset_right = -687.0
+offset_bottom = -14.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+
+[node name="3" parent="Select_Items/Settings/Panel/Down" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_left = -887.0
+offset_top = -214.0
+offset_right = -687.0
+offset_bottom = -14.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+
+[node name="4" parent="Select_Items/Settings/Panel/Down" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_left = -887.0
+offset_top = -214.0
+offset_right = -687.0
+offset_bottom = -14.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+
+[node name="5" parent="Select_Items/Settings/Panel/Down" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_left = -887.0
+offset_top = -214.0
+offset_right = -687.0
+offset_bottom = -14.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+
+[node name="6" parent="Select_Items/Settings/Panel/Down" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_left = -887.0
+offset_top = -214.0
+offset_right = -687.0
+offset_bottom = -14.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
 
 [connection signal="ToggleDownEvents" from="." to="." method="ToggleEventsDirection" binds= [NodePath("/root/@EditorNode@17664/@Control@697/@Panel@698/@VBoxContainer@706/@HSplitContainer@709/@HSplitContainer@717/@HSplitContainer@725/@VBoxContainer@726/@VSplitContainer@728/@VSplitContainer@754/@VBoxContainer@755/@PanelContainer@800/MainScreen/@CanvasItemEditor@10090/@VSplitContainer@9915/@HSplitContainer@9917/@HSplitContainer@9919/@Control@9920/@SubViewportContainer@9921/@SubViewport@9922/InteractableItems/Down")]]
 [connection signal="ToggleEastEvents" from="." to="." method="ToggleEventsDirection" binds= [NodePath("/root/@EditorNode@17664/@Control@697/@Panel@698/@VBoxContainer@706/@HSplitContainer@709/@HSplitContainer@717/@HSplitContainer@725/@VBoxContainer@726/@VSplitContainer@728/@VSplitContainer@754/@VBoxContainer@755/@PanelContainer@800/MainScreen/@CanvasItemEditor@10090/@VSplitContainer@9915/@HSplitContainer@9917/@HSplitContainer@9919/@Control@9920/@SubViewportContainer@9921/@SubViewport@9922/InteractableItems/East")]]
@@ -134,9 +677,4 @@ metadata/Hints = {}
 [connection signal="ToggleSouthEvents" from="." to="." method="ToggleEventsDirection" binds= [NodePath("/root/@EditorNode@17664/@Control@697/@Panel@698/@VBoxContainer@706/@HSplitContainer@709/@HSplitContainer@717/@HSplitContainer@725/@VBoxContainer@726/@VSplitContainer@728/@VSplitContainer@754/@VBoxContainer@755/@PanelContainer@800/MainScreen/@CanvasItemEditor@10090/@VSplitContainer@9915/@HSplitContainer@9917/@HSplitContainer@9919/@Control@9920/@SubViewportContainer@9921/@SubViewport@9922/InteractableItems/South")]]
 [connection signal="ToggleUpEvents" from="." to="." method="ToggleEventsDirection" binds= [NodePath("/root/@EditorNode@17664/@Control@697/@Panel@698/@VBoxContainer@706/@HSplitContainer@709/@HSplitContainer@717/@HSplitContainer@725/@VBoxContainer@726/@VSplitContainer@728/@VSplitContainer@754/@VBoxContainer@755/@PanelContainer@800/MainScreen/@CanvasItemEditor@10090/@VSplitContainer@9915/@HSplitContainer@9917/@HSplitContainer@9919/@Control@9920/@SubViewportContainer@9921/@SubViewport@9922/InteractableItems/Up")]]
 [connection signal="ToggleWestEvents" from="." to="." method="ToggleEventsDirection" binds= [NodePath("/root/@EditorNode@17664/@Control@697/@Panel@698/@VBoxContainer@706/@HSplitContainer@709/@HSplitContainer@717/@HSplitContainer@725/@VBoxContainer@726/@VSplitContainer@728/@VSplitContainer@754/@VBoxContainer@755/@PanelContainer@800/MainScreen/@CanvasItemEditor@10090/@VSplitContainer@9915/@HSplitContainer@9917/@HSplitContainer@9919/@Control@9920/@SubViewportContainer@9921/@SubViewport@9922/InteractableItems/West")]]
-[connection signal="gui_input" from="Select_Items/Panel/North/1" to="." method="CirclesPressed" binds= ["Select_Items/Panel/North/1"]]
-[connection signal="gui_input" from="Select_Items/Panel/East/1" to="." method="CirclesPressed" binds= ["Select_Items/Panel/East/1"]]
-[connection signal="gui_input" from="Select_Items/Panel/South/1" to="." method="CirclesPressed" binds= ["Select_Items/Panel/South/1"]]
-[connection signal="gui_input" from="Select_Items/Panel/West/1" to="." method="CirclesPressed" binds= ["Select_Items/Panel/West/1"]]
-[connection signal="gui_input" from="Select_Items/Panel/Up/1" to="." method="CirclesPressed" binds= ["Select_Items/Panel/Up/1"]]
-[connection signal="gui_input" from="Select_Items/Panel/Down/1" to="." method="CirclesPressed" binds= ["Select_Items/Panel/Down/1"]]
+[connection signal="pressed" from="Select_Items/Settings/Panel/Back_Button/Back" to="." method="OnBackPressed"]

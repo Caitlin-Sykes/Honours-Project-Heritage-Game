@@ -11,5 +11,13 @@ public partial class SceneState : Node
 		Stage_2, //stage 3
 	}
 
+	public enum StatusOfPlayer{
+		InDialogue, //means player is in dialogue
+		LookingAtSomething, //means player is looking at something
+		FreeRoam, //player is moving about
+	}
+
 	public static CurrentSceneState sceneState = CurrentSceneState.Tutorial; //current scene state
+	public static StatusOfPlayer PlayerStatus = StatusOfPlayer.FreeRoam; //current scene state
+
 }

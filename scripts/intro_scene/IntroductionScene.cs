@@ -23,6 +23,7 @@ public partial class IntroductionScene : Node3D
 	public override void _Ready()
 	{
 		SceneState.sceneState = SceneState.CurrentSceneState.Tutorial;
+		SceneState.PlayerStatus = SceneState.StatusOfPlayer.InDialogue;
 		
 		//Gets button nodes
 		getUpButton = GetNode<BaseButton>("CanvasLayer/Settings/OnItemSelect");
@@ -32,8 +33,6 @@ public partial class IntroductionScene : Node3D
 		CONTROLS = GetNode<Controls>("Cameras/Controls");
 		introCam = GetNode<Camera3D>("IntroCam");
 		
-		CONTROLS.CameraLockToggle(); //locks the camera
-
 		ANIMATION_PLAYER_INTROCAM = (AnimationPlayer)introCam.GetNode("AnimationPlayer");
 		
 		
@@ -51,7 +50,6 @@ public partial class IntroductionScene : Node3D
 
 		await ToSignal(GetTree().CreateTimer(3), SceneTreeTimer.SignalName.Timeout); //timer so it waits out the animations
 		DIALOGUE.ToggleGUIVisible(); //toggles the gui visible
-
 		DIALOGUE.Dialogue(JsonHandler.Speech.IntroductionScene, "Introduction_Scene", new string[] { "5" });
 	}
 
