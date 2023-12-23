@@ -16,9 +16,7 @@ public partial class SpeechGUI : Control
 
 	private CanvasLayer Select_Items; //node to hold instance of select items overlay
 	private CanvasLayer Speech_Overlay; //node to hold instance of overlay
-
-	public bool DialogueLocked {get; set;} = false; //to lock the dialogue
-
+	
 	[Signal]
 	public delegate void DialogueProgressEventHandler(); //handler for progressing scene text
 
@@ -253,13 +251,11 @@ public partial class SpeechGUI : Control
 				return;
 
 			//If six, enables the selection
-			case "6":
-				CIRCLES.ToggleSpecificDirection(GetNode<ButtonOverwrite>("../../../InteractableItems/Select_Items/Settings/Panel/East/1")); //disables previous specific direction
-				CIRCLES.ToggleSpecificDirection(GetNode<ButtonOverwrite>("../../../InteractableItems/Select_Items/Settings/Panel/East/2")); //enables previous specific direction
+			case "7":
+				CIRCLES.ToggleSpecificDirection(GetNode<ButtonOverwrite>("../../../InteractableItems/Select_Items/Settings/Panel/East/1")); //enables poster circles
+				CIRCLES.ToggleSpecificDirection(GetNode<ButtonOverwrite>("../../../InteractableItems/Select_Items/Settings/Panel/East/2")); //hides wardrobe circle
 
-				DialogueLocked = true;
-				await ToSignal(this, "SceneProgress");
-				SwapOverlay();
+				SwapOverlay(); //hides overlay
 				return;
 
 			default:

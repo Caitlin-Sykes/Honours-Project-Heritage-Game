@@ -125,11 +125,22 @@ public partial class InteractCircles : Node3D
 			//Awaits the dialogue progression
 			await ToSignal(DIALOGUE, "LookProgress");
 
-			ToggleSpecificDirection(GetNode<ButtonOverwrite>(path)); //hides the circle again
-			SceneState.PlayerStatus = SceneState.StatusOfPlayer.InDialogue; //swaps the status to in dialogue
-			// DIALOGUE.SwapOverlay(); //hides it again
 
-			DIALOGUE.SkipDialogue(); //skips dialogue
+			// Swap back to normal view
+			DIALOGUE.SwapOverlay();
+
+			// ToggleSpecificDirection(GetNode<ButtonOverwrite>(path)); //hides the circle again
+
+			//If the camera isn't moved
+			if (GetNode<ButtonOverwrite>(path).GetMeta("NewCamPos").AsVector3() == Vector3.Zero) {
+
+				// Swap back to gui view
+				DIALOGUE.SwapOverlay(); 
+
+				SceneState.PlayerStatus = SceneState.StatusOfPlayer.InDialogue; //swaps the status to in dialogue
+				DIALOGUE.SkipDialogue(); //skips dialogue
+			}
+			
 		}
 	}
 
