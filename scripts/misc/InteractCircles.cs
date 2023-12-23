@@ -97,10 +97,11 @@ public partial class InteractCircles : Node3D
 	// Handles on circle click
 	//Sets the node path as well
 
-	private async void CirclesPressed(String path)
+	public async void CirclesPressed(String path)
 	{
 		SceneState.PlayerStatus = SceneState.StatusOfPlayer.LookingAtSomething;
 		CURRENT_PATH_CIRCLES = path;
+
 		//If it has a camera position then
 		if (GetNode<ButtonOverwrite>(path).GetMeta("NewCamPos").AsVector3() != Vector3.Zero)
 		{
@@ -110,12 +111,12 @@ public partial class InteractCircles : Node3D
 			ToggleBackButton(); //shows the back button
 		}
 
-		//Gets meta description of button clicked
-		var description = (Godot.Collections.Dictionary<string, string>)GetNode<ButtonOverwrite>(path).GetMeta("Description");
-
 		//If the scene state is Tutorial
 		if (SceneState.sceneState == SceneState.CurrentSceneState.Tutorial)
 		{
+			//Gets meta description of button clicked
+			var description = (Godot.Collections.Dictionary<string, string>)GetNode<ButtonOverwrite>(path).GetMeta("Description");
+
 			DIALOGUE.Dialogue(PlayerData.Player.Name, description["Tutorial"], string.Format(PLAYER_AVATAR, PlayerData.Player.Avatar));
 
 			//Swap back to gui speech
@@ -124,10 +125,11 @@ public partial class InteractCircles : Node3D
 			//Awaits the dialogue progression
 			await ToSignal(DIALOGUE, "LookProgress");
 
-			//Swap back to casual view
-			DIALOGUE.SwapOverlay();
+			ToggleSpecificDirection(GetNode<ButtonOverwrite>(path)); //hides the circle again
+			SceneState.PlayerStatus = SceneState.StatusOfPlayer.InDialogue; //swaps the status to in dialogue
+			// DIALOGUE.SwapOverlay(); //hides it again
 
-
+			DIALOGUE.SkipDialogue(); //skips dialogue
 		}
 	}
 

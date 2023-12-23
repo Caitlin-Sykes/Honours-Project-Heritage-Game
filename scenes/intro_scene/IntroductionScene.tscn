@@ -389,6 +389,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="1" parent="InteractableItems/Select_Items/Settings/Panel/East" instance=ExtResource("4_4mlkj")]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.202
@@ -706,7 +707,7 @@ visible = false
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/Back_Button/Back" to="InteractableItems" method="OnBackPressed" flags=18]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/North/1" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/North/1"]]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/East/1" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/East/1"]]
-[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/East/2" to="." method="CirclesPressed" binds= ["Select_Items/Settings/Panel/East/2"]]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/East/2" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/East/2"]]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/South/1" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/South/1"]]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/West/1" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/West/1"]]
 

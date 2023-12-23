@@ -131,7 +131,6 @@ public partial class SpeechGUI : Control
 					ControlsEvents(Speech.Id);
 				}
 
-
 				SetNameNode(string.Format(Speech.Speaker, PlayerData.Player.Name));
 				SetSpeechNode(string.Format(Speech.Dialogue, PlayerData.Player.Name));
 				SetAvatarNode(string.Format(Speech.Avatar, PlayerData.Player.Avatar));
