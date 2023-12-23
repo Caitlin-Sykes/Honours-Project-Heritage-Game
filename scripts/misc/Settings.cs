@@ -29,7 +29,7 @@ public partial class Settings : Control
 		Theme.DefaultFontSize = OptionsVisualsGUI.GetFontSizeDefault().ToInt();
 
 
-		if (OptionsVisualsGUI.GetFullScreenDefault() == true)
+		if (OptionsVisualsGUI.GetFullScreenDefault())
 		{
 			DisplayServer.WindowSetMode(DisplayServer.WindowMode.Fullscreen);
 		}

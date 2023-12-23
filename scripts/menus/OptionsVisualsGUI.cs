@@ -53,10 +53,9 @@ public partial class OptionsVisualsGUI : Control
 			Theme.DefaultFontSize = OptionsVisualsGUI.GetFontSizeDefault().ToInt();
 
 	
-			if (OptionsVisualsGUI.GetFullScreenDefault() == true) {
+			if (OptionsVisualsGUI.GetFullScreenDefault()) {
 				DisplayServer.WindowSetMode(DisplayServer.WindowMode.Fullscreen);
 			}
-			// TODO: optimise this spaghetti junction of code for init
 	}
 
 
@@ -130,7 +129,7 @@ public partial class OptionsVisualsGUI : Control
 	public void SetFullScreenDefault() {
 		//Sets default setting to False if FULL_SCREEN is false
 		//Otherwise sets it to true
-		if (GetFullScreenDefault() == false) {
+		if (GetFullScreenDefault()) {
 			GetNode<OptionButton>(FULL_SCREEN_OPTION_BUTTON_PATH).Select(1); //with 1 being the index of false
 		}
 

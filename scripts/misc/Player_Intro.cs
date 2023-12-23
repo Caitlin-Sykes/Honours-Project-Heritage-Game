@@ -15,7 +15,7 @@ public partial class Player_Intro : Control
 
 	private int currentAvatar = 0; //current index of avatar
 	private Random rdm; //random number generator
-	public PlayerDataStruct player;
+	private PlayerDataStruct player;
 	private Transitions TRANSITION; //Handles screen transitions
 
 	private bool currentlyEditing = false;
@@ -42,12 +42,12 @@ public partial class Player_Intro : Control
 	//Handles inputs
 	public override void _Input(InputEvent @event) {
 
-		if (Input.IsKeyPressed(Key.D) && currentlyEditing == false)
+		if (Input.IsKeyPressed(Key.D) && !currentlyEditing)
 		{
 			MoveAvatarRight();
 		}
 
-		else if (Input.IsKeyPressed(Key.A) && currentlyEditing == false)
+		else if (Input.IsKeyPressed(Key.A) && !currentlyEditing)
 		{
 			MoveAvatarLeft();
 		}
@@ -72,7 +72,7 @@ public partial class Player_Intro : Control
 		Theme.DefaultFontSize = OptionsVisualsGUI.GetFontSizeDefault().ToInt();
 
 
-		if (OptionsVisualsGUI.GetFullScreenDefault() == true)
+		if (OptionsVisualsGUI.GetFullScreenDefault())
 		{
 			DisplayServer.WindowSetMode(DisplayServer.WindowMode.Fullscreen);
 		}

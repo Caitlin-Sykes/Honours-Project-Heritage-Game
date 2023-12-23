@@ -26,7 +26,5 @@ public partial class Transitions : Control
 	public async void PlayWakeAnim() {
 		ANIMATION_PLAYER.Play("Wake");
 		await ToSignal(ANIMATION_PLAYER, "animation_finished");
-		// EmitSignal(SignalName.FirstDialogue);
-
 	}
 }

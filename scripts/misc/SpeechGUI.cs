@@ -1,15 +1,16 @@
 using System;
 using System.Linq;
 using Godot;
+using Godot.Collections;
 
 public partial class SpeechGUI : Control
 {
 	[Export]
 	private InteractCircles CIRCLES; //instance of circles
-	public TextureRect AvatarNode; //node to hold avatar image
-	public Label NameNode; //node to hold the name of the speaker
+	private TextureRect AvatarNode; //node to hold avatar image
+	private Label NameNode; //node to hold the name of the speaker
 
-	public Label SpeechNode; //node to hold the speech of the speaker
+	private Label SpeechNode; //node to hold the speech of the speaker
 
 	private Cameras CAMERAS; //node to hold instance of cameras
 
@@ -89,7 +90,7 @@ public partial class SpeechGUI : Control
 	public async void Dialogue(JsonHandler.DialogueStructData[] Scene)
 	{
 		//Skips the whole thing if the speech overlay isn't visible
-		if (Scene != null && Speech_Overlay.Visible == true && SceneState.PlayerStatus == SceneState.StatusOfPlayer.InDialogue)
+		if (Scene != null && Speech_Overlay.Visible && SceneState.PlayerStatus == SceneState.StatusOfPlayer.InDialogue)
 		{
 
 			//For every bit of speech in the scene
@@ -113,7 +114,7 @@ public partial class SpeechGUI : Control
 	//Handles the dialogue if you pass in the Scene. This version handles triggering events at certain IDs
 	public async void Dialogue(JsonHandler.DialogueStructData[] Scene, string name, string[] triggerID)
 	{
-		if (Scene != null && Speech_Overlay.Visible == true && SceneState.PlayerStatus == SceneState.StatusOfPlayer.InDialogue)
+		if (Scene != null && Speech_Overlay.Visible && SceneState.PlayerStatus == SceneState.StatusOfPlayer.InDialogue)
 		{
 
 			//For every bit of speech in the scene
@@ -160,6 +161,34 @@ public partial class SpeechGUI : Control
 					await ToSignal(this, "DialogueProgress");
 				}
 	}
+
+	//For source display
+	//BUG: doesnt work
+	public async void Dialogue(Dictionary<string, string> extraInfo) {
+
+		//Swaps overlay 
+		SwapOverlay();
+
+		// Sets the player name and avatar
+		SetNameNode(PlayerData.Player.Name);
+		SetAvatarNode(string.Format("res://resources/textures/sprites/main_char/{0}.svg", PlayerData.Player.Avatar));
+
+		//if meta is not null
+		if (extraInfo is not null) {
+
+			//foreach key in the extraInfo dict, show the dialogue and await progression signal
+			foreach (string key in extraInfo.Keys)
+			{
+
+				SetSpeechNode(string.Format(extraInfo[key], System.Environment.NewLine));
+				await ToSignal(this, "LookProgress");
+			}
+		}
+
+		//Hides dialogue again
+		SwapOverlay();
+	}
+
 	/**
 	* ----------------------------------------------------------------
 	*	GUI Input Handlers
@@ -167,16 +196,16 @@ public partial class SpeechGUI : Control
 	**/
 
 	public void OnGUIClick(InputEvent @evnt) {
-		if (@evnt is InputEventMouseButton mouse && @evnt.IsPressed() && SceneState.PlayerStatus == SceneState.StatusOfPlayer.InDialogue) {
+		if (@evnt is InputEventMouseButton && @evnt.IsPressed() && SceneState.PlayerStatus == SceneState.StatusOfPlayer.InDialogue) {
 			EmitSignal("DialogueProgress");
 		}
 
-		else if (@evnt is InputEventMouseButton ms && @evnt.IsPressed() && SceneState.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam)
+		else if (@evnt is InputEventMouseButton && @evnt.IsPressed() && SceneState.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam)
 		{
 			EmitSignal("SceneProgress");
 		}
 
-		else if (@evnt is InputEventMouseButton moose && @evnt.IsPressed() && SceneState.PlayerStatus == SceneState.StatusOfPlayer.LookingAtSomething)
+		else if (@evnt is InputEventMouseButton && @evnt.IsPressed() && SceneState.PlayerStatus == SceneState.StatusOfPlayer.LookingAtSomething)
 		{
 			EmitSignal("LookProgress");
 

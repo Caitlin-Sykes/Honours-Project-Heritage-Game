@@ -153,6 +153,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 [node name="Cameras" parent="." node_paths=PackedStringArray("INTERACT_CIRCLES") instance=ExtResource("1_76gud")]
 INTERACT_CIRCLES = NodePath("../InteractableItems")
 
+[node name="Controls" parent="Cameras" index="0" node_paths=PackedStringArray("CIRCLES")]
+CIRCLES = NodePath("../../InteractableItems")
+
 [node name="UI" parent="Cameras/Controls" index="0"]
 theme_override_styles/panel = SubResource("StyleBoxEmpty_jlakg")
 
@@ -401,7 +404,11 @@ metadata/Description = {
 "Tutorial": "I got this poster a while ago. Probably spent more time playing that then doing coursework..."
 }
 metadata/Hints = {}
-metadata/ExtraInformation = {}
+metadata/ExtraInformation = {
+"Info": "This poster is from a game called Persona 5. It is a role playing game released in 2016.",
+"Source": "It later got a definitive release which was called Persona 5 Royal. It's known for having one of the best modern-day soundtracks, the most famous track being \"Last Surprise.\"",
+"Source2": "Information from: https://en.wikipedia.org/wiki/Persona_5, {0} Image from: https://www.amazon.com/Persona-Official-Setting-Picture-JAPANESE/dp/4047331902"
+}
 metadata/NewCamPos = Vector3(1.09332, 0.244675, -1.35129)
 metadata/CamRotation = -90
 
@@ -704,4 +711,5 @@ visible = false
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/West/1" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/West/1"]]
 
 [editable path="CanvasLayer/Settings/SpeechGUI"]
+[editable path="MainRoom"]
 [editable path="Cameras"]

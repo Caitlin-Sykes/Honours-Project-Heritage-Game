@@ -19,11 +19,11 @@ public partial class Cameras : Node
 	[Export]
 	private Godot.Collections.Array<Camera3D> CAMERAS { get; set; }
 
-	public Direction dir; // instance of direction
+	private Direction dir; // instance of direction
 	public Direction previousDir { get; set; } // used only when going up and down
 	private int cameraVisible { get; set; } //holds array position of camera to display
 
-	public bool EnableEvents {get; set; } = false; //;
+	public bool EnableEvents {get; set; } = false; //enables or disable events
 
 	[Export]
 	private InteractCircles INTERACT_CIRCLES; //instance of InteractCircles
@@ -86,7 +86,7 @@ public partial class Cameras : Node
 		foreach (Node3D arrow in cam.FindChildren("*Arrow_Parent"))
 		{
 			//If node matches Up_Arrow_Parent or Down_Arrow_Parent and metadata for camera has UpDown as not enabled
-			if ((arrow.Name == "Up_Arrow_Parent" || arrow.Name == "Down_Arrow_Parent") && GetMeta("UpDownEnabled").AsBool() == false)
+			if ((arrow.Name == "Up_Arrow_Parent" || arrow.Name == "Down_Arrow_Parent") && GetMeta("UpDownEnabled").AsBool())
 			{
 				break;
 			}
@@ -161,7 +161,7 @@ public partial class Cameras : Node
 		SetArrowsVisible(cam);
 		dir = ToDirection(cam.Name);
 
-		if (EnableEvents == true) {
+		if (EnableEvents) {
 			EmitSignal(string.Format("Toggle{}Events", (dir)));
 		}
 	}
@@ -188,7 +188,7 @@ public partial class Cameras : Node
 				dir = Direction.West;
 				SetArrowsInvisible(CAMERAS[0]);
 				SetArrowsVisible(CAMERAS[3]);
-				if (EnableEvents == true) {
+				if (EnableEvents) {
 					EmitSignal("ToggleNorthEvents");
 					EmitSignal("ToggleWestEvents");
 				}
@@ -200,7 +200,7 @@ public partial class Cameras : Node
 				dir = Direction.North;
 				SetArrowsInvisible(CAMERAS[1]);
 				SetArrowsVisible(CAMERAS[0]);
-				if (EnableEvents == true)
+				if (EnableEvents)
 				{
 					EmitSignal("ToggleEastEvents");
 					EmitSignal("ToggleNorthEvents");
@@ -213,7 +213,7 @@ public partial class Cameras : Node
 				dir = Direction.East;
 				SetArrowsInvisible(CAMERAS[2]);
 				SetArrowsVisible(CAMERAS[1]);
-				if (EnableEvents == true)
+				if (EnableEvents)
 				{
 					EmitSignal("ToggleSouthEvents");
 					EmitSignal("ToggleEastEvents");
@@ -226,7 +226,7 @@ public partial class Cameras : Node
 				dir = Direction.South;
 				SetArrowsInvisible(CAMERAS[3]);
 				SetArrowsVisible(CAMERAS[2]);
-				if (EnableEvents == true)
+				if (EnableEvents)
 				{
 					EmitSignal("ToggleWestEvents");
 					EmitSignal("ToggleSouthEvents");
@@ -251,7 +251,7 @@ public partial class Cameras : Node
 				dir = Direction.East;
 				SetArrowsInvisible(CAMERAS[0]);
 				SetArrowsVisible(CAMERAS[1]);
-				if (EnableEvents == true)
+				if (EnableEvents)
 				{
 					EmitSignal("ToggleNorthEvents");
 					EmitSignal("ToggleEastEvents");
@@ -264,7 +264,7 @@ public partial class Cameras : Node
 				dir = Direction.South;
 				SetArrowsInvisible(CAMERAS[1]);
 				SetArrowsVisible(CAMERAS[2]);
-				if (EnableEvents == true)
+				if (EnableEvents)
 				{
 					EmitSignal("ToggleEastEvents");
 					EmitSignal("ToggleSouthEvents");
@@ -277,7 +277,7 @@ public partial class Cameras : Node
 				dir = Direction.West;
 				SetArrowsInvisible(CAMERAS[2]);
 				SetArrowsVisible(CAMERAS[3]);
-				if (EnableEvents == true)
+				if (EnableEvents)
 				{
 					EmitSignal("ToggleSouthEvents");
 					EmitSignal("ToggleWestEvents");
@@ -290,7 +290,7 @@ public partial class Cameras : Node
 				dir = Direction.North;
 				SetArrowsInvisible(CAMERAS[3]);
 				SetArrowsVisible(CAMERAS[0]);
-				if (EnableEvents == true)
+				if (EnableEvents)
 				{
 					EmitSignal("ToggleWestEvents");
 					EmitSignal("ToggleNorthEvents");
@@ -315,7 +315,7 @@ public partial class Cameras : Node
 			SetArrowsVisible(CAMERAS[GetIndexOfDirection(previousDir)]);
 			CAMERAS[GetIndexOfDirection(previousDir)].Current = true;
 
-			if (EnableEvents == true)
+			if (EnableEvents)
 			{
 				EmitSignal("ToggleDownEvents");
 				EmitSignal(string.Format("Toggle{}Events", ToDirection(previousDir)));
@@ -335,7 +335,7 @@ public partial class Cameras : Node
 			//Sets down camera visible
 			SetSingleArrowVisible(CAMERAS[4], "*Down_Arrow_Parent");
 
-			if (EnableEvents == true)
+			if (EnableEvents)
 			{
 				EmitSignal("ToggleUpEvents");
 				EmitSignal(string.Format("Toggle{}Events", ToDirection(dir)));
@@ -370,7 +370,7 @@ public partial class Cameras : Node
 			//Sets camera arrows for down camera invisible
 			SetArrowsInvisible(CAMERAS[4]);
 
-			if (EnableEvents == true)
+			if (EnableEvents)
 			{
 				EmitSignal("ToggleUpEvents");
 				EmitSignal(string.Format("Toggle{}Events", ToDirection(previousDir)));
@@ -391,7 +391,7 @@ public partial class Cameras : Node
 			//Sets current direction arrows invisible
 			SetArrowsInvisible(CAMERAS[GetIndexOfDirection(dir)]);
 
-			if (EnableEvents == true)
+			if (EnableEvents)
 			{
 				EmitSignal("ToggleUpEvents");
 				EmitSignal(string.Format("Toggle{}Events", ToDirection(dir)));

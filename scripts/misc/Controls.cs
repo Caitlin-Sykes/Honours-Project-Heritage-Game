@@ -8,6 +8,9 @@ public partial class Controls : Node3D
 
     private Transitions TRANSITION; //Handles screen transitions
 
+    [Export]
+    private InteractCircles CIRCLES; //Instance of SpeechGUI
+
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -31,19 +34,19 @@ public partial class Controls : Node3D
             OnRightArrow();
         }
 
-        else if (Input.IsKeyPressed(Key.W) && CAMERAS.GetMeta("UpDownEnabled").AsBool() == true && SceneState.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam)
+        else if (Input.IsKeyPressed(Key.W) && CAMERAS.GetMeta("UpDownEnabled").AsBool() && SceneState.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam)
         {
             OnUpArrow();
         }
 
-        else if (Input.IsKeyPressed(Key.S) && CAMERAS.GetMeta("UpDownEnabled").AsBool() == true && SceneState.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam)
+        else if (Input.IsKeyPressed(Key.S) && CAMERAS.GetMeta("UpDownEnabled").AsBool() && SceneState.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam)
         {
            OnDownArrow();
         }
 
-        else if (Input.IsKeyPressed(Key.J) && CAMERAS.GetMeta("UpDownEnabled").AsBool() == true && SceneState.PlayerStatus == SceneState.StatusOfPlayer.LookingAtSomething)
+        else if (Input.IsKeyPressed(Key.J) && SceneState.PlayerStatus == SceneState.StatusOfPlayer.LookingAtSomething)
         {
-            //show facts
+            CIRCLES.ShowExtraInformation();
         }
 
     }
@@ -55,18 +58,16 @@ public partial class Controls : Node3D
 	**/
 
     // A handler to control clicking on the up gui arrow
-
     private void OnUpArrow(Node camera, InputEvent @evnt, Vector3 position, Vector3 normal, int shape_idx) {
 
         //If trigger is left click
-        if (@evnt is InputEventMouseButton mouse && SceneState.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam) {
-            if (mouse.ButtonIndex == MouseButton.Left && @evnt.IsPressed()) {
+        if (@evnt is InputEventMouseButton mouse && SceneState.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam && mouse.ButtonIndex == MouseButton.Left && @evnt.IsPressed()) {
                     OnUpArrow();
                 }
-    }}
+    }
 
-    
     // A function to handle Up arrow movement, prompted by the W key
+
     private void OnUpArrow() {
         CAMERAS.TurnUp();
     }
@@ -81,11 +82,10 @@ public partial class Controls : Node3D
     private void OnRightArrow(Node camera, InputEvent @evnt, Vector3 position, Vector3 normal, int shape_idx) {
 
         //If trigger is left click
-        if (@evnt is InputEventMouseButton mouse && SceneState.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam) {
-            if (mouse.ButtonIndex == MouseButton.Left && @evnt.IsPressed()) {
+        if (@evnt is InputEventMouseButton mouse && SceneState.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam && (mouse.ButtonIndex == MouseButton.Left && @evnt.IsPressed())) {
                     OnRightArrow();
                 }
-    }}
+    }
 
     
     // A function to handle right arrow movement, prompted by the D key
@@ -102,11 +102,10 @@ public partial class Controls : Node3D
     private void OnDownArrow(Node camera, InputEvent @evnt, Vector3 position, Vector3 normal, int shape_idx) {
 
         //If trigger is left click
-        if (@evnt is InputEventMouseButton mouse && SceneState.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam) {
-            if (mouse.ButtonIndex == MouseButton.Left && @evnt.IsPressed()) {
+        if (@evnt is InputEventMouseButton mouse && SceneState.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam && (mouse.ButtonIndex == MouseButton.Left && @evnt.IsPressed())) {
                     OnDownArrow();
                 }
-    }}
+    }
 
     
     // A function to handle down arrow movement, prompted by the S key
@@ -124,11 +123,10 @@ public partial class Controls : Node3D
     private void OnLeftArrow(Node camera, InputEvent @evnt, Vector3 position, Vector3 normal, int shape_idx) {
 
         //If trigger is left click
-        if (@evnt is InputEventMouseButton mouse && SceneState.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam) {
-            if (mouse.ButtonIndex == MouseButton.Left && @evnt.IsPressed()) {
+        if (@evnt is InputEventMouseButton mouse && SceneState.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam && mouse.ButtonIndex == MouseButton.Left && @evnt.IsPressed()) {
                     OnLeftArrow();
                 }
-    }}
+    }
 
     
     // A function to handle left arrow movement, prompted by the A key
