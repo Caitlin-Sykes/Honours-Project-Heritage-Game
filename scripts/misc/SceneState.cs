@@ -23,15 +23,17 @@ public partial class SceneState : Node
 			case CurrentSceneState.Tutorial:
 				return "Tutorial";
 			case CurrentSceneState.Stage_1:
-				return "Stage 1";
+				return "Stage_1";
 			case CurrentSceneState.Stage_2:
-				return "Stage 2";
+				return "Stage_2";
 			default:
 				return "Unknown";
 		}
 	}
 
 	public static CurrentSceneState sceneState = CurrentSceneState.Tutorial; //current scene state
-	public static StatusOfPlayer PlayerStatus = StatusOfPlayer.FreeRoam; //current scene state
+	public static StatusOfPlayer PlayerStatus = StatusOfPlayer.FreeRoam; //current player state
+
+	public static StatusOfPlayer PreviousState = StatusOfPlayer.FreeRoam; //current player state
 
 }

@@ -108,12 +108,13 @@ public partial class InteractCircles : Node3D
 
 	}
 
-
+	//BUG: clicking on new items are bugged
 	// Handles on circle click
 	//Sets the node path as well
 
 	public async void CirclesPressed(String path)
 	{
+		SceneState.PreviousState = SceneState.PlayerStatus; //sets the previous state
 		SceneState.PlayerStatus = SceneState.StatusOfPlayer.LookingAtSomething;
 		CURRENT_PATH_CIRCLES = path;
 
@@ -124,6 +125,7 @@ public partial class InteractCircles : Node3D
 			ToggleEventsDirection(GetNode<ButtonOverwrite>(path)); //turns off all the circles 
 			SetCam(GetNode<ButtonOverwrite>(path).GetMeta("NewCamPos").AsVector3(), (float)GetNode<ButtonOverwrite>(path).GetMeta("CamRotation")); //sets the camera to the position and rotation in the meta data
 			ToggleBackButton(); //shows the back button
+			DIALOGUE.SwapOverlay(); //shows the canvas
 		}
 
 			//Gets meta description of button clicked
@@ -132,6 +134,8 @@ public partial class InteractCircles : Node3D
 
 			//Swap back to gui speech
 			DIALOGUE.SwapOverlay();
+
+			DIALOGUE.Visible = true; //toggles the speech gui 
 
 			//Awaits the dialogue progression
 			await ToSignal(DIALOGUE, "LookProgress");
@@ -166,11 +170,12 @@ public partial class InteractCircles : Node3D
 		ToggleBackButton(); //hides the back button
 		SetCam(Vector3.Zero, 0); //resets camera position
 
+		ToggleParentNode(GetNode<ButtonOverwrite>(CURRENT_PATH_CIRCLES)); //hides the current node
 		//Renables the circles
 		ToggleEventsDirection(GetNode<ButtonOverwrite>(CURRENT_PATH_CIRCLES));
 
 		//Swaps back to dialogue mode
-		SceneState.PlayerStatus = SceneState.StatusOfPlayer.InDialogue;
+		SceneState.PlayerStatus = SceneState.PreviousState;
 
 		//Skips dialogue so it doesnt repeat itself
 		DIALOGUE.SkipDialogue();
