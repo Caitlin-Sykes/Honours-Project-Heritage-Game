@@ -113,8 +113,7 @@ public partial class IntroductionScene : Node3D
 		CAMERAS.ToggleEvents(); //enables all events
 		DIALOGUE.SwapOverlay(); //swaps the overlay to freeroam
 
-		CIRCLES.ToggleEventsDirection(GetNode<ButtonOverwrite>("InteractableItems/Select_Items/Settings/Panel/East/1"));
-
+		CAMERAS.SetCurrentCamera(GetViewport().GetCamera3D()); //sets current camera
 
 
 	}

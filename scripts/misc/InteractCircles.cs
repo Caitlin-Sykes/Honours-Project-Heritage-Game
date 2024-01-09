@@ -61,7 +61,6 @@ public partial class InteractCircles : Node3D
 	//Enables the events circle
 	public void ToggleEventsDirection(ButtonOverwrite cir)
 	{
-		GD.Print("--------------------------------");
 		if (cir != null) {
 			GD.Print("cir: " + cir);
 			//parNode is the parent of cir node
@@ -199,22 +198,22 @@ public partial class InteractCircles : Node3D
 
 		switch (evnt) {
 			case "ToggleNorthEvents":
-				EmitSignal("ToggleNorthEvents");
+				ToggleEventsDirection(GetNode<ButtonOverwrite>("/Select_Items/Settings/Panel/North/1"));
 				return;
 			case "ToggleEastEvents":
-				EmitSignal("ToggleEastEvents");
+				ToggleEventsDirection(GetNode<ButtonOverwrite>("/Select_Items/Settings/Panel/East/1"));
 				return;
 			case "ToggleSouthEvents":
-				EmitSignal("ToggleSouthEvents");
+				ToggleEventsDirection(GetNode<ButtonOverwrite>("/Select_Items/Settings/Panel/South/1"));
 				return;
 			case "ToggleWestEvents":
-				EmitSignal("ToggleWestEvents");
+				ToggleEventsDirection(GetNode<ButtonOverwrite>("/Select_Items/Settings/Panel/West/1"));
 				return;
 			case "ToggleUpEvents":
-				EmitSignal("ToggleUpEvents");
+				ToggleEventsDirection(GetNode<ButtonOverwrite>("/Select_Items/Settings/Panel/Up/1"));
 				return;
 			case "ToggleDownEvents":
-				EmitSignal("ToggleDownEvents");
+				ToggleEventsDirection(GetNode<ButtonOverwrite>("/Select_Items/Settings/Panel/Down/1"));
 				return;
 			default:
 				return;

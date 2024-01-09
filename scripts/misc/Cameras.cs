@@ -86,13 +86,13 @@ public partial class Cameras : Node
 		foreach (Node3D arrow in cam.FindChildren("*Arrow_Parent"))
 		{
 			//If node matches Up_Arrow_Parent or Down_Arrow_Parent and metadata for camera has UpDown as not enabled
-			if ((arrow.Name == "Up_Arrow_Parent" || arrow.Name == "Down_Arrow_Parent") && GetMeta("UpDownEnabled").AsBool())
+			if ((arrow.Name == "Up_Arrow_Parent" || arrow.Name == "Down_Arrow_Parent") && GetMeta("UpDownEnabled").AsBool() == false)
 			{
 				break;
 			}
 
 			//Else sets visible
-			else
+			else 
 			{
 				arrow.Visible = true;
 				arrow.SetProcessInput(true);
@@ -155,13 +155,12 @@ public partial class Cameras : Node
 
 	//A function to set the current camera
 	public void SetCurrentCamera(Camera3D cam) {
-		GD.Print("I AM CALLED!!!");
 		SetArrowsInvisible(GetViewport().GetCamera3D());
 		cam.Current = true;
 		SetArrowsVisible(cam);
 		dir = ToDirection(cam.Name);
-		GD.Print("Cam is: " + cam.Name);
-		GD.Print("Dir is: " + dir);
+
+		//If events are enabled
 		if (EnableEvents) {
 			INTERACT_CIRCLES.EmitEvent(String.Format("Toggle{0}Events", (dir)));
 	}

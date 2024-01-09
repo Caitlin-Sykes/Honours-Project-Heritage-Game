@@ -85,6 +85,7 @@ script = ExtResource("1_wn8em")
 DIALOGUE = NodePath("CanvasLayer/Settings/SpeechGUI")
 
 [node name="Transition" type="ColorRect" parent="."]
+visible = false
 modulate = Color(0.131765, 0.131765, 0.131765, 0.872941)
 top_level = true
 anchors_preset = 15
@@ -179,13 +180,13 @@ transform = Transform3D(1, 1.50996e-07, -1.50996e-07, 1.50996e-07, -1, 4.37114e-
 visible = false
 
 [node name="Up_Arrow" parent="Cameras/Controls/UI/North/MarginContainer/Arrows/Up_Arrow_Parent/CollisionShape3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="Down_Arrow_Parent" parent="Cameras/Controls/UI/North/MarginContainer/Arrows" index="3"]
 visible = false
 
 [node name="Down_Arrow" parent="Cameras/Controls/UI/North/MarginContainer/Arrows/Down_Arrow_Parent/CollisionShape3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="Left_Arrow" parent="Cameras/Controls/UI/South/MarginContainer/Arrows/Right_Arrow_Parent/CollisionShape3D" index="0"]
 transform = Transform3D(1, 1.50996e-07, -1.50996e-07, 1.50996e-07, -1, 4.37114e-08, -1.50996e-07, -4.37114e-08, -1, 0, 0, 0)
@@ -194,10 +195,10 @@ transform = Transform3D(1, 1.50996e-07, -1.50996e-07, 1.50996e-07, -1, 4.37114e-
 transform = Transform3D(1, 1.50996e-07, -1.50996e-07, 1.50996e-07, -1, 4.37114e-08, -1.50996e-07, -4.37114e-08, -1, 0, 0, 0)
 
 [node name="Up_Arrow" parent="Cameras/Controls/UI/South/MarginContainer/Arrows/Up_Arrow_Parent/CollisionShape3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="Up_Arrow" parent="Cameras/Controls/UI/South/MarginContainer/Arrows/Down_Arrow_Parent/CollisionShape3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="Up_Arrow" parent="Cameras/Controls/UI/East/MarginContainer/Arrows/Down_Arrow_Parent/CollisionShape3D" index="0"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
@@ -206,16 +207,25 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 transform = Transform3D(1, 1.50996e-07, -1.50996e-07, 1.50996e-07, -1, 4.37114e-08, -1.50996e-07, -4.37114e-08, -1, 0, 0, 0)
 
 [node name="Up_Arrow" parent="Cameras/Controls/UI/West/MarginContainer/Arrows/Down_Arrow_Parent/CollisionShape3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Up_Arrow_Parent" parent="Cameras/Controls/UI/Up/MarginContainer/Arrows" index="0"]
+transform = Transform3D(0.05, 4.37114e-09, -4.37114e-09, 4.37114e-09, -0.05, 0, -4.37114e-09, -3.82137e-16, -0.05, 0, 0.82, 0.55)
 
 [node name="Up_Arrow" parent="Cameras/Controls/UI/Up/MarginContainer/Arrows/Up_Arrow_Parent/CollisionShape3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Down_Arrow" parent="Cameras/Controls/UI/Up/MarginContainer/Arrows/Down_Arrow_Parent/CollisionShape3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Up_Arrow_Parent" parent="Cameras/Controls/UI/Down/MarginContainer/Arrows" index="0"]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, -0.82, -0.55)
 
 [node name="Down_Arrow" parent="Cameras/Controls/UI/Down/MarginContainer/Arrows/Up_Arrow_Parent/CollisionShape3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Down_Arrow_Parent" parent="Cameras/Controls/UI/Down/MarginContainer/Arrows" index="1"]
+transform = Transform3D(0.05, 4.37114e-09, -4.37114e-09, 4.37114e-09, -0.05, 0, -4.37114e-09, -3.82137e-16, -0.05, 0, -0.82, 0.55)
 
 [node name="Up_Arrow" parent="Cameras/Controls/UI/Down/MarginContainer/Arrows/Down_Arrow_Parent/CollisionShape3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
@@ -449,48 +459,89 @@ metadata/Sources = {}
 
 [node name="3" parent="InteractableItems/Select_Items/Settings/Panel/East" instance=ExtResource("4_4mlkj")]
 visible = false
-layout_mode = 2
-offset_right = 200.0
-offset_bottom = 200.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.326
+anchor_top = 0.73
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
 texture_normal = ExtResource("4_fj71e")
 texture_pressed = ExtResource("6_05m2d")
-metadata/Object = ""
-metadata/Description = {}
+metadata/Object = "Backpack"
+metadata/Description = {
+"Stage_1": "This is my backpack. I carry my books in it. Sometimes it ends up in random places in the house",
+"Tutorial": "This... should not be showing up."
+}
 metadata/Hints = {}
-metadata/ExtraInformation = {}
-metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/ExtraInformation = {
+"Stage_1": "It's just a backpack. That's it. It carries things. Sometimes they're known as rucksacks, schoolbags, or bags."
+}
+metadata/NewCamPos = Vector3(1.09332, -0.755325, -0.44021)
 metadata/CamRotation = 0
-metadata/Sources = {}
+metadata/Sources = {
+"Src_1": "Render from: https://www.turbosquid.com/3d-models/3d-backpack-lowpoly-2024285"
+}
 
 [node name="4" parent="InteractableItems/Select_Items/Settings/Panel/East" instance=ExtResource("4_4mlkj")]
 visible = false
-layout_mode = 2
-offset_right = 200.0
-offset_bottom = 200.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.022
+anchor_top = 0.562
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
 texture_normal = ExtResource("4_fj71e")
 texture_pressed = ExtResource("6_05m2d")
-metadata/Object = ""
-metadata/Description = {}
+metadata/Object = "Books"
+metadata/Description = {
+"Stage_1": "A series of books that I keep accumulating, but not reading.",
+"Tutorial": "You... should not be accessing this."
+}
 metadata/Hints = {}
-metadata/ExtraInformation = {}
-metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/ExtraInformation = {
+"Stage_1": "Somewhere, someone is laughing distantly at the Programmer's Guide for C# book."
+}
+metadata/NewCamPos = Vector3(1.18544, -0.301348, -1.79762)
 metadata/CamRotation = 0
-metadata/Sources = {}
+metadata/Sources = {
+"src": "No sources for this one. Just some random books."
+}
 
 [node name="5" parent="InteractableItems/Select_Items/Settings/Panel/East" instance=ExtResource("4_4mlkj")]
 visible = false
-layout_mode = 2
-offset_right = 200.0
-offset_bottom = 200.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.143
+anchor_top = 0.54
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
 texture_normal = ExtResource("4_fj71e")
 texture_pressed = ExtResource("6_05m2d")
-metadata/Object = ""
-metadata/Description = {}
+metadata/Object = "Laptop"
+metadata/Description = {
+"Stage_1": "It's my laptop. I'm supposed to use it for coursework, but sometimes I get sidetracked."
+}
 metadata/Hints = {}
-metadata/ExtraInformation = {}
-metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/ExtraInformation = {
+"Stage_1": "It's just a generic laptop, though the background is taken from the creator's own laptop. "
+}
+metadata/NewCamPos = Vector3(1.18544, -0.301348, -1.39528)
 metadata/CamRotation = 0
-metadata/Sources = {}
+metadata/Sources = {
+"src": "No sources again. Hi, though."
+}
 
 [node name="6" parent="InteractableItems/Select_Items/Settings/Panel/East" instance=ExtResource("4_4mlkj")]
 visible = false
@@ -718,7 +769,7 @@ metadata/CamRotation = 0
 metadata/Sources = {}
 
 [node name="testCam" type="Camera3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.09332, 0.244675, -1.35129)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.18544, -0.301348, -1.39528)
 visible = false
 
 [connection signal="Stage1" from="." to="." method="Stage1Stuff"]
@@ -735,6 +786,9 @@ visible = false
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/North/1" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/North/1"]]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/East/1" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/East/1"]]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/East/2" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/East/2"]]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/East/3" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/East/3"]]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/East/4" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/East/4"]]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/East/5" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/East/5"]]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/South/1" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/South/1"]]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/West/1" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/West/1"]]
 
