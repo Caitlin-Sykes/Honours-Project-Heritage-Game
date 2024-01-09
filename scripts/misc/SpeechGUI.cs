@@ -160,7 +160,6 @@ public partial class SpeechGUI : Control
 	}
 
 	//For source display
-	//BUG: doesnt work
 	public async void Dialogue(Dictionary<string, string> extraInfo) {
 
 		//Swaps overlay 
@@ -205,7 +204,6 @@ public partial class SpeechGUI : Control
 		else if (@evnt is InputEventMouseButton && @evnt.IsPressed() && SceneState.PlayerStatus == SceneState.StatusOfPlayer.LookingAtSomething)
 		{
 			EmitSignal("LookProgress");
-
 		}
 	}
 
@@ -256,6 +254,12 @@ public partial class SpeechGUI : Control
 				CIRCLES.ToggleSpecificDirection(GetNode<ButtonOverwrite>("../../../InteractableItems/Select_Items/Settings/Panel/East/2")); //hides wardrobe circle
 
 				SwapOverlay(); //hides overlay
+				return;
+			
+			//If eight (the last one), emits stage signal
+			case "8":
+				await ToSignal(this, "DialogueProgress");
+				GetNode<IntroductionScene>("../../..").Stage1Start();
 				return;
 
 			default:

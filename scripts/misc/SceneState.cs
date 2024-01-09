@@ -17,6 +17,20 @@ public partial class SceneState : Node
 		FreeRoam, //player is moving about
 	}
 
+	//Converts CurrentSceneState to String
+	public static string CurrentStateAsString() {
+		switch(sceneState) {
+			case CurrentSceneState.Tutorial:
+				return "Tutorial";
+			case CurrentSceneState.Stage_1:
+				return "Stage 1";
+			case CurrentSceneState.Stage_2:
+				return "Stage 2";
+			default:
+				return "Unknown";
+		}
+	}
+
 	public static CurrentSceneState sceneState = CurrentSceneState.Tutorial; //current scene state
 	public static StatusOfPlayer PlayerStatus = StatusOfPlayer.FreeRoam; //current scene state
 

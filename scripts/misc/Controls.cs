@@ -44,9 +44,22 @@ public partial class Controls : Node3D
            OnDownArrow();
         }
 
+        //Shows extra info about an object
         else if (Input.IsKeyPressed(Key.J) && SceneState.PlayerStatus == SceneState.StatusOfPlayer.LookingAtSomething)
         {
             CIRCLES.ShowExtraInformation();
+        }
+
+        //Shows sources
+        else if (Input.IsKeyPressed(Key.K) && SceneState.PlayerStatus == SceneState.StatusOfPlayer.LookingAtSomething)
+        {
+            CIRCLES.ShowSources();
+        }
+
+        //Reminds player what to do
+         else if (Input.IsKeyPressed(Key.L) && SceneState.PlayerStatus == SceneState.StatusOfPlayer.LookingAtSomething)
+        {
+            //Im stuck func
         }
 
     }

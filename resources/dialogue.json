@@ -61,7 +61,7 @@
     {
       "Id": "4",
       "Speaker": "Guide",
-      "Dialogue": "There we go. Any time during the game, if you would like to see the source of any information provided, such as a fact, you can press the 'J' key.",
+      "Dialogue": "There we go. Any time during the game, if you would like to see the source of any information provided, such as a fact, you can press the 'K' key.",
       "Avatar": "res://resources/textures/sprites/guide/1.svg"
     },
 
@@ -75,14 +75,14 @@
     {
       "Id": "6",
       "Speaker": "Guide",
-      "Dialogue": "The 'J' key may also provide extra information not originally shown. Try pressing 'J' whilst clicking on the poster by the desk.",
+      "Dialogue": "The 'J' key may provide extra information not originally shown. Try pressing 'J' whilst clicking on the poster by the desk.",
       "Avatar": "res://resources/textures/sprites/guide/1.svg"
     },
 
     {
       "Id": "7",
       "Speaker": "Guide",
-      "Dialogue": "If you are stuck at any time, or forget what you are supposed to be doing, press the 'K' key to prompt you.",
+      "Dialogue": "If you are stuck at any time, or forget what you are supposed to be doing, press the 'L' key to prompt you.",
       "Avatar": "res://resources/textures/sprites/guide/1.svg"
     },
 

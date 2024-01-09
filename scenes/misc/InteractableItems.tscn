@@ -99,6 +99,7 @@ metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
+metadata/Sources = {}
 
 [node name="2" parent="Select_Items/Settings/Panel/North" instance=ExtResource("2_o7um0")]
 visible = false
@@ -113,6 +114,7 @@ metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
+metadata/Sources = {}
 
 [node name="3" parent="Select_Items/Settings/Panel/North" instance=ExtResource("2_o7um0")]
 visible = false
@@ -127,6 +129,7 @@ metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
+metadata/Sources = {}
 
 [node name="4" parent="Select_Items/Settings/Panel/North" instance=ExtResource("2_o7um0")]
 visible = false
@@ -141,6 +144,7 @@ metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
+metadata/Sources = {}
 
 [node name="5" parent="Select_Items/Settings/Panel/North" instance=ExtResource("2_o7um0")]
 visible = false
@@ -155,6 +159,7 @@ metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
+metadata/Sources = {}
 
 [node name="6" parent="Select_Items/Settings/Panel/North" instance=ExtResource("2_o7um0")]
 visible = false
@@ -169,6 +174,7 @@ metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
+metadata/Sources = {}
 
 [node name="East" type="Control" parent="Select_Items/Settings/Panel"]
 visible = false
@@ -192,6 +198,7 @@ metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
+metadata/Sources = {}
 
 [node name="2" parent="Select_Items/Settings/Panel/East" instance=ExtResource("2_o7um0")]
 visible = false
@@ -206,6 +213,7 @@ metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
+metadata/Sources = {}
 
 [node name="3" parent="Select_Items/Settings/Panel/East" instance=ExtResource("2_o7um0")]
 visible = false
@@ -220,6 +228,7 @@ metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
+metadata/Sources = {}
 
 [node name="4" parent="Select_Items/Settings/Panel/East" instance=ExtResource("2_o7um0")]
 visible = false
@@ -234,6 +243,7 @@ metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
+metadata/Sources = {}
 
 [node name="5" parent="Select_Items/Settings/Panel/East" instance=ExtResource("2_o7um0")]
 visible = false
@@ -248,6 +258,7 @@ metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
+metadata/Sources = {}
 
 [node name="6" parent="Select_Items/Settings/Panel/East" instance=ExtResource("2_o7um0")]
 visible = false
@@ -262,6 +273,7 @@ metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
+metadata/Sources = {}
 
 [node name="South" type="Control" parent="Select_Items/Settings/Panel"]
 visible = false
@@ -287,6 +299,7 @@ metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
+metadata/Sources = {}
 
 [node name="2" parent="Select_Items/Settings/Panel/South" instance=ExtResource("2_o7um0")]
 visible = false
@@ -303,6 +316,7 @@ metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
+metadata/Sources = {}
 
 [node name="3" parent="Select_Items/Settings/Panel/South" instance=ExtResource("2_o7um0")]
 visible = false
@@ -319,6 +333,7 @@ metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
+metadata/Sources = {}
 
 [node name="4" parent="Select_Items/Settings/Panel/South" instance=ExtResource("2_o7um0")]
 visible = false
@@ -335,6 +350,7 @@ metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
+metadata/Sources = {}
 
 [node name="5" parent="Select_Items/Settings/Panel/South" instance=ExtResource("2_o7um0")]
 visible = false
@@ -351,6 +367,7 @@ metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
+metadata/Sources = {}
 
 [node name="6" parent="Select_Items/Settings/Panel/South" instance=ExtResource("2_o7um0")]
 visible = false
@@ -367,6 +384,7 @@ metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
+metadata/Sources = {}
 
 [node name="West" type="Control" parent="Select_Items/Settings/Panel"]
 visible = false
@@ -390,6 +408,7 @@ metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
+metadata/Sources = {}
 
 [node name="2" parent="Select_Items/Settings/Panel/West" instance=ExtResource("2_o7um0")]
 visible = false
@@ -404,6 +423,7 @@ metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
+metadata/Sources = {}
 
 [node name="3" parent="Select_Items/Settings/Panel/West" instance=ExtResource("2_o7um0")]
 visible = false
@@ -418,6 +438,7 @@ metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
+metadata/Sources = {}
 
 [node name="4" parent="Select_Items/Settings/Panel/West" instance=ExtResource("2_o7um0")]
 visible = false
@@ -432,6 +453,7 @@ metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
+metadata/Sources = {}
 
 [node name="5" parent="Select_Items/Settings/Panel/West" instance=ExtResource("2_o7um0")]
 visible = false
@@ -446,6 +468,7 @@ metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
+metadata/Sources = {}
 
 [node name="6" parent="Select_Items/Settings/Panel/West" instance=ExtResource("2_o7um0")]
 visible = false
@@ -460,6 +483,7 @@ metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
+metadata/Sources = {}
 
 [node name="Up" type="Control" parent="Select_Items/Settings/Panel"]
 visible = false
@@ -485,6 +509,7 @@ metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
+metadata/Sources = {}
 
 [node name="2" parent="Select_Items/Settings/Panel/Up" instance=ExtResource("2_o7um0")]
 visible = false
@@ -501,6 +526,7 @@ metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
+metadata/Sources = {}
 
 [node name="3" parent="Select_Items/Settings/Panel/Up" instance=ExtResource("2_o7um0")]
 visible = false
@@ -517,6 +543,7 @@ metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
+metadata/Sources = {}
 
 [node name="4" parent="Select_Items/Settings/Panel/Up" instance=ExtResource("2_o7um0")]
 visible = false
@@ -533,6 +560,7 @@ metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
+metadata/Sources = {}
 
 [node name="5" parent="Select_Items/Settings/Panel/Up" instance=ExtResource("2_o7um0")]
 visible = false
@@ -549,6 +577,7 @@ metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
+metadata/Sources = {}
 
 [node name="6" parent="Select_Items/Settings/Panel/Up" instance=ExtResource("2_o7um0")]
 visible = false
@@ -565,6 +594,7 @@ metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
+metadata/Sources = {}
 
 [node name="Down" type="Control" parent="Select_Items/Settings/Panel"]
 visible = false
@@ -590,6 +620,7 @@ metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
+metadata/Sources = {}
 
 [node name="2" parent="Select_Items/Settings/Panel/Down" instance=ExtResource("2_o7um0")]
 visible = false
@@ -606,6 +637,7 @@ metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
+metadata/Sources = {}
 
 [node name="3" parent="Select_Items/Settings/Panel/Down" instance=ExtResource("2_o7um0")]
 visible = false
@@ -622,6 +654,7 @@ metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
+metadata/Sources = {}
 
 [node name="4" parent="Select_Items/Settings/Panel/Down" instance=ExtResource("2_o7um0")]
 visible = false
@@ -638,6 +671,7 @@ metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
+metadata/Sources = {}
 
 [node name="5" parent="Select_Items/Settings/Panel/Down" instance=ExtResource("2_o7um0")]
 visible = false
@@ -654,6 +688,7 @@ metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
+metadata/Sources = {}
 
 [node name="6" parent="Select_Items/Settings/Panel/Down" instance=ExtResource("2_o7um0")]
 visible = false
@@ -670,6 +705,7 @@ metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
+metadata/Sources = {}
 
 [connection signal="ToggleDownEvents" from="." to="." method="ToggleEventsDirection" binds= [NodePath("/root/@EditorNode@17664/@Control@697/@Panel@698/@VBoxContainer@706/@HSplitContainer@709/@HSplitContainer@717/@HSplitContainer@725/@VBoxContainer@726/@VSplitContainer@728/@VSplitContainer@754/@VBoxContainer@755/@PanelContainer@800/MainScreen/@CanvasItemEditor@10090/@VSplitContainer@9915/@HSplitContainer@9917/@HSplitContainer@9919/@Control@9920/@SubViewportContainer@9921/@SubViewport@9922/InteractableItems/Down")]]
 [connection signal="ToggleEastEvents" from="." to="." method="ToggleEventsDirection" binds= [NodePath("/root/@EditorNode@17664/@Control@697/@Panel@698/@VBoxContainer@706/@HSplitContainer@709/@HSplitContainer@717/@HSplitContainer@725/@VBoxContainer@726/@VSplitContainer@728/@VSplitContainer@754/@VBoxContainer@755/@PanelContainer@800/MainScreen/@CanvasItemEditor@10090/@VSplitContainer@9915/@HSplitContainer@9917/@HSplitContainer@9919/@Control@9920/@SubViewportContainer@9921/@SubViewport@9922/InteractableItems/East")]]

@@ -16,8 +16,14 @@ public partial class IntroductionScene : Node3D
 
 	private Cameras CAMERAS; //instance of cameraScript
 
+	private InteractCircles CIRCLES;
+
 	private Camera3D introCam; //the camera you start viewing from
 	private AnimationPlayer ANIMATION_PLAYER_INTROCAM; // the animation handler for intro 
+
+	[Signal]
+	public delegate void Stage1EventHandler(); //handler for progressing looking at smth
+
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -32,6 +38,7 @@ public partial class IntroductionScene : Node3D
 		CAMERAS = GetNode<Cameras>("Cameras");
 		CONTROLS = GetNode<Controls>("Cameras/Controls");
 		introCam = GetNode<Camera3D>("IntroCam");
+		CIRCLES = GetNode<InteractCircles>("InteractableItems");
 		
 		ANIMATION_PLAYER_INTROCAM = (AnimationPlayer)introCam.GetNode("AnimationPlayer");
 		
@@ -55,13 +62,15 @@ public partial class IntroductionScene : Node3D
 
 	// A function to handle the second dialogue
 	private void SecondDialogue() {
-		
-		DIALOGUE.ToggleGUIVisible(); //toggles the gui visible
-		DIALOGUE.Dialogue(JsonHandler.Speech.Controls, "Controls", new string[] {"1", "3", "7"}); //Starts playing through the controls dialogue
+		DIALOGUE.ToggleGUIVisible(); //shows the gui
+		DIALOGUE.Dialogue(JsonHandler.Speech.Controls, "Controls", new string[] {"1", "3", "7", "8"}); //Starts playing through the controls 
 	}
-	
 
-	
+	// Start Stage 1 Handler
+	public async void Stage1Start() {
+		EmitSignal(SignalName.Stage1);
+	}
+
 
 	/**
 	* ----------------------------------------------------------------
@@ -79,12 +88,35 @@ public partial class IntroductionScene : Node3D
 		await ToSignal(ANIMATION_PLAYER_INTROCAM, "animation_finished"); //waits for the animation to finish
 		CAMERAS.SetCurrentCamera(GetNode<Camera3D>("Cameras/Controls/UI/East")); //sets current camera to east
 
+		//Starts the controls dialogue
 		SecondDialogue();
 
+		
 	}
 
 	//A function to toggle the wake up button
 	public void ToggleWakeUpButton() {
 		getUpButton.Visible = !getUpButton.Visible;
 	}
+
+	/** 
+	* ----------------------------------------------------------------
+	* Stage 1 Handlers
+	* ----------------------------------------------------------------
+	**/
+
+	//Starts the stage
+	private void Stage1Stuff() {
+		DIALOGUE.ToggleGUIVisible(); //hides the gui
+		SceneState.sceneState = SceneState.CurrentSceneState.Stage_1; //sets the current scene stage to stage_1
+		SceneState.PlayerStatus = SceneState.StatusOfPlayer.FreeRoam; //Sets the current status to free roam
+		CAMERAS.ToggleEvents(); //enables all events
+		DIALOGUE.SwapOverlay(); //swaps the overlay to freeroam
+
+		CIRCLES.ToggleEventsDirection(GetNode<ButtonOverwrite>("InteractableItems/Select_Items/Settings/Panel/East/1"));
+
+
+
+	}
 }
+

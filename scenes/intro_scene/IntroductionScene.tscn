@@ -200,7 +200,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Up_Arrow" parent="Cameras/Controls/UI/East/MarginContainer/Arrows/Down_Arrow_Parent/CollisionShape3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="Right_Arrow" parent="Cameras/Controls/UI/West/MarginContainer/Arrows/Right_Arrow_Parent/CollisionShape3D" index="0"]
 transform = Transform3D(1, 1.50996e-07, -1.50996e-07, 1.50996e-07, -1, 4.37114e-08, -1.50996e-07, -4.37114e-08, -1, 0, 0, 0)
@@ -309,6 +309,7 @@ metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
+metadata/Sources = {}
 
 [node name="2" parent="InteractableItems/Select_Items/Settings/Panel/North" instance=ExtResource("4_4mlkj")]
 visible = false
@@ -323,6 +324,7 @@ metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
+metadata/Sources = {}
 
 [node name="3" parent="InteractableItems/Select_Items/Settings/Panel/North" instance=ExtResource("4_4mlkj")]
 visible = false
@@ -337,6 +339,7 @@ metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
+metadata/Sources = {}
 
 [node name="4" parent="InteractableItems/Select_Items/Settings/Panel/North" instance=ExtResource("4_4mlkj")]
 visible = false
@@ -351,6 +354,7 @@ metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
+metadata/Sources = {}
 
 [node name="5" parent="InteractableItems/Select_Items/Settings/Panel/North" instance=ExtResource("4_4mlkj")]
 visible = false
@@ -365,6 +369,7 @@ metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
+metadata/Sources = {}
 
 [node name="6" parent="InteractableItems/Select_Items/Settings/Panel/North" instance=ExtResource("4_4mlkj")]
 visible = false
@@ -379,6 +384,7 @@ metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
+metadata/Sources = {}
 
 [node name="East" type="Control" parent="InteractableItems/Select_Items/Settings/Panel"]
 layout_mode = 1
@@ -407,11 +413,14 @@ metadata/Description = {
 metadata/Hints = {}
 metadata/ExtraInformation = {
 "Info": "This poster is from a game called Persona 5. It is a role playing game released in 2016.",
-"Source": "It later got a definitive release which was called Persona 5 Royal. It's known for having one of the best modern-day soundtracks, the most famous track being \"Last Surprise.\"",
-"Source2": "Information from: https://en.wikipedia.org/wiki/Persona_5, {0} Image from: https://www.amazon.com/Persona-Official-Setting-Picture-JAPANESE/dp/4047331902"
+"Source": "It later got a definitive release which was called Persona 5 Royal. It's known for having one of the best modern-day soundtracks, the most famous track being \"Last Surprise.\""
 }
 metadata/NewCamPos = Vector3(1.09332, 0.244675, -1.35129)
 metadata/CamRotation = -90
+metadata/Sources = {
+"Img_Src": " Image from: https://www.amazon.com/Persona-Official-Setting-Picture-JAPANESE/dp/4047331902",
+"Info_Src": "Information from: https://en.wikipedia.org/wiki/Persona_5, {0}"
+}
 
 [node name="2" parent="InteractableItems/Select_Items/Settings/Panel/East" instance=ExtResource("4_4mlkj")]
 visible = false
@@ -436,6 +445,7 @@ metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
+metadata/Sources = {}
 
 [node name="3" parent="InteractableItems/Select_Items/Settings/Panel/East" instance=ExtResource("4_4mlkj")]
 visible = false
@@ -450,6 +460,7 @@ metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
+metadata/Sources = {}
 
 [node name="4" parent="InteractableItems/Select_Items/Settings/Panel/East" instance=ExtResource("4_4mlkj")]
 visible = false
@@ -464,6 +475,7 @@ metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
+metadata/Sources = {}
 
 [node name="5" parent="InteractableItems/Select_Items/Settings/Panel/East" instance=ExtResource("4_4mlkj")]
 visible = false
@@ -478,6 +490,7 @@ metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
+metadata/Sources = {}
 
 [node name="6" parent="InteractableItems/Select_Items/Settings/Panel/East" instance=ExtResource("4_4mlkj")]
 visible = false
@@ -492,6 +505,7 @@ metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
+metadata/Sources = {}
 
 [node name="South" type="Control" parent="InteractableItems/Select_Items/Settings/Panel"]
 visible = false
@@ -517,6 +531,7 @@ metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
+metadata/Sources = {}
 
 [node name="2" parent="InteractableItems/Select_Items/Settings/Panel/South" instance=ExtResource("4_4mlkj")]
 visible = false
@@ -533,6 +548,7 @@ metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
+metadata/Sources = {}
 
 [node name="3" parent="InteractableItems/Select_Items/Settings/Panel/South" instance=ExtResource("4_4mlkj")]
 visible = false
@@ -549,6 +565,7 @@ metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
+metadata/Sources = {}
 
 [node name="4" parent="InteractableItems/Select_Items/Settings/Panel/South" instance=ExtResource("4_4mlkj")]
 visible = false
@@ -565,6 +582,7 @@ metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
+metadata/Sources = {}
 
 [node name="5" parent="InteractableItems/Select_Items/Settings/Panel/South" instance=ExtResource("4_4mlkj")]
 visible = false
@@ -581,6 +599,7 @@ metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
+metadata/Sources = {}
 
 [node name="6" parent="InteractableItems/Select_Items/Settings/Panel/South" instance=ExtResource("4_4mlkj")]
 visible = false
@@ -597,6 +616,7 @@ metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
+metadata/Sources = {}
 
 [node name="West" type="Control" parent="InteractableItems/Select_Items/Settings/Panel"]
 visible = false
@@ -620,6 +640,7 @@ metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
+metadata/Sources = {}
 
 [node name="2" parent="InteractableItems/Select_Items/Settings/Panel/West" instance=ExtResource("4_4mlkj")]
 visible = false
@@ -634,6 +655,7 @@ metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
+metadata/Sources = {}
 
 [node name="3" parent="InteractableItems/Select_Items/Settings/Panel/West" instance=ExtResource("4_4mlkj")]
 visible = false
@@ -648,6 +670,7 @@ metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
+metadata/Sources = {}
 
 [node name="4" parent="InteractableItems/Select_Items/Settings/Panel/West" instance=ExtResource("4_4mlkj")]
 visible = false
@@ -662,6 +685,7 @@ metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
+metadata/Sources = {}
 
 [node name="5" parent="InteractableItems/Select_Items/Settings/Panel/West" instance=ExtResource("4_4mlkj")]
 visible = false
@@ -676,6 +700,7 @@ metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
+metadata/Sources = {}
 
 [node name="6" parent="InteractableItems/Select_Items/Settings/Panel/West" instance=ExtResource("4_4mlkj")]
 visible = false
@@ -690,11 +715,13 @@ metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
+metadata/Sources = {}
 
 [node name="testCam" type="Camera3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.09332, 0.244675, -1.35129)
 visible = false
 
+[connection signal="Stage1" from="." to="." method="Stage1Stuff"]
 [connection signal="StartScene" from="." to="." method="FirstDialogue"]
 [connection signal="StartScene" from="." to="Transition" method="PlayWakeAnim"]
 [connection signal="pressed" from="CanvasLayer/Settings/OnItemSelect" to="." method="OnItemSelect"]

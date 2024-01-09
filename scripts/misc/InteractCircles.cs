@@ -39,10 +39,6 @@ public partial class InteractCircles : Node3D
 		BackButtonContainer = GetNode<MarginContainer>("Select_Items/Settings/Panel/Back_Button");
 	}
 
-	// attach unique meta data to each circle imported 
-	// means no repetitve scripts
-	// show specific node on command ping
-
 	/**
 	* Shows Extra Information Handlers
 	**/
@@ -53,6 +49,9 @@ public partial class InteractCircles : Node3D
 		DIALOGUE.Dialogue((Godot.Collections.Dictionary<string, string>)GetNode<ButtonOverwrite>(CURRENT_PATH_CIRCLES).GetMeta("ExtraInformation"));
 	}
 
+	public void ShowSources() {
+		DIALOGUE.Dialogue((Godot.Collections.Dictionary<string, string>)GetNode<ButtonOverwrite>(CURRENT_PATH_CIRCLES).GetMeta("Sources"));
+	}
 	/**
 	* ----------------------------------------------------------------
 	* Handlers for enabling and disabling event circles
@@ -60,18 +59,24 @@ public partial class InteractCircles : Node3D
 	**/
 
 	//Enables the events circle
-	private void ToggleEventsDirection(ButtonOverwrite cir)
+	public void ToggleEventsDirection(ButtonOverwrite cir)
 	{
+		GD.Print("--------------------------------");
+		if (cir != null) {
+			GD.Print("cir: " + cir);
+			//parNode is the parent of cir node
+			var parNode = (Control)cir.GetParent();
+			GD.Print("Par: " + parNode);
 
-		//parNode is the parent of cir node
-		var parNode = (Control)cir.GetParent();
-		parNode.Visible = !parNode.Visible;
+			parNode.Visible = !parNode.Visible;
 
-		//For every circle in the direction container, toggles them
-		foreach (ButtonOverwrite circle in parNode.GetChildren())
-		{
-			circle.Visible = !circle.Visible;
+			//For every circle in the direction container, toggles them
+			foreach (ButtonOverwrite circle in parNode.GetChildren())
+			{
+				circle.Visible = !circle.Visible;
+			}
 		}
+		
 	}
 
 	//Enables a specific event circle
@@ -111,13 +116,9 @@ public partial class InteractCircles : Node3D
 			ToggleBackButton(); //shows the back button
 		}
 
-		//If the scene state is Tutorial
-		if (SceneState.sceneState == SceneState.CurrentSceneState.Tutorial)
-		{
 			//Gets meta description of button clicked
 			var description = (Godot.Collections.Dictionary<string, string>)GetNode<ButtonOverwrite>(path).GetMeta("Description");
-
-			DIALOGUE.Dialogue(PlayerData.Player.Name, description["Tutorial"], string.Format(PLAYER_AVATAR, PlayerData.Player.Avatar));
+			DIALOGUE.Dialogue(PlayerData.Player.Name, description[SceneState.CurrentStateAsString()], string.Format(PLAYER_AVATAR, PlayerData.Player.Avatar));
 
 			//Swap back to gui speech
 			DIALOGUE.SwapOverlay();
@@ -129,8 +130,6 @@ public partial class InteractCircles : Node3D
 			// Swap back to normal view
 			DIALOGUE.SwapOverlay();
 
-			// ToggleSpecificDirection(GetNode<ButtonOverwrite>(path)); //hides the circle again
-
 			//If the camera isn't moved
 			if (GetNode<ButtonOverwrite>(path).GetMeta("NewCamPos").AsVector3() == Vector3.Zero) {
 
@@ -141,7 +140,7 @@ public partial class InteractCircles : Node3D
 				DIALOGUE.SkipDialogue(); //skips dialogue
 			}
 			
-		}
+		// }
 	}
 
 
@@ -188,4 +187,38 @@ public partial class InteractCircles : Node3D
 		curCam.Rotate(curCam.Transform.Origin, angle); //rotates to the rotation
 
 	}
+
+	/**
+	* ----------------------------------------------------------------
+	* Emit Signals Handlers
+	* ----------------------------------------------------------------
+	**/
+
+	//Emits event signal depending on string
+	public void EmitEvent(string evnt) {
+
+		switch (evnt) {
+			case "ToggleNorthEvents":
+				EmitSignal("ToggleNorthEvents");
+				return;
+			case "ToggleEastEvents":
+				EmitSignal("ToggleEastEvents");
+				return;
+			case "ToggleSouthEvents":
+				EmitSignal("ToggleSouthEvents");
+				return;
+			case "ToggleWestEvents":
+				EmitSignal("ToggleWestEvents");
+				return;
+			case "ToggleUpEvents":
+				EmitSignal("ToggleUpEvents");
+				return;
+			case "ToggleDownEvents":
+				EmitSignal("ToggleDownEvents");
+				return;
+			default:
+				return;
+		}
+	}
+
 }
