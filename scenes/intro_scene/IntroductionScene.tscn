@@ -85,7 +85,6 @@ script = ExtResource("1_wn8em")
 DIALOGUE = NodePath("CanvasLayer/Settings/SpeechGUI")
 
 [node name="Transition" type="ColorRect" parent="."]
-visible = false
 modulate = Color(0.131765, 0.131765, 0.131765, 0.872941)
 top_level = true
 anchors_preset = 15
@@ -397,6 +396,7 @@ metadata/CamRotation = 0
 metadata/Sources = {}
 
 [node name="East" type="Control" parent="InteractableItems/Select_Items/Settings/Panel"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

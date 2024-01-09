@@ -65,17 +65,28 @@ public partial class InteractCircles : Node3D
 			GD.Print("cir: " + cir);
 			//parNode is the parent of cir node
 			var parNode = (Control)cir.GetParent();
-			GD.Print("Par: " + parNode);
 
-			parNode.Visible = !parNode.Visible;
+			//Toggles parent node
+			ToggleParentNode(cir);
 
 			//For every circle in the direction container, toggles them
 			foreach (ButtonOverwrite circle in parNode.GetChildren())
 			{
+				GD.Print(circle.Name);
+				GD.Print("b4: "+ circle.Visible);
 				circle.Visible = !circle.Visible;
+				GD.Print("aftr: " + circle.Visible);
+
+				GD.Print("---------------");
+
 			}
 		}
-		
+	}
+
+	//Toggles the visibility of the parent node
+	public void ToggleParentNode(ButtonOverwrite cir) {
+		var parNode = (Control)cir.GetParent();
+		parNode.Visible = !parNode.Visible;
 	}
 
 	//Enables a specific event circle
@@ -138,9 +149,7 @@ public partial class InteractCircles : Node3D
 				SceneState.PlayerStatus = SceneState.StatusOfPlayer.InDialogue; //swaps the status to in dialogue
 				DIALOGUE.SkipDialogue(); //skips dialogue
 			}
-			
-		// }
-	}
+				}
 
 
 
@@ -198,22 +207,22 @@ public partial class InteractCircles : Node3D
 
 		switch (evnt) {
 			case "ToggleNorthEvents":
-				ToggleEventsDirection(GetNode<ButtonOverwrite>("/Select_Items/Settings/Panel/North/1"));
+				ToggleEventsDirection(GetNode<ButtonOverwrite>("Select_Items/Settings/Panel/North/1"));
 				return;
 			case "ToggleEastEvents":
-				ToggleEventsDirection(GetNode<ButtonOverwrite>("/Select_Items/Settings/Panel/East/1"));
+				ToggleEventsDirection(GetNode<ButtonOverwrite>("Select_Items/Settings/Panel/East/1"));
 				return;
 			case "ToggleSouthEvents":
-				ToggleEventsDirection(GetNode<ButtonOverwrite>("/Select_Items/Settings/Panel/South/1"));
+				ToggleEventsDirection(GetNode<ButtonOverwrite>("Select_Items/Settings/Panel/South/1"));
 				return;
 			case "ToggleWestEvents":
-				ToggleEventsDirection(GetNode<ButtonOverwrite>("/Select_Items/Settings/Panel/West/1"));
+				ToggleEventsDirection(GetNode<ButtonOverwrite>("Select_Items/Settings/Panel/West/1"));
 				return;
 			case "ToggleUpEvents":
-				ToggleEventsDirection(GetNode<ButtonOverwrite>("/Select_Items/Settings/Panel/Up/1"));
+				ToggleEventsDirection(GetNode<ButtonOverwrite>("Select_Items/Settings/Panel/Up/1"));
 				return;
 			case "ToggleDownEvents":
-				ToggleEventsDirection(GetNode<ButtonOverwrite>("/Select_Items/Settings/Panel/Down/1"));
+				ToggleEventsDirection(GetNode<ButtonOverwrite>("Select_Items/Settings/Panel/Down/1"));
 				return;
 			default:
 				return;

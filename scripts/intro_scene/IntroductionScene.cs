@@ -112,7 +112,8 @@ public partial class IntroductionScene : Node3D
 		SceneState.PlayerStatus = SceneState.StatusOfPlayer.FreeRoam; //Sets the current status to free roam
 		CAMERAS.ToggleEvents(); //enables all events
 		DIALOGUE.SwapOverlay(); //swaps the overlay to freeroam
-
+		CIRCLES.ToggleSpecificDirection(GetNode<ButtonOverwrite>("InteractableItems/Select_Items/Settings/Panel/East/1")); //toggles the individual direction so the function below works 
+		CIRCLES.ToggleParentNode(GetNode<ButtonOverwrite>("InteractableItems/Select_Items/Settings/Panel/East/1")); //toggles the parent node so the function below works
 		CAMERAS.SetCurrentCamera(GetViewport().GetCamera3D()); //sets current camera
 
 
