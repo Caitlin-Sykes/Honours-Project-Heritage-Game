@@ -40,7 +40,9 @@ public partial class InteractCircles : Node3D
 	}
 
 	/**
+	* ----------------------------------------------------------------
 	* Shows Extra Information Handlers
+	* ----------------------------------------------------------------
 	**/
 
 	// Called from control, on J Key press
@@ -49,7 +51,8 @@ public partial class InteractCircles : Node3D
 		DIALOGUE.Dialogue((Godot.Collections.Dictionary<string, string>)GetNode<ButtonOverwrite>(CURRENT_PATH_CIRCLES).GetMeta("ExtraInformation"));
 	}
 
-	public void ShowSources() {
+	public void ShowSources()
+	{
 		DIALOGUE.Dialogue((Godot.Collections.Dictionary<string, string>)GetNode<ButtonOverwrite>(CURRENT_PATH_CIRCLES).GetMeta("Sources"));
 	}
 	/**
@@ -61,7 +64,8 @@ public partial class InteractCircles : Node3D
 	//Enables the events circle
 	public void ToggleEventsDirection(ButtonOverwrite cir)
 	{
-		if (cir != null) {
+		if (cir != null)
+		{
 			GD.Print("cir: " + cir);
 			//parNode is the parent of cir node
 			var parNode = (Control)cir.GetParent();
@@ -73,7 +77,7 @@ public partial class InteractCircles : Node3D
 			foreach (ButtonOverwrite circle in parNode.GetChildren())
 			{
 				GD.Print(circle.Name);
-				GD.Print("b4: "+ circle.Visible);
+				GD.Print("b4: " + circle.Visible);
 				circle.Visible = !circle.Visible;
 				GD.Print("aftr: " + circle.Visible);
 
@@ -84,7 +88,8 @@ public partial class InteractCircles : Node3D
 	}
 
 	//Toggles the visibility of the parent node
-	public void ToggleParentNode(ButtonOverwrite cir) {
+	public void ToggleParentNode(ButtonOverwrite cir)
+	{
 		var parNode = (Control)cir.GetParent();
 		parNode.Visible = !parNode.Visible;
 	}
@@ -108,16 +113,27 @@ public partial class InteractCircles : Node3D
 
 	}
 
-	//BUG: clicking on new items are bugged
+	//TODO: dear me, this function needs to be refactored
 	// Handles on circle click
 	//Sets the node path as well
 
 	public async void CirclesPressed(String path)
 	{
+		//if previous stage != PlayerStatus.Dialogue (aka, coming from freeroam), make gui visible!
+		if (SceneState.PlayerStatus != SceneState.StatusOfPlayer.InDialogue)
+		{
+			GD.Print("PREVIOUS STATE: " + SceneState.PreviousState);
+			GD.Print("CURRENT STATE: " + SceneState.PlayerStatus);
+			GD.Print("we are in the previous state is NOT dialogue");
+			DIALOGUE.ToggleGUIVisible();
+			// D
+		}
+
 		SceneState.PreviousState = SceneState.PlayerStatus; //sets the previous state
 		SceneState.PlayerStatus = SceneState.StatusOfPlayer.LookingAtSomething;
 		CURRENT_PATH_CIRCLES = path;
 
+		
 		//If it has a camera position then
 		if (GetNode<ButtonOverwrite>(path).GetMeta("NewCamPos").AsVector3() != Vector3.Zero)
 		{
@@ -125,35 +141,36 @@ public partial class InteractCircles : Node3D
 			ToggleEventsDirection(GetNode<ButtonOverwrite>(path)); //turns off all the circles 
 			SetCam(GetNode<ButtonOverwrite>(path).GetMeta("NewCamPos").AsVector3(), (float)GetNode<ButtonOverwrite>(path).GetMeta("CamRotation")); //sets the camera to the position and rotation in the meta data
 			ToggleBackButton(); //shows the back button
-			DIALOGUE.SwapOverlay(); //shows the canvas
+			// DIALOGUE.SwapOverlay(); //shows the canvas
 		}
 
-			//Gets meta description of button clicked
-			var description = (Godot.Collections.Dictionary<string, string>)GetNode<ButtonOverwrite>(path).GetMeta("Description");
-			DIALOGUE.Dialogue(PlayerData.Player.Name, description[SceneState.CurrentStateAsString()], string.Format(PLAYER_AVATAR, PlayerData.Player.Avatar));
+		//Gets meta description of button clicked
+		var description = (Godot.Collections.Dictionary<string, string>)GetNode<ButtonOverwrite>(path).GetMeta("Description");
+		DIALOGUE.Dialogue(PlayerData.Player.Name, description[SceneState.CurrentStateAsString()], string.Format(PLAYER_AVATAR, PlayerData.Player.Avatar));
 
-			//Swap back to gui speech
+		//Swap back to gui speech
+		DIALOGUE.SwapOverlay();
+
+		DIALOGUE.Visible = true; //toggles the speech gui g
+
+		//Awaits the dialogue progression
+		await ToSignal(DIALOGUE, "LookProgress");
+
+
+		// Swap back to normal view
+		DIALOGUE.SwapOverlay();
+
+		//If the camera isn't moved
+		if (GetNode<ButtonOverwrite>(path).GetMeta("NewCamPos").AsVector3() == Vector3.Zero)
+		{
+
+			// Swap back to gui view
 			DIALOGUE.SwapOverlay();
 
-			DIALOGUE.Visible = true; //toggles the speech gui 
-
-			//Awaits the dialogue progression
-			await ToSignal(DIALOGUE, "LookProgress");
-
-
-			// Swap back to normal view
-			DIALOGUE.SwapOverlay();
-
-			//If the camera isn't moved
-			if (GetNode<ButtonOverwrite>(path).GetMeta("NewCamPos").AsVector3() == Vector3.Zero) {
-
-				// Swap back to gui view
-				DIALOGUE.SwapOverlay(); 
-
-				SceneState.PlayerStatus = SceneState.StatusOfPlayer.InDialogue; //swaps the status to in dialogue
-				DIALOGUE.SkipDialogue(); //skips dialogue
-			}
-				}
+			SceneState.PlayerStatus = SceneState.StatusOfPlayer.InDialogue; //swaps the status to in dialogue
+			DIALOGUE.SkipDialogue(); //skips dialogue
+		}
+	}
 
 
 
@@ -171,7 +188,7 @@ public partial class InteractCircles : Node3D
 		SetCam(Vector3.Zero, 0); //resets camera position
 
 		ToggleParentNode(GetNode<ButtonOverwrite>(CURRENT_PATH_CIRCLES)); //hides the current node
-		//Renables the circles
+																		  //Renables the circles
 		ToggleEventsDirection(GetNode<ButtonOverwrite>(CURRENT_PATH_CIRCLES));
 
 		//Swaps back to dialogue mode
@@ -182,6 +199,13 @@ public partial class InteractCircles : Node3D
 
 		//Swap back to gui speech and unlock the dialogue
 		DIALOGUE.SwapOverlay();
+
+		//TODO: Needs so much refractoring
+		//BUG: still does not work.
+		// this line is for when returning to freeroam after clicking the back button
+		if (SceneState.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam) {
+				DIALOGUE.SwapOverlay();
+		}
 
 	}
 
@@ -208,9 +232,11 @@ public partial class InteractCircles : Node3D
 	**/
 
 	//Emits event signal depending on string
-	public void EmitEvent(string evnt) {
+	public void EmitEvent(string evnt)
+	{
 
-		switch (evnt) {
+		switch (evnt)
+		{
 			case "ToggleNorthEvents":
 				ToggleEventsDirection(GetNode<ButtonOverwrite>("Select_Items/Settings/Panel/North/1"));
 				return;
