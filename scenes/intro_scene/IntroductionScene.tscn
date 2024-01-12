@@ -396,6 +396,7 @@ metadata/CamRotation = 0
 metadata/Sources = {}
 
 [node name="East" type="Control" parent="InteractableItems/Select_Items/Settings/Panel"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

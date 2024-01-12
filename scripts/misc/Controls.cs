@@ -23,6 +23,7 @@ public partial class Controls : Node3D
     //Handles inputs
     public override void _Input(InputEvent @event)
     {
+        GD.Print("Player Status: " + SceneState.PlayerStatus);
         //Checks for key presses
 		if (Input.IsKeyPressed(Key.A) && SceneState.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam)
         {

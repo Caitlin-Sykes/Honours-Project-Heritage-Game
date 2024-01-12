@@ -64,15 +64,14 @@ public partial class InteractCircles : Node3D
 	//Enables the events circle
 	public void ToggleEventsDirection(ButtonOverwrite cir)
 	{
+		GD.Print("Circle: " + cir);
 		if (cir != null)
 		{
-			GD.Print("cir: " + cir);
 			//parNode is the parent of cir node
 			var parNode = (Control)cir.GetParent();
 
 			//Toggles parent node
 			ToggleParentNode(cir);
-
 			//For every circle in the direction container, toggles them
 			foreach (ButtonOverwrite circle in parNode.GetChildren())
 			{
@@ -92,6 +91,7 @@ public partial class InteractCircles : Node3D
 	{
 		var parNode = (Control)cir.GetParent();
 		parNode.Visible = !parNode.Visible;
+		GD.Print("Visibility" + parNode.Visible);
 	}
 
 	//Enables a specific event circle
@@ -187,13 +187,23 @@ public partial class InteractCircles : Node3D
 		ToggleBackButton(); //hides the back button
 		SetCam(Vector3.Zero, 0); //resets camera position
 
-		ToggleParentNode(GetNode<ButtonOverwrite>(CURRENT_PATH_CIRCLES)); //hides the current node
-																		  //Renables the circles
-		ToggleEventsDirection(GetNode<ButtonOverwrite>(CURRENT_PATH_CIRCLES));
+		GD.Print(CURRENT_PATH_CIRCLES);
+		ToggleParentNode(GetNode<ButtonOverwrite>(CURRENT_PATH_CIRCLES)); //hides the current node																	  
+		ToggleEventsDirection(GetNode<ButtonOverwrite>(CURRENT_PATH_CIRCLES)); //Renables the circles
 
 		//Swaps back to dialogue mode
 		SceneState.PlayerStatus = SceneState.PreviousState;
 
+		//If the previous state is freeroam
+		if (SceneState.PreviousState == SceneState.StatusOfPlayer.FreeRoam) {
+			var parNode = (Control)GetNode<ButtonOverwrite>(CURRENT_PATH_CIRCLES).GetParent();
+			
+			//Sets visible to true
+			if (!parNode.Visible) {
+				parNode.Visible = true;
+				
+			}
+		}
 		//Skips dialogue so it doesnt repeat itself
 		DIALOGUE.SkipDialogue();
 
