@@ -122,11 +122,7 @@ public partial class InteractCircles : Node3D
 		//if previous stage != PlayerStatus.Dialogue (aka, coming from freeroam), make gui visible!
 		if (SceneState.PlayerStatus != SceneState.StatusOfPlayer.InDialogue)
 		{
-			GD.Print("PREVIOUS STATE: " + SceneState.PreviousState);
-			GD.Print("CURRENT STATE: " + SceneState.PlayerStatus);
-			GD.Print("we are in the previous state is NOT dialogue");
 			DIALOGUE.ToggleGUIVisible();
-			// D
 		}
 
 		SceneState.PreviousState = SceneState.PlayerStatus; //sets the previous state
@@ -141,7 +137,6 @@ public partial class InteractCircles : Node3D
 			ToggleEventsDirection(GetNode<ButtonOverwrite>(path)); //turns off all the circles 
 			SetCam(GetNode<ButtonOverwrite>(path).GetMeta("NewCamPos").AsVector3(), (float)GetNode<ButtonOverwrite>(path).GetMeta("CamRotation")); //sets the camera to the position and rotation in the meta data
 			ToggleBackButton(); //shows the back button
-			// DIALOGUE.SwapOverlay(); //shows the canvas
 		}
 
 		//Gets meta description of button clicked
@@ -163,12 +158,19 @@ public partial class InteractCircles : Node3D
 		//If the camera isn't moved
 		if (GetNode<ButtonOverwrite>(path).GetMeta("NewCamPos").AsVector3() == Vector3.Zero)
 		{
+			//If tutorial
+			if (SceneState.sceneState == SceneState.CurrentSceneState.Tutorial) {
+				// Swap back to gui view
+				DIALOGUE.SwapOverlay();
 
-			// Swap back to gui view
-			DIALOGUE.SwapOverlay();
+				SceneState.PlayerStatus = SceneState.StatusOfPlayer.InDialogue; //swaps the status to in dialogue
+				DIALOGUE.SkipDialogue(); //skips dialogue
+			}
 
-			SceneState.PlayerStatus = SceneState.StatusOfPlayer.InDialogue; //swaps the status to in dialogue
-			DIALOGUE.SkipDialogue(); //skips dialogue
+			else {
+				SceneState.PlayerStatus = SceneState.StatusOfPlayer.FreeRoam; //swaps the status to in dialogue
+			}
+			
 		}
 	}
 
