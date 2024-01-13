@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cok4snixun3l8"]
+[gd_scene load_steps=23 format=3 uid="uid://cok4snixun3l8"]
 
 [ext_resource type="Script" path="res://scripts/misc/Transitions.cs" id="1_8iq14"]
 [ext_resource type="PackedScene" uid="uid://ui3tvchfafso" path="res://scenes/misc/Cameras.tscn" id="1_76gud"]
@@ -76,6 +76,12 @@ _data = {
 "CameraWakeUp": SubResource("Animation_tm8og")
 }
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n6ebp"]
+albedo_color = Color(1, 0, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dwsxu"]
+albedo_color = Color(0.0431373, 0.0156863, 0, 1)
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jlakg"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sngad"]
@@ -149,6 +155,12 @@ libraries = {
 
 [node name="MainRoom" parent="." instance=ExtResource("1_p57ao")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="chair" parent="MainRoom" index="21"]
+surface_material_override/1 = SubResource("StandardMaterial3D_n6ebp")
+
+[node name="laptopbottom" parent="MainRoom" index="24"]
+surface_material_override/2 = SubResource("StandardMaterial3D_dwsxu")
 
 [node name="Cameras" parent="." node_paths=PackedStringArray("INTERACT_CIRCLES") instance=ExtResource("1_76gud")]
 INTERACT_CIRCLES = NodePath("../InteractableItems")
@@ -298,99 +310,61 @@ mouse_filter = 2
 
 [node name="North" type="Control" parent="InteractableItems/Select_Items/Settings/Panel"]
 visible = false
-layout_mode = 2
-anchors_preset = 0
-offset_left = 887.0
-offset_top = 214.0
-offset_right = 927.0
-offset_bottom = 254.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="1" parent="InteractableItems/Select_Items/Settings/Panel/North" instance=ExtResource("4_4mlkj")]
 visible = false
-layout_mode = 2
-offset_right = 200.0
-offset_bottom = 200.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.13
+anchor_top = 0.504
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -802.24
+offset_bottom = -121.408
+grow_horizontal = 2
+grow_vertical = 2
 texture_normal = ExtResource("4_fj71e")
 texture_pressed = ExtResource("6_05m2d")
-metadata/Object = ""
-metadata/Description = {}
+metadata/Object = "Bed"
+metadata/Description = {
+"Stage_1": "Still not the time for bed."
+}
 metadata/Hints = {}
-metadata/ExtraInformation = {}
+metadata/ExtraInformation = {
+"Stage_1": "As much as I want to, there's no time for bed right now."
+}
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
 metadata/Sources = {}
 
 [node name="2" parent="InteractableItems/Select_Items/Settings/Panel/North" instance=ExtResource("4_4mlkj")]
 visible = false
-layout_mode = 2
-offset_right = 200.0
-offset_bottom = 200.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.687
+anchor_top = 0.603
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -160.576
+offset_bottom = -57.256
+grow_horizontal = 2
+grow_vertical = 2
 texture_normal = ExtResource("4_fj71e")
 texture_pressed = ExtResource("6_05m2d")
-metadata/Object = ""
-metadata/Description = {}
+metadata/Object = "Chair"
+metadata/Description = {
+"Stage_1": "It's my really comfy desk chair."
+}
 metadata/Hints = {}
-metadata/ExtraInformation = {}
-metadata/NewCamPos = Vector3(0, 0, 0)
-metadata/CamRotation = 0
-metadata/Sources = {}
-
-[node name="3" parent="InteractableItems/Select_Items/Settings/Panel/North" instance=ExtResource("4_4mlkj")]
-visible = false
-layout_mode = 2
-offset_right = 200.0
-offset_bottom = 200.0
-texture_normal = ExtResource("4_fj71e")
-texture_pressed = ExtResource("6_05m2d")
-metadata/Object = ""
-metadata/Description = {}
-metadata/Hints = {}
-metadata/ExtraInformation = {}
-metadata/NewCamPos = Vector3(0, 0, 0)
-metadata/CamRotation = 0
-metadata/Sources = {}
-
-[node name="4" parent="InteractableItems/Select_Items/Settings/Panel/North" instance=ExtResource("4_4mlkj")]
-visible = false
-layout_mode = 2
-offset_right = 200.0
-offset_bottom = 200.0
-texture_normal = ExtResource("4_fj71e")
-texture_pressed = ExtResource("6_05m2d")
-metadata/Object = ""
-metadata/Description = {}
-metadata/Hints = {}
-metadata/ExtraInformation = {}
-metadata/NewCamPos = Vector3(0, 0, 0)
-metadata/CamRotation = 0
-metadata/Sources = {}
-
-[node name="5" parent="InteractableItems/Select_Items/Settings/Panel/North" instance=ExtResource("4_4mlkj")]
-visible = false
-layout_mode = 2
-offset_right = 200.0
-offset_bottom = 200.0
-texture_normal = ExtResource("4_fj71e")
-texture_pressed = ExtResource("6_05m2d")
-metadata/Object = ""
-metadata/Description = {}
-metadata/Hints = {}
-metadata/ExtraInformation = {}
-metadata/NewCamPos = Vector3(0, 0, 0)
-metadata/CamRotation = 0
-metadata/Sources = {}
-
-[node name="6" parent="InteractableItems/Select_Items/Settings/Panel/North" instance=ExtResource("4_4mlkj")]
-visible = false
-layout_mode = 2
-offset_right = 200.0
-offset_bottom = 200.0
-texture_normal = ExtResource("4_fj71e")
-texture_pressed = ExtResource("6_05m2d")
-metadata/Object = ""
-metadata/Description = {}
-metadata/Hints = {}
-metadata/ExtraInformation = {}
+metadata/ExtraInformation = {
+"Stage_1": "Apparently, purple chairs are a little hard to come by. I don't know why, purple's a great colour!"
+}
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
 metadata/Sources = {}
@@ -405,15 +379,14 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="1" parent="InteractableItems/Select_Items/Settings/Panel/East" instance=ExtResource("4_4mlkj")]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.202
 anchor_top = 0.325
 anchor_right = 0.209
 anchor_bottom = 0.374
-offset_right = 200.0
-offset_bottom = 200.0
+offset_right = 191.936
+offset_bottom = 168.248
 texture_normal = ExtResource("4_fj71e")
 texture_pressed = ExtResource("6_05m2d")
 metadata/Object = "Poster"
@@ -433,7 +406,6 @@ metadata/Sources = {
 }
 
 [node name="2" parent="InteractableItems/Select_Items/Settings/Panel/East" instance=ExtResource("4_4mlkj")]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.711
@@ -441,32 +413,36 @@ anchor_top = 0.503
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -200.0
-offset_right = 0.0
-offset_bottom = 0.0
+offset_right = -332.928
+offset_bottom = -122.056
 grow_horizontal = 0
 grow_vertical = 2
 texture_normal = ExtResource("4_fj71e")
 texture_pressed = ExtResource("6_05m2d")
 metadata/Object = "Wardrobe"
 metadata/Description = {
+"Stage_1": "I don't need to get changed right now.",
 "Tutorial": "I'd better get ready before Mum makes good on her threat... *shivers*"
 }
 metadata/Hints = {}
-metadata/ExtraInformation = {}
+metadata/ExtraInformation = {
+"Stage_1": "It's just a random wardrobe my mum bought."
+}
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
 metadata/Sources = {}
 
 [node name="3" parent="InteractableItems/Select_Items/Settings/Panel/East" instance=ExtResource("4_4mlkj")]
-visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.326
-anchor_top = 0.73
+anchor_left = 0.657
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 0.0
-offset_bottom = 0.0
+offset_left = -377.856
+offset_top = 550.0
+offset_right = -944.0
+offset_bottom = -448.0
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = ExtResource("4_fj71e")
@@ -487,15 +463,14 @@ metadata/Sources = {
 }
 
 [node name="4" parent="InteractableItems/Select_Items/Settings/Panel/East" instance=ExtResource("4_4mlkj")]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.022
 anchor_top = 0.562
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 0.0
-offset_bottom = 0.0
+offset_right = -926.656
+offset_bottom = -83.824
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = ExtResource("4_fj71e")
@@ -516,15 +491,15 @@ metadata/Sources = {
 }
 
 [node name="5" parent="InteractableItems/Select_Items/Settings/Panel/East" instance=ExtResource("4_4mlkj")]
-visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.143
-anchor_top = 0.54
+anchor_left = 0.219
+anchor_top = 0.96
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 0.0
-offset_bottom = 0.0
+anchor_bottom = 1.03
+offset_top = -77.3199
+offset_right = -699.712
+offset_bottom = 77.32
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = ExtResource("4_fj71e")
@@ -556,10 +531,12 @@ grow_vertical = 2
 visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.465
-anchor_top = 0.372
-anchor_right = 0.956
-anchor_bottom = 0.398
+anchor_left = 0.923
+anchor_top = 0.595
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -952.0
+offset_bottom = -448.0
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = ExtResource("4_fj71e")
@@ -586,8 +563,9 @@ anchor_left = 0.465
 anchor_top = 0.514
 anchor_right = 0.686
 anchor_bottom = 0.744
-offset_right = 0.0
-offset_bottom = 0.0
+offset_top = -25.48
+offset_right = -54.592
+offset_bottom = 25.48
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = ExtResource("4_fj71e")
@@ -614,8 +592,9 @@ anchor_left = 0.465
 anchor_top = 0.725
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 0.0
-offset_bottom = 0.0
+offset_top = -10.9
+offset_right = -416.32
+offset_bottom = 10.9
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = ExtResource("4_fj71e")
@@ -642,8 +621,8 @@ anchor_left = 0.227
 anchor_top = 0.465
 anchor_right = 1.0
 anchor_bottom = 1.025
-offset_right = 0.0
-offset_bottom = 0.0
+offset_right = -690.496
+offset_bottom = -162.88
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = ExtResource("4_fj71e")
@@ -664,99 +643,62 @@ metadata/Sources = {
 
 [node name="West" type="Control" parent="InteractableItems/Select_Items/Settings/Panel"]
 visible = false
-layout_mode = 2
-anchors_preset = 0
-offset_left = 887.0
-offset_top = 214.0
-offset_right = 927.0
-offset_bottom = 254.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="1" parent="InteractableItems/Select_Items/Settings/Panel/West" instance=ExtResource("4_4mlkj")]
-visible = false
-layout_mode = 2
-offset_right = 200.0
-offset_bottom = 200.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.214
+anchor_top = 0.473
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -705.472
+offset_bottom = -141.496
+grow_horizontal = 2
+grow_vertical = 2
 texture_normal = ExtResource("4_fj71e")
 texture_pressed = ExtResource("6_05m2d")
-metadata/Object = ""
-metadata/Description = {}
+metadata/Object = "Door"
+metadata/Description = {
+"Stage_1": "Time to see what my mum wanted me for."
+}
 metadata/Hints = {}
-metadata/ExtraInformation = {}
+metadata/ExtraInformation = {
+"Stage_1": "It's just a door. Nothing special here."
+}
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
-metadata/Sources = {}
+metadata/Sources = {
+"src": "No sources again. *Knock knock*"
+}
 
 [node name="2" parent="InteractableItems/Select_Items/Settings/Panel/West" instance=ExtResource("4_4mlkj")]
-visible = false
-layout_mode = 2
-offset_right = 200.0
-offset_bottom = 200.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.855
+anchor_top = 0.527
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.48
+offset_right = 16.48
+offset_bottom = -106.504
+grow_horizontal = 2
+grow_vertical = 2
 texture_normal = ExtResource("4_fj71e")
 texture_pressed = ExtResource("6_05m2d")
-metadata/Object = ""
-metadata/Description = {}
+metadata/Object = "Bed"
+metadata/Description = {
+"Stage_1": "Now's not the time to go back to bed."
+}
 metadata/Hints = {}
-metadata/ExtraInformation = {}
-metadata/NewCamPos = Vector3(0, 0, 0)
-metadata/CamRotation = 0
-metadata/Sources = {}
-
-[node name="3" parent="InteractableItems/Select_Items/Settings/Panel/West" instance=ExtResource("4_4mlkj")]
-visible = false
-layout_mode = 2
-offset_right = 200.0
-offset_bottom = 200.0
-texture_normal = ExtResource("4_fj71e")
-texture_pressed = ExtResource("6_05m2d")
-metadata/Object = ""
-metadata/Description = {}
-metadata/Hints = {}
-metadata/ExtraInformation = {}
-metadata/NewCamPos = Vector3(0, 0, 0)
-metadata/CamRotation = 0
-metadata/Sources = {}
-
-[node name="4" parent="InteractableItems/Select_Items/Settings/Panel/West" instance=ExtResource("4_4mlkj")]
-visible = false
-layout_mode = 2
-offset_right = 200.0
-offset_bottom = 200.0
-texture_normal = ExtResource("4_fj71e")
-texture_pressed = ExtResource("6_05m2d")
-metadata/Object = ""
-metadata/Description = {}
-metadata/Hints = {}
-metadata/ExtraInformation = {}
-metadata/NewCamPos = Vector3(0, 0, 0)
-metadata/CamRotation = 0
-metadata/Sources = {}
-
-[node name="5" parent="InteractableItems/Select_Items/Settings/Panel/West" instance=ExtResource("4_4mlkj")]
-visible = false
-layout_mode = 2
-offset_right = 200.0
-offset_bottom = 200.0
-texture_normal = ExtResource("4_fj71e")
-texture_pressed = ExtResource("6_05m2d")
-metadata/Object = ""
-metadata/Description = {}
-metadata/Hints = {}
-metadata/ExtraInformation = {}
-metadata/NewCamPos = Vector3(0, 0, 0)
-metadata/CamRotation = 0
-metadata/Sources = {}
-
-[node name="6" parent="InteractableItems/Select_Items/Settings/Panel/West" instance=ExtResource("4_4mlkj")]
-visible = false
-layout_mode = 2
-offset_right = 200.0
-offset_bottom = 200.0
-texture_normal = ExtResource("4_fj71e")
-texture_pressed = ExtResource("6_05m2d")
-metadata/Object = ""
-metadata/Description = {}
-metadata/Hints = {}
-metadata/ExtraInformation = {}
+metadata/ExtraInformation = {
+"Stage_1": "Now's really not the time for bed."
+}
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
 metadata/Sources = {}
@@ -777,6 +719,7 @@ visible = false
 [connection signal="ToggleWestEvents" from="InteractableItems" to="InteractableItems" method="ToggleEventsDirection" flags=18 binds= [NodePath("/root/@EditorNode@17664/@Control@697/@Panel@698/@VBoxContainer@706/@HSplitContainer@709/@HSplitContainer@717/@HSplitContainer@725/@VBoxContainer@726/@VSplitContainer@728/@VSplitContainer@754/@VBoxContainer@755/@PanelContainer@800/MainScreen/@CanvasItemEditor@10090/@VSplitContainer@9915/@HSplitContainer@9917/@HSplitContainer@9919/@Control@9920/@SubViewportContainer@9921/@SubViewport@9922/InteractableItems/West")]]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/Back_Button/Back" to="InteractableItems" method="OnBackPressed" flags=18]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/North/1" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/North/1"]]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/North/2" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/North/2"]]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/East/1" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/East/1"]]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/East/2" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/East/2"]]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/East/3" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/East/3"]]
