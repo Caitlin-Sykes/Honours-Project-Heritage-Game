@@ -1,9 +1,14 @@
 using Godot;
 using System;
+public partial class SceneState : Node {
 
-public partial class SceneState : Node
-{
-	// Called when the node enters the scene tree for the first time.
+	/**
+	* ----------------------------------------------------------------
+	* Actual Scene State Things
+	* ----------------------------------------------------------------
+	**/
+
+	//Sets the current scene's state
 	public enum CurrentSceneState
 	{
 		Tutorial, //tutorial scene, bunch of misc data
@@ -11,6 +16,7 @@ public partial class SceneState : Node
 		Stage_2, //stage 3
 	}
 
+	//What the current player is doing
 	public enum StatusOfPlayer{
 		InDialogue, //means player is in dialogue
 		LookingAtSomething, //means player is looking at something
@@ -18,7 +24,7 @@ public partial class SceneState : Node
 	}
 
 	//Converts CurrentSceneState to String
-	public static string CurrentStateAsString() {
+	public string CurrentStateAsString() {
 		switch(sceneState) {
 			case CurrentSceneState.Tutorial:
 				return "Tutorial";
@@ -31,9 +37,10 @@ public partial class SceneState : Node
 		}
 	}
 
-	public static CurrentSceneState sceneState = CurrentSceneState.Tutorial; //current scene state
-	public static StatusOfPlayer PlayerStatus = StatusOfPlayer.FreeRoam; //current player state
+	public CurrentSceneState sceneState;  //current scene state
+	public StatusOfPlayer PlayerStatus; //current player state
+	public StatusOfPlayer PreviousState; //previous player state
 
-	public static StatusOfPlayer PreviousState = StatusOfPlayer.FreeRoam; //current player state
+	public string CurrentObjective; //the current objective
 
 }

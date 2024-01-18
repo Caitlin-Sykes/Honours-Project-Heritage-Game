@@ -9,12 +9,20 @@ public partial class Controls : Node3D
     private Transitions TRANSITION; //Handles screen transitions
 
     [Export]
-    private InteractCircles CIRCLES; //Instance of SpeechGUI
+    private InteractCircles CIRCLES; //Instance of InteractCircles
+
+    [Export]
+    private SpeechGUI DIALOGUE; //Instance of SpeechGUI
+
+    private SceneState SCENESTATEACCESS; //accesses the singleton for the scenestate
+
 
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
 	{
+		SCENESTATEACCESS = GetNode<SceneState>("/root/SceneStateSingleton"); //accesses the singleton for the scene state
+
         TRANSITION = GetNode<Transitions>("../../Transition");
 
         CAMERAS = GetNode<Cameras>("../../Cameras");
@@ -23,44 +31,43 @@ public partial class Controls : Node3D
     //Handles inputs
     public override void _Input(InputEvent @event)
     {
-        GD.Print("Player Status: " + SceneState.PlayerStatus);
         //Checks for key presses
-		if (Input.IsKeyPressed(Key.A) && SceneState.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam)
+		if (Input.IsKeyPressed(Key.A) && SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam)
         {
             OnLeftArrow();
         }
 
-		else if (Input.IsKeyPressed(Key.D) && SceneState.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam)
+		else if (Input.IsKeyPressed(Key.D) && SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam)
         {
             OnRightArrow();
         }
 
-        else if (Input.IsKeyPressed(Key.W) && CAMERAS.GetMeta("UpDownEnabled").AsBool() && SceneState.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam)
+        else if (Input.IsKeyPressed(Key.W) && CAMERAS.GetMeta("UpDownEnabled").AsBool() && SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam)
         {
             OnUpArrow();
         }
 
-        else if (Input.IsKeyPressed(Key.S) && CAMERAS.GetMeta("UpDownEnabled").AsBool() && SceneState.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam)
+        else if (Input.IsKeyPressed(Key.S) && CAMERAS.GetMeta("UpDownEnabled").AsBool() && SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam)
         {
            OnDownArrow();
         }
 
         //Shows extra info about an object
-        else if (Input.IsKeyPressed(Key.J) && SceneState.PlayerStatus == SceneState.StatusOfPlayer.LookingAtSomething)
+        else if (Input.IsKeyPressed(Key.J) && SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.LookingAtSomething)
         {
             CIRCLES.ShowExtraInformation();
         }
 
         //Shows sources
-        else if (Input.IsKeyPressed(Key.K) && SceneState.PlayerStatus == SceneState.StatusOfPlayer.LookingAtSomething)
+        else if (Input.IsKeyPressed(Key.K) && SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.LookingAtSomething)
         {
             CIRCLES.ShowSources();
         }
 
         //Reminds player what to do
-         else if (Input.IsKeyPressed(Key.L) && SceneState.PlayerStatus == SceneState.StatusOfPlayer.LookingAtSomething)
+         else if (Input.IsKeyPressed(Key.L) && SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.LookingAtSomething)
         {
-            //Im stuck func
+            DIALOGUE.ShowObjective();
         }
 
     }
@@ -75,7 +82,7 @@ public partial class Controls : Node3D
     private void OnUpArrow(Node camera, InputEvent @evnt, Vector3 position, Vector3 normal, int shape_idx) {
 
         //If trigger is left click
-        if (@evnt is InputEventMouseButton mouse && SceneState.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam && mouse.ButtonIndex == MouseButton.Left && @evnt.IsPressed()) {
+        if (@evnt is InputEventMouseButton mouse && SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam && mouse.ButtonIndex == MouseButton.Left && @evnt.IsPressed()) {
                     OnUpArrow();
                 }
     }
@@ -96,7 +103,7 @@ public partial class Controls : Node3D
     private void OnRightArrow(Node camera, InputEvent @evnt, Vector3 position, Vector3 normal, int shape_idx) {
 
         //If trigger is left click
-        if (@evnt is InputEventMouseButton mouse && SceneState.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam && (mouse.ButtonIndex == MouseButton.Left && @evnt.IsPressed())) {
+        if (@evnt is InputEventMouseButton mouse && SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam && (mouse.ButtonIndex == MouseButton.Left && @evnt.IsPressed())) {
                     OnRightArrow();
                 }
     }
@@ -116,7 +123,7 @@ public partial class Controls : Node3D
     private void OnDownArrow(Node camera, InputEvent @evnt, Vector3 position, Vector3 normal, int shape_idx) {
 
         //If trigger is left click
-        if (@evnt is InputEventMouseButton mouse && SceneState.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam && (mouse.ButtonIndex == MouseButton.Left && @evnt.IsPressed())) {
+        if (@evnt is InputEventMouseButton mouse && SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam && (mouse.ButtonIndex == MouseButton.Left && @evnt.IsPressed())) {
                     OnDownArrow();
                 }
     }
@@ -137,7 +144,7 @@ public partial class Controls : Node3D
     private void OnLeftArrow(Node camera, InputEvent @evnt, Vector3 position, Vector3 normal, int shape_idx) {
 
         //If trigger is left click
-        if (@evnt is InputEventMouseButton mouse && SceneState.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam && mouse.ButtonIndex == MouseButton.Left && @evnt.IsPressed()) {
+        if (@evnt is InputEventMouseButton mouse && SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam && mouse.ButtonIndex == MouseButton.Left && @evnt.IsPressed()) {
                     OnLeftArrow();
                 }
     }

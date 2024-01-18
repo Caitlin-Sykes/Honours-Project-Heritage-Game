@@ -5,24 +5,6 @@ using System;
 
 public partial class InteractCircles : Node3D
 {
-	[Signal]
-	public delegate void ToggleNorthEventsEventHandler();
-
-	[Signal]
-	public delegate void ToggleEastEventsEventHandler();
-
-	[Signal]
-	public delegate void ToggleSouthEventsEventHandler(); // These all show/hide the corresponding events for the scene
-
-	[Signal]
-	public delegate void ToggleWestEventsEventHandler();
-
-	[Signal]
-	public delegate void ToggleUpEventsEventHandler();
-
-	[Signal]
-	public delegate void ToggleDownEventsEventHandler();
-
 	[Export]
 
 	private SpeechGUI DIALOGUE; //instance of speech gui
@@ -33,10 +15,14 @@ public partial class InteractCircles : Node3D
 
 	private MarginContainer BackButtonContainer; //instance of the back button container
 
+	private SceneState SCENESTATEACCESS; //accesses the singleton for the scenestate
+
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		BackButtonContainer = GetNode<MarginContainer>("Select_Items/Settings/Panel/Back_Button");
+		SCENESTATEACCESS = GetNode<SceneState>("/root/SceneStateSingleton"); //accesses the singleton for the scene state
 	}
 
 	/**
@@ -64,7 +50,6 @@ public partial class InteractCircles : Node3D
 	//Enables the events circle
 	public void ToggleEventsDirection(ButtonOverwrite cir)
 	{
-		GD.Print("Circle: " + cir);
 		if (cir != null)
 		{
 			//parNode is the parent of cir node
@@ -75,13 +60,7 @@ public partial class InteractCircles : Node3D
 			//For every circle in the direction container, toggles them
 			foreach (ButtonOverwrite circle in parNode.GetChildren())
 			{
-				GD.Print(circle.Name);
-				GD.Print("b4: " + circle.Visible);
 				circle.Visible = !circle.Visible;
-				GD.Print("aftr: " + circle.Visible);
-
-				GD.Print("---------------");
-
 			}
 		}
 	}
@@ -91,7 +70,6 @@ public partial class InteractCircles : Node3D
 	{
 		var parNode = (Control)cir.GetParent();
 		parNode.Visible = !parNode.Visible;
-		GD.Print("Visibility" + parNode.Visible);
 	}
 
 	//Enables a specific event circle
@@ -120,13 +98,13 @@ public partial class InteractCircles : Node3D
 	public async void CirclesPressed(String path)
 	{
 		//if previous stage != PlayerStatus.Dialogue (aka, coming from freeroam), make gui visible!
-		if (SceneState.PlayerStatus != SceneState.StatusOfPlayer.InDialogue)
+		if (SCENESTATEACCESS.PlayerStatus != SceneState.StatusOfPlayer.InDialogue)
 		{
 			DIALOGUE.ToggleGUIVisible();
 		}
 
-		SceneState.PreviousState = SceneState.PlayerStatus; //sets the previous state
-		SceneState.PlayerStatus = SceneState.StatusOfPlayer.LookingAtSomething;
+		SCENESTATEACCESS.PreviousState = SCENESTATEACCESS.PlayerStatus; //sets the previous state
+		SCENESTATEACCESS.PlayerStatus = SceneState.StatusOfPlayer.LookingAtSomething;
 		CURRENT_PATH_CIRCLES = path;
 
 		
@@ -141,7 +119,7 @@ public partial class InteractCircles : Node3D
 
 		//Gets meta description of button clicked
 		var description = (Godot.Collections.Dictionary<string, string>)GetNode<ButtonOverwrite>(path).GetMeta("Description");
-		DIALOGUE.Dialogue(PlayerData.Player.Name, description[SceneState.CurrentStateAsString()], string.Format(PLAYER_AVATAR, PlayerData.Player.Avatar));
+		DIALOGUE.Dialogue(PlayerData.Player.Name, description[SCENESTATEACCESS.CurrentStateAsString()], string.Format(PLAYER_AVATAR, PlayerData.Player.Avatar));
 
 		//Swap back to gui speech
 		DIALOGUE.SwapOverlay();
@@ -159,18 +137,22 @@ public partial class InteractCircles : Node3D
 		if (GetNode<ButtonOverwrite>(path).GetMeta("NewCamPos").AsVector3() == Vector3.Zero)
 		{
 			//If tutorial
-			if (SceneState.sceneState == SceneState.CurrentSceneState.Tutorial) {
+			if (SCENESTATEACCESS.sceneState == SceneState.CurrentSceneState.Tutorial) {
 				// Swap back to gui view
 				DIALOGUE.SwapOverlay();
 
-				SceneState.PlayerStatus = SceneState.StatusOfPlayer.InDialogue; //swaps the status to in dialogue
+				SCENESTATEACCESS.PlayerStatus = SceneState.StatusOfPlayer.InDialogue; //swaps the status to in dialogue
+
 				DIALOGUE.SkipDialogue(); //skips dialogue
 			}
 
-			else {
-				SceneState.PlayerStatus = SceneState.StatusOfPlayer.FreeRoam; //swaps the status to in dialogue
-			}
-			
+			// else {
+			// 	SCENESTATEACCESS.PlayerStatus = SCENESTATEACCESS.PreviousState; //swaps the status to in 
+			// 	GD.Print("CirclesPressed Else in InteractCircles changes it to: " + SCENESTATEACCESS.PlayerStatus);
+
+
+			// }
+
 		}
 	}
 
@@ -194,10 +176,12 @@ public partial class InteractCircles : Node3D
 		ToggleEventsDirection(GetNode<ButtonOverwrite>(CURRENT_PATH_CIRCLES)); //Renables the circles
 
 		//Swaps back to dialogue mode
-		SceneState.PlayerStatus = SceneState.PreviousState;
+		SCENESTATEACCESS.PlayerStatus = SCENESTATEACCESS.PreviousState;
+		GD.Print("OnBackPressed in InteractCircles changes it to: " + SCENESTATEACCESS.PlayerStatus);
+
 
 		//If the previous state is freeroam
-		if (SceneState.PreviousState == SceneState.StatusOfPlayer.FreeRoam) {
+		if (SCENESTATEACCESS.PreviousState == SceneState.StatusOfPlayer.FreeRoam) {
 			var parNode = (Control)GetNode<ButtonOverwrite>(CURRENT_PATH_CIRCLES).GetParent();
 			
 			//Sets visible to true
@@ -215,7 +199,7 @@ public partial class InteractCircles : Node3D
 		//TODO: Needs so much refractoring
 		//BUG: still does not work.
 		// this line is for when returning to freeroam after clicking the back button
-		if (SceneState.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam) {
+		if (SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam) {
 				DIALOGUE.SwapOverlay();
 		}
 

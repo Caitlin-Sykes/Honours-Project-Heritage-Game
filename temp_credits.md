@@ -22,3 +22,6 @@ https://pixabay.com/sound-effects//?utm_source=link-attribution&utm_medium=refer
 
 [SPRITES]
 https://www.dicebear.com/playground/ - for character speaking sprites
+
+[TEXTURES]:
+https://www.freepik.com/free-photo/brick-wall-texture_1033953.htm#page=2&query=brick%20texture%20seamless&position=43&from_view=search&track=ais&uuid=9b7bac6d-a674-4f3e-902e-6f4f3c7d5f9f - Bricks for stonewall

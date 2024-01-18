@@ -92,5 +92,42 @@
 	  "Dialogue": "I think that's about it in terms of controls. Have fun- and I think you should interact with the door to tell your mum you're coming.",
 	  "Avatar": "res://resources/textures/sprites/guide/1.svg"
 	}
+  ],
+
+  "Mum_Dialogue_1": [
+    {
+      "Id": "1",
+      "Speaker": "{0}",
+      "Dialogue": "I'm up! What did you need me for?!",
+      "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
+    },
+
+    {
+      "Id": "2",
+      "Speaker": "Mum",
+      "Dialogue": "I have something to show you- could you get it from your bookshelf and I'll come up!",
+      "Avatar": "res://resources/textures/sprites/mother/{0}.svg"
+    },
+
+	{
+    "Id": "3",
+    "Speaker": "{0}",
+    "Dialogue": "Sure! What am I looking for?",
+    "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
+  },
+
+  {
+    "Id": "4",
+    "Speaker": "Mum",
+    "Dialogue": "It's uh, brown coloured. Looks kinda worn. The title is in cursive- just pick it up and put it on your desk!",
+    "Avatar": "res://resources/textures/sprites/mother/{0}.svg"
+  },
+
+   {
+     "Id": "5",
+     "Speaker": "{0}",
+     "Dialogue": "Okay! ...a bit random to ask, but I guess I'd better find it.",
+     "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
+   }
   ]
 }

@@ -32,9 +32,14 @@ public static class JsonHandler
 		[JsonPropertyName("Introduction_Scene")]
 		public DialogueStructData[] IntroductionScene { get; set; }
 
-		//An array to hold the Dialogue information matching property "Testing"
+  
+		//An array to hold the Dialogue information matching property "Controls" 
 		[JsonPropertyName("Controls")]
 		public DialogueStructData[] Controls { get; set; }
+
+		//An array to hold the Dialogue information matching property "Mum_Dialogue_1" 
+		[JsonPropertyName("Mum_Dialogue_1")]
+		public DialogueStructData[] Mum_Dialogue_1 { get; set; }
 }
 
 	//A class to contain the variables to store dialogue read in from Dialogue.Json

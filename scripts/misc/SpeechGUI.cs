@@ -26,9 +26,13 @@ public partial class SpeechGUI : Control
 	[Signal]
 	public delegate void LookProgressEventHandler(); //handler for progressing looking at smth
 
+	private SceneState SCENESTATEACCESS; //accesses the singleton for the scenestate
+
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		SCENESTATEACCESS = GetNode<SceneState>("/root/SceneStateSingleton"); //accesses the singleton for the scene state
 		CAMERAS = GetNode<Cameras>("../../../Cameras"); //Gets camera and animation nodes
 		AvatarNode = GetNode<TextureRect>("Main_Dialogue/Avatar"); //Gets instance of Avatar
 		NameNode = GetNode<Label>("Main_Dialogue/Name Container/Name_Box/Name_Label");
@@ -88,7 +92,7 @@ public partial class SpeechGUI : Control
 	public async void Dialogue(JsonHandler.DialogueStructData[] Scene)
 	{
 		//Skips the whole thing if the speech overlay isn't visible
-		if (Scene != null && Speech_Overlay.Visible && SceneState.PlayerStatus == SceneState.StatusOfPlayer.InDialogue)
+		if (Scene != null && Speech_Overlay.Visible && SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.InDialogue)
 		{
 
 			//For every bit of speech in the scene
@@ -112,8 +116,11 @@ public partial class SpeechGUI : Control
 	//Handles the dialogue if you pass in the Scene. This version handles triggering events at certain IDs
 	public async void Dialogue(JsonHandler.DialogueStructData[] Scene, string name, string[] triggerID)
 	{
-		if (Scene != null && Speech_Overlay.Visible && SceneState.PlayerStatus == SceneState.StatusOfPlayer.InDialogue)
+		if (Scene != null && SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.InDialogue)
 		{
+			if (Speech_Overlay.Visible == false) {
+				Speech_Overlay.Visible = true;
+			}
 
 			//For every bit of speech in the scene
 			foreach (var Speech in Scene)
@@ -129,6 +136,11 @@ public partial class SpeechGUI : Control
 					ControlsEvents(Speech.Id);
 				}
 
+				else if (name == "Mum_Dialogue_1" && triggerID.Contains(Speech.Id))
+				{
+					MumDialogueEvent(Speech.Id);
+				}
+
 				SetNameNode(string.Format(Speech.Speaker, PlayerData.Player.Name));
 				SetSpeechNode(string.Format(Speech.Dialogue, PlayerData.Player.Name));
 				SetAvatarNode(string.Format(Speech.Avatar, PlayerData.Player.Avatar));
@@ -136,9 +148,18 @@ public partial class SpeechGUI : Control
 			}
 		}
 
+		//debug code
+		else if (!Speech_Overlay.Visible) {
+			GD.Print("Speech Overlay false");
+		}
+
+		else if (Scene == null) {
+			GD.Print("Scene is null");
+		}
+
 		else
 		{
-			throw new InvalidOperationException("Error: something has gone wrong with parsing the dialogue.json");
+			throw new InvalidOperationException("Error: something has gone wrong with parsing the dialogue.json.");
 		}
 	}
 
@@ -149,11 +170,11 @@ public partial class SpeechGUI : Control
 				SetSpeechNode(description);
 				SetAvatarNode(avatar);
 
-				if (SceneState.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam) {
+				if (SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam) {
 					await ToSignal(this, "SceneProgress");
 				}
 
-				else if (SceneState.PlayerStatus == SceneState.StatusOfPlayer.InDialogue)
+				else if (SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.InDialogue)
 		{
 					await ToSignal(this, "DialogueProgress");
 				}
@@ -192,19 +213,31 @@ public partial class SpeechGUI : Control
 	**/
 
 	public void OnGUIClick(InputEvent @evnt) {
-		if (@evnt is InputEventMouseButton && @evnt.IsPressed() && SceneState.PlayerStatus == SceneState.StatusOfPlayer.InDialogue) {
+
+		if (@evnt is InputEventMouseButton && @evnt.IsPressed() && SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.InDialogue) {
 			EmitSignal("DialogueProgress");
+			GD.Print("DialogueProgress");
 		}
 
-		else if (@evnt is InputEventMouseButton && @evnt.IsPressed() && SceneState.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam)
+		else if (@evnt is InputEventMouseButton && @evnt.IsPressed() && SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam)
 		{
 			EmitSignal("SceneProgress");
+			GD.Print("SceneProgress");
+
 		}
 
-		else if (@evnt is InputEventMouseButton && @evnt.IsPressed() && SceneState.PlayerStatus == SceneState.StatusOfPlayer.LookingAtSomething)
+		else if (@evnt is InputEventMouseButton && @evnt.IsPressed() && SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.LookingAtSomething)
 		{
 			EmitSignal("LookProgress");
+			GD.Print("LookProgress");
+
 		}
+	}
+
+	public void ShowObjective() {
+		SetNameNode("Guide");
+		SetAvatarNode("res://resources/textures/sprites/guide/1.svg");
+		SetSpeechNode(SCENESTATEACCESS.CurrentObjective);
 	}
 
 	/**
@@ -241,7 +274,8 @@ public partial class SpeechGUI : Control
 				CAMERAS.SetSingleArrowInvisible(GetViewport().GetCamera3D(), "*Up_Arrow_Parent");
 				CAMERAS.SetSingleArrowInvisible(GetViewport().GetCamera3D(), "*Down_Arrow_Parent");
 				CIRCLES.ToggleSpecificDirection(GetNode<ButtonOverwrite>("../../../InteractableItems/Select_Items/Settings/Panel/East/2"));
-				SceneState.PlayerStatus = SceneState.StatusOfPlayer.FreeRoam;
+				SCENESTATEACCESS.PlayerStatus = SceneState.StatusOfPlayer.FreeRoam;
+
 				await ToSignal(this, "SceneProgress");
 
 				SwapOverlay();
@@ -266,11 +300,20 @@ public partial class SpeechGUI : Control
 				return;
 		}
 	}
+
+	private void MumDialogueEvent(string id) {
+switch (id)
+		{				 	
+			case "6":
+				CIRCLES.ToggleSpecificDirection(GetNode<ButtonOverwrite>("../../../InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/1")); //shows red circle
+				return;
+			case "7":
+				CIRCLES.ToggleSpecificDirection(GetNode<ButtonOverwrite>("../../../InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/1")); //hides red circle
+				return;
+
+			default:
+				return;
+		}
+	}
 }
 
-//get current camera 
-// move to position
-// ie poster
-// set staring at "object" to be true
-// so if k is pressed, can open up specific information
-// store camera pos in meta
