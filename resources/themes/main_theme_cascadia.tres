@@ -81,6 +81,7 @@ bg_color = Color(0.901961, 0.65098, 0.054902, 1)
 bg_color = Color(1, 0.866667, 0.458824, 1)
 
 [resource]
+resource_name = "Cascadia"
 default_font = ExtResource("1_sflrq")
 default_font_size = 31
 GreenButton/constants/h_separation = 2

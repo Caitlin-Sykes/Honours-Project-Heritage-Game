@@ -148,15 +148,6 @@ public partial class SpeechGUI : Control
 			}
 		}
 
-		//debug code
-		else if (!Speech_Overlay.Visible) {
-			GD.Print("Speech Overlay false");
-		}
-
-		else if (Scene == null) {
-			GD.Print("Scene is null");
-		}
-
 		else
 		{
 			throw new InvalidOperationException("Error: something has gone wrong with parsing the dialogue.json.");
@@ -212,28 +203,25 @@ public partial class SpeechGUI : Control
 	* ----------------------------------------------------------------
 	**/
 
+	//Does different things depending on the gui and clicking it
 	public void OnGUIClick(InputEvent @evnt) {
 
 		if (@evnt is InputEventMouseButton && @evnt.IsPressed() && SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.InDialogue) {
 			EmitSignal("DialogueProgress");
-			GD.Print("DialogueProgress");
 		}
 
 		else if (@evnt is InputEventMouseButton && @evnt.IsPressed() && SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam)
 		{
 			EmitSignal("SceneProgress");
-			GD.Print("SceneProgress");
-
 		}
 
 		else if (@evnt is InputEventMouseButton && @evnt.IsPressed() && SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.LookingAtSomething)
 		{
 			EmitSignal("LookProgress");
-			GD.Print("LookProgress");
-
 		}
 	}
 
+	//Shows the current objective of the player
 	public void ShowObjective() {
 		SetNameNode("Guide");
 		SetAvatarNode("res://resources/textures/sprites/guide/1.svg");
@@ -301,16 +289,18 @@ public partial class SpeechGUI : Control
 		}
 	}
 
-	private void MumDialogueEvent(string id) {
+	//Controls the events for the mum dialogue
+	private async void MumDialogueEvent(string id) {
 switch (id)
 		{				 	
-			case "6":
-				CIRCLES.ToggleSpecificDirection(GetNode<ButtonOverwrite>("../../../InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/1")); //shows red circle
+			case "5":
+				await ToSignal(this, "DialogueProgress");
+				ToggleGUIVisible(); //hides the gui
+				SwapOverlay();
+				SCENESTATEACCESS.PlayerStatus = SceneState.StatusOfPlayer.FreeRoam; //swaps back to freeroam view
+				GetNode<ButtonOverwrite>("../../../InteractableItems/Select_Items/Settings/Panel/South/2").SetMeta("PuzzleEnabled", true); //enables the puzzle for the middle bookshelf
 				return;
-			case "7":
-				CIRCLES.ToggleSpecificDirection(GetNode<ButtonOverwrite>("../../../InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/1")); //hides red circle
-				return;
-
+	
 			default:
 				return;
 		}

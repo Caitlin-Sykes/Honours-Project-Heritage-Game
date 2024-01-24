@@ -3,19 +3,21 @@ using System;
 using System.IO;
 using System.Text.Json.Serialization;
 
-public static class JsonHandler
+public partial class JsonHandler : Node
 {
 
-	private readonly static string FILE_PATH = "resources//dialogue.json";
+	private readonly string FILE_PATH = "resources//dialogue.json";
 
-	public static DialogueStruct Speech; //Holds all speech for the game
+	public DialogueStruct Speech; //Holds all speech for the game
 
-
+	public override void _Ready() {
+		PreLoadDialogue();
+	}
 	/**
 	* Dialogue testing stuff
 	**/
 
-	public static void PreLoadDialogue()
+	public void PreLoadDialogue()
 	{
 		//Reads all in and stores in Speech variable
 		string jsonString = File.ReadAllText(FILE_PATH);

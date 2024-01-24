@@ -37,7 +37,6 @@ public partial class MainMenu : Control
 
 			InitSettings();		
 	
-			JsonHandler.PreLoadDialogue();
 	}
 
 	// Init scene settings

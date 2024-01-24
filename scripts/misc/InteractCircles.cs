@@ -17,11 +17,15 @@ public partial class InteractCircles : Node3D
 
 	private SceneState SCENESTATEACCESS; //accesses the singleton for the scenestate
 
+	private PuzzleStart PUZZLES;
+
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		BackButtonContainer = GetNode<MarginContainer>("Select_Items/Settings/Panel/Back_Button");
+		
+		PUZZLES = GetNode<PuzzleStart>("Select_Items/Settings/Puzzles");
 		SCENESTATEACCESS = GetNode<SceneState>("/root/SceneStateSingleton"); //accesses the singleton for the scene state
 	}
 
@@ -85,7 +89,7 @@ public partial class InteractCircles : Node3D
 
 		catch (InvalidCastException e)
 		{
-			GD.Print("Cannot find the circle to be disabled. Is the path correct? Specific Error is: " + e.Message);
+			GD.PrintErr("Cannot find the circle to be disabled. Is the path correct? Specific Error is: " + e.Message);
 		}
 
 
@@ -115,6 +119,7 @@ public partial class InteractCircles : Node3D
 			ToggleEventsDirection(GetNode<ButtonOverwrite>(path)); //turns off all the circles 
 			SetCam(GetNode<ButtonOverwrite>(path).GetMeta("NewCamPos").AsVector3(), (float)GetNode<ButtonOverwrite>(path).GetMeta("CamRotation")); //sets the camera to the position and rotation in the meta data
 			ToggleBackButton(); //shows the back button
+			PUZZLES.CheckPuzzle(GetNode<ButtonOverwrite>(path)); // checks if there is a puzzle, and whether to display
 		}
 
 		//Gets meta description of button clicked
@@ -136,6 +141,11 @@ public partial class InteractCircles : Node3D
 		//If the camera isn't moved
 		if (GetNode<ButtonOverwrite>(path).GetMeta("NewCamPos").AsVector3() == Vector3.Zero)
 		{
+			if (GetNode<ButtonOverwrite>(path).GetMeta("Object").AsString() != "Door") {
+				//Swaps back to dialogue mode
+				SCENESTATEACCESS.PlayerStatus = SCENESTATEACCESS.PreviousState;
+			} //todo: working on this
+
 			//If tutorial
 			if (SCENESTATEACCESS.sceneState == SceneState.CurrentSceneState.Tutorial) {
 				// Swap back to gui view
@@ -145,14 +155,6 @@ public partial class InteractCircles : Node3D
 
 				DIALOGUE.SkipDialogue(); //skips dialogue
 			}
-
-			// else {
-			// 	SCENESTATEACCESS.PlayerStatus = SCENESTATEACCESS.PreviousState; //swaps the status to in 
-			// 	GD.Print("CirclesPressed Else in InteractCircles changes it to: " + SCENESTATEACCESS.PlayerStatus);
-
-
-			// }
-
 		}
 	}
 
@@ -171,14 +173,11 @@ public partial class InteractCircles : Node3D
 		ToggleBackButton(); //hides the back button
 		SetCam(Vector3.Zero, 0); //resets camera position
 
-		GD.Print(CURRENT_PATH_CIRCLES);
 		ToggleParentNode(GetNode<ButtonOverwrite>(CURRENT_PATH_CIRCLES)); //hides the current node																	  
 		ToggleEventsDirection(GetNode<ButtonOverwrite>(CURRENT_PATH_CIRCLES)); //Renables the circles
 
 		//Swaps back to dialogue mode
 		SCENESTATEACCESS.PlayerStatus = SCENESTATEACCESS.PreviousState;
-		GD.Print("OnBackPressed in InteractCircles changes it to: " + SCENESTATEACCESS.PlayerStatus);
-
 
 		//If the previous state is freeroam
 		if (SCENESTATEACCESS.PreviousState == SceneState.StatusOfPlayer.FreeRoam) {

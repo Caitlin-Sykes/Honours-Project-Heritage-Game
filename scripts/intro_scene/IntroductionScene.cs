@@ -24,6 +24,7 @@ public partial class IntroductionScene : Node3D
 	[Signal]
 	public delegate void Stage1EventHandler(); //handler for progressing looking at smth
 	private SceneState SCENESTATEACCESS; //accesses the singleton for the scenestate
+	private JsonHandler DIALOGUEACCESS; //accesses the singleton for the dialogue json
 
 
 
@@ -31,6 +32,8 @@ public partial class IntroductionScene : Node3D
 	public override void _Ready()
 	{
 		SCENESTATEACCESS = GetNode<SceneState>("/root/SceneStateSingleton"); //accesses the singleton for the scene state
+
+		DIALOGUEACCESS = GetNode<JsonHandler>("/root/DialogueImport"); //accesses the singleton for the dialogue json
 
 		SCENESTATEACCESS.CurrentObjective = "Follow the tutorial";
 		SCENESTATEACCESS.sceneState = SceneState.CurrentSceneState.Tutorial;
@@ -62,13 +65,13 @@ public partial class IntroductionScene : Node3D
 
 		await ToSignal(GetTree().CreateTimer(3), SceneTreeTimer.SignalName.Timeout); //timer so it waits out the animations
 		DIALOGUE.ToggleGUIVisible(); //toggles the gui visible
-		DIALOGUE.Dialogue(JsonHandler.Speech.IntroductionScene, "Introduction_Scene", new string[] { "5" });
+		DIALOGUE.Dialogue(DIALOGUEACCESS.Speech.IntroductionScene, "Introduction_Scene", new string[] { "5" });
 	}
 
 	// A function to handle the second dialogue
 	private void SecondDialogue() {
 		DIALOGUE.ToggleGUIVisible(); //shows the gui
-		DIALOGUE.Dialogue(JsonHandler.Speech.Controls, "Controls", new string[] {"1", "3", "7", "8"}); //Starts playing through the controls 
+		DIALOGUE.Dialogue(DIALOGUEACCESS.Speech.Controls, "Controls", new string[] {"1", "3", "7", "8"}); //Starts playing through the controls 
 	}
 
 	// Start Stage 1 Handler
@@ -130,11 +133,11 @@ public partial class IntroductionScene : Node3D
 	//show puzzle if boolean is true? go by finding the path and using that to find the puzzle equiv?
 	//TODO: was working on this
 	private async void TriggerDialogueTwo() {
+
 		await ToSignal(DIALOGUE, "LookProgress");
 		SCENESTATEACCESS.PlayerStatus = SceneState.StatusOfPlayer.InDialogue; //Sets the current status to free roam
-		// DIALOGUE.ToggleGUIVisible(); //shows the gui
 
-		DIALOGUE.Dialogue(JsonHandler.Speech.Mum_Dialogue_1, "Mum_Dialogue_1", new string[] {"6", "7"}); //Starts playing through the mum dialogue 
+		DIALOGUE.Dialogue(DIALOGUEACCESS.Speech.Mum_Dialogue_1, "Mum_Dialogue_1", new string[] {"5"}); //Starts playing through the mum dialogue 
 		
 		
 		DIALOGUE.SwapOverlay();
