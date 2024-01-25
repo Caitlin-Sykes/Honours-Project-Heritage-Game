@@ -76,7 +76,6 @@ public partial class Player_Intro : Control
 		{
 			DisplayServer.WindowSetMode(DisplayServer.WindowMode.Fullscreen);
 		}
-		// TODO: optimise this spaghetti junction of code for init
 	}
 
 
@@ -87,7 +86,6 @@ public partial class Player_Intro : Control
 	**/
 
 	//On submit button pressed
-	//TODO: add proper error handling
 	private void OnSubmitPressed() {
 		if (name.Text.Length > 0) {
 			PlayerData.CreatePlayer(name.Text, DateTime.Now, pronouns.Text, id.Text, currentAvatar+1);

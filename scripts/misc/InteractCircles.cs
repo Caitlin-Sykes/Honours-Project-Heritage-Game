@@ -9,22 +9,21 @@ public partial class InteractCircles : Node3D
 
 	private SpeechGUI DIALOGUE; //instance of speech gui
 
-	private string PLAYER_AVATAR = "res://resources/textures/sprites/main_char/{0}.svg";
+	private string PLAYER_AVATAR = "res://resources/textures/sprites/main_char/{0}.svg"; //player avatar string
 
-	private string CURRENT_PATH_CIRCLES { get; set; }
+	private string CURRENT_PATH_CIRCLES { get; set; } //current circle
 
 	private MarginContainer BackButtonContainer; //instance of the back button container
 
 	private SceneState SCENESTATEACCESS; //accesses the singleton for the scenestate
 
-	private PuzzleStart PUZZLES;
+	private PuzzleStart PUZZLES; //instance of puzzles
 
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		BackButtonContainer = GetNode<MarginContainer>("Select_Items/Settings/Panel/Back_Button");
-		
 		PUZZLES = GetNode<PuzzleStart>("Select_Items/Settings/Puzzles");
 		SCENESTATEACCESS = GetNode<SceneState>("/root/SceneStateSingleton"); //accesses the singleton for the scene state
 	}
@@ -61,6 +60,7 @@ public partial class InteractCircles : Node3D
 
 			//Toggles parent node
 			ToggleParentNode(cir);
+
 			//For every circle in the direction container, toggles them
 			foreach (ButtonOverwrite circle in parNode.GetChildren())
 			{
@@ -95,7 +95,6 @@ public partial class InteractCircles : Node3D
 
 	}
 
-	//TODO: dear me, this function needs to be refactored
 	// Handles on circle click
 	//Sets the node path as well
 
@@ -129,7 +128,7 @@ public partial class InteractCircles : Node3D
 		//Swap back to gui speech
 		DIALOGUE.SwapOverlay();
 
-		DIALOGUE.Visible = true; //toggles the speech gui g
+		DIALOGUE.Visible = true; //toggles the speech gui
 
 		//Awaits the dialogue progression
 		await ToSignal(DIALOGUE, "LookProgress");
@@ -144,7 +143,7 @@ public partial class InteractCircles : Node3D
 			if (GetNode<ButtonOverwrite>(path).GetMeta("Object").AsString() != "Door") {
 				//Swaps back to dialogue mode
 				SCENESTATEACCESS.PlayerStatus = SCENESTATEACCESS.PreviousState;
-			} //todo: working on this
+			}
 
 			//If tutorial
 			if (SCENESTATEACCESS.sceneState == SceneState.CurrentSceneState.Tutorial) {
@@ -195,8 +194,6 @@ public partial class InteractCircles : Node3D
 		//Swap back to gui speech and unlock the dialogue
 		DIALOGUE.SwapOverlay();
 
-		//TODO: Needs so much refractoring
-		//BUG: still does not work.
 		// this line is for when returning to freeroam after clicking the back button
 		if (SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam) {
 				DIALOGUE.SwapOverlay();
@@ -204,8 +201,7 @@ public partial class InteractCircles : Node3D
 
 	}
 
-	//On back button click
-	// Returns to camera origin
+	//Toggles the back button visibility
 	private void ToggleBackButton()
 	{
 		BackButtonContainer.Visible = !BackButtonContainer.Visible;
@@ -226,7 +222,7 @@ public partial class InteractCircles : Node3D
 	* ----------------------------------------------------------------
 	**/
 
-	//Emits event signal depending on string
+	//Toggles event direction depending on string
 	public void EmitEvent(string evnt)
 	{
 

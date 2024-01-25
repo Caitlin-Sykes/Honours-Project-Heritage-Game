@@ -25,23 +25,23 @@ public partial class MainMenu : Control
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-			TRANSITION = GetNode<Transitions>("Transition");
+		TRANSITION = GetNode<Transitions>("Transition");
 
 		DisplayServer.WindowSetMode(DisplayServer.WindowMode.Maximized);
 
 		//Logo 
 		DecideMainMenuLogo();
 
-			//Inits config file
-			OptionsFileHandler.InitConfigFile();
+		//Inits config file
+		OptionsFileHandler.InitConfigFile();
 
-			InitSettings();		
+		InitSettings();		
 	
 	}
 
 	// Init scene settings
 	private void InitSettings() {
-		//If GetFontDefault returns Dyslexie, sets theme to dyslexie
+			//If GetFontDefault returns Dyslexie, sets theme to dyslexie
 			//Else sets Theme to cascadia
 			if (OptionsVisualsGUI.GetFontDefault() == "Dyslexie") {
 				Theme = (Theme)GD.Load("res://resources/themes/main_theme_dyslexie.tres");
