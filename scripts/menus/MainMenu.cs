@@ -25,24 +25,23 @@ public partial class MainMenu : Control
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-			TRANSITION = GetNode<Transitions>("Transition");
+		TRANSITION = GetNode<Transitions>("Transition");
 
 		DisplayServer.WindowSetMode(DisplayServer.WindowMode.Maximized);
 
 		//Logo 
 		DecideMainMenuLogo();
 
-			//Inits config file
-			OptionsFileHandler.InitConfigFile();
+		//Inits config file
+		OptionsFileHandler.InitConfigFile();
 
-			InitSettings();		
+		InitSettings();		
 	
-			JsonHandler.PreLoadDialogue();
 	}
 
 	// Init scene settings
 	private void InitSettings() {
-		//If GetFontDefault returns Dyslexie, sets theme to dyslexie
+			//If GetFontDefault returns Dyslexie, sets theme to dyslexie
 			//Else sets Theme to cascadia
 			if (OptionsVisualsGUI.GetFontDefault() == "Dyslexie") {
 				Theme = (Theme)GD.Load("res://resources/themes/main_theme_dyslexie.tres");
@@ -56,10 +55,9 @@ public partial class MainMenu : Control
 			Theme.DefaultFontSize = OptionsVisualsGUI.GetFontSizeDefault().ToInt();
 
 	
-			if (OptionsVisualsGUI.GetFullScreenDefault() == true) {
+			if (OptionsVisualsGUI.GetFullScreenDefault()) {
 				DisplayServer.WindowSetMode(DisplayServer.WindowMode.Fullscreen);
 			}
-			// TODO: optimise this spaghetti junction of code for init
 	}
 
 	/**
@@ -127,7 +125,7 @@ public partial class MainMenu : Control
 	// A function to control the button "Sources" on the main menu
 	private void OnSourcesPressed()
 	{
-		// TRANSITION.NextScene
+		TRANSITION.NextScene("res://scenes/menus/OptionsCredits.tscn");
 	}
 
 	// A function to control the button "Exit" on the main menu

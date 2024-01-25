@@ -15,7 +15,7 @@ public partial class Player_Intro : Control
 
 	private int currentAvatar = 0; //current index of avatar
 	private Random rdm; //random number generator
-	public PlayerDataStruct player;
+	private PlayerDataStruct player;
 	private Transitions TRANSITION; //Handles screen transitions
 
 	private bool currentlyEditing = false;
@@ -28,7 +28,7 @@ public partial class Player_Intro : Control
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		TRANSITION = GetNode<Transitions>("Transition");
+		TRANSITION = GetNode<Transitions>("Settings/Transition");
 		InitSettings();
 
 
@@ -42,12 +42,12 @@ public partial class Player_Intro : Control
 	//Handles inputs
 	public override void _Input(InputEvent @event) {
 
-		if (Input.IsKeyPressed(Key.D) && currentlyEditing == false)
+		if (Input.IsKeyPressed(Key.D) && !currentlyEditing)
 		{
 			MoveAvatarRight();
 		}
 
-		else if (Input.IsKeyPressed(Key.A) && currentlyEditing == false)
+		else if (Input.IsKeyPressed(Key.A) && !currentlyEditing)
 		{
 			MoveAvatarLeft();
 		}
@@ -72,11 +72,10 @@ public partial class Player_Intro : Control
 		Theme.DefaultFontSize = OptionsVisualsGUI.GetFontSizeDefault().ToInt();
 
 
-		if (OptionsVisualsGUI.GetFullScreenDefault() == true)
+		if (OptionsVisualsGUI.GetFullScreenDefault())
 		{
 			DisplayServer.WindowSetMode(DisplayServer.WindowMode.Fullscreen);
 		}
-		// TODO: optimise this spaghetti junction of code for init
 	}
 
 
@@ -87,7 +86,6 @@ public partial class Player_Intro : Control
 	**/
 
 	//On submit button pressed
-	//TODO: add proper error handling
 	private void OnSubmitPressed() {
 		if (name.Text.Length > 0) {
 			PlayerData.CreatePlayer(name.Text, DateTime.Now, pronouns.Text, id.Text, currentAvatar+1);

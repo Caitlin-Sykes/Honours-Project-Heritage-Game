@@ -3,45 +3,25 @@ using System;
 using System.IO;
 using System.Text.Json.Serialization;
 
-public static class JsonHandler
+public partial class JsonHandler : Node
 {
 
-	private readonly static string FILE_PATH = "resources//dialogue.json";
+	private readonly string FILE_PATH = "resources//dialogue.json";
 
-	public static DialogueStruct Speech; //Holds all speech for the game
+	public DialogueStruct Speech; //Holds all speech for the game
 
-
+	public override void _Ready() {
+		PreLoadDialogue();
+	}
 	/**
 	* Dialogue testing stuff
 	**/
 
-	public static void PreLoadDialogue()
+	public void PreLoadDialogue()
 	{
-		//Reads all
+		//Reads all in and stores in Speech variable
 		string jsonString = File.ReadAllText(FILE_PATH);
 		Speech = System.Text.Json.JsonSerializer.Deserialize<DialogueStruct>(jsonString)!;
-
-		GD.Print("Speech: " + Speech);
-		GD.Print("Dialogue: " + Speech.IntroductionScene);
-
-
-
-		// try {
-
-		// 	// for iterating through
-		// 	// foreach (var entry in Speech.IntroductionScene)
-		// 	// {
-		// 	// 	GD.Print($"ID: {entry.Id}");
-		// 	// 	GD.Print($"Speaker: {entry.Speaker}");
-		// 	// 	GD.Print($"Dialogue: {entry.Dialogue}");
-		// 	// 	GD.Print($"Avatar: {entry.Avatar}");
-		// 	// }
-		// }
-
-		// catch (Exception e) {
-		// 	GD.Print($"Error: {e.Message}. Is dialogue.json present?");
-		// }	
-		// }
 	}
 
 
@@ -54,14 +34,21 @@ public static class JsonHandler
 		[JsonPropertyName("Introduction_Scene")]
 		public DialogueStructData[] IntroductionScene { get; set; }
 
-		//An array to hold the Dialogue information matching property "Testing"
-		[JsonPropertyName("Debug_Scene")]
-		public DialogueStructData[] Testing { get; set; }
+  
+		//An array to hold the Dialogue information matching property "Controls" 
+		[JsonPropertyName("Controls")]
+		public DialogueStructData[] Controls { get; set; }
+
+		//An array to hold the Dialogue information matching property "Mum_Dialogue_1" 
+		[JsonPropertyName("Mum_Dialogue_1")]
+		public DialogueStructData[] Mum_Dialogue_1 { get; set; }
 }
 
 	//A class to contain the variables to store dialogue read in from Dialogue.Json
 	public class DialogueStructData
 	{
+		[JsonPropertyName("SceneName")]
+		public string SceneName { get; set; }
 
 		[JsonPropertyName("Id")]
 

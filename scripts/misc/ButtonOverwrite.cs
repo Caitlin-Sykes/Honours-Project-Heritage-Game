@@ -1,9 +1,9 @@
 using Godot;
 using System;
 
-public partial class ButtonOverwrite : Button
+public partial class ButtonOverwrite : BaseButton
 {
-	public AudioStreamPlayer2D aux; //for handling on click audio
+	private AudioStreamPlayer2D aux; //for handling on click audio
 	public override void _Ready()
 	{
 		aux = GetNode<AudioStreamPlayer2D>("ClickButton");

@@ -1,10 +1,11 @@
-[gd_scene load_steps=30 format=3 uid="uid://0ixj46o4a1t5"]
+[gd_scene load_steps=31 format=3 uid="uid://0ixj46o4a1t5"]
 
 [ext_resource type="Theme" uid="uid://c8ikhuofmlww0" path="res://resources/themes/main_theme_cascadia.tres" id="1_v3bs1"]
 [ext_resource type="Script" path="res://scripts/misc/Player_Intro.cs" id="2_3mtwi"]
 [ext_resource type="Texture2D" uid="uid://dhcg177yc0x8o" path="res://resources/textures/gui/arrow.png" id="3_gxco4"]
 [ext_resource type="Texture2D" uid="uid://da4c80ucv2cny" path="res://resources/textures/player_card/random_barcode.png" id="3_jycvt"]
 [ext_resource type="Script" path="res://scripts/misc/Transitions.cs" id="3_lw6ni"]
+[ext_resource type="Script" path="res://scripts/misc/Settings.cs" id="3_srrme"]
 [ext_resource type="Texture2D" uid="uid://3hsy4d2vkbnd" path="res://resources/textures/gui/arrow_clicked.png" id="4_p87j3"]
 [ext_resource type="Texture2D" uid="uid://bits6aj2kcnh8" path="res://resources/textures/sprites/main_char/1.svg" id="6_pa37d"]
 [ext_resource type="Texture2D" uid="uid://d37fhprp3f7pl" path="res://resources/textures/sprites/main_char/2.svg" id="8_3ksrx"]
@@ -58,13 +59,23 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_v3bs1")
 script = ExtResource("2_3mtwi")
-id = NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Info/ID_Input")
-name = NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Info/Name_Input")
-pronouns = NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Info/Pronouns")
-avatar = [NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/1"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/2"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/3"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/4"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/5"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/6"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/7"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/8"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/9"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/10"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/11"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/12"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/13"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/14"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/15"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/16"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/17"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/18"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/19"), NodePath("Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/20")]
+id = NodePath("Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Info/ID_Input")
+name = NodePath("Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Info/Name_Input")
+pronouns = NodePath("Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Info/Pronouns")
+avatar = [NodePath("Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/1"), NodePath("Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/2"), NodePath("Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/3"), NodePath("Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/4"), NodePath("Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/5"), NodePath("Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/6"), NodePath("Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/7"), NodePath("Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/8"), NodePath("Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/9"), NodePath("Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/10"), NodePath("Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/11"), NodePath("Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/12"), NodePath("Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/13"), NodePath("Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/14"), NodePath("Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/15"), NodePath("Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/16"), NodePath("Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/17"), NodePath("Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/18"), NodePath("Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/19"), NodePath("Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/20")]
 
-[node name="Transition" type="ColorRect" parent="."]
-visible = false
+[node name="Settings" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+script = ExtResource("3_srrme")
+
+[node name="Transition" type="ColorRect" parent="Settings"]
 top_level = true
 layout_mode = 1
 anchors_preset = 15
@@ -76,12 +87,12 @@ mouse_filter = 2
 color = Color(0, 0, 0, 1)
 script = ExtResource("3_lw6ni")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Transition"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Settings/Transition"]
 libraries = {
 "": SubResource("AnimationLibrary_nuk71")
 }
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="Settings"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -89,7 +100,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+[node name="MarginContainer" type="MarginContainer" parent="Settings/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -101,11 +112,11 @@ theme_override_constants/margin_top = 100
 theme_override_constants/margin_right = 100
 theme_override_constants/margin_bottom = 100
 
-[node name="Panel" type="Panel" parent="Panel/MarginContainer"]
+[node name="Panel" type="Panel" parent="Settings/Panel/MarginContainer"]
 layout_mode = 2
 theme_type_variation = &"StudentIDPanel"
 
-[node name="Info" type="MarginContainer" parent="Panel/MarginContainer/Panel"]
+[node name="Info" type="MarginContainer" parent="Settings/Panel/MarginContainer/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -116,16 +127,16 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/margin_right = 10
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/Panel/Info"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Settings/Panel/MarginContainer/Panel/Info"]
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="Info" type="VBoxContainer" parent="Panel/MarginContainer/Panel/Info/HBoxContainer"]
+[node name="Info" type="VBoxContainer" parent="Settings/Panel/MarginContainer/Panel/Info/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.0
 
-[node name="ID_Input" type="LineEdit" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Info"]
+[node name="ID_Input" type="LineEdit" parent="Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Info"]
 layout_direction = 2
 layout_mode = 2
 size_flags_vertical = 3
@@ -134,7 +145,7 @@ alignment = 1
 max_length = 7
 editable = false
 
-[node name="lbl" type="Label" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Info/ID_Input"]
+[node name="lbl" type="Label" parent="Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Info/ID_Input"]
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
@@ -144,17 +155,16 @@ theme_type_variation = &"IDCardLabel"
 text = "  ID No:"
 vertical_alignment = 1
 
-[node name="Name_Input" type="LineEdit" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Info"]
+[node name="Name_Input" type="LineEdit" parent="Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Info"]
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 1
 theme_type_variation = &"StudentIDLineEdit"
-text = " "
-placeholder_text = "Enter your character name here"
+placeholder_text = "           Enter your character name here "
 alignment = 1
 max_length = 20
 
-[node name="Label" type="Label" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Info/Name_Input"]
+[node name="Label" type="Label" parent="Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Info/Name_Input"]
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
@@ -164,12 +174,11 @@ theme_type_variation = &"IDCardLabel"
 text = "  Name:"
 vertical_alignment = 1
 
-[node name="Pronouns" type="OptionButton" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Info"]
+[node name="Pronouns" type="OptionButton" parent="Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Info"]
 layout_mode = 2
 size_flags_vertical = 3
 tooltip_text = "Please select your pronouns"
 theme_type_variation = &"StudentIDMulti"
-theme_override_font_sizes/font_size = 26
 alignment = 1
 item_count = 3
 selected = 0
@@ -180,7 +189,7 @@ popup/item_1/id = 1
 popup/item_2/text = "They/Them"
 popup/item_2/id = 2
 
-[node name="Label" type="Label" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Info/Pronouns"]
+[node name="Label" type="Label" parent="Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Info/Pronouns"]
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
@@ -190,7 +199,7 @@ theme_type_variation = &"IDCardLabel"
 text = "  Pronouns:"
 vertical_alignment = 1
 
-[node name="DOB" type="LineEdit" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Info"]
+[node name="DOB" type="LineEdit" parent="Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Info"]
 layout_direction = 2
 layout_mode = 2
 size_flags_vertical = 3
@@ -200,7 +209,7 @@ alignment = 1
 max_length = 20
 editable = false
 
-[node name="DOB" type="Label" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Info/DOB"]
+[node name="DOB" type="Label" parent="Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Info/DOB"]
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
@@ -210,7 +219,7 @@ theme_type_variation = &"IDCardLabel"
 text = "  D.o.B:"
 vertical_alignment = 1
 
-[node name="misc" type="Label" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Info/DOB"]
+[node name="misc" type="Label" parent="Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Info/DOB"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -228,16 +237,16 @@ text = "xx.xx.xx"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Photos" type="VBoxContainer" parent="Panel/MarginContainer/Panel/Info/HBoxContainer"]
+[node name="Photos" type="VBoxContainer" parent="Settings/Panel/MarginContainer/Panel/Info/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos"]
 layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="Left" type="TextureButton" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer"]
+[node name="Left" type="TextureButton" parent="Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer"]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -248,11 +257,11 @@ texture_pressed = ExtResource("4_p87j3")
 stretch_mode = 0
 flip_h = true
 
-[node name="folk" type="VBoxContainer" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer"]
+[node name="folk" type="VBoxContainer" parent="Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk"]
+[node name="MarginContainer" type="MarginContainer" parent="Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 10
@@ -260,13 +269,13 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 30
 
-[node name="1" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer"]
+[node name="1" type="TextureRect" parent="Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer"]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 texture = ExtResource("6_pa37d")
 expand_mode = 3
 
-[node name="RandomBarcode" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/1"]
+[node name="RandomBarcode" type="TextureRect" parent="Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/1"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 1
 anchors_preset = 12
@@ -280,14 +289,14 @@ size_flags_vertical = 8
 texture = ExtResource("3_jycvt")
 expand_mode = 1
 
-[node name="2" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer"]
+[node name="2" type="TextureRect" parent="Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer"]
 visible = false
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 texture = ExtResource("8_3ksrx")
 expand_mode = 3
 
-[node name="RandomBarcode" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/2"]
+[node name="RandomBarcode" type="TextureRect" parent="Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/2"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 1
 anchors_preset = 12
@@ -301,14 +310,14 @@ size_flags_vertical = 8
 texture = ExtResource("3_jycvt")
 expand_mode = 1
 
-[node name="3" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer"]
+[node name="3" type="TextureRect" parent="Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer"]
 visible = false
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 texture = ExtResource("9_qde5h")
 expand_mode = 3
 
-[node name="RandomBarcode" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/3"]
+[node name="RandomBarcode" type="TextureRect" parent="Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/3"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 1
 anchors_preset = 12
@@ -322,14 +331,14 @@ size_flags_vertical = 8
 texture = ExtResource("3_jycvt")
 expand_mode = 1
 
-[node name="4" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer"]
+[node name="4" type="TextureRect" parent="Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer"]
 visible = false
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 texture = ExtResource("10_4lpxu")
 expand_mode = 3
 
-[node name="RandomBarcode" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/4"]
+[node name="RandomBarcode" type="TextureRect" parent="Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/4"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 1
 anchors_preset = 12
@@ -343,14 +352,14 @@ size_flags_vertical = 8
 texture = ExtResource("3_jycvt")
 expand_mode = 1
 
-[node name="5" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer"]
+[node name="5" type="TextureRect" parent="Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer"]
 visible = false
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 texture = ExtResource("11_3dgop")
 expand_mode = 3
 
-[node name="RandomBarcode" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/5"]
+[node name="RandomBarcode" type="TextureRect" parent="Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/5"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 1
 anchors_preset = 12
@@ -364,14 +373,14 @@ size_flags_vertical = 8
 texture = ExtResource("3_jycvt")
 expand_mode = 1
 
-[node name="6" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer"]
+[node name="6" type="TextureRect" parent="Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer"]
 visible = false
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 texture = ExtResource("12_g6va7")
 expand_mode = 3
 
-[node name="RandomBarcode" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/6"]
+[node name="RandomBarcode" type="TextureRect" parent="Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/6"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 1
 anchors_preset = 12
@@ -385,14 +394,14 @@ size_flags_vertical = 8
 texture = ExtResource("3_jycvt")
 expand_mode = 1
 
-[node name="7" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer"]
+[node name="7" type="TextureRect" parent="Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer"]
 visible = false
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 texture = ExtResource("13_rtq3x")
 expand_mode = 3
 
-[node name="RandomBarcode" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/7"]
+[node name="RandomBarcode" type="TextureRect" parent="Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/7"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 1
 anchors_preset = 12
@@ -406,14 +415,14 @@ size_flags_vertical = 8
 texture = ExtResource("3_jycvt")
 expand_mode = 1
 
-[node name="8" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer"]
+[node name="8" type="TextureRect" parent="Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer"]
 visible = false
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 texture = ExtResource("14_wm6mf")
 expand_mode = 3
 
-[node name="RandomBarcode" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/8"]
+[node name="RandomBarcode" type="TextureRect" parent="Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/8"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 1
 anchors_preset = 12
@@ -427,14 +436,14 @@ size_flags_vertical = 8
 texture = ExtResource("3_jycvt")
 expand_mode = 1
 
-[node name="9" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer"]
+[node name="9" type="TextureRect" parent="Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer"]
 visible = false
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 texture = ExtResource("15_6nx7n")
 expand_mode = 3
 
-[node name="RandomBarcode" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/9"]
+[node name="RandomBarcode" type="TextureRect" parent="Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/9"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 1
 anchors_preset = 12
@@ -448,14 +457,14 @@ size_flags_vertical = 8
 texture = ExtResource("3_jycvt")
 expand_mode = 1
 
-[node name="10" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer"]
+[node name="10" type="TextureRect" parent="Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer"]
 visible = false
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 texture = ExtResource("16_i0ft2")
 expand_mode = 3
 
-[node name="RandomBarcode" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/10"]
+[node name="RandomBarcode" type="TextureRect" parent="Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/10"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 1
 anchors_preset = 12
@@ -469,14 +478,14 @@ size_flags_vertical = 8
 texture = ExtResource("3_jycvt")
 expand_mode = 1
 
-[node name="11" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer"]
+[node name="11" type="TextureRect" parent="Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer"]
 visible = false
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 texture = ExtResource("17_tri4e")
 expand_mode = 3
 
-[node name="RandomBarcode" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/11"]
+[node name="RandomBarcode" type="TextureRect" parent="Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/11"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 1
 anchors_preset = 12
@@ -490,14 +499,14 @@ size_flags_vertical = 8
 texture = ExtResource("3_jycvt")
 expand_mode = 1
 
-[node name="12" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer"]
+[node name="12" type="TextureRect" parent="Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer"]
 visible = false
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 texture = ExtResource("18_lcamo")
 expand_mode = 3
 
-[node name="RandomBarcode" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/12"]
+[node name="RandomBarcode" type="TextureRect" parent="Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/12"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 1
 anchors_preset = 12
@@ -511,14 +520,14 @@ size_flags_vertical = 8
 texture = ExtResource("3_jycvt")
 expand_mode = 1
 
-[node name="13" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer"]
+[node name="13" type="TextureRect" parent="Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer"]
 visible = false
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 texture = ExtResource("19_jr6ls")
 expand_mode = 3
 
-[node name="RandomBarcode" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/13"]
+[node name="RandomBarcode" type="TextureRect" parent="Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/13"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 1
 anchors_preset = 12
@@ -532,14 +541,14 @@ size_flags_vertical = 8
 texture = ExtResource("3_jycvt")
 expand_mode = 1
 
-[node name="14" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer"]
+[node name="14" type="TextureRect" parent="Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer"]
 visible = false
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 texture = ExtResource("20_ksexo")
 expand_mode = 3
 
-[node name="RandomBarcode" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/14"]
+[node name="RandomBarcode" type="TextureRect" parent="Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/14"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 1
 anchors_preset = 12
@@ -553,14 +562,14 @@ size_flags_vertical = 8
 texture = ExtResource("3_jycvt")
 expand_mode = 1
 
-[node name="15" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer"]
+[node name="15" type="TextureRect" parent="Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer"]
 visible = false
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 texture = ExtResource("21_jfocq")
 expand_mode = 3
 
-[node name="RandomBarcode" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/15"]
+[node name="RandomBarcode" type="TextureRect" parent="Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/15"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 1
 anchors_preset = 12
@@ -574,14 +583,14 @@ size_flags_vertical = 8
 texture = ExtResource("3_jycvt")
 expand_mode = 1
 
-[node name="16" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer"]
+[node name="16" type="TextureRect" parent="Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer"]
 visible = false
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 texture = ExtResource("22_15yk0")
 expand_mode = 3
 
-[node name="RandomBarcode" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/16"]
+[node name="RandomBarcode" type="TextureRect" parent="Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/16"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 1
 anchors_preset = 12
@@ -595,14 +604,14 @@ size_flags_vertical = 8
 texture = ExtResource("3_jycvt")
 expand_mode = 1
 
-[node name="17" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer"]
+[node name="17" type="TextureRect" parent="Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer"]
 visible = false
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 texture = ExtResource("23_riohn")
 expand_mode = 3
 
-[node name="RandomBarcode" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/17"]
+[node name="RandomBarcode" type="TextureRect" parent="Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/17"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 1
 anchors_preset = 12
@@ -616,14 +625,14 @@ size_flags_vertical = 8
 texture = ExtResource("3_jycvt")
 expand_mode = 1
 
-[node name="18" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer"]
+[node name="18" type="TextureRect" parent="Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer"]
 visible = false
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 texture = ExtResource("24_0p2y4")
 expand_mode = 3
 
-[node name="RandomBarcode" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/18"]
+[node name="RandomBarcode" type="TextureRect" parent="Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/18"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 1
 anchors_preset = 12
@@ -637,14 +646,14 @@ size_flags_vertical = 8
 texture = ExtResource("3_jycvt")
 expand_mode = 1
 
-[node name="19" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer"]
+[node name="19" type="TextureRect" parent="Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer"]
 visible = false
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 texture = ExtResource("25_4nji3")
 expand_mode = 3
 
-[node name="RandomBarcode" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/19"]
+[node name="RandomBarcode" type="TextureRect" parent="Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/19"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 1
 anchors_preset = 12
@@ -658,14 +667,14 @@ size_flags_vertical = 8
 texture = ExtResource("3_jycvt")
 expand_mode = 1
 
-[node name="20" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer"]
+[node name="20" type="TextureRect" parent="Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer"]
 visible = false
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 texture = ExtResource("26_yr71f")
 expand_mode = 3
 
-[node name="RandomBarcode" type="TextureRect" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/20"]
+[node name="RandomBarcode" type="TextureRect" parent="Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/MarginContainer/20"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 1
 anchors_preset = 12
@@ -679,14 +688,14 @@ size_flags_vertical = 8
 texture = ExtResource("3_jycvt")
 expand_mode = 1
 
-[node name="Submit" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk" instance=ExtResource("27_x61nx")]
+[node name="Submit" parent="Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk" instance=ExtResource("27_x61nx")]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_vertical = 6
 theme_type_variation = &"GreenButton"
 text = "Submit"
 
-[node name="Shadow" type="Panel" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/Submit"]
+[node name="Shadow" type="Panel" parent="Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/Submit"]
 show_behind_parent = true
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 1
@@ -699,7 +708,7 @@ grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
 
-[node name="Right" type="TextureButton" parent="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer"]
+[node name="Right" type="TextureButton" parent="Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer"]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 size_flags_horizontal = 10
@@ -709,8 +718,8 @@ texture_normal = ExtResource("3_gxco4")
 texture_pressed = ExtResource("4_p87j3")
 stretch_mode = 0
 
-[connection signal="focus_entered" from="Panel/MarginContainer/Panel/Info/HBoxContainer/Info/Name_Input" to="." method="OnLineEditInputStart"]
-[connection signal="focus_exited" from="Panel/MarginContainer/Panel/Info/HBoxContainer/Info/Name_Input" to="." method="OnLineEditInputEnd"]
-[connection signal="pressed" from="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/Left" to="." method="MoveAvatarLeft"]
-[connection signal="pressed" from="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/Submit" to="." method="OnSubmitPressed"]
-[connection signal="pressed" from="Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/Right" to="." method="MoveAvatarRight"]
+[connection signal="focus_entered" from="Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Info/Name_Input" to="." method="OnLineEditInputStart"]
+[connection signal="focus_exited" from="Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Info/Name_Input" to="." method="OnLineEditInputEnd"]
+[connection signal="pressed" from="Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/Left" to="." method="MoveAvatarLeft"]
+[connection signal="pressed" from="Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/folk/Submit" to="." method="OnSubmitPressed"]
+[connection signal="pressed" from="Settings/Panel/MarginContainer/Panel/Info/HBoxContainer/Photos/HBoxContainer/Right" to="." method="MoveAvatarRight"]

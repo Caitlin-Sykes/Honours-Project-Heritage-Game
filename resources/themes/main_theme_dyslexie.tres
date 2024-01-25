@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=24 format=3 uid="uid://dl5h0o47fqj0f"]
+[gd_resource type="Theme" load_steps=28 format=3 uid="uid://dl5h0o47fqj0f"]
 
 [ext_resource type="FontFile" uid="uid://c5vmny5pp0j27" path="res://resources/fonts/Dyslexie-Regular.woff" id="1_8hwvl"]
 
@@ -44,6 +44,18 @@ bg_color = Color(1, 0.415686, 0.34902, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uohru"]
 bg_color = Color(0.509804, 0.184314, 0.176471, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qg7jw"]
+bg_color = Color(0.901961, 0.65098, 0.054902, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1eto3"]
+bg_color = Color(0.996078, 0.807843, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_obmn7"]
+bg_color = Color(0.901961, 0.65098, 0.054902, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kca8h"]
+bg_color = Color(0.756863, 0.541176, 0.027451, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dmibg"]
 bg_color = Color(0, 0.184314, 0.227451, 1)
 
@@ -69,8 +81,9 @@ bg_color = Color(0.901961, 0.65098, 0.054902, 1)
 bg_color = Color(1, 0.866667, 0.458824, 1)
 
 [resource]
+resource_name = "Dyslexie"
 default_font = ExtResource("1_8hwvl")
-default_font_size = 26
+default_font_size = 40
 GreenButton/constants/h_separation = 2
 GreenButton/constants/icon_max_width = 340
 GreenButton/font_sizes/font_size = 39
@@ -82,7 +95,6 @@ GreenButtonMenu/styles/hover = SubResource("StyleBoxFlat_6llsc")
 GreenButtonMenu/styles/normal = SubResource("StyleBoxFlat_m304p")
 GreenButtonMenu/styles/pressed = SubResource("StyleBoxFlat_6ppwb")
 IDCardLabel/base_type = &"Label"
-IDCardLabel/font_sizes/font_size = 32
 Name_Panel/base_type = &"Panel"
 Name_Panel/styles/panel = SubResource("StyleBoxFlat_71ybw")
 OrangeButton/constants/h_separation = 2
@@ -97,11 +109,19 @@ RedButton/styles/normal = SubResource("StyleBoxFlat_cxjym")
 RedButton/styles/pressed = SubResource("StyleBoxFlat_nra4v")
 RedPanel/base_type = &"Panel"
 RedPanel/styles/panel = SubResource("StyleBoxFlat_uohru")
+SourcesTab/base_type = &"TabContainer"
+SourcesTab/colors/font_selected_color = Color(0, 0, 0, 1)
+SourcesTab/constants/side_margin = 0
+SourcesTab/styles/panel = SubResource("StyleBoxFlat_qg7jw")
+SourcesTab/styles/tab_hovered = SubResource("StyleBoxFlat_1eto3")
+SourcesTab/styles/tab_selected = SubResource("StyleBoxFlat_obmn7")
+SourcesTab/styles/tab_unselected = SubResource("StyleBoxFlat_kca8h")
 Speech/base_type = &"Label"
 Speech/font_sizes/font_size = 29
 SpeechPanel/base_type = &"Panel"
 SpeechPanel/styles/panel = SubResource("StyleBoxFlat_dmibg")
 StudentIDLineEdit/base_type = &"LineEdit"
+StudentIDLineEdit/colors/font_uneditable_color = Color(1, 1, 1, 1)
 StudentIDLineEdit/styles/normal = SubResource("StyleBoxFlat_b5y6x")
 StudentIDLineEdit/styles/read_only = SubResource("StyleBoxFlat_nprsr")
 StudentIDMulti/base_type = &"OptionButton"

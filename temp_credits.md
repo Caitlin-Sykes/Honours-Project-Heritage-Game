@@ -19,6 +19,10 @@ https://www.flaticon.com/free-icons/play - Arrow icon, Roundicon, icon for selec
 
 [AUDIO]
 https://pixabay.com/sound-effects//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=140881 - ClickButton.mp3, UNIVERSFIELD from Pixabay, button selection
+https://pixabay.com/sound-effects/search/knocking%20on%20the%20door/ - knocking mp3 for knocking on doors
 
 [SPRITES]
 https://www.dicebear.com/playground/ - for character speaking sprites
+
+[TEXTURES]:
+https://www.freepik.com/free-photo/brick-wall-texture_1033953.htm#page=2&query=brick%20texture%20seamless&position=43&from_view=search&track=ais&uuid=9b7bac6d-a674-4f3e-902e-6f4f3c7d5f9f - Bricks for stonewall

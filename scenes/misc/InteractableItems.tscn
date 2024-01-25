@@ -1,0 +1,906 @@
+[gd_scene load_steps=13 format=3 uid="uid://crsfpi7xpwrd2"]
+
+[ext_resource type="Script" path="res://scripts/misc/InteractCircles.cs" id="1_vbacw"]
+[ext_resource type="Theme" uid="uid://c8ikhuofmlww0" path="res://resources/themes/main_theme_cascadia.tres" id="2_f5y3j"]
+[ext_resource type="PackedScene" uid="uid://dmf1t0hpgtcmo" path="res://scenes/misc/AudioButtonsTexture.tscn" id="2_o7um0"]
+[ext_resource type="Texture2D" uid="uid://cad83160m5qo2" path="res://resources/textures/gui/OnItemSelect.png" id="3_okuje"]
+[ext_resource type="Script" path="res://scripts/misc/Settings.cs" id="3_t8gr0"]
+[ext_resource type="Texture2D" uid="uid://btfl3l2c4rluv" path="res://resources/textures/gui/OnItemSelected.png" id="4_5t8g4"]
+[ext_resource type="PackedScene" uid="uid://c3yc0s2xdcxsu" path="res://scenes/misc/AudioButtons.tscn" id="4_6vruk"]
+[ext_resource type="Texture2D" uid="uid://dsdt4amufrxcn" path="res://resources/textures/icons/arrow.png" id="5_u3i27"]
+[ext_resource type="Script" path="res://scripts/puzzles/PuzzleStart.cs" id="9_m11gp"]
+[ext_resource type="Texture2D" uid="uid://ch55wep2gyk5i" path="res://resources/textures/gui/PuzzleStart.png" id="10_syyls"]
+[ext_resource type="Texture2D" uid="uid://bictuohuj6rih" path="res://resources/textures/gui/PuzzleStartSelected.png" id="11_8lui5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sngad"]
+
+[node name="InteractableItems" type="Node3D"]
+script = ExtResource("1_vbacw")
+
+[node name="Select_Items" type="CanvasLayer" parent="."]
+visible = false
+follow_viewport_enabled = true
+
+[node name="Settings" type="Control" parent="Select_Items"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme = ExtResource("2_f5y3j")
+script = ExtResource("3_t8gr0")
+
+[node name="Panel" type="Panel" parent="Select_Items/Settings"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_sngad")
+
+[node name="Back_Button" type="MarginContainer" parent="Select_Items/Settings/Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -420.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 114.0
+grow_horizontal = 0
+
+[node name="Back" parent="Select_Items/Settings/Panel/Back_Button" instance=ExtResource("4_6vruk")]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 1
+tooltip_text = "Go back to the settings menu"
+theme_type_variation = &"GreenButton"
+text = "Back"
+icon = ExtResource("5_u3i27")
+icon_alignment = 1
+vertical_icon_alignment = 2
+expand_icon = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Shadow" type="Panel" parent="Select_Items/Settings/Panel/Back_Button/Back"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 94.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="North" type="Control" parent="Select_Items/Settings/Panel"]
+visible = false
+layout_mode = 2
+anchors_preset = 0
+offset_left = 887.0
+offset_top = 214.0
+offset_right = 927.0
+offset_bottom = 254.0
+
+[node name="1" parent="Select_Items/Settings/Panel/North" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 200.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+metadata/Sources = {}
+
+[node name="2" parent="Select_Items/Settings/Panel/North" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 200.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+metadata/Sources = {}
+
+[node name="3" parent="Select_Items/Settings/Panel/North" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 200.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+metadata/Sources = {}
+
+[node name="4" parent="Select_Items/Settings/Panel/North" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 200.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+metadata/Sources = {}
+
+[node name="5" parent="Select_Items/Settings/Panel/North" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 200.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+metadata/Sources = {}
+
+[node name="6" parent="Select_Items/Settings/Panel/North" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 200.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+metadata/Sources = {}
+
+[node name="East" type="Control" parent="Select_Items/Settings/Panel"]
+visible = false
+layout_mode = 2
+anchors_preset = 0
+offset_left = 887.0
+offset_top = 214.0
+offset_right = 927.0
+offset_bottom = 254.0
+
+[node name="1" parent="Select_Items/Settings/Panel/East" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 200.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+metadata/Sources = {}
+
+[node name="2" parent="Select_Items/Settings/Panel/East" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 200.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+metadata/Sources = {}
+
+[node name="3" parent="Select_Items/Settings/Panel/East" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 200.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+metadata/Sources = {}
+
+[node name="4" parent="Select_Items/Settings/Panel/East" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 200.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+metadata/Sources = {}
+
+[node name="5" parent="Select_Items/Settings/Panel/East" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 200.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+metadata/Sources = {}
+
+[node name="6" parent="Select_Items/Settings/Panel/East" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 200.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+metadata/Sources = {}
+
+[node name="South" type="Control" parent="Select_Items/Settings/Panel"]
+visible = false
+layout_mode = 2
+anchors_preset = 0
+offset_left = 887.0
+offset_top = 214.0
+offset_right = 927.0
+offset_bottom = 254.0
+
+[node name="1" parent="Select_Items/Settings/Panel/South" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_left = -887.0
+offset_top = -214.0
+offset_right = -687.0
+offset_bottom = -14.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+metadata/Sources = {}
+
+[node name="2" parent="Select_Items/Settings/Panel/South" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_left = -887.0
+offset_top = -214.0
+offset_right = -687.0
+offset_bottom = -14.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+metadata/Sources = {}
+
+[node name="3" parent="Select_Items/Settings/Panel/South" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_left = -887.0
+offset_top = -214.0
+offset_right = -687.0
+offset_bottom = -14.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+metadata/Sources = {}
+
+[node name="4" parent="Select_Items/Settings/Panel/South" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_left = -887.0
+offset_top = -214.0
+offset_right = -687.0
+offset_bottom = -14.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+metadata/Sources = {}
+
+[node name="5" parent="Select_Items/Settings/Panel/South" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_left = -887.0
+offset_top = -214.0
+offset_right = -687.0
+offset_bottom = -14.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+metadata/Sources = {}
+
+[node name="6" parent="Select_Items/Settings/Panel/South" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_left = -887.0
+offset_top = -214.0
+offset_right = -687.0
+offset_bottom = -14.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+metadata/Sources = {}
+
+[node name="West" type="Control" parent="Select_Items/Settings/Panel"]
+visible = false
+layout_mode = 2
+anchors_preset = 0
+offset_left = 887.0
+offset_top = 214.0
+offset_right = 927.0
+offset_bottom = 254.0
+
+[node name="1" parent="Select_Items/Settings/Panel/West" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 200.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+metadata/Sources = {}
+
+[node name="2" parent="Select_Items/Settings/Panel/West" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 200.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+metadata/Sources = {}
+
+[node name="3" parent="Select_Items/Settings/Panel/West" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 200.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+metadata/Sources = {}
+
+[node name="4" parent="Select_Items/Settings/Panel/West" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 200.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+metadata/Sources = {}
+
+[node name="5" parent="Select_Items/Settings/Panel/West" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 200.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+metadata/Sources = {}
+
+[node name="6" parent="Select_Items/Settings/Panel/West" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 200.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+metadata/Sources = {}
+
+[node name="Up" type="Control" parent="Select_Items/Settings/Panel"]
+visible = false
+layout_mode = 2
+anchors_preset = 0
+offset_left = 887.0
+offset_top = 214.0
+offset_right = 927.0
+offset_bottom = 254.0
+
+[node name="1" parent="Select_Items/Settings/Panel/Up" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_left = -887.0
+offset_top = -214.0
+offset_right = -687.0
+offset_bottom = -14.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+metadata/Sources = {}
+
+[node name="2" parent="Select_Items/Settings/Panel/Up" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_left = -887.0
+offset_top = -214.0
+offset_right = -687.0
+offset_bottom = -14.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+metadata/Sources = {}
+
+[node name="3" parent="Select_Items/Settings/Panel/Up" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_left = -887.0
+offset_top = -214.0
+offset_right = -687.0
+offset_bottom = -14.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+metadata/Sources = {}
+
+[node name="4" parent="Select_Items/Settings/Panel/Up" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_left = -887.0
+offset_top = -214.0
+offset_right = -687.0
+offset_bottom = -14.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+metadata/Sources = {}
+
+[node name="5" parent="Select_Items/Settings/Panel/Up" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_left = -887.0
+offset_top = -214.0
+offset_right = -687.0
+offset_bottom = -14.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+metadata/Sources = {}
+
+[node name="6" parent="Select_Items/Settings/Panel/Up" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_left = -887.0
+offset_top = -214.0
+offset_right = -687.0
+offset_bottom = -14.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+metadata/Sources = {}
+
+[node name="Down" type="Control" parent="Select_Items/Settings/Panel"]
+visible = false
+layout_mode = 2
+anchors_preset = 0
+offset_left = 887.0
+offset_top = 214.0
+offset_right = 927.0
+offset_bottom = 254.0
+
+[node name="1" parent="Select_Items/Settings/Panel/Down" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_left = -887.0
+offset_top = -214.0
+offset_right = -687.0
+offset_bottom = -14.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+metadata/Sources = {}
+
+[node name="2" parent="Select_Items/Settings/Panel/Down" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_left = -887.0
+offset_top = -214.0
+offset_right = -687.0
+offset_bottom = -14.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+metadata/Sources = {}
+
+[node name="3" parent="Select_Items/Settings/Panel/Down" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_left = -887.0
+offset_top = -214.0
+offset_right = -687.0
+offset_bottom = -14.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+metadata/Sources = {}
+
+[node name="4" parent="Select_Items/Settings/Panel/Down" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_left = -887.0
+offset_top = -214.0
+offset_right = -687.0
+offset_bottom = -14.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+metadata/Sources = {}
+
+[node name="5" parent="Select_Items/Settings/Panel/Down" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_left = -887.0
+offset_top = -214.0
+offset_right = -687.0
+offset_bottom = -14.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+metadata/Sources = {}
+
+[node name="6" parent="Select_Items/Settings/Panel/Down" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_left = -887.0
+offset_top = -214.0
+offset_right = -687.0
+offset_bottom = -14.0
+texture_normal = ExtResource("3_okuje")
+texture_pressed = ExtResource("4_5t8g4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+metadata/Sources = {}
+
+[node name="Puzzles" type="Panel" parent="Select_Items/Settings"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_sngad")
+script = ExtResource("9_m11gp")
+
+[node name="Back_Button" type="MarginContainer" parent="Select_Items/Settings/Puzzles"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -420.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 114.0
+grow_horizontal = 0
+
+[node name="Back" parent="Select_Items/Settings/Puzzles/Back_Button" instance=ExtResource("4_6vruk")]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 1
+tooltip_text = "Go back to the settings menu"
+theme_type_variation = &"GreenButton"
+text = "Back"
+icon = ExtResource("5_u3i27")
+icon_alignment = 1
+vertical_icon_alignment = 2
+expand_icon = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Shadow" type="Panel" parent="Select_Items/Settings/Puzzles/Back_Button/Back"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 94.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="North" type="Control" parent="Select_Items/Settings/Puzzles"]
+visible = false
+layout_mode = 2
+anchors_preset = 0
+offset_left = 887.0
+offset_top = 214.0
+offset_right = 927.0
+offset_bottom = 254.0
+
+[node name="1" parent="Select_Items/Settings/Puzzles/North" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 200.0
+texture_normal = ExtResource("10_syyls")
+texture_pressed = ExtResource("11_8lui5")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+metadata/Sources = {}
+
+[node name="East" type="Control" parent="Select_Items/Settings/Puzzles"]
+visible = false
+layout_mode = 2
+anchors_preset = 0
+offset_left = 887.0
+offset_top = 214.0
+offset_right = 927.0
+offset_bottom = 254.0
+
+[node name="1" parent="Select_Items/Settings/Puzzles/East" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 200.0
+texture_normal = ExtResource("10_syyls")
+texture_pressed = ExtResource("11_8lui5")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+metadata/Sources = {}
+
+[node name="South" type="Control" parent="Select_Items/Settings/Puzzles"]
+visible = false
+layout_mode = 2
+anchors_preset = 0
+offset_left = 887.0
+offset_top = 214.0
+offset_right = 927.0
+offset_bottom = 254.0
+
+[node name="1" parent="Select_Items/Settings/Puzzles/South" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 200.0
+texture_normal = ExtResource("10_syyls")
+texture_pressed = ExtResource("11_8lui5")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+metadata/Sources = {}
+
+[node name="West" type="Control" parent="Select_Items/Settings/Puzzles"]
+visible = false
+layout_mode = 2
+anchors_preset = 0
+offset_left = 887.0
+offset_top = 214.0
+offset_right = 927.0
+offset_bottom = 254.0
+
+[node name="1" parent="Select_Items/Settings/Puzzles/West" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 200.0
+texture_normal = ExtResource("10_syyls")
+texture_pressed = ExtResource("11_8lui5")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+metadata/Sources = {}
+
+[node name="Up" type="Control" parent="Select_Items/Settings/Puzzles"]
+visible = false
+layout_mode = 2
+anchors_preset = 0
+offset_left = 887.0
+offset_top = 214.0
+offset_right = 927.0
+offset_bottom = 254.0
+
+[node name="1" parent="Select_Items/Settings/Puzzles/Up" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 200.0
+texture_normal = ExtResource("10_syyls")
+texture_pressed = ExtResource("11_8lui5")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+metadata/Sources = {}
+
+[node name="Down" type="Control" parent="Select_Items/Settings/Puzzles"]
+visible = false
+layout_mode = 2
+anchors_preset = 0
+offset_left = 887.0
+offset_top = 214.0
+offset_right = 927.0
+offset_bottom = 254.0
+
+[node name="1" parent="Select_Items/Settings/Puzzles/Down" instance=ExtResource("2_o7um0")]
+visible = false
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 200.0
+texture_normal = ExtResource("10_syyls")
+texture_pressed = ExtResource("11_8lui5")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+metadata/Sources = {}
+
+[connection signal="pressed" from="Select_Items/Settings/Panel/Back_Button/Back" to="." method="OnBackPressed"]
+[connection signal="pressed" from="Select_Items/Settings/Puzzles/Back_Button/Back" to="." method="OnBackPressed"]

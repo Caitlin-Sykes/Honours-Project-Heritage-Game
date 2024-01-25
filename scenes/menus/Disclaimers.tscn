@@ -89,7 +89,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 size_flags_stretch_ratio = 5.0
-theme_override_font_sizes/font_size = 41
+theme_override_font_sizes/font_size = 37
 text = "DISCLAIMER
 
 Though attempted to be handled in respectful manner, this game 
@@ -99,21 +99,23 @@ The topic has been researched by the developer and at the time of
 writing, multiple sources were consulted in order to form an accurate 
 viewpoint. 
 
-Press \"G\" at any time to view the sources for that particular piece of
+Press \"K\" at any time to view the sources for that particular piece of
 information. Alternatively, sources are also available within the game
-itself, under both \"sources\" in the menu, and within the file \"sources.md\",
-available in the game root (where you ran the exe)."
+itself, under both \"sources\" in the menu, and within the file \"sources.md\".
+
+Any information you enter, is not saved nor stored. It is purely used to refer to you however you like, and is not accessible to the creator of the game."
 horizontal_alignment = 1
+autowrap_mode = 3
 
 [node name="Continue" parent="Panel/MarginContainer/BoxContainer/Label" instance=ExtResource("4_01slw")]
 layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
+anchors_preset = -1
+anchor_top = 0.977
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -96.0
+anchor_bottom = 0.992
+offset_top = -47.0
 offset_right = 0.0
-offset_bottom = -49.0
+offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_type_variation = &"GreenButton"

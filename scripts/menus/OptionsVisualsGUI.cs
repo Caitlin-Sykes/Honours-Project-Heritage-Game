@@ -12,7 +12,14 @@ public partial class OptionsVisualsGUI : Control
 
 	private static readonly string FULL_SCREEN_OPTION_BUTTON_PATH = "Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/Full_Screen";
 
-	private Transitions TRANSITION;
+	private Transitions TRANSITION; //instance of transition
+	
+	private static readonly int DEFAULT = 31;
+	private static readonly int BIGGER = 37; // Font sizes
+	private static readonly int BIGGEST = 43;
+
+
+
 
 
 	//An enum for replacing the default sizes
@@ -46,10 +53,9 @@ public partial class OptionsVisualsGUI : Control
 			Theme.DefaultFontSize = OptionsVisualsGUI.GetFontSizeDefault().ToInt();
 
 	
-			if (OptionsVisualsGUI.GetFullScreenDefault() == true) {
+			if (OptionsVisualsGUI.GetFullScreenDefault()) {
 				DisplayServer.WindowSetMode(DisplayServer.WindowMode.Fullscreen);
 			}
-			// TODO: optimise this spaghetti junction of code for init
 	}
 
 
@@ -87,20 +93,20 @@ public partial class OptionsVisualsGUI : Control
 	public void SetFontSizeDefault() {
 		//Sets default setting to Dyslexie if CURRENT_FONT is Dyslexie
 		//Otherwise sets it to Cascadia
-		if (GetFontSizeDefault() == "26") {
+		if (GetFontSizeDefault() == DEFAULT.ToString()) {
 			GetNode<OptionButton>(FONT_SIZE_OPTION_BUTTON_PATH).Select(0); //with 0 being the index of default
-			Theme.DefaultFontSize = 26;
+			Theme.DefaultFontSize = DEFAULT;
 		}
 
-		if (GetFontSizeDefault() == "30") {
+		if (GetFontSizeDefault() == BIGGER.ToString()) {
 			GetNode<OptionButton>(FONT_SIZE_OPTION_BUTTON_PATH).Select(1); //with 1 being the index of bigger
-			Theme.DefaultFontSize = 30;
+			Theme.DefaultFontSize = BIGGER;
 		}
 
 		//If it finds biggest in the config file, sets setting to be replaced to biggest
 		else {
 			GetNode<OptionButton>(FONT_SIZE_OPTION_BUTTON_PATH).Select(2); //with 2 being the index of biggest
-			Theme.DefaultFontSize = 34;
+			Theme.DefaultFontSize = BIGGEST;
 
 		}
 	}
@@ -109,21 +115,21 @@ public partial class OptionsVisualsGUI : Control
 	public static string GetFontSizeDefault() {
 		//If DYSLEXIE is found in file, current font is set to dyslexie
 		if (OptionsFileHandler.FindInFile("[FONT_SIZE] : DEFAULT")) {
-			return "26";
+			return DEFAULT.ToString();
 		}
 
 		else if (OptionsFileHandler.FindInFile("[FONT_SIZE] : BIGGER")) {
-			return "30";
+			return BIGGER.ToString();
 		}
 
-		return "34";
+		return BIGGEST.ToString();
 	}
 
 	// Selects the default options
 	public void SetFullScreenDefault() {
 		//Sets default setting to False if FULL_SCREEN is false
 		//Otherwise sets it to true
-		if (GetFullScreenDefault() == false) {
+		if (GetFullScreenDefault()) {
 			GetNode<OptionButton>(FULL_SCREEN_OPTION_BUTTON_PATH).Select(1); //with 1 being the index of false
 		}
 
@@ -189,21 +195,21 @@ public partial class OptionsVisualsGUI : Control
 					OptionsFileHandler.ReplaceInFile(rs.ToString().ToUpper(), "DEFAULT");
 
 					//Sets new size
-					Theme.DefaultFontSize = 26;
+					Theme.DefaultFontSize = DEFAULT;
 	 
 					break;	
 			case 1:
 					OptionsFileHandler.ReplaceInFile(rs.ToString().ToUpper(), "BIGGER");
 					
 					//Sets new size
-					Theme.DefaultFontSize = 30;
+					Theme.DefaultFontSize = BIGGER;
 
 					break;
 			case 2:
 					OptionsFileHandler.ReplaceInFile(rs.ToString().ToUpper(), "BIGGEST");
 
 					//Sets new size
-					Theme.DefaultFontSize = 34;
+					Theme.DefaultFontSize = BIGGEST;
 
 					break;
 			default: 

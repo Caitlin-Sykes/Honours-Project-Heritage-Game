@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://3x7tubsa2wal"]
+[gd_scene load_steps=13 format=3 uid="uid://3x7tubsa2wal"]
 
 [ext_resource type="Script" path="res://scripts/menus/MainMenu.cs" id="1_4m1ny"]
 [ext_resource type="Theme" uid="uid://c8ikhuofmlww0" path="res://resources/themes/main_theme_cascadia.tres" id="1_df4f6"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://c3way72bjjemo" path="res://resources/textures/logos/philly_2017.png" id="6_7nkt2"]
 [ext_resource type="Texture2D" uid="uid://bjsarg7oxgj3h" path="res://resources/textures/logos/pride_progress.png" id="7_d05u0"]
 [ext_resource type="Texture2D" uid="uid://bqdowa8y02amp" path="res://resources/textures/logos/pride_1979.png" id="8_fi3p1"]
+[ext_resource type="AudioStream" uid="uid://dn7igbxbb7s5h" path="res://resources/audio/background/passing-clouds-cedric-vermue-main-version-20638-08-02.mp3" id="10_k6smt"]
 
 [sub_resource type="Animation" id="Animation_7a53q"]
 resource_name = "Transition_Fade_In"
@@ -210,6 +211,11 @@ layout_mode = 2
 size_flags_vertical = 6
 texture = ExtResource("5_g02bf")
 expand_mode = 5
+
+[node name="MainTheme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_k6smt")
+volume_db = -29.039
+autoplay = true
 
 [connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/HBoxContainer/Play" to="." method="OnStartPressed"]
 [connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/HBoxContainer/Options" to="." method="OnOptionsPressed"]

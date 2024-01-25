@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4jwl2wes28a0"]
+
+[ext_resource type="PackedScene" uid="uid://b6wkhglgiynah" path="res://resources/models/gui/circle_select.blend" id="1_x7nf5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wjwa2"]
+albedo_color = Color(0.145098, 1, 0.12549, 1)
+
+[node name="circle_select" instance=ExtResource("1_x7nf5")]
+
+[node name="Circle" parent="." index="2"]
+surface_material_override/0 = SubResource("StandardMaterial3D_wjwa2")

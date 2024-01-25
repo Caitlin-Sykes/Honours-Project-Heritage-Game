@@ -56,6 +56,6 @@ public partial class OptionsMenu : Control
 	//A function to control the button "Credits" on the Options
 	//Sends you to the credits screen
 	private void OnCreditsPressed() {
-		throw new NotImplementedException();
+		TRANSITION.NextScene("res://scenes/menus/OptionsCredits.tscn");
 	}
 }
