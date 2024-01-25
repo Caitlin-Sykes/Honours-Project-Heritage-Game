@@ -1,97 +1,97 @@
 {
   "Introduction_Scene": [
-	{
-	  "Id": "1",
-	  "Speaker": "Mum",
-	  "Dialogue": "{0}, wake up! It's getting late and we have stuff to do!",
-	  "Avatar": "res://resources/textures/sprites/mother/{0}.svg"
-	},
+    {
+      "Id": "1",
+      "Speaker": "Mum",
+      "Dialogue": "{0}, wake up! It's getting late and we have stuff to do!",
+      "Avatar": "res://resources/textures/sprites/mother/{0}.svg"
+    },
 
-	{
-	  "Id": "2",
-	  "Speaker": "{0}",
-	  "Dialogue": "Nghhhhhh...",
-	  "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
-	},
+    {
+      "Id": "2",
+      "Speaker": "{0}",
+      "Dialogue": "Nghhhhhh...",
+      "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
+    },
 
-	{
-	  "Id": "3",
-	  "Speaker": "Mum",
-	  "Dialogue": "I mean it, {0}! Don't make me come in with the bucket of water!",
-	  "Avatar": "res://resources/textures/sprites/mother/{0}.svg"
-	},
+    {
+      "Id": "3",
+      "Speaker": "Mum",
+      "Dialogue": "I mean it, {0}! Don't make me come in with the bucket of water!",
+      "Avatar": "res://resources/textures/sprites/mother/{0}.svg"
+    },
 
-	{
-	  "Id": "4",
-	  "Speaker": "{0}",
-	  "Dialogue": "I suppose I better get up...",
-	  "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
-	},
+    {
+      "Id": "4",
+      "Speaker": "{0}",
+      "Dialogue": "I suppose I better get up...",
+      "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
+    },
 
-	{
-	  "Id": "5",
-	  "Speaker": "Guide",
-	  "Dialogue": "When you see a circle like this, this is something you can click. This can either be to get a better view, something you can interact with, or something to progress the scene. Try clicking on it now.",
-	  "Avatar": "res://resources/textures/sprites/guide/1.svg"
-	}
+    {
+      "Id": "5",
+      "Speaker": "Guide",
+      "Dialogue": "When you see a circle like this, this is something you can click. This can either be to get a better view, something you can interact with, or something to progress the scene. Try clicking on it now.",
+      "Avatar": "res://resources/textures/sprites/guide/1.svg"
+    }
   ],
 
   "Controls": [
-	{
-	  "Id": "1",
-	  "Speaker": "Guide",
-	  "Dialogue": "Using the arrows on your screen, or by using WASD, you can move around the room and interact with things. Some rooms will allow you to look up, in which case your screen will look like this.",
-	  "Avatar": "res://resources/textures/sprites/guide/1.svg"
-	},
+    {
+      "Id": "1",
+      "Speaker": "Guide",
+      "Dialogue": "Using the arrows on your screen, or by using WASD, you can move around the room and interact with things. Some rooms will allow you to look up, in which case your screen will look like this.",
+      "Avatar": "res://resources/textures/sprites/guide/1.svg"
+    },
 
-	{
-	  "Id": "2",
-	  "Speaker": "Guide",
-	  "Dialogue": "You can see the up and down arrows have now appeared. In this scene, you won't have to worry about looking up and down, so I will turn them off again.",
-	  "Avatar": "res://resources/textures/sprites/guide/1.svg"
-	},
+    {
+      "Id": "2",
+      "Speaker": "Guide",
+      "Dialogue": "You can see the up and down arrows have now appeared. In this scene, you won't have to worry about looking up and down, so I will turn them off again.",
+      "Avatar": "res://resources/textures/sprites/guide/1.svg"
+    },
 
-	{
-	  "Id": "3",
-	  "Speaker": "Guide",
-	  "Dialogue": "Similarly to before, anywhere you can see a circle-like object, this is something you can interact with. Try interacting with the wardrobe.",
-	  "Avatar": "res://resources/textures/sprites/guide/1.svg"
-	},
+    {
+      "Id": "3",
+      "Speaker": "Guide",
+      "Dialogue": "Similarly to before, anywhere you can see a circle-like object, this is something you can interact with. Try interacting with the wardrobe.",
+      "Avatar": "res://resources/textures/sprites/guide/1.svg"
+    },
 
-	{
-	  "Id": "4",
-	  "Speaker": "Guide",
-	  "Dialogue": "There we go. Any time during the game, if you would like to see the source of any information provided, such as a fact, you can press the 'K' key.",
-	  "Avatar": "res://resources/textures/sprites/guide/1.svg"
-	},
+    {
+      "Id": "4",
+      "Speaker": "Guide",
+      "Dialogue": "There we go. Any time during the game, if you would like to see the source of any information provided, such as a fact, you can press the 'K' key.",
+      "Avatar": "res://resources/textures/sprites/guide/1.svg"
+    },
 
-	{
-	  "Id": "5",
-	  "Speaker": "Guide",
-	  "Dialogue": "This will show a list of sources that the information was obtained from. This is also available from within the game menu and the game source files- 'Sources.md'",
-	  "Avatar": "res://resources/textures/sprites/guide/1.svg"
-	},
+    {
+      "Id": "5",
+      "Speaker": "Guide",
+      "Dialogue": "This will show a list of sources that the information was obtained from. This is also available from within the game menu and the game source files- 'Sources.md'",
+      "Avatar": "res://resources/textures/sprites/guide/1.svg"
+    },
 
-	{
-	  "Id": "6",
-	  "Speaker": "Guide",
-	  "Dialogue": "The 'J' key may provide extra information not originally shown. Try pressing 'J' whilst clicking on the poster by the desk.",
-	  "Avatar": "res://resources/textures/sprites/guide/1.svg"
-	},
+    {
+      "Id": "6",
+      "Speaker": "Guide",
+      "Dialogue": "The 'J' key may provide extra information not originally shown. Try pressing 'J' whilst clicking on the poster by the desk.",
+      "Avatar": "res://resources/textures/sprites/guide/1.svg"
+    },
 
-	{
-	  "Id": "7",
-	  "Speaker": "Guide",
-	  "Dialogue": "If you are stuck at any time, or forget what you are supposed to be doing, press the 'L' key to prompt you.",
-	  "Avatar": "res://resources/textures/sprites/guide/1.svg"
-	},
+    {
+      "Id": "7",
+      "Speaker": "Guide",
+      "Dialogue": "If you are stuck at any time, or forget what you are supposed to be doing, press the 'L' key to prompt you.",
+      "Avatar": "res://resources/textures/sprites/guide/1.svg"
+    },
 
-	{
-	  "Id": "8",
-	  "Speaker": "Guide",
-	  "Dialogue": "I think that's about it in terms of controls. Have fun- and I think you should interact with the door to tell your mum you're coming.",
-	  "Avatar": "res://resources/textures/sprites/guide/1.svg"
-	}
+    {
+      "Id": "8",
+      "Speaker": "Guide",
+      "Dialogue": "I think that's about it in terms of controls. Have fun- and I think you should interact with the door to tell your mum you're coming.",
+      "Avatar": "res://resources/textures/sprites/guide/1.svg"
+    }
   ],
 
   "Mum_Dialogue_1": [
@@ -109,25 +109,83 @@
       "Avatar": "res://resources/textures/sprites/mother/{0}.svg"
     },
 
+    {
+      "Id": "3",
+      "Speaker": "{0}",
+      "Dialogue": "Sure! What am I looking for?",
+      "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
+    },
+
+    {
+      "Id": "4",
+      "Speaker": "Mum",
+      "Dialogue": "It's uh, brown coloured. Looks kinda worn. The title is in cursive- just pick it up and put it on your desk!",
+      "Avatar": "res://resources/textures/sprites/mother/{0}.svg"
+    },
+
+    {
+      "Id": "5",
+      "Speaker": "{0}",
+      "Dialogue": "Okay! ...a bit random to ask, but I guess I'd better find it.",
+      "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
+    }
+  ],
+
+  "Mum_Dialogue_2": [
+    {
+      "Id": "1",
+      "Speaker": "Mum",
+      "Dialogue": "Ah you found it then.",
+      "Avatar": "res://resources/textures/sprites/mother/{0}.svg"
+    },
+
+    {
+      "Id": "2",
+      "Speaker": "{0}",
+      "Dialogue": "Yeah. But I've never seen this before, Mum.",
+      "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
+    },
+
+    {
+      "Id": "3",
+      "Speaker": "Mum",
+      "Dialogue": "That would be because I only put it there last week, thinking you'd notice.",
+      "Avatar": "res://resources/textures/sprites/mother/{0}.svg"
+    },
+
+    {
+      "Id": "4",
+      "Speaker": "{0}",
+      "Dialogue": "I uh, don't really look at my bookshelf all that often.",
+      "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
+    },
+
+    {
+      "Id": "5",
+      "Speaker": "Mum",
+      "Dialogue": "Teenagers. Anyway, it- you know what, open it. I'll show you what it does.",
+      "Avatar": "res://resources/textures/sprites/mother/{0}.svg"
+    },
+
+    {
+      "Id": "6",
+      "Speaker": "{0}",
+      "Dialogue": "What it does? It's just a book-",
+      "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
+    },
+
+    {
+      "Id": "7",
+      "Speaker": "Mum",
+      "Dialogue": "Just do it, {0}, please.",
+      "Avatar": "res://resources/textures/sprites/mother/{0}.svg"
+    },
+
 	{
-    "Id": "3",
+    "Id": "8",
     "Speaker": "{0}",
-    "Dialogue": "Sure! What am I looking for?",
+    "Dialogue": "Geez. Fine.",
     "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
-  },
-
-  {
-    "Id": "4",
-    "Speaker": "Mum",
-    "Dialogue": "It's uh, brown coloured. Looks kinda worn. The title is in cursive- just pick it up and put it on your desk!",
-    "Avatar": "res://resources/textures/sprites/mother/{0}.svg"
-  },
-
-   {
-     "Id": "5",
-     "Speaker": "{0}",
-     "Dialogue": "Okay! ...a bit random to ask, but I guess I'd better find it.",
-     "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
-   }
+  }
   ]
 }

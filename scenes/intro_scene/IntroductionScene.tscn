@@ -96,6 +96,7 @@ script = ExtResource("1_wn8em")
 DIALOGUE = NodePath("CanvasLayer/Settings/SpeechGUI")
 
 [node name="Transition" type="ColorRect" parent="."]
+visible = false
 modulate = Color(0.131765, 0.131765, 0.131765, 0.872941)
 top_level = true
 anchors_preset = 15
@@ -252,7 +253,6 @@ script = ExtResource("11_www6o")
 DIALOGUE = NodePath("../CanvasLayer/Settings/SpeechGUI")
 
 [node name="Select_Items" type="CanvasLayer" parent="InteractableItems"]
-visible = false
 follow_viewport_enabled = true
 
 [node name="Settings" type="Control" parent="InteractableItems/Select_Items"]
@@ -834,8 +834,8 @@ grow_vertical = 2
 visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.595
-anchor_top = 0.809
+anchor_left = 0.427
+anchor_top = 0.481
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_right = 0.0
@@ -844,11 +844,15 @@ grow_horizontal = 2
 grow_vertical = 2
 texture_normal = ExtResource("15_0dxs1")
 texture_pressed = ExtResource("16_d7pj1")
-metadata/Object = ""
-metadata/Description = {}
+metadata/Object = "Magic Book"
+metadata/Description = {
+"Stage_1": "This must be the book Mum was talking about. It's a bit tattered."
+}
 metadata/Hints = {}
-metadata/ExtraInformation = {}
-metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/ExtraInformation = {
+"Stage_1": "It's a bit tattered. Why do we even still have this?"
+}
+metadata/NewCamPos = Vector3(-0.0602202, -0.205688, 1.05261)
 metadata/CamRotation = 0
 metadata/Sources = {}
 
@@ -925,8 +929,7 @@ metadata/CamRotation = 0
 metadata/Sources = {}
 
 [node name="testCam" type="Camera3D" parent="."]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.0602202, -0.205688, 1.33653)
-visible = false
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.0602202, -0.205688, 1.05261)
 
 [connection signal="Stage1" from="." to="." method="Stage1Stuff"]
 [connection signal="StartScene" from="." to="." method="FirstDialogue"]
@@ -947,6 +950,7 @@ visible = false
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/West/1" to="." method="TriggerDialogueTwo" flags=6]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/West/1" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/West/1"]]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/West/2" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/West/2"]]
+[connection signal="toggled" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/2" to="InteractableItems/Select_Items/Settings/Puzzles" method="InitializePuzzle" binds= [NodePath(".")]]
 
 [editable path="CanvasLayer/Settings/SpeechGUI"]
 [editable path="MainRoom"]

@@ -19,6 +19,7 @@ https://www.flaticon.com/free-icons/play - Arrow icon, Roundicon, icon for selec
 
 [AUDIO]
 https://pixabay.com/sound-effects//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=140881 - ClickButton.mp3, UNIVERSFIELD from Pixabay, button selection
+https://pixabay.com/sound-effects/search/knocking%20on%20the%20door/ - knocking mp3 for knocking on doors
 
 [SPRITES]
 https://www.dicebear.com/playground/ - for character speaking sprites

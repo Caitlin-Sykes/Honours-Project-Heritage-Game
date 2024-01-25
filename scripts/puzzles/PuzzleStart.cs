@@ -3,15 +3,13 @@ using System;
 
 public partial class PuzzleStart : Control
 {
-	// Called when the node enters the scene tree for the first time.
-	// public override void _Ready()
-	// {
-	// }
+	private WTP puzzleOne;
 
-	// // Called every frame. 'delta' is the elapsed time since the previous frame.
-	// public override void _Process(double delta)
-	// {
-	// }
+	private static string CURRENT_RED_CIRCLE;
+
+	public override void _Ready() {
+		puzzleOne = new WTP();
+	}
 
 	/**
 	* ----------------------------------------------------------------
@@ -22,18 +20,17 @@ public partial class PuzzleStart : Control
 	//A function to check if a puzzle is present, and whether to enable it or not
 	public void CheckPuzzle(ButtonOverwrite circle) {
 		try {
-			var puzzleEnabled = (Boolean)circle.GetMeta("PuzzleEnabled");
-			GD.Print(circle.Name);
-			GD.Print(circle.GetParent().Name);
-			//If = true
-			if (puzzleEnabled) {
-				
-				//Gets the path by getting the circles parent's name and the circles own name (ie, /North/1)
-				TogglePuzzleVisibility(GetNode<ButtonOverwrite>(String.Format("PuzzlesPanel/{0}/{1}", circle.GetParent().Name, circle.Name)));
-			}
+			
+			//If = true and has the meta
+			if (circle.HasMeta("PuzzleEnabled") && (bool)circle.GetMeta("PuzzleEnabled")) {
 
-			else {
-				GD.Print("No puzzle");
+				//Saves Current Red Circles Path
+				CURRENT_RED_CIRCLE = String.Format("PuzzlesPanel/{0}/{1}", circle.GetParent().Name, circle.Name);
+
+				//Gets the path by getting the circles parent's name and the circles own name (ie, /North/1)
+				TogglePuzzleVisibility(GetNode<ButtonOverwrite>(CURRENT_RED_CIRCLE));
+
+				
 			}
 		}
 
@@ -60,9 +57,23 @@ public partial class PuzzleStart : Control
 
 	/**
 	* ----------------------------------------------------------------
-	* Toggle
+	* Initialize Puzzle
 	* ----------------------------------------------------------------
 	**/
+	private void InitializePuzzle(int puzzID) {
+		//Hides the red circle
+		TogglePuzzleVisibility(GetNode<ButtonOverwrite>(CURRENT_RED_CIRCLE));
+		
+		switch(puzzID) {
+			case 1:
+				puzzleOne.InitPuzzle();
+				break;
+
+
+		}
+	}
 
 	// private void OnPuzzleBack
+
+	// once gets the book, --> click on desk --> initiate mum dialogue --> woah, look kid, book magic dialogue --> woah, transported to stonewall scene.
 }
