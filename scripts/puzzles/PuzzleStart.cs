@@ -5,10 +5,10 @@ public partial class PuzzleStart : Control
 {
 	private WTP puzzleOne;
 
-	private static string CURRENT_RED_CIRCLE;
+	public static string CURRENT_RED_CIRCLE {get;set;}
 
 	public override void _Ready() {
-		puzzleOne = new WTP();
+		puzzleOne = GetNode<WTP>("PuzzlesPanel/South");
 	}
 
 	/**
@@ -25,7 +25,7 @@ public partial class PuzzleStart : Control
 			if (circle.HasMeta("PuzzleEnabled") && (bool)circle.GetMeta("PuzzleEnabled")) {
 
 				//Saves Current Red Circles Path
-				CURRENT_RED_CIRCLE = String.Format("PuzzlesPanel/{0}/{1}", circle.GetParent().Name, circle.Name);
+				CURRENT_RED_CIRCLE = String.Format("PuzzlesPanel/{0}/PuzzleCont/{1}", circle.GetParent().Name, circle.Name);
 
 				//Gets the path by getting the circles parent's name and the circles own name (ie, /North/1)
 				TogglePuzzleVisibility(GetNode<ButtonOverwrite>(CURRENT_RED_CIRCLE));
@@ -46,25 +46,38 @@ public partial class PuzzleStart : Control
 	**/
 
 	//Toggles puzzle visibility by enabling the puzzle circle itself, its parent, and the "Puzzles" control node
-	private void TogglePuzzleVisibility(ButtonOverwrite circ) {
-		circ.Visible = !circ.Visible;
+	public void TogglePuzzleVisibility(ButtonOverwrite circ) {
+		//Toggles Red Circle Visibility
+		circ.Visible = !circ.Visible; 
+
+		//Toggles Puzzle Cont Visibility
 		var parCirc = (Control)circ.GetParent();
 		parCirc.Visible = !parCirc.Visible;
-		var puzzlesControl = (Control)parCirc.GetParent().GetParent();
-		puzzlesControl.Visible = !puzzlesControl.Visible;
+
+		//Toggles South visibility
+		var compDir = (Control)parCirc.GetParent();
+		compDir.Visible = !compDir.Visible;
+
+		//Toggles Puzzles master visiblity
+		var puzzlesMaster = (Control)compDir.GetParent().GetParent();
+		puzzlesMaster.Visible = !puzzlesMaster.Visible;
+
 
 	}
-
+		
 	/**
 	* ----------------------------------------------------------------
 	* Initialize Puzzle
+	TODO: confirmed ButtonOverwrite
 	* ----------------------------------------------------------------
 	**/
-	private void InitializePuzzle(int puzzID) {
+	private void InitialisePuzzle(int puzzID) {
+		
 		//Hides the red circle
 		TogglePuzzleVisibility(GetNode<ButtonOverwrite>(CURRENT_RED_CIRCLE));
-		
-		switch(puzzID) {
+
+
+		switch (puzzID) {
 			case 1:
 				puzzleOne.InitPuzzle();
 				break;

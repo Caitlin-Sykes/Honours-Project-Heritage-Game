@@ -142,6 +142,8 @@ public partial class IntroductionScene : Node3D
 		
 		DIALOGUE.SwapOverlay();
 
+		SCENESTATEACCESS.sceneState = SceneState.CurrentSceneState.Stage_2; //sets the current scene stage to stage_1
+
 
 	}
 }

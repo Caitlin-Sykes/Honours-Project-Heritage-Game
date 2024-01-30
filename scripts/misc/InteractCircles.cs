@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Runtime.CompilerServices;
 
 
 
@@ -56,24 +57,29 @@ public partial class InteractCircles : Node3D
 		if (cir != null)
 		{
 			//parNode is the parent of cir node
-			var parNode = (Control)cir.GetParent();
+			if (cir.GetParent() is Control parNode) {
+				
+				//Toggles parent node
+				ToggleParentNode(cir);
 
-			//Toggles parent node
-			ToggleParentNode(cir);
-
-			//For every circle in the direction container, toggles them
-			foreach (ButtonOverwrite circle in parNode.GetChildren())
-			{
-				circle.Visible = !circle.Visible;
+				//For every circle in the direction container, toggles them
+				foreach (ButtonOverwrite circle in parNode.GetChildren())
+				{
+					circle.Visible = !circle.Visible;
+				}
 			}
+
+			
 		}
 	}
 
 	//Toggles the visibility of the parent node
 	public void ToggleParentNode(ButtonOverwrite cir)
 	{
-		var parNode = (Control)cir.GetParent();
-		parNode.Visible = !parNode.Visible;
+		if (cir.GetParent() is Control parNode) {
+			parNode.Visible = !parNode.Visible;
+
+		}
 	}
 
 	//Enables a specific event circle
@@ -89,6 +95,24 @@ public partial class InteractCircles : Node3D
 
 		catch (InvalidCastException e)
 		{
+			GD.PrintErr("Cannot find the circle to be disabled. Is the object correct? Specific Error is: " + e.Message);
+		}
+
+
+	}
+
+	//Enables/Disables a specific event circle by path
+	public void ToggleSpecificDirectionPath(string cirPath)
+	{
+
+		//Gets the circle to be enabled, passed in by path
+		try
+		{
+			GetNode<ButtonOverwrite>(cirPath).Visible = !GetNode<ButtonOverwrite>(cirPath).Visible;
+		}
+
+		catch (InvalidCastException e)
+		{
 			GD.PrintErr("Cannot find the circle to be disabled. Is the path correct? Specific Error is: " + e.Message);
 		}
 
@@ -100,6 +124,7 @@ public partial class InteractCircles : Node3D
 
 	public async void CirclesPressed(String path)
 	{
+
 		//if previous stage != PlayerStatus.Dialogue (aka, coming from freeroam), make gui visible!
 		if (SCENESTATEACCESS.PlayerStatus != SceneState.StatusOfPlayer.InDialogue)
 		{
@@ -110,20 +135,45 @@ public partial class InteractCircles : Node3D
 		SCENESTATEACCESS.PlayerStatus = SceneState.StatusOfPlayer.LookingAtSomething;
 		CURRENT_PATH_CIRCLES = path;
 
-		
+
 		//If it has a camera position then
 		if (GetNode<ButtonOverwrite>(path).GetMeta("NewCamPos").AsVector3() != Vector3.Zero)
 		{
 
 			ToggleEventsDirection(GetNode<ButtonOverwrite>(path)); //turns off all the circles 
+			GD.Print(path);
 			SetCam(GetNode<ButtonOverwrite>(path).GetMeta("NewCamPos").AsVector3(), (float)GetNode<ButtonOverwrite>(path).GetMeta("CamRotation")); //sets the camera to the position and rotation in the meta data
 			ToggleBackButton(); //shows the back button
 			PUZZLES.CheckPuzzle(GetNode<ButtonOverwrite>(path)); // checks if there is a puzzle, and whether to display
 		}
 
-		//Gets meta description of button clicked
+		//Gets meta description of button clicked 
 		var description = (Godot.Collections.Dictionary<string, string>)GetNode<ButtonOverwrite>(path).GetMeta("Description");
-		DIALOGUE.Dialogue(PlayerData.Player.Name, description[SCENESTATEACCESS.CurrentStateAsString()], string.Format(PLAYER_AVATAR, PlayerData.Player.Avatar));
+
+		//If has key then shows dialogue, if not, then break
+		if (description.ContainsKey(SCENESTATEACCESS.CurrentStateAsString()))
+		{
+			DIALOGUE.Dialogue(PlayerData.Player.Name, description[SCENESTATEACCESS.CurrentStateAsString()], string.Format(PLAYER_AVATAR, PlayerData.Player.Avatar));
+		}
+
+		//Breaks out the function if it doesn't have the key
+		else
+		{
+			if (GetNode<ButtonOverwrite>(path).GetMeta("Object").AsString() != "Door")
+			{
+				//Swaps back to dialogue mode
+				SCENESTATEACCESS.PlayerStatus = SCENESTATEACCESS.PreviousState;
+				return;
+			}
+
+			else
+			{
+				SCENESTATEACCESS.PlayerStatus = SceneState.StatusOfPlayer.FreeRoam; //swaps the status to in dialogue
+				return;
+			}
+		}
+
+
 
 		//Swap back to gui speech
 		DIALOGUE.SwapOverlay();
@@ -140,13 +190,15 @@ public partial class InteractCircles : Node3D
 		//If the camera isn't moved
 		if (GetNode<ButtonOverwrite>(path).GetMeta("NewCamPos").AsVector3() == Vector3.Zero)
 		{
-			if (GetNode<ButtonOverwrite>(path).GetMeta("Object").AsString() != "Door") {
+			if (GetNode<ButtonOverwrite>(path).GetMeta("Object").AsString() != "Door")
+			{
 				//Swaps back to dialogue mode
 				SCENESTATEACCESS.PlayerStatus = SCENESTATEACCESS.PreviousState;
 			}
 
 			//If tutorial
-			if (SCENESTATEACCESS.sceneState == SceneState.CurrentSceneState.Tutorial) {
+			if (SCENESTATEACCESS.sceneState == SceneState.CurrentSceneState.Tutorial)
+			{
 				// Swap back to gui view
 				DIALOGUE.SwapOverlay();
 
@@ -179,13 +231,15 @@ public partial class InteractCircles : Node3D
 		SCENESTATEACCESS.PlayerStatus = SCENESTATEACCESS.PreviousState;
 
 		//If the previous state is freeroam
-		if (SCENESTATEACCESS.PreviousState == SceneState.StatusOfPlayer.FreeRoam) {
+		if (SCENESTATEACCESS.PreviousState == SceneState.StatusOfPlayer.FreeRoam)
+		{
 			var parNode = (Control)GetNode<ButtonOverwrite>(CURRENT_PATH_CIRCLES).GetParent();
-			
+
 			//Sets visible to true
-			if (!parNode.Visible) {
+			if (!parNode.Visible)
+			{
 				parNode.Visible = true;
-				
+
 			}
 		}
 		//Skips dialogue so it doesnt repeat itself
@@ -195,8 +249,9 @@ public partial class InteractCircles : Node3D
 		DIALOGUE.SwapOverlay();
 
 		// this line is for when returning to freeroam after clicking the back button
-		if (SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam) {
-				DIALOGUE.SwapOverlay();
+		if (SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam)
+		{
+			DIALOGUE.SwapOverlay();
 		}
 
 	}
@@ -208,7 +263,7 @@ public partial class InteractCircles : Node3D
 	}
 
 	//Sets current Camera position
-	private void SetCam(Vector3 pos, float angle)
+	public void SetCam(Vector3 pos, float angle)
 	{
 		Camera3D curCam = GetViewport().GetCamera3D(); //Gets the current active camera
 		curCam.Position = pos; //Sets current camera to the position

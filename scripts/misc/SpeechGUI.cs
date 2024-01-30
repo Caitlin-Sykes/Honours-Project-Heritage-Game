@@ -118,7 +118,7 @@ public partial class SpeechGUI : Control
 	{
 		if (Scene != null && SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.InDialogue)
 		{
-			if (Speech_Overlay.Visible == false) {
+			if (!Speech_Overlay.Visible) {
 				Speech_Overlay.Visible = true;
 			}
 
