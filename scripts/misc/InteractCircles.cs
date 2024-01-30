@@ -63,9 +63,12 @@ public partial class InteractCircles : Node3D
 				ToggleParentNode(cir);
 
 				//For every circle in the direction container, toggles them
-				foreach (ButtonOverwrite circle in parNode.GetChildren())
+				foreach (var circle in parNode.GetChildren())
 				{
-					circle.Visible = !circle.Visible;
+					if (circle is ButtonOverwrite btnO) {
+						btnO.Visible = !btnO.Visible;
+					}
+					
 				}
 			}
 
@@ -141,7 +144,6 @@ public partial class InteractCircles : Node3D
 		{
 
 			ToggleEventsDirection(GetNode<ButtonOverwrite>(path)); //turns off all the circles 
-			GD.Print(path);
 			SetCam(GetNode<ButtonOverwrite>(path).GetMeta("NewCamPos").AsVector3(), (float)GetNode<ButtonOverwrite>(path).GetMeta("CamRotation")); //sets the camera to the position and rotation in the meta data
 			ToggleBackButton(); //shows the back button
 			PUZZLES.CheckPuzzle(GetNode<ButtonOverwrite>(path)); // checks if there is a puzzle, and whether to display

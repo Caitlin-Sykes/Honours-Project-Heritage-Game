@@ -18,7 +18,6 @@ public partial class WTP : Control
     //Initialises all the components for the puzzle
     public void InitPuzzle() {
         
-        //TODO: redcirc is confirmed ButtonOverwrite. Not control. Remove later
         //Gets the red circle
         ButtonOverwrite redCirc = GetNode<ButtonOverwrite>("PuzzleCont/2");
 
@@ -30,6 +29,9 @@ public partial class WTP : Control
 
         //Toggles parent nodes
         PUZZLES.TogglePuzzleVisibility(redCirc);
+
+        //Toggle Red Circle
+        PUZZLES.ToggleSpecificCircleVisibility(redCirc);
 
         //Hides the red circles
         CIRCLES.ToggleSpecificDirection(redCirc);

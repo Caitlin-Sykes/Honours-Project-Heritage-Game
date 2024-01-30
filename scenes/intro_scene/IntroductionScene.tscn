@@ -1047,6 +1047,9 @@ metadata/ExtraInformation = {
 metadata/NewCamPos = Vector3(-0.0602202, -0.205688, 1.05261)
 metadata/CamRotation = 0
 metadata/Sources = {}
+metadata/Description = {
+"Stage_2": "Makes sense that a book would be on the bookshelf. Let's take a closer look..."
+}
 
 [node name="West" type="Control" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel"]
 visible = false

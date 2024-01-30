@@ -61,8 +61,11 @@ public partial class PuzzleStart : Control
 		//Toggles Puzzles master visiblity
 		var puzzlesMaster = (Control)compDir.GetParent().GetParent();
 		puzzlesMaster.Visible = !puzzlesMaster.Visible;
+	}
 
-
+	//Toggle specific circle
+	public void ToggleSpecificCircleVisibility(ButtonOverwrite circ) {
+		circ.Visible = !circ.Visible;
 	}
 		
 	/**
