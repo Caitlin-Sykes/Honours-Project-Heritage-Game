@@ -86,7 +86,7 @@ public partial class Cameras : Node
 		foreach (Node3D arrow in cam.FindChildren("*Arrow_Parent"))
 		{
 			//If node matches Up_Arrow_Parent or Down_Arrow_Parent and metadata for camera has UpDown as not enabled
-			if ((arrow.Name == "Up_Arrow_Parent" || arrow.Name == "Down_Arrow_Parent") && GetMeta("UpDownEnabled").AsBool() == false)
+			if ((arrow.Name == "Up_Arrow_Parent" || arrow.Name == "Down_Arrow_Parent") && !GetMeta("UpDownEnabled").AsBool())
 			{
 				break;
 			}
@@ -175,7 +175,6 @@ public partial class Cameras : Node
 	*	Handles moving the cameras
 	* ----------------------------------------------------------------
 	**/
-	//TODO: much later- but when selecting something, show a circle which slowly gets smaller.
 	//BUG: camera moving can be a bit buggy if clicked fast in quick succession
 	//Method to handle turning left
 	public void TurnLeft()

@@ -1,22 +1,29 @@
 using Godot;
-using System;
-
 public partial class WTP : Control
 {
-        private PuzzleStart PUZZLES;
+        private PuzzleStart PUZZLES; //instance of PuzzleStart
 
-        private InteractCircles CIRCLES;
+        private InteractCircles CIRCLES; //instance of interact circles
 
+        [Export]
+        private SpeechGUI DIALOGUE; //Instance of SpeechGUI
 
+        [Export]
+        private Node3D F_BOOK; //the family book object
+
+        [Export]
+        private Cameras CAMERAS;
+
+        private AnimationPlayer ANIM_PLAYER; //the animation player
 
     public override void _Ready()
     {
         PUZZLES = GetNode<PuzzleStart>("../../");
         CIRCLES = GetNode<InteractCircles>("../../../../../");
-
+        ANIM_PLAYER = GetNode<AnimationPlayer>("PuzzleCont/Components/c6/AnimationPlayer"); //the animation player
     }
-    //Initialises all the components for the puzzle
-    public void InitPuzzle() {
+//Initialises all the components for the puzzle
+public void InitPuzzle() {
         
         //Gets the red circle
         ButtonOverwrite redCirc = GetNode<ButtonOverwrite>("PuzzleCont/2");
@@ -25,7 +32,7 @@ public partial class WTP : Control
         CIRCLES.SetCam(redCirc.GetMeta("NewCamPos").AsVector3(), (float)redCirc.GetMeta("CamRotation"));
 
         //Toggles the specific components of the puzzle
-        EnableAllCircleComponents(redCirc);
+        EnableAllCircleComponents();
 
         //Toggles parent nodes
         PUZZLES.TogglePuzzleVisibility(redCirc);
@@ -35,9 +42,6 @@ public partial class WTP : Control
 
         //Hides the red circles
         CIRCLES.ToggleSpecificDirection(redCirc);
-
-        // ToggleEventsDirection(GetNode<ButtonOverwrite>(path)); //turns off all the circles 
-        // SetCam(GetNode<ButtonOverwrite>(path).GetMeta("NewCamPos").AsVector3(), (float)GetNode<ButtonOverwrite>(path).GetMeta("CamRotation"));
     }
 
     /**
@@ -47,7 +51,7 @@ public partial class WTP : Control
     **/
 
     //Handlers all the clickable components
-    private void EnableAllCircleComponents(ButtonOverwrite redCirc) {
+    private void EnableAllCircleComponents() {
         
         Control components = GetNode<Control>("PuzzleCont/Components");
 
@@ -60,7 +64,42 @@ public partial class WTP : Control
         }
     }
 
+    /**
+    * ----------------------------------------------------------------
+    * Moving the Books
+    * ----------------------------------------------------------------
+    **/
+
+    //Plays the hide book animation
+    private void HideBookAnimation() {
+        ANIM_PLAYER.Play("ShowBook");
+    }
+    //Toggles visibility of the family book
+    private void ToggleFamilyBook() {
+        F_BOOK.Visible = !F_BOOK.Visible;
+    }
+
+    /**
+    * ----------------------------------------------------------------
+    * Specifically on Puzzle Access
+    * ----------------------------------------------------------------
+    **/
+
+    private async void PuzzleAnswer() {
+        CIRCLES.ToggleBackButton();
+        //Triggers the dialogue and awaits the signal to progress
+        CIRCLES.CirclesPressed("Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c6");
+        await ToSignal(DIALOGUE, "LookProgress");
+        //Hides the c6 circle
+        CIRCLES.ToggleSpecificDirectionPath("Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c6");
+        //Plays the hide book animation and waits for it to be finished
+        HideBookAnimation();
+        await ToSignal(ANIM_PLAYER, "animation_finished");
+        //Hides the book
+        ToggleFamilyBook();
+        // CAMERAS.SetCam
 
 
+    }
 
-}
+    }

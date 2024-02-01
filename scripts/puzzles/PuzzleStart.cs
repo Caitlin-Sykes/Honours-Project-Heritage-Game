@@ -8,7 +8,18 @@ public partial class PuzzleStart : Control
 	public static string CURRENT_RED_CIRCLE {get;set;}
 
 	public override void _Ready() {
-		puzzleOne = GetNode<WTP>("PuzzlesPanel/South");
+
+		//Initialises the puzzles depending on the scene name
+		switch (GetTree().CurrentScene.Name) {
+			case "IntroductionScene":
+				puzzleOne = GetNode<WTP>("PuzzlesPanel/South");
+				break;
+			default:
+				GD.PrintErr("Either not found the scene, or the name in the switch doesn't match with the root");
+				break;
+		}
+		
+		
 	}
 
 	/**

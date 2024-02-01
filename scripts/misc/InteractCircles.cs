@@ -54,8 +54,7 @@ public partial class InteractCircles : Node3D
 	//Enables the events circle
 	public void ToggleEventsDirection(ButtonOverwrite cir)
 	{
-		if (cir != null)
-		{
+
 			//parNode is the parent of cir node
 			if (cir.GetParent() is Control parNode) {
 				
@@ -70,9 +69,6 @@ public partial class InteractCircles : Node3D
 					}
 					
 				}
-			}
-
-			
 		}
 	}
 
@@ -259,7 +255,7 @@ public partial class InteractCircles : Node3D
 	}
 
 	//Toggles the back button visibility
-	private void ToggleBackButton()
+	public void ToggleBackButton()
 	{
 		BackButtonContainer.Visible = !BackButtonContainer.Visible;
 	}

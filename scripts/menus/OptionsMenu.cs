@@ -1,7 +1,4 @@
 using Godot;
-using System;
-using System.Runtime.CompilerServices;
-
 public partial class OptionsMenu : Control
 {
 	private Transitions TRANSITION; // Controls screen transitions

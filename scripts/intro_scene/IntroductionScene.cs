@@ -75,7 +75,7 @@ public partial class IntroductionScene : Node3D
 	}
 
 	// Start Stage 1 Handler
-	public async void Stage1Start() {
+	public void Stage1Start() {
 		EmitSignal(SignalName.Stage1);
 	}
 
@@ -131,7 +131,6 @@ public partial class IntroductionScene : Node3D
 
 	//Should only be accessed once during the initial fire, but after the misc dialogue
 	//show puzzle if boolean is true? go by finding the path and using that to find the puzzle equiv?
-	//TODO: was working on this
 	private async void TriggerDialogueTwo() {
 
 		await ToSignal(DIALOGUE, "LookProgress");
