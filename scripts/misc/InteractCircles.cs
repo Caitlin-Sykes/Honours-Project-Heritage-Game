@@ -63,7 +63,7 @@ public partial class InteractCircles : Node3D
 
 				//For every circle in the direction container, toggles them
 				foreach (var circle in parNode.GetChildren())
-				{
+					{
 					if (circle is ButtonOverwrite btnO) {
 						btnO.Visible = !btnO.Visible;
 					}
@@ -142,8 +142,9 @@ public partial class InteractCircles : Node3D
 			ToggleEventsDirection(GetNode<ButtonOverwrite>(path)); //turns off all the circles 
 			SetCam(GetNode<ButtonOverwrite>(path).GetMeta("NewCamPos").AsVector3(), (float)GetNode<ButtonOverwrite>(path).GetMeta("CamRotation")); //sets the camera to the position and rotation in the meta data
 			ToggleBackButton(); //shows the back button
-			PUZZLES.CheckPuzzle(GetNode<ButtonOverwrite>(path)); // checks if there is a puzzle, and whether to display
 		}
+		// checks if there is a puzzle, and whether to display
+		PUZZLES.CheckPuzzle(GetNode<ButtonOverwrite>(path)); 
 
 		//Gets meta description of button clicked 
 		var description = (Godot.Collections.Dictionary<string, string>)GetNode<ButtonOverwrite>(path).GetMeta("Description");
@@ -269,6 +270,15 @@ public partial class InteractCircles : Node3D
 
 	}
 
+	//Sets camera using cam variable
+	public void SetCam(Camera3D cam)
+	{
+		Camera3D curCam = GetViewport().GetCamera3D(); //Gets the current active camera
+		curCam.Position = cam.Position; //Sets current camera to the position
+		curCam.Rotate(curCam.Transform.Origin, 0); //rotates to the rotation
+
+	}
+
 	/**
 	* ----------------------------------------------------------------
 	* Emit Signals Handlers
@@ -286,6 +296,7 @@ public partial class InteractCircles : Node3D
 				return;
 			case "ToggleEastEvents":
 				ToggleEventsDirection(GetNode<ButtonOverwrite>("Select_Items/Settings/Panel/East/1"));
+				String.Format("PuzzlesPanel/{0}/PuzzleCont/{1}", GetNode<ButtonOverwrite>("Select_Items/Settings/Panel/East/1").GetParent().Name, GetNode<ButtonOverwrite>("Select_Items/Settings/Panel/East/1").Name);
 				return;
 			case "ToggleSouthEvents":
 				ToggleEventsDirection(GetNode<ButtonOverwrite>("Select_Items/Settings/Panel/South/1"));

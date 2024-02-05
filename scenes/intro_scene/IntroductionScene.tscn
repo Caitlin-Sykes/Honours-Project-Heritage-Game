@@ -361,15 +361,21 @@ texture_normal = ExtResource("4_fj71e")
 texture_pressed = ExtResource("6_05m2d")
 metadata/Object = "Bed"
 metadata/Description = {
-"Stage_1": "Still not the time for bed."
+"Stage_1": "Still not the time for bed.",
+"Stage_2": "I doubt the book is in the bed.",
+"Stage_3": "It makes more sense to put it on the desk, where we can both see it."
 }
 metadata/Hints = {}
 metadata/ExtraInformation = {
-"Stage_1": "As much as I want to, there's no time for bed right now."
+"Stage_1": "As much as I want to, there's no time for bed right now.",
+"Stage_2": "I'm not going back to bed.",
+"Stage_3": "It's just my bed. There isn't anything particularly exciting."
 }
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
-metadata/Sources = {}
+metadata/Sources = {
+"src": "No sources here, it's just a bed."
+}
 
 [node name="2" parent="InteractableItems/Select_Items/Settings/Panel/North" instance=ExtResource("4_4mlkj")]
 visible = false
@@ -387,7 +393,9 @@ texture_normal = ExtResource("4_fj71e")
 texture_pressed = ExtResource("6_05m2d")
 metadata/Object = "Chair"
 metadata/Description = {
-"Stage_1": "It's my really comfy desk chair."
+"Stage_1": "It's my really comfy desk chair.",
+"Stage_2": "The book doesn't seem to be on the chair.",
+"Stage_3": "I'd better put it on the desk, not the chair."
 }
 metadata/Hints = {}
 metadata/ExtraInformation = {
@@ -422,6 +430,8 @@ texture_normal = ExtResource("4_fj71e")
 texture_pressed = ExtResource("6_05m2d")
 metadata/Object = "Poster"
 metadata/Description = {
+"Stage_1": "I'd better go see what Mum wants.",
+"Stage_2": "As much as I like the poster, I need to go find the book.",
 "Tutorial": "I got this poster a while ago. Probably spent more time playing that then doing coursework..."
 }
 metadata/Hints = {}
@@ -453,6 +463,8 @@ texture_pressed = ExtResource("6_05m2d")
 metadata/Object = "Wardrobe"
 metadata/Description = {
 "Stage_1": "I don't need to get changed right now.",
+"Stage_2": "I doubt the book is in my wardrobe.",
+"Stage_3": "I'd better put the book on the desk.",
 "Tutorial": "I'd better get ready before Mum makes good on her threat... *shivers*"
 }
 metadata/Hints = {}
@@ -480,6 +492,8 @@ texture_pressed = ExtResource("6_05m2d")
 metadata/Object = "Backpack"
 metadata/Description = {
 "Stage_1": "This is my backpack. I carry my books in it. Sometimes it ends up in random places in the house",
+"Stage_2": "I'll check if it's in here..     no it's not.",
+"Stage_3": "Not much point putting it in my bag. I'd better put it on the desk.",
 "Tutorial": "This... should not be showing up."
 }
 metadata/Hints = {}
@@ -509,6 +523,8 @@ texture_pressed = ExtResource("6_05m2d")
 metadata/Object = "Books"
 metadata/Description = {
 "Stage_1": "A series of books that I keep accumulating, but not reading.",
+"Stage_2": "I'll check if it's here... no, it isn't.",
+"Stage_3": "I'd better place the book on the desk. ",
 "Tutorial": "You... should not be accessing this."
 }
 metadata/Hints = {}
@@ -537,7 +553,9 @@ texture_normal = ExtResource("4_fj71e")
 texture_pressed = ExtResource("6_05m2d")
 metadata/Object = "Laptop"
 metadata/Description = {
-"Stage_1": "It's my laptop. I'm supposed to use it for coursework, but sometimes I get sidetracked."
+"Stage_1": "It's my laptop. I'm supposed to use it for coursework, but sometimes I get sidetracked.",
+"Stage_2": "I'm looking for a physical book, not a digital one.",
+"Stage_3": "I'd better place the book on the desk."
 }
 metadata/Hints = {}
 metadata/ExtraInformation = {
@@ -548,6 +566,7 @@ metadata/CamRotation = 0
 metadata/Sources = {
 "src": "No sources again. Hi, though."
 }
+metadata/PuzzleEnabled = false
 
 [node name="South" type="Control" parent="InteractableItems/Select_Items/Settings/Panel"]
 visible = false
@@ -576,7 +595,9 @@ texture_normal = ExtResource("4_fj71e")
 texture_pressed = ExtResource("6_05m2d")
 metadata/Object = "Bookshelf - Top"
 metadata/Description = {
-"Stage_1": "I tend to keep my rarely read books up here."
+"Stage_1": "I tend to keep my rarely read books up here.",
+"Stage_2": "I'll just see if it's there... no, it isn't.",
+"Stage_3": "I don't need this right now."
 }
 metadata/Hints = {}
 metadata/ExtraInformation = {
@@ -604,9 +625,13 @@ texture_normal = ExtResource("4_fj71e")
 texture_pressed = ExtResource("6_05m2d")
 metadata/Object = "Bookshelf - Middle"
 metadata/Description = {
-"Stage_1": "Middle shelf of my book shelf. Not much here. The family photo sometimes falls off, it's a wonder it hasn't smashed yet."
+"Stage_1": "Middle shelf of my book shelf. Not much here. The family photo sometimes falls off, it's a wonder it hasn't smashed yet.",
+"Stage_2": "I might as well check to see if its here.",
+"Stage_3": "I don't need this right now."
 }
-metadata/Hints = {}
+metadata/Hints = {
+"Stage_2": "Mum's description was \"brown coloured worn. and the title is in cursive\""
+}
 metadata/ExtraInformation = {
 "Stage_1": "I've collected many books over the years, though I should really go through them. Sometimes Mum hijacks it to put her own up."
 }
@@ -633,7 +658,9 @@ texture_normal = ExtResource("4_fj71e")
 texture_pressed = ExtResource("6_05m2d")
 metadata/Object = "Bookshelf - Bottom"
 metadata/Description = {
-"Stage_1": "I don't tend to use these books a lot. That's why I keep them close to the floor."
+"Stage_1": "I don't tend to use these books a lot. That's why I keep them close to the floor.",
+"Stage_2": "I'll check this shelf.... no it's not here.",
+"Stage_3": "I don't need this right now."
 }
 metadata/Hints = {}
 metadata/ExtraInformation = {
@@ -661,7 +688,9 @@ texture_normal = ExtResource("4_fj71e")
 texture_pressed = ExtResource("6_05m2d")
 metadata/Object = "Window"
 metadata/Description = {
-"Stage_1": "A window to the outside."
+"Stage_1": "A window to the outside.",
+"Stage_2": "I don't think the book is outside, somehow.",
+"Stage_3": "I don't need to mess with the window now."
 }
 metadata/Hints = {}
 metadata/ExtraInformation = {
@@ -698,7 +727,9 @@ texture_normal = ExtResource("4_fj71e")
 texture_pressed = ExtResource("6_05m2d")
 metadata/Object = "Door"
 metadata/Description = {
-"Stage_1": "Time to see what my mum wanted me for."
+"Stage_1": "Time to see what my mum wanted me for.",
+"Stage_2": "Mum's just coming, I'd better find the book.",
+"Stage_3": "I better put the book on the desk and not hang out by the door."
 }
 metadata/Hints = {}
 metadata/ExtraInformation = {
@@ -726,7 +757,9 @@ texture_normal = ExtResource("4_fj71e")
 texture_pressed = ExtResource("6_05m2d")
 metadata/Object = "Bed"
 metadata/Description = {
-"Stage_1": "Now's not the time to go back to bed."
+"Stage_1": "Now's not the time to go back to bed.",
+"Stage_2": "I don't think the book is in the bed.",
+"Stage_3": "I'd better put the book on the desk, not the bed."
 }
 metadata/Hints = {}
 metadata/ExtraInformation = {
@@ -826,7 +859,202 @@ offset_top = 214.0
 offset_right = 927.0
 offset_bottom = 254.0
 
-[node name="1" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/East" instance=ExtResource("4_4mlkj")]
+[node name="PuzzleCont" type="Control" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/East"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Components" type="Control" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/East/PuzzleCont"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="c1" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/East/PuzzleCont/Components" instance=ExtResource("4_4mlkj")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.473
+anchor_right = 0.485
+anchor_bottom = 0.481
+offset_left = 1082.0
+offset_top = 330.08
+offset_right = 1262.6
+offset_bottom = 529.76
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("15_0dxs1")
+texture_pressed = ExtResource("16_d7pj1")
+metadata/Object = "ToReviveAHummingbird"
+metadata/Description = {
+"Stage_2": "This reads, \"To Revive a Hummingbird.\" I remember reading this for my English class. This isn't the book Mum described though."
+}
+metadata/Hints = {}
+metadata/ExtraInformation = {
+"Stage_2": "Most of the books on the bookshelf are based off actual books."
+}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+metadata/Sources = {
+"src": "It's just a book. Nothing to cite here."
+}
+
+[node name="c2" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/East/PuzzleCont/Components" instance=ExtResource("4_4mlkj")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.473
+anchor_right = 0.485
+anchor_bottom = 0.481
+offset_left = 500.0
+offset_top = 602.08
+offset_right = 680.6
+offset_bottom = 801.76
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("15_0dxs1")
+texture_pressed = ExtResource("16_d7pj1")
+metadata/Object = "FoundBoy"
+metadata/Description = {
+"Stage_2": "This reads, \"Found Boy.\" I remember a lot of people at school were reading this at some point. This isn't the book I'm looking for though."
+}
+metadata/Hints = {}
+metadata/ExtraInformation = {
+"Stage_2": "Most of the books on the bookshelf are based off actual books."
+}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+metadata/Sources = {
+"src": "It's just a book. Nothing to cite here."
+}
+
+[node name="c3" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/East/PuzzleCont/Components" instance=ExtResource("4_4mlkj")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.473
+anchor_right = 0.485
+anchor_bottom = 0.481
+offset_left = 854.0
+offset_top = 50.08
+offset_right = 1034.6
+offset_bottom = 249.76
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("15_0dxs1")
+texture_pressed = ExtResource("16_d7pj1")
+metadata/Object = "TheLabyrinthJogger"
+metadata/Description = {
+"Stage_2": "This reads, \"The Labyrinth Jogger\" There was an awful lot of running for a book that has the word \"jogging\". This doesn't fit the description Mum gave, though."
+}
+metadata/Hints = {}
+metadata/ExtraInformation = {
+"Stage_2": "Most of the books on the bookshelf are based off actual books."
+}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+metadata/Sources = {
+"src": "It's just a book. Nothing to cite here."
+}
+
+[node name="c4" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/East/PuzzleCont/Components" instance=ExtResource("4_4mlkj")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.473
+anchor_right = 0.485
+anchor_bottom = 0.481
+offset_left = 1220.0
+offset_top = 872.08
+offset_right = 1400.6
+offset_bottom = 1071.76
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("15_0dxs1")
+texture_pressed = ExtResource("16_d7pj1")
+metadata/Object = "CGTB"
+metadata/Description = {
+"Stage_2": "This reads, \"Cait's Guide to Blender.\" Not sure why somebody would need a guide on how to use a blender... and isn't the book Mum asked for."
+}
+metadata/Hints = {}
+metadata/ExtraInformation = {
+"Stage_2": "Most of the books on the bookshelf are based off actual books."
+}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+metadata/Sources = {
+"src": "It's just a book. Nothing to cite here."
+}
+
+[node name="c5" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/East/PuzzleCont/Components" instance=ExtResource("4_4mlkj")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.473
+anchor_right = 0.485
+anchor_bottom = 0.481
+offset_left = 526.0
+offset_top = 50.08
+offset_right = 706.6
+offset_bottom = 249.76
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("15_0dxs1")
+texture_pressed = ExtResource("16_d7pj1")
+metadata/Object = "TheGreatCatsby"
+metadata/Description = {
+"Stage_2": "This reads, \"The Great Catsby\", another book I had to read for English. Not the book I'm looking for though. This book isn't the descibed one, though."
+}
+metadata/Hints = {}
+metadata/ExtraInformation = {
+"Stage_2": "Most of the books on the bookshelf are based off actual books."
+}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+metadata/Sources = {
+"src": "It's just a book. Nothing to cite here."
+}
+
+[node name="c6" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/East/PuzzleCont/Components" instance=ExtResource("4_4mlkj")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.473
+anchor_right = 0.485
+anchor_bottom = 0.481
+offset_left = 1094.0
+offset_top = 684.08
+offset_right = 1274.6
+offset_bottom = 883.76
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("15_0dxs1")
+texture_pressed = ExtResource("16_d7pj1")
+metadata/Object = "MagicBook."
+metadata/Description = {
+"Stage_2": "This must be the book Mum was talking about. It's a bit tattered. I'll take it over to the desk."
+}
+metadata/Hints = {}
+metadata/ExtraInformation = {
+"Stage_2": "Most of the books on the bookshelf are based off actual books."
+}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+metadata/Sources = {
+"src": "It's just a book. Nothing to cite here."
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/East/PuzzleCont/Components/c6"]
+libraries = {
+"": SubResource("AnimationLibrary_i2hal")
+}
+
+[node name="5" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/East/PuzzleCont" instance=ExtResource("4_4mlkj")]
 visible = false
 layout_mode = 0
 offset_right = 200.0
@@ -1171,16 +1399,27 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.060
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/West/1" to="." method="TriggerDialogueTwo" flags=6]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/West/1" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/West/1"]]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/West/2" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/West/2"]]
-[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c1" to="InteractableItems" method="ToggleSpecificDirectionPath" binds= ["Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c1"]]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/East/PuzzleCont/Components/c1" to="InteractableItems" method="CirclesPressed"]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/East/PuzzleCont/Components/c1" to="InteractableItems" method="ToggleSpecificDirectionPath"]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/East/PuzzleCont/Components/c2" to="InteractableItems" method="CirclesPressed"]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/East/PuzzleCont/Components/c2" to="InteractableItems" method="ToggleSpecificDirectionPath"]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/East/PuzzleCont/Components/c3" to="InteractableItems" method="CirclesPressed"]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/East/PuzzleCont/Components/c3" to="InteractableItems" method="ToggleSpecificDirectionPath"]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/East/PuzzleCont/Components/c4" to="InteractableItems" method="CirclesPressed"]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/East/PuzzleCont/Components/c4" to="InteractableItems" method="ToggleSpecificDirectionPath"]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/East/PuzzleCont/Components/c5" to="InteractableItems" method="CirclesPressed"]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/East/PuzzleCont/Components/c5" to="InteractableItems" method="ToggleSpecificDirectionPath"]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/East/PuzzleCont/Components/c6" to="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South" method="PuzzleAnswer"]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c1" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c1"]]
-[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c2" to="InteractableItems" method="ToggleSpecificDirectionPath" binds= ["Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c2"]]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c1" to="InteractableItems" method="ToggleSpecificDirectionPath" binds= ["Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c1"]]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c2" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c2"]]
-[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c3" to="InteractableItems" method="ToggleSpecificDirectionPath" binds= ["Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c3"]]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c2" to="InteractableItems" method="ToggleSpecificDirectionPath" binds= ["Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c2"]]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c3" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c3"]]
-[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c4" to="InteractableItems" method="ToggleSpecificDirectionPath" binds= ["Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c4"]]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c3" to="InteractableItems" method="ToggleSpecificDirectionPath" binds= ["Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c3"]]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c4" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c4"]]
-[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c5" to="InteractableItems" method="ToggleSpecificDirectionPath" binds= ["Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c5"]]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c4" to="InteractableItems" method="ToggleSpecificDirectionPath" binds= ["Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c4"]]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c5" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c5"]]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c5" to="InteractableItems" method="ToggleSpecificDirectionPath" binds= ["Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c5"]]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c6" to="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South" method="PuzzleAnswer"]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/2" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/2"]]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/2" to="InteractableItems/Select_Items/Settings/Puzzles" method="InitialisePuzzle" binds= [1]]

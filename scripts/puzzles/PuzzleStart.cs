@@ -31,7 +31,7 @@ public partial class PuzzleStart : Control
 	//A function to check if a puzzle is present, and whether to enable it or not
 	public void CheckPuzzle(ButtonOverwrite circle) {
 		try {
-			
+			GD.Print("CIRC NAME: " + circle.Name);
 			//If = true and has the meta
 			if (circle.HasMeta("PuzzleEnabled") && (bool)circle.GetMeta("PuzzleEnabled")) {
 
@@ -40,8 +40,11 @@ public partial class PuzzleStart : Control
 
 				//Gets the path by getting the circles parent's name and the circles own name (ie, /North/1)
 				TogglePuzzleVisibility(GetNode<ButtonOverwrite>(CURRENT_RED_CIRCLE));
+				GD.Print((CURRENT_RED_CIRCLE));
+			}
 
-				
+			else {
+				GD.Print("no puzz");
 			}
 		}
 
@@ -82,7 +85,6 @@ public partial class PuzzleStart : Control
 	/**
 	* ----------------------------------------------------------------
 	* Initialize Puzzle
-	TODO: confirmed ButtonOverwrite
 	* ----------------------------------------------------------------
 	**/
 	private void InitialisePuzzle(int puzzID) {
@@ -95,8 +97,6 @@ public partial class PuzzleStart : Control
 			case 1:
 				puzzleOne.InitPuzzle();
 				break;
-
-
 		}
 	}
 

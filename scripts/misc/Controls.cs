@@ -32,40 +32,40 @@ public partial class Controls : Node3D
     public override void _Input(InputEvent @event)
     {
         //Checks for key presses
-		if (Input.IsKeyPressed(Key.A) && SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam)
+		if (Input.IsKeyPressed(Key.A) && @event.IsPressed() && SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam)
         {
             OnLeftArrow();
         }
 
-		else if (Input.IsKeyPressed(Key.D) && SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam)
+		else if (Input.IsKeyPressed(Key.D) && @event.IsPressed() && SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam)
         {
             OnRightArrow();
         }
 
-        else if (Input.IsKeyPressed(Key.W) && CAMERAS.GetMeta("UpDownEnabled").AsBool() && SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam)
+        else if (Input.IsKeyPressed(Key.W) && @event.IsPressed() && CAMERAS.GetMeta("UpDownEnabled").AsBool() && SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam)
         {
             OnUpArrow();
         }
 
-        else if (Input.IsKeyPressed(Key.S) && CAMERAS.GetMeta("UpDownEnabled").AsBool() && SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam)
+        else if (Input.IsKeyPressed(Key.S) && @event.IsPressed() && CAMERAS.GetMeta("UpDownEnabled").AsBool() && SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam)
         {
            OnDownArrow();
         }
 
         //Shows extra info about an object
-        else if (Input.IsKeyPressed(Key.J) && SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.LookingAtSomething)
+        else if (Input.IsKeyPressed(Key.J) && @event.IsPressed() && SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.LookingAtSomething)
         {
             CIRCLES.ShowExtraInformation();
         }
 
         //Shows sources
-        else if (Input.IsKeyPressed(Key.K) && SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.LookingAtSomething)
+        else if (Input.IsKeyPressed(Key.K) && @event.IsPressed() && SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.LookingAtSomething)
         {
             CIRCLES.ShowSources();
         }
 
         //Reminds player what to do
-         else if (Input.IsKeyPressed(Key.L) && SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.LookingAtSomething)
+         else if (Input.IsKeyPressed(Key.L) && @event.IsPressed() && SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.LookingAtSomething)
         {
             DIALOGUE.ShowObjective();
         }

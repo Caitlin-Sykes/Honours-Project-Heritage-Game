@@ -12,8 +12,10 @@ public partial class SceneState : Node {
 	public enum CurrentSceneState
 	{
 		Tutorial, //tutorial scene, bunch of misc data
-		Stage_1, // stage 2
-		Stage_2, //stage 3
+		Stage_1, // stage 1
+		Stage_2, //stage 2
+
+		Stage_3 // stage 3
 	}
 
 	//What the current player is doing
