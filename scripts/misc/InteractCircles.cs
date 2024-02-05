@@ -54,21 +54,29 @@ public partial class InteractCircles : Node3D
 	//Enables the events circle
 	public void ToggleEventsDirection(ButtonOverwrite cir)
 	{
+		// If the circle has puzzle enabled value and its true call check puzzle 
+		if (cir.HasMeta("PuzzleEnabled") && cir.GetMeta("PuzzleEnabled").AsBool())
+		{
 
-			//parNode is the parent of cir node
-			if (cir.GetParent() is Control parNode) {
-				
-				//Toggles parent node
-				ToggleParentNode(cir);
+			PUZZLES.CheckPuzzle(cir);
+		}
 
-				//For every circle in the direction container, toggles them
-				foreach (var circle in parNode.GetChildren())
+		if (cir.GetParent() is Control parNode) {
+			//Toggles parent node
+			ToggleParentNode(cir);
+			
+			//Enables any puzzles
+			//For every circle in the direction container, toggles them
+			foreach (var circle in parNode.GetChildren())
 					{
-					if (circle is ButtonOverwrite btnO) {
-						btnO.Visible = !btnO.Visible;
-					}
-					
-				}
+			
+						//parNode is the parent of cir node
+						//Gets the path by getting the circles parent's name and the circles own name (ie, /North/1)
+						if (circle is ButtonOverwrite btnO) {
+										btnO.Visible = !btnO.Visible;
+									}
+									
+						}
 		}
 	}
 
@@ -142,9 +150,10 @@ public partial class InteractCircles : Node3D
 			ToggleEventsDirection(GetNode<ButtonOverwrite>(path)); //turns off all the circles 
 			SetCam(GetNode<ButtonOverwrite>(path).GetMeta("NewCamPos").AsVector3(), (float)GetNode<ButtonOverwrite>(path).GetMeta("CamRotation")); //sets the camera to the position and rotation in the meta data
 			ToggleBackButton(); //shows the back button
+			// checks if there is a puzzle, and whether to display
+			// PUZZLES.CheckPuzzle(GetNode<ButtonOverwrite>(path)); 
 		}
-		// checks if there is a puzzle, and whether to display
-		PUZZLES.CheckPuzzle(GetNode<ButtonOverwrite>(path)); 
+
 
 		//Gets meta description of button clicked 
 		var description = (Godot.Collections.Dictionary<string, string>)GetNode<ButtonOverwrite>(path).GetMeta("Description");
@@ -295,8 +304,7 @@ public partial class InteractCircles : Node3D
 				ToggleEventsDirection(GetNode<ButtonOverwrite>("Select_Items/Settings/Panel/North/1"));
 				return;
 			case "ToggleEastEvents":
-				ToggleEventsDirection(GetNode<ButtonOverwrite>("Select_Items/Settings/Panel/East/1"));
-				String.Format("PuzzlesPanel/{0}/PuzzleCont/{1}", GetNode<ButtonOverwrite>("Select_Items/Settings/Panel/East/1").GetParent().Name, GetNode<ButtonOverwrite>("Select_Items/Settings/Panel/East/1").Name);
+				ToggleEventsDirection(GetNode<ButtonOverwrite>("Select_Items/Settings/Panel/East/5"));
 				return;
 			case "ToggleSouthEvents":
 				ToggleEventsDirection(GetNode<ButtonOverwrite>("Select_Items/Settings/Panel/South/1"));
