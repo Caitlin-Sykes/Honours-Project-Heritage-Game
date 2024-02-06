@@ -150,14 +150,12 @@ public partial class InteractCircles : Node3D
 			ToggleEventsDirection(GetNode<ButtonOverwrite>(path)); //turns off all the circles 
 			SetCam(GetNode<ButtonOverwrite>(path).GetMeta("NewCamPos").AsVector3(), (float)GetNode<ButtonOverwrite>(path).GetMeta("CamRotation")); //sets the camera to the position and rotation in the meta data
 			ToggleBackButton(); //shows the back button
-			// checks if there is a puzzle, and whether to display
-			// PUZZLES.CheckPuzzle(GetNode<ButtonOverwrite>(path)); 
 		}
 
 
 		//Gets meta description of button clicked 
 		var description = (Godot.Collections.Dictionary<string, string>)GetNode<ButtonOverwrite>(path).GetMeta("Description");
-
+		
 		//If has key then shows dialogue, if not, then break
 		if (description.ContainsKey(SCENESTATEACCESS.CurrentStateAsString()))
 		{

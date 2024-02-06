@@ -34,6 +34,8 @@ public partial class SceneState : Node {
 				return "Stage_1";
 			case CurrentSceneState.Stage_2:
 				return "Stage_2";
+			case CurrentSceneState.Stage_3:
+				return "Stage_3";
 			default:
 				return "Unknown";
 		}

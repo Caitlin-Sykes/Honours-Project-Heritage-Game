@@ -13,9 +13,6 @@ public partial class WTP : Control
         private Node3D F_BOOK; //the family book object
 
         [Export]
-        private Node3D FMBOOK; //moved version of fam book
-
-        [Export]
         private Cameras CAMERAS;
 
         private AnimationPlayer ANIM_PLAYER; //the animation player
@@ -111,12 +108,6 @@ public partial class WTP : Control
         F_BOOK.Visible = !F_BOOK.Visible;
     }
 
-    //Toggles visibility of the family book
-    private void ToggleMovedBook()
-    {
-        FMBOOK.Visible = !FMBOOK.Visible;
-    }
-
     /**
     * ----------------------------------------------------------------
     * Specifically on Puzzle Access
@@ -146,7 +137,6 @@ public partial class WTP : Control
         //TODO: working on this
         //Triggers the dialogue and awaits the signal to progress
         CIRCLES.CirclesPressed("Select_Items/Settings/Puzzles/PuzzlesPanel/East/PuzzleCont/5");
-        GD.Print("the");
         await ToSignal(DIALOGUE, "LookProgress");
         
         //Hides the pressed circle circle
@@ -154,9 +144,6 @@ public partial class WTP : Control
         //Plays the hide book animation and waits for it to be finished
         ShowBookAnimation();
         await ToSignal(ANIM_PLAYER, "animation_finished");
-        //Shows the book
-        ToggleMovedBook();
-
     }
 
 
@@ -179,5 +166,6 @@ public partial class WTP : Control
     PUZZLES.TogglePuzzleVisibility(redBtn); //disable the parents visibility
     GetNode<ButtonOverwrite>("../../../Panel/South/2").SetMeta("PuzzleEnabled", false); //disables the puzzle for the middle bookshelf
     GetNode<ButtonOverwrite>("../../../Panel/East/5").SetMeta("PuzzleEnabled", true); //disables the puzzle for the middle bookshelf
+    
     }
 }

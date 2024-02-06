@@ -92,21 +92,6 @@ albedo_color = Color(0.0431373, 0.0156863, 0, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hecqb"]
 
-[sub_resource type="Animation" id="Animation_ua7v7"]
-resource_name = "ShowBook"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../../../../../../../../../MainRoom/family book:transparency")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-
 [sub_resource type="Animation" id="Animation_jjjoe"]
 resource_name = "FadeInBook"
 tracks/0/type = "value"
@@ -135,6 +120,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_ua7v7"]
+resource_name = "ShowBook"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../../../../../../../../MainRoom/family book:transparency")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_i2hal"]
@@ -927,7 +927,7 @@ metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
 metadata/Sources = {}
 
-[node name="South" type="Control" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel" node_paths=PackedStringArray("DIALOGUE", "F_BOOK", "FMBOOK", "CAMERAS")]
+[node name="South" type="Control" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel" node_paths=PackedStringArray("DIALOGUE", "F_BOOK", "CAMERAS")]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -938,7 +938,6 @@ grow_vertical = 2
 script = ExtResource("17_bvebo")
 DIALOGUE = NodePath("../../../../../../CanvasLayer/Settings/SpeechGUI")
 F_BOOK = NodePath("../../../../../../MainRoom/family book")
-FMBOOK = NodePath("../../../../../../MainRoom/family book_moved")
 CAMERAS = NodePath("../../../../../../Cameras")
 
 [node name="PuzzleCont" type="Control" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South"]
