@@ -1,11 +1,10 @@
-[PLAYER'S BEDROOM]
-"Persona 5 Poster", modelled by me, poster image originally from https://www.amazon.com/Persona-Official-Setting-Picture-JAPANESE/dp/4047331902. All rights reserved.
+[MODEL]
 "Schoolbag", modelled by https://www.turbosquid.com/3d-models/3d-backpack-lowpoly-2024285, by Wolfy640
 
 
 [FONTS]
 https://github.com/microsoft/cascadia-code/releases - Cascadia Code, Microsoft, default font of the game
-https://dyslexiefont.com/ - Dyslexie, Christian Boer, font that can help those who are dyslexic
+https://antijingoist.gumroad.com/l/OpenDyslexic - Open Dyslexic, Abbie Gonzalez, font that can help those who are dyslexic
 
 
 [ICONS]
@@ -19,10 +18,39 @@ https://www.flaticon.com/free-icons/play - Arrow icon, Roundicon, icon for selec
 
 [AUDIO]
 https://pixabay.com/sound-effects//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=140881 - ClickButton.mp3, UNIVERSFIELD from Pixabay, button selection
-https://pixabay.com/sound-effects/search/knocking%20on%20the%20door/ - knocking mp3 for knocking on doors
+https://pixabay.com/sound-effects/search/knocking%20on%20the%20door/ - knocking mp3 for knocking on doors from Pixabay
+https://pixabay.com/users/edr-1177074/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=8333 - EdR safe entry pin from Pixabay
+https://pixabay.com/sound-effects/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=6151" - reject pin, by Pixabay
+https://pixabay.com/sound-effects/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=6387" - by Pixabay, warning, beeps full
+https://uppbeat.io/t/cedric-vermue/passing-clouds - Music from #Uppbeat (free for Creators!): License code: S8HBXZTMUN5TMGGW - used in main menu
 
 [SPRITES]
 https://www.dicebear.com/playground/ - for character speaking sprites
 
 [TEXTURES]:
 https://www.freepik.com/free-photo/brick-wall-texture_1033953.htm#page=2&query=brick%20texture%20seamless&position=43&from_view=search&track=ais&uuid=9b7bac6d-a674-4f3e-902e-6f4f3c7d5f9f - Bricks for stonewall
+
+https://www.amazon.com/Persona-Official-Setting-Picture-JAPANESE/dp/4047331902. - Persona 5 Poster, modelled by me, image taken from the credited source.
+
+https://en.wikipedia.org/wiki/File:Get_The_Mafia_and_The_Cops_Out_of_Gay_Bars.jpg - Image used for one of the bits outside Stonewall.
+
+https://americanarchive.org/catalog/cpb-aacip_15-pr7mp4wr01 - Dick Leitsch, image taken from the credited source. Used in Stonewall
+
+[PEOPLE]
+    [YVONNE RITTER]:
+        https://search.library.wisc.edu/catalog/9913010402402121 - Stonewall uprising. Yvonne Ritter interview. Part 1. (2011).
+        Boston, MA :WGBH Educational Foundation. Accessed on 12/02/2024
+
+        https://www.theguardian.com/lifeandstyle/2019/jun/19/stonewall-50th-anniversary-night-that-unleashed-gay-liberation - Pilkington, E. (2019, June 19). The riot that changed America's gay rights movement forever. The Guardian. Accessed on 13/02/2024
+
+        https://www.history.com/news/how-the-mob-helped-establish-nycs-gay-bar-scene - Holland, B. (2017, June 22). How the Mob Helped Establish NYC’s Gay Bar Scene. HISTORY. Accessed on 13/02/2024
+
+        https://s3.amazonaws.com/americanarchive.org/thumbnail/cpb-aacip-15-96k0r7rb.jpg - image of Yvonne Ritter, used in Stonewall. Taken from the credited source. 
+
+    [MARTHA SHELLEY]:
+
+        https://www.bbc.co.uk/news/world-us-canada-48643756 - Geoghegan, T. (2019, June 17). Stonewall: A riot that changed millions of lives. BBC News. Accessed on 13/02/2024
+        
+        https://joaquimlivraria.files.wordpress.com/2019/06/marthashelley-stonewall.jpg - Martha Shelley, image taken from the credited source. Used in Stonewall
+
+    [DICK LEITSCH]

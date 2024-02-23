@@ -16,7 +16,10 @@ public partial class InteractCircles : Node3D
 
 	private MarginContainer BackButtonContainer; //instance of the back button container
 
-	private SceneState SCENESTATEACCESS; //accesses the singleton for the scenestate
+	private SceneState SCENESTATEACCESS; //accesses the singleton for the 
+
+	private JsonHandler DIALOGUEACCESS; //accesses the singleton for the dialogue json
+
 
 	private PuzzleStart PUZZLES; //instance of puzzles
 
@@ -27,6 +30,7 @@ public partial class InteractCircles : Node3D
 		BackButtonContainer = GetNode<MarginContainer>("Select_Items/Settings/Panel/Back_Button");
 		PUZZLES = GetNode<PuzzleStart>("Select_Items/Settings/Puzzles");
 		SCENESTATEACCESS = GetNode<SceneState>("/root/SceneStateSingleton"); //accesses the singleton for the scene state
+		DIALOGUEACCESS = GetNode<JsonHandler>("/root/DialogueImport"); //accesses the singleton for the dialogue json
 	}
 
 	/**
@@ -126,12 +130,30 @@ public partial class InteractCircles : Node3D
 
 	}
 
+	//A handler for passing in the jsonhandler by string
+	public void DialogueByString(string DialogueStructName)
+	{
+		switch(DialogueStructName) {
+			case "Yvonne":
+				DIALOGUE.Dialogue(DIALOGUEACCESS.Speech.Stonewall_Yvonne);
+				return;
+			case "Martha":
+				DIALOGUE.Dialogue(DIALOGUEACCESS.Speech.Stonewall_Martha);
+				return;
+			case "Leitsch":
+				DIALOGUE.Dialogue(DIALOGUEACCESS.Speech.Stonewall_Leitsch);
+				return;
+			default:
+				GD.PrintErr("Tried accessing a dialogue that's not in the switch case.");
+				return;
+		}
+	}
+
 	// Handles on circle click
 	//Sets the node path as well
 
 	public async void CirclesPressed(String path)
 	{
-
 		//if previous stage != PlayerStatus.Dialogue (aka, coming from freeroam), make gui visible!
 		if (SCENESTATEACCESS.PlayerStatus != SceneState.StatusOfPlayer.InDialogue)
 		{

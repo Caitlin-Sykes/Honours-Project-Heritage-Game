@@ -21,6 +21,12 @@ public partial class WTP : Control
 
         private ButtonOverwrite redBtn; //to store the main puzzle button
 
+        [Export]
+        private AudioStreamPlayer aux; //audio player
+
+        [Signal]
+        public delegate void FinalDialogueEventHandler();
+
 
     public override void _Ready()
     {
@@ -28,7 +34,6 @@ public partial class WTP : Control
         CIRCLES = GetNode<InteractCircles>("../../../../../");
         ANIM_PLAYER = GetNode<AnimationPlayer>("PuzzleCont/Components/c6/AnimationPlayer"); //the animation player
         SCENESTATEACCESS = GetNode<SceneState>("/root/SceneStateSingleton"); //accesses the singleton for the scene state
-
     }
     //Initialises all the components for the puzzle
     public void InitPuzzle() {
@@ -134,7 +139,6 @@ public partial class WTP : Control
     //Handles placing the book and the rest of IntroductionScene
     private async void PlaceBookScene()
     {
-        //TODO: working on this
         //Triggers the dialogue and awaits the signal to progress
         CIRCLES.CirclesPressed("Select_Items/Settings/Puzzles/PuzzlesPanel/East/PuzzleCont/5");
         await ToSignal(DIALOGUE, "LookProgress");
@@ -144,8 +148,15 @@ public partial class WTP : Control
         //Plays the hide book animation and waits for it to be finished
         ShowBookAnimation();
         await ToSignal(ANIM_PLAYER, "animation_finished");
-    }
 
+        //Plays knocking sound
+        aux.Play();
+
+        //Waits for audio to finish before emitting signal
+        await ToSignal(aux, "finished");
+        EmitSignal("FinalDialogue");
+
+    }
 
     /**
     * ----------------------------------------------------------------

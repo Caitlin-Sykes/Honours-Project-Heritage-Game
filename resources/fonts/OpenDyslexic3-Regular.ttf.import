@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://c5vmny5pp0j27"
-path="res://.godot/imported/Dyslexie-Regular.woff-20805756a60f374fda2d0d4bb0aed88b.fontdata"
+uid="uid://b8sgbs473kwqw"
+path="res://.godot/imported/OpenDyslexic3-Regular.ttf-c92c600680ac19d7e2b9733bde279277.fontdata"
 
 [deps]
 
-source_file="res://resources/fonts/Dyslexie-Regular.woff"
-dest_files=["res://.godot/imported/Dyslexie-Regular.woff-20805756a60f374fda2d0d4bb0aed88b.fontdata"]
+source_file="res://resources/fonts/OpenDyslexic3-Regular.ttf"
+dest_files=["res://.godot/imported/OpenDyslexic3-Regular.ttf-c92c600680ac19d7e2b9733bde279277.fontdata"]
 
 [params]
 

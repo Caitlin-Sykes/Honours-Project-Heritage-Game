@@ -1,23 +1,24 @@
-[gd_scene load_steps=33 format=3 uid="uid://cok4snixun3l8"]
+[gd_scene load_steps=30 format=3 uid="uid://bixuqtx8jjvtl"]
 
-[ext_resource type="Script" path="res://scripts/misc/Transitions.cs" id="1_8iq14"]
-[ext_resource type="PackedScene" uid="uid://ui3tvchfafso" path="res://scenes/misc/Cameras.tscn" id="1_76gud"]
-[ext_resource type="PackedScene" uid="uid://btmuto64fpkoq" path="res://scenes/intro_scene/main_room.tscn" id="1_p57ao"]
-[ext_resource type="Script" path="res://scripts/intro_scene/IntroductionScene.cs" id="1_wn8em"]
-[ext_resource type="Script" path="res://scripts/misc/Settings.cs" id="2_vwuwl"]
-[ext_resource type="Theme" uid="uid://c8ikhuofmlww0" path="res://resources/themes/main_theme_cascadia.tres" id="2_ycenm"]
-[ext_resource type="PackedScene" uid="uid://dmf1t0hpgtcmo" path="res://scenes/misc/AudioButtonsTexture.tscn" id="4_4mlkj"]
-[ext_resource type="Texture2D" uid="uid://cad83160m5qo2" path="res://resources/textures/gui/OnItemSelect.png" id="4_fj71e"]
-[ext_resource type="PackedScene" uid="uid://2qs8cdh8nf1k" path="res://scenes/misc/SpeechGUI.tscn" id="4_x2lrc"]
-[ext_resource type="Texture2D" uid="uid://btfl3l2c4rluv" path="res://resources/textures/gui/OnItemSelected.png" id="6_05m2d"]
-[ext_resource type="Script" path="res://scripts/misc/InteractCircles.cs" id="11_www6o"]
-[ext_resource type="PackedScene" uid="uid://c3yc0s2xdcxsu" path="res://scenes/misc/AudioButtons.tscn" id="12_kcntl"]
-[ext_resource type="Texture2D" uid="uid://dsdt4amufrxcn" path="res://resources/textures/icons/arrow.png" id="13_lywhr"]
-[ext_resource type="Script" path="res://scripts/puzzles/PuzzleStart.cs" id="14_p25bt"]
-[ext_resource type="Texture2D" uid="uid://ch55wep2gyk5i" path="res://resources/textures/gui/PuzzleStart.png" id="15_0dxs1"]
-[ext_resource type="Texture2D" uid="uid://bictuohuj6rih" path="res://resources/textures/gui/PuzzleStartSelected.png" id="16_d7pj1"]
-[ext_resource type="Script" path="res://scripts/puzzles/puzzle_one/WTP.cs" id="17_bvebo"]
-[ext_resource type="AudioStream" uid="uid://ewpqfet8xsl1" path="res://resources/audio/soundeffects/knocking.wav" id="18_ptd1j"]
+[ext_resource type="Script" path="res://scripts/stonewall/Stonewall.cs" id="1_lwk4g"]
+[ext_resource type="Script" path="res://scripts/misc/Transitions.cs" id="2_xig76"]
+[ext_resource type="Theme" uid="uid://c8ikhuofmlww0" path="res://resources/themes/main_theme_cascadia.tres" id="3_awfmm"]
+[ext_resource type="Script" path="res://scripts/misc/Settings.cs" id="4_mkibg"]
+[ext_resource type="PackedScene" uid="uid://dmf1t0hpgtcmo" path="res://scenes/misc/AudioButtonsTexture.tscn" id="5_biifr"]
+[ext_resource type="Texture2D" uid="uid://cad83160m5qo2" path="res://resources/textures/gui/OnItemSelect.png" id="6_f0smn"]
+[ext_resource type="Texture2D" uid="uid://btfl3l2c4rluv" path="res://resources/textures/gui/OnItemSelected.png" id="7_t6h5l"]
+[ext_resource type="Texture2D" uid="uid://ch55wep2gyk5i" path="res://resources/textures/gui/PuzzleStart.png" id="8_i5weq"]
+[ext_resource type="Texture2D" uid="uid://bictuohuj6rih" path="res://resources/textures/gui/PuzzleStartSelected.png" id="9_560b4"]
+[ext_resource type="PackedScene" uid="uid://2qs8cdh8nf1k" path="res://scenes/misc/SpeechGUI.tscn" id="10_q26tg"]
+[ext_resource type="PackedScene" uid="uid://ui3tvchfafso" path="res://scenes/misc/Cameras.tscn" id="11_fdc4n"]
+[ext_resource type="Script" path="res://scripts/misc/InteractCircles.cs" id="12_q6550"]
+[ext_resource type="PackedScene" uid="uid://c3yc0s2xdcxsu" path="res://scenes/misc/AudioButtons.tscn" id="13_k2ut2"]
+[ext_resource type="Texture2D" uid="uid://dsdt4amufrxcn" path="res://resources/textures/icons/arrow.png" id="14_jnv56"]
+[ext_resource type="Script" path="res://scripts/puzzles/PuzzleStart.cs" id="15_wr1ab"]
+[ext_resource type="Script" path="res://scripts/puzzles/puzzle_one/WTP.cs" id="16_t7amm"]
+[ext_resource type="AudioStream" uid="uid://dqs84mrokbg33" path="res://resources/audio/soundeffects/beepEntry.mp3" id="17_ina5q"]
+[ext_resource type="AudioStream" uid="uid://d0su6xkka23m2" path="res://resources/audio/soundeffects/beepReject.mp3" id="18_byt6u"]
+[ext_resource type="PackedScene" uid="uid://cxiyifxmaaurk" path="res://resources/models/stonewall/stonewall.blend" id="19_tt755"]
 
 [sub_resource type="Animation" id="Animation_7a53q"]
 resource_name = "Transition_Fade_In"
@@ -58,40 +59,11 @@ _data = {
 "Wake": SubResource("Animation_32iq4")
 }
 
-[sub_resource type="Animation" id="Animation_tm8og"]
-resource_name = "CameraWakeUp"
-length = 2.0
-tracks/0/type = "position_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, -1.36588, 0.0403199, -1.80732, 1, 1, -1.36588, 0.0403199, -0.00773473, 2, 1, -0.0557873, 0.0403199, -0.00773473)
-tracks/1/type = "rotation_3d"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0, 1, 0, 1, 0, 0, 1.4, 1, 0, -0.707107, 0, 0.707107)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_voa05"]
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_i8ncr"]
-_data = {
-"CameraWakeUp": SubResource("Animation_tm8og")
-}
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k0m46"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n6ebp"]
-albedo_color = Color(1, 0, 1, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dwsxu"]
-albedo_color = Color(0.0431373, 0.0156863, 0, 1)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jlakg"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sngad"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hecqb"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qb8qr"]
 
 [sub_resource type="Animation" id="Animation_jjjoe"]
 resource_name = "FadeInBook"
@@ -145,13 +117,11 @@ _data = {
 "ShowBook": SubResource("Animation_ua7v7")
 }
 
-[node name="IntroductionScene" type="Node3D" node_paths=PackedStringArray("DIALOGUE", "TRANSITION")]
-script = ExtResource("1_wn8em")
+[node name="Stonewall" type="Node3D" node_paths=PackedStringArray("DIALOGUE")]
+script = ExtResource("1_lwk4g")
 DIALOGUE = NodePath("CanvasLayer/Settings/SpeechGUI")
-TRANSITION = NodePath("Transition")
 
 [node name="Transition" type="ColorRect" parent="."]
-modulate = Color(0, 0, 0, 1)
 top_level = true
 anchors_preset = 15
 anchor_right = 1.0
@@ -160,7 +130,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
-script = ExtResource("1_8iq14")
+script = ExtResource("2_xig76")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Transition"]
 libraries = {
@@ -168,6 +138,51 @@ libraries = {
 }
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="IntroCam" type="Camera3D" parent="CanvasLayer"]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 76.2327, -0.61576, 121.504)
+current = true
+
+[node name="MattachineBar" type="PopupPanel" parent="CanvasLayer/IntroCam"]
+initial_position = 2
+size = Vector2i(800, 900)
+
+[node name="MattachineBarInfo" type="Panel" parent="CanvasLayer/IntroCam/MattachineBar"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/IntroCam/MattachineBar/MattachineBarInfo"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 23
+text = "ABRIDGED TRANSCRIPTION:
+GET THE MAFIA AND THE COPS OUT OF GAY BARS
+
+The nights of Friday, June 27, 1969 and Saturday, June 28, 1969 will go down in history as the first time that thousands of Homosexual men and women went out into the streets to protest the intolerable situation which has existed in New York City for many years.
+
+Legitimate Gay businessmen are afraid to open decent Gay bars with a healthy social atmosphere (as opposed to the hell-hole atmosphere of places typified by the Stonewall) because of fear of pressure from the unholy alliance of the Mafia and the elements in the Police Dept.
+
+We at the Homophile Youth Movement (HYMN) believe that the only way this monopoly can be broken is through the action of Homosexual men and vonen themselves. Therefore, we urge the following:
+
+1. That Gay businessmen step forward and open Gay bars that will be run legally with competitive pricing and a healthy social atmosphere.
+
+2. That Homosexual men and women boycott places like the Stonewall.
+
+3. That the Homosexual citizens of New York City, and concerned Heterosexuals, write to Mayor Lindsay demanding a thorough investigation and effective action to correct this intolerable situation.
+
+HOMOPHILE YOUTH MOVEMENT - HYMN"
+fit_content = true
 
 [node name="Settings" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -178,85 +193,118 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 mouse_force_pass_scroll_events = false
-theme = ExtResource("2_ycenm")
-script = ExtResource("2_vwuwl")
+theme = ExtResource("3_awfmm")
+script = ExtResource("4_mkibg")
 
-[node name="OnItemSelect" parent="CanvasLayer/Settings" instance=ExtResource("4_4mlkj")]
+[node name="SpeechGUI" parent="CanvasLayer/Settings" node_paths=PackedStringArray("CIRCLES") instance=ExtResource("10_q26tg")]
 visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = -100.0
-offset_right = 100.0
-offset_bottom = 100.0
-grow_horizontal = 2
-grow_vertical = 2
-texture_normal = ExtResource("4_fj71e")
-texture_pressed = ExtResource("6_05m2d")
-
-[node name="BookInteract" parent="CanvasLayer/Settings" instance=ExtResource("4_4mlkj")]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.265
-anchor_top = 0.783
-anchor_right = 0.485
-anchor_bottom = 0.818
-offset_left = 174.0
-offset_top = -245.84
-offset_right = -557.2
-offset_bottom = -54.48
-grow_horizontal = 2
-grow_vertical = 2
-texture_normal = ExtResource("15_0dxs1")
-texture_pressed = ExtResource("16_d7pj1")
-metadata/Object = "FoundBoy"
-metadata/Description = {
-"Stage_2": "This reads, \"Found Boy.\" I remember a lot of people at school were reading this at some point. This isn't the book I'm looking for though."
-}
-metadata/Hints = {}
-metadata/ExtraInformation = {
-"Stage_2": "Most of the books on the bookshelf are based off actual books."
-}
-metadata/NewCamPos = Vector3(0, 0, 0)
-metadata/CamRotation = 0
-metadata/Sources = {
-"src": "It's just a book. Nothing to cite here."
-}
-
-[node name="SpeechGUI" parent="CanvasLayer/Settings" node_paths=PackedStringArray("CIRCLES") instance=ExtResource("4_x2lrc")]
-visible = false
+top_level = true
 layout_mode = 1
 mouse_filter = 2
 CIRCLES = NodePath("../../../InteractableItems")
 
-[node name="IntroCam" type="Camera3D" parent="."]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.36588, 0.0403199, -1.80732)
-current = true
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="IntroCam"]
-libraries = {
-"": SubResource("AnimationLibrary_i8ncr")
+[node name="1" parent="CanvasLayer/Settings" instance=ExtResource("5_biifr")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.143
+anchor_top = 0.489
+anchor_right = 0.458
+anchor_bottom = 0.489
+offset_left = 232.44
+offset_top = 248.88
+offset_right = -172.36
+offset_bottom = 448.88
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("6_f0smn")
+texture_pressed = ExtResource("7_t6h5l")
+metadata/Object = "YvonneRitter"
+metadata/Description = {
+"Stage_1": "This looks like a discarded old poster. What does it say?",
+"Stage_2": "I'm going to tajke another look at what it says before I head in.",
+"Stage_3": "Should. not. Be. possible."
+}
+metadata/Hints = {}
+metadata/ExtraInformation = {
+"Stage_1": "As much as I want to, there's no time for bed right now.",
+"Stage_2": "I'm not going back to bed.",
+"Stage_3": "It's just my bed. There isn't anything particularly exciting."
+}
+metadata/NewCamPos = Vector3(67.9523, -2.21221, 104.951)
+metadata/CamRotation = -90
+metadata/Sources = {
+"src": "Image: https://en.wikipedia.org/wiki/File:Get_The_Mafia_and_The_Cops_Out_of_Gay_Bars.jpg"
 }
 
-[node name="MainRoom" parent="." instance=ExtResource("1_p57ao")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+[node name="2" parent="CanvasLayer/Settings" instance=ExtResource("5_biifr")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.143
+anchor_top = 0.489
+anchor_right = 0.458
+anchor_bottom = 0.489
+offset_left = 1114.44
+offset_top = 239.88
+offset_right = 709.64
+offset_bottom = 439.88
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("6_f0smn")
+texture_pressed = ExtResource("7_t6h5l")
+metadata/Object = "YvonneRitter"
+metadata/Description = {
+"Stage_1": "I'm not too sure who this is.",
+"Stage_2": "This is Yvonne Ritter. I still find the whole \"poster instead of people\" thing weird though...",
+"Stage_3": "I have not implemented this yet."
+}
+metadata/Hints = {}
+metadata/ExtraInformation = {
+"Stage_1": "As much as I want to, there's no time for bed right now.",
+"Stage_2": "I'm not going back to bed.",
+"Stage_3": "It's just my bed. There isn't anything particularly exciting."
+}
+metadata/NewCamPos = Vector3(67.9523, -2.21221, 106.096)
+metadata/CamRotation = -90
+metadata/Sources = {
+"src": "Image: https://s3.amazonaws.com/americanarchive.org/thumbnail/cpb-aacip-15-96k0r7rb.jpg"
+}
 
-[node name="family book_moved" parent="MainRoom" index="21"]
-transform = Transform3D(-1, 0, 2.14569e-07, 0, 1, 0, -2.14569e-07, 0, -1, 1.49143, 0.664013, -0.919857)
-transparency = 1.0
+[node name="3" parent="CanvasLayer/Settings" instance=ExtResource("5_biifr")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.143
+anchor_top = 0.489
+anchor_right = 0.458
+anchor_bottom = 0.489
+offset_left = 694.44
+offset_top = 42.88
+offset_right = 289.64
+offset_bottom = 242.88
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("6_f0smn")
+texture_pressed = ExtResource("7_t6h5l")
+metadata/Object = "YvonneRitter"
+metadata/Description = {
+"Stage_1": "I'm not too sure who this is.",
+"Stage_2": "This is Yvonne Ritter. I still find the whole \"poster instead of people\" thing weird though...",
+"Stage_3": "I have not implemented this yet."
+}
+metadata/Hints = {}
+metadata/ExtraInformation = {
+"Stage_1": "As much as I want to, there's no time for bed right now.",
+"Stage_2": "I'm not going back to bed.",
+"Stage_3": "It's just my bed. There isn't anything particularly exciting."
+}
+metadata/NewCamPos = Vector3(67.9523, -2.21221, 106.096)
+metadata/CamRotation = -90
+metadata/Sources = {
+"src": "Image: https://s3.amazonaws.com/americanarchive.org/thumbnail/cpb-aacip-15-96k0r7rb.jpg"
+}
 
-[node name="chair" parent="MainRoom" index="23"]
-surface_material_override/1 = SubResource("StandardMaterial3D_n6ebp")
-
-[node name="laptopbottom" parent="MainRoom" index="26"]
-surface_material_override/2 = SubResource("StandardMaterial3D_dwsxu")
-
-[node name="Cameras" parent="." node_paths=PackedStringArray("INTERACT_CIRCLES") instance=ExtResource("1_76gud")]
+[node name="Cameras" parent="." node_paths=PackedStringArray("CAMERAS", "INTERACT_CIRCLES") instance=ExtResource("11_fdc4n")]
+visible = false
+CAMERAS = [null, null, null, null, null, null]
 INTERACT_CIRCLES = NodePath("../InteractableItems")
 
 [node name="Controls" parent="Cameras" index="0" node_paths=PackedStringArray("CIRCLES", "DIALOGUE")]
@@ -264,9 +312,10 @@ CIRCLES = NodePath("../../InteractableItems")
 DIALOGUE = NodePath("../../CanvasLayer/Settings/SpeechGUI")
 
 [node name="UI" parent="Cameras/Controls" index="0"]
-theme_override_styles/panel = SubResource("StyleBoxEmpty_jlakg")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_voa05")
 
 [node name="North" parent="Cameras/Controls/UI" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0239969, 0, 0)
 visible = false
 current = false
 
@@ -337,7 +386,7 @@ transform = Transform3D(0.05, 4.37114e-09, -4.37114e-09, 4.37114e-09, -0.05, 0, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="InteractableItems" type="Node3D" parent="." node_paths=PackedStringArray("DIALOGUE")]
-script = ExtResource("11_www6o")
+script = ExtResource("12_q6550")
 DIALOGUE = NodePath("../CanvasLayer/Settings/SpeechGUI")
 
 [node name="Select_Items" type="CanvasLayer" parent="InteractableItems"]
@@ -354,8 +403,8 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 mouse_force_pass_scroll_events = false
-theme = ExtResource("2_ycenm")
-script = ExtResource("2_vwuwl")
+theme = ExtResource("3_awfmm")
+script = ExtResource("4_mkibg")
 
 [node name="Panel" type="Panel" parent="InteractableItems/Select_Items/Settings"]
 layout_mode = 1
@@ -364,7 +413,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_sngad")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_k0m46")
 
 [node name="Back_Button" type="MarginContainer" parent="InteractableItems/Select_Items/Settings/Panel"]
 visible = false
@@ -378,7 +427,7 @@ offset_right = -20.0
 offset_bottom = 114.0
 grow_horizontal = 0
 
-[node name="Back" parent="InteractableItems/Select_Items/Settings/Panel/Back_Button" instance=ExtResource("12_kcntl")]
+[node name="Back" parent="InteractableItems/Select_Items/Settings/Panel/Back_Button" instance=ExtResource("13_k2ut2")]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_horizontal = 1
@@ -386,7 +435,7 @@ size_flags_vertical = 1
 tooltip_text = "Go back to the settings menu"
 theme_type_variation = &"GreenButton"
 text = "Back"
-icon = ExtResource("13_lywhr")
+icon = ExtResource("14_jnv56")
 icon_alignment = 1
 vertical_icon_alignment = 2
 expand_icon = true
@@ -410,10 +459,14 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -7.0
+offset_top = 2.0
+offset_right = -7.0
+offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="1" parent="InteractableItems/Select_Items/Settings/Panel/North" instance=ExtResource("4_4mlkj")]
+[node name="1" parent="InteractableItems/Select_Items/Settings/Panel/North" instance=ExtResource("5_biifr")]
 visible = false
 layout_mode = 1
 anchors_preset = -1
@@ -421,17 +474,19 @@ anchor_left = 0.143
 anchor_top = 0.489
 anchor_right = 0.458
 anchor_bottom = 0.489
-offset_right = 200.0
-offset_bottom = 200.0
+offset_left = 78.44
+offset_top = -152.12
+offset_right = -326.36
+offset_bottom = 47.88
 grow_horizontal = 2
 grow_vertical = 2
-texture_normal = ExtResource("4_fj71e")
-texture_pressed = ExtResource("6_05m2d")
-metadata/Object = "Bed"
+texture_normal = ExtResource("6_f0smn")
+texture_pressed = ExtResource("7_t6h5l")
+metadata/Object = "YvonneRitter"
 metadata/Description = {
-"Stage_1": "Still not the time for bed.",
-"Stage_2": "I doubt the book is in the bed.",
-"Stage_3": "It makes more sense to put it on the desk, where we can both see it."
+"Stage_1": "I'm not too sure who this is.",
+"Stage_2": "This is Yvonne Ritter. I still find the whole \"poster instead of people\" thing weird though...",
+"Stage_3": "I have not implemented this yet."
 }
 metadata/Hints = {}
 metadata/ExtraInformation = {
@@ -439,13 +494,13 @@ metadata/ExtraInformation = {
 "Stage_2": "I'm not going back to bed.",
 "Stage_3": "It's just my bed. There isn't anything particularly exciting."
 }
-metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/NewCamPos = Vector3(-9.6948, 1.26392, -0.459455)
 metadata/CamRotation = 0
 metadata/Sources = {
-"src": "No sources here, it's just a bed."
+"src": "Image: https://s3.amazonaws.com/americanarchive.org/thumbnail/cpb-aacip-15-96k0r7rb.jpg"
 }
 
-[node name="2" parent="InteractableItems/Select_Items/Settings/Panel/North" instance=ExtResource("4_4mlkj")]
+[node name="2" parent="InteractableItems/Select_Items/Settings/Panel/North" instance=ExtResource("5_biifr")]
 visible = false
 layout_mode = 1
 anchors_preset = -1
@@ -453,13 +508,15 @@ anchor_left = 0.695
 anchor_top = 0.542
 anchor_right = 0.817
 anchor_bottom = 0.595
-offset_right = 200.0
-offset_bottom = 200.0
+offset_left = -717.4
+offset_top = -207.36
+offset_right = -751.64
+offset_bottom = -64.6
 grow_horizontal = 2
 grow_vertical = 2
-texture_normal = ExtResource("4_fj71e")
-texture_pressed = ExtResource("6_05m2d")
-metadata/Object = "Chair"
+texture_normal = ExtResource("6_f0smn")
+texture_pressed = ExtResource("7_t6h5l")
+metadata/Object = "Martha"
 metadata/Description = {
 "Stage_1": "It's my really comfy desk chair.",
 "Stage_2": "The book doesn't seem to be on the chair.",
@@ -469,7 +526,37 @@ metadata/Hints = {}
 metadata/ExtraInformation = {
 "Stage_1": "Apparently, purple chairs are a little hard to come by. I don't know why, purple's a great colour!"
 }
-metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/NewCamPos = Vector3(-5.05144, 1.26392, -0.459455)
+metadata/CamRotation = 0
+metadata/Sources = {}
+
+[node name="3" parent="InteractableItems/Select_Items/Settings/Panel/North" instance=ExtResource("5_biifr")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.695
+anchor_top = 0.542
+anchor_right = 0.817
+anchor_bottom = 0.595
+offset_left = -404.4
+offset_top = -206.36
+offset_right = -438.64
+offset_bottom = -63.6
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("6_f0smn")
+texture_pressed = ExtResource("7_t6h5l")
+metadata/Object = "Leitsch"
+metadata/Description = {
+"Stage_1": "It's my really comfy desk chair.",
+"Stage_2": "The book doesn't seem to be on the chair.",
+"Stage_3": "I'd better put it on the desk, not the chair."
+}
+metadata/Hints = {}
+metadata/ExtraInformation = {
+"Stage_1": "Apparently, purple chairs are a little hard to come by. I don't know why, purple's a great colour!"
+}
+metadata/NewCamPos = Vector3(0.827879, 1.26392, -0.459455)
 metadata/CamRotation = 0
 metadata/Sources = {}
 
@@ -482,7 +569,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="1" parent="InteractableItems/Select_Items/Settings/Panel/East" instance=ExtResource("4_4mlkj")]
+[node name="1" parent="InteractableItems/Select_Items/Settings/Panel/East" instance=ExtResource("5_biifr")]
 visible = false
 layout_mode = 1
 anchors_preset = -1
@@ -490,12 +577,14 @@ anchor_left = 0.183
 anchor_top = 0.664
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -1368.64
-offset_bottom = -880.0
+offset_left = 767.64
+offset_top = -195.12
+offset_right = -601.0
+offset_bottom = -358.0
 grow_horizontal = 2
 grow_vertical = 2
-texture_normal = ExtResource("4_fj71e")
-texture_pressed = ExtResource("6_05m2d")
+texture_normal = ExtResource("6_f0smn")
+texture_pressed = ExtResource("7_t6h5l")
 metadata/Object = "Poster"
 metadata/Description = {
 "Stage_1": "I'd better go see what Mum wants.",
@@ -514,128 +603,6 @@ metadata/Sources = {
 "Info_Src": "Information from: https://en.wikipedia.org/wiki/Persona_5, {0}"
 }
 
-[node name="2" parent="InteractableItems/Select_Items/Settings/Panel/East" instance=ExtResource("4_4mlkj")]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.618
-anchor_top = 0.534
-anchor_right = 0.832
-anchor_bottom = 0.565
-offset_right = -210.88
-offset_bottom = 166.52
-grow_horizontal = 2
-grow_vertical = 2
-texture_normal = ExtResource("4_fj71e")
-texture_pressed = ExtResource("6_05m2d")
-metadata/Object = "Wardrobe"
-metadata/Description = {
-"Stage_1": "I don't need to get changed right now.",
-"Stage_2": "I doubt the book is in my wardrobe.",
-"Stage_3": "I'd better put the book on the desk.",
-"Tutorial": "I'd better get ready before Mum makes good on her threat... *shivers*"
-}
-metadata/Hints = {}
-metadata/ExtraInformation = {
-"Stage_1": "It's just a random wardrobe my mum bought."
-}
-metadata/NewCamPos = Vector3(0, 0, 0)
-metadata/CamRotation = 0
-metadata/Sources = {}
-
-[node name="3" parent="InteractableItems/Select_Items/Settings/Panel/East" instance=ExtResource("4_4mlkj")]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.32
-anchor_top = 0.695
-anchor_right = 0.504
-anchor_bottom = 0.84
-offset_right = -153.28
-offset_bottom = 43.4
-grow_horizontal = 2
-grow_vertical = 2
-texture_normal = ExtResource("4_fj71e")
-texture_pressed = ExtResource("6_05m2d")
-metadata/Object = "Backpack"
-metadata/Description = {
-"Stage_1": "This is my backpack. I carry my books in it. Sometimes it ends up in random places in the house",
-"Stage_2": "I'll check if it's in here..     no it's not.",
-"Stage_3": "Not much point putting it in my bag. I'd better put it on the desk.",
-"Tutorial": "This... should not be showing up."
-}
-metadata/Hints = {}
-metadata/ExtraInformation = {
-"Stage_1": "It's just a backpack. That's it. It carries things. Sometimes they're known as rucksacks, schoolbags, or bags."
-}
-metadata/NewCamPos = Vector3(1.09332, -0.755325, -0.44021)
-metadata/CamRotation = 0
-metadata/Sources = {
-"Src_1": "Render from: https://www.turbosquid.com/3d-models/3d-backpack-lowpoly-2024285"
-}
-
-[node name="4" parent="InteractableItems/Select_Items/Settings/Panel/East" instance=ExtResource("4_4mlkj")]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.005
-anchor_top = 0.527
-anchor_right = 0.11
-anchor_bottom = 0.611
-offset_right = -1.59999
-offset_bottom = 109.28
-grow_horizontal = 2
-grow_vertical = 2
-texture_normal = ExtResource("4_fj71e")
-texture_pressed = ExtResource("6_05m2d")
-metadata/Object = "Books"
-metadata/Description = {
-"Stage_1": "A series of books that I keep accumulating, but not reading.",
-"Stage_2": "I'll check if it's here... no, it isn't.",
-"Stage_3": "I'd better place the book on the desk. ",
-"Tutorial": "You... should not be accessing this."
-}
-metadata/Hints = {}
-metadata/ExtraInformation = {
-"Stage_1": "Somewhere, someone is laughing distantly at the Programmer's Guide for C# book."
-}
-metadata/NewCamPos = Vector3(1.18544, -0.301348, -1.79762)
-metadata/CamRotation = 0
-metadata/Sources = {
-"src": "No sources for this one. Just some random books."
-}
-
-[node name="5" parent="InteractableItems/Select_Items/Settings/Panel/East" instance=ExtResource("4_4mlkj")]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.137
-anchor_top = 0.527
-anchor_right = 0.214
-anchor_bottom = 0.68
-offset_right = 200.0
-offset_bottom = 200.0
-grow_horizontal = 2
-grow_vertical = 2
-texture_normal = ExtResource("4_fj71e")
-texture_pressed = ExtResource("6_05m2d")
-metadata/Object = "Laptop"
-metadata/Description = {
-"Stage_1": "It's my laptop. I'm supposed to use it for coursework, but sometimes I get sidetracked.",
-"Stage_2": "I'm looking for a physical book, not a digital one.",
-"Stage_3": "I'd better place the book on the desk."
-}
-metadata/Hints = {}
-metadata/ExtraInformation = {
-"Stage_1": "It's just a generic laptop, though the background is taken from the creator's own laptop. "
-}
-metadata/NewCamPos = Vector3(1.18544, -0.301348, -1.39528)
-metadata/CamRotation = 0
-metadata/Sources = {
-"src": "No sources again. Hi, though."
-}
-metadata/PuzzleEnabled = false
-
 [node name="South" type="Control" parent="InteractableItems/Select_Items/Settings/Panel"]
 visible = false
 layout_mode = 1
@@ -645,7 +612,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="1" parent="InteractableItems/Select_Items/Settings/Panel/South" instance=ExtResource("4_4mlkj")]
+[node name="1" parent="InteractableItems/Select_Items/Settings/Panel/South" instance=ExtResource("5_biifr")]
 visible = false
 layout_mode = 1
 anchors_preset = -1
@@ -653,19 +620,21 @@ anchor_left = 0.45
 anchor_top = 0.28
 anchor_right = 0.45
 anchor_bottom = 0.3
-offset_right = 200.0
-offset_bottom = 178.4
+offset_left = 413.0
+offset_top = 184.6
+offset_right = 613.0
+offset_bottom = 363.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 1
-texture_normal = ExtResource("4_fj71e")
-texture_pressed = ExtResource("6_05m2d")
-metadata/Object = "Bookshelf - Top"
+texture_normal = ExtResource("6_f0smn")
+texture_pressed = ExtResource("7_t6h5l")
+metadata/Object = "BathroomDoor1"
 metadata/Description = {
-"Stage_1": "I tend to keep my rarely read books up here.",
-"Stage_2": "I'll just see if it's there... no, it isn't.",
-"Stage_3": "I don't need this right now."
+"Stage_1": "This leads to the bathroom. I don't need it right now.",
+"Stage_2": "tbd",
+"Stage_3": "tbd"
 }
 metadata/Hints = {}
 metadata/ExtraInformation = {
@@ -677,7 +646,7 @@ metadata/Sources = {
 "src": "The books are all parodies, so no sources here!"
 }
 
-[node name="2" parent="InteractableItems/Select_Items/Settings/Panel/South" instance=ExtResource("4_4mlkj")]
+[node name="2" parent="InteractableItems/Select_Items/Settings/Panel/South" instance=ExtResource("5_biifr")]
 visible = false
 layout_mode = 1
 anchors_preset = -1
@@ -685,17 +654,19 @@ anchor_left = 0.45
 anchor_top = 0.5
 anchor_right = 0.45
 anchor_bottom = 0.5
-offset_right = 200.0
-offset_bottom = 200.0
+offset_left = 762.0
+offset_top = -53.0
+offset_right = 962.0
+offset_bottom = 147.0
 grow_horizontal = 2
 grow_vertical = 2
-texture_normal = ExtResource("4_fj71e")
-texture_pressed = ExtResource("6_05m2d")
-metadata/Object = "Bookshelf - Middle"
+texture_normal = ExtResource("6_f0smn")
+texture_pressed = ExtResource("7_t6h5l")
+metadata/Object = "BathroomDoor2"
 metadata/Description = {
-"Stage_1": "Middle shelf of my book shelf. Not much here. The family photo sometimes falls off, it's a wonder it hasn't smashed yet.",
-"Stage_2": "I might as well check to see if its here.",
-"Stage_3": "I don't need this right now."
+"Stage_1": "This is the other door to the bathroom. ",
+"Stage_2": "tbd",
+"Stage_3": "tbd"
 }
 metadata/Hints = {
 "Stage_2": "Mum's description was \"brown coloured worn. and the title is in cursive\""
@@ -710,7 +681,7 @@ metadata/Sources = {
 }
 metadata/PuzzleEnabled = false
 
-[node name="3" parent="InteractableItems/Select_Items/Settings/Panel/South" instance=ExtResource("4_4mlkj")]
+[node name="3" parent="InteractableItems/Select_Items/Settings/Panel/South" instance=ExtResource("5_biifr")]
 visible = false
 layout_mode = 1
 anchors_preset = -1
@@ -718,29 +689,31 @@ anchor_left = 0.45
 anchor_top = 0.7
 anchor_right = 0.45
 anchor_bottom = 0.8
-offset_right = 200.0
-offset_bottom = 92.0
+offset_left = -594.0
+offset_top = -241.0
+offset_right = -394.0
+offset_bottom = -149.0
 grow_horizontal = 2
 grow_vertical = 2
-texture_normal = ExtResource("4_fj71e")
-texture_pressed = ExtResource("6_05m2d")
-metadata/Object = "Bookshelf - Bottom"
+texture_normal = ExtResource("6_f0smn")
+texture_pressed = ExtResource("7_t6h5l")
+metadata/Object = "Dancefloor2"
 metadata/Description = {
-"Stage_1": "I don't tend to use these books a lot. That's why I keep them close to the floor.",
-"Stage_2": "I'll check this shelf.... no it's not here.",
-"Stage_3": "I don't need this right now."
+"Stage_1": "This leads to the dancefloor.",
+"Stage_2": "tbd",
+"Stage_3": "tbd"
 }
 metadata/Hints = {}
 metadata/ExtraInformation = {
 "Stage_1": "Just some random books. Isn't really anything more to say. "
 }
-metadata/NewCamPos = Vector3(-0.0602202, -0.716625, 1.33653)
+metadata/NewCamPos = Vector3(12.9361, -2.3705, 16.7682)
 metadata/CamRotation = 0
 metadata/Sources = {
 "src": "Just some random parodied books. No sources here."
 }
 
-[node name="4" parent="InteractableItems/Select_Items/Settings/Panel/South" instance=ExtResource("4_4mlkj")]
+[node name="4" parent="InteractableItems/Select_Items/Settings/Panel/South" instance=ExtResource("5_biifr")]
 visible = false
 layout_mode = 1
 anchors_preset = -1
@@ -752,8 +725,8 @@ offset_right = 69.44
 offset_bottom = 183.8
 grow_horizontal = 2
 grow_vertical = 2
-texture_normal = ExtResource("4_fj71e")
-texture_pressed = ExtResource("6_05m2d")
+texture_normal = ExtResource("6_f0smn")
+texture_pressed = ExtResource("7_t6h5l")
 metadata/Object = "Window"
 metadata/Description = {
 "Stage_1": "A window to the outside.",
@@ -779,7 +752,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="1" parent="InteractableItems/Select_Items/Settings/Panel/West" instance=ExtResource("4_4mlkj")]
+[node name="1" parent="InteractableItems/Select_Items/Settings/Panel/West" instance=ExtResource("5_biifr")]
 visible = false
 layout_mode = 1
 anchors_preset = -1
@@ -787,13 +760,15 @@ anchor_left = 0.219
 anchor_top = 0.435
 anchor_right = 0.219
 anchor_bottom = 0.641
-offset_right = 200.0
-offset_bottom = -22.48
+offset_left = 522.52
+offset_top = -8.79999
+offset_right = 722.52
+offset_bottom = -31.28
 grow_horizontal = 2
 grow_vertical = 2
-texture_normal = ExtResource("4_fj71e")
-texture_pressed = ExtResource("6_05m2d")
-metadata/Object = "Door"
+texture_normal = ExtResource("6_f0smn")
+texture_pressed = ExtResource("7_t6h5l")
+metadata/Object = "Doorway"
 metadata/Description = {
 "Stage_1": "Time to see what my mum wanted me for.",
 "Stage_2": "Mum's just coming, I'd better find the book.",
@@ -803,13 +778,13 @@ metadata/Hints = {}
 metadata/ExtraInformation = {
 "Stage_1": "It's just a door. Nothing special here."
 }
-metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/NewCamPos = Vector3(-21.674, -2.3705, -1.99833)
 metadata/CamRotation = 0
 metadata/Sources = {
 "src": "No sources again. *Knock knock*"
 }
 
-[node name="2" parent="InteractableItems/Select_Items/Settings/Panel/West" instance=ExtResource("4_4mlkj")]
+[node name="2" parent="InteractableItems/Select_Items/Settings/Panel/West" instance=ExtResource("5_biifr")]
 visible = false
 layout_mode = 1
 anchors_preset = -1
@@ -817,17 +792,19 @@ anchor_left = 0.855
 anchor_top = 0.504
 anchor_right = 0.947
 anchor_bottom = 0.542
-offset_right = 23.3601
-offset_bottom = 158.96
+offset_left = -1461.6
+offset_top = -111.32
+offset_right = -1438.24
+offset_bottom = 47.64
 grow_horizontal = 2
 grow_vertical = 2
-texture_normal = ExtResource("4_fj71e")
-texture_pressed = ExtResource("6_05m2d")
-metadata/Object = "Bed"
+texture_normal = ExtResource("6_f0smn")
+texture_pressed = ExtResource("7_t6h5l")
+metadata/Object = "Door"
 metadata/Description = {
-"Stage_1": "Now's not the time to go back to bed.",
-"Stage_2": "I don't think the book is in the bed.",
-"Stage_3": "I'd better put the book on the desk, not the bed."
+"Stage_1": "I don't need to go through there right now. ",
+"Stage_2": "tbd",
+"Stage_3": "tbd"
 }
 metadata/Hints = {}
 metadata/ExtraInformation = {
@@ -845,7 +822,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("14_p25bt")
+script = ExtResource("15_wr1ab")
 
 [node name="PuzzlesPanel" type="Panel" parent="InteractableItems/Select_Items/Settings/Puzzles"]
 layout_mode = 1
@@ -854,7 +831,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_hecqb")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_qb8qr")
 
 [node name="Back_Button" type="MarginContainer" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel"]
 visible = false
@@ -868,7 +845,7 @@ offset_right = -20.0
 offset_bottom = 114.0
 grow_horizontal = 0
 
-[node name="Back" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/Back_Button" instance=ExtResource("12_kcntl")]
+[node name="Back" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/Back_Button" instance=ExtResource("13_k2ut2")]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_horizontal = 1
@@ -876,7 +853,7 @@ size_flags_vertical = 1
 tooltip_text = "Go back to the settings menu"
 theme_type_variation = &"GreenButton"
 text = "Back"
-icon = ExtResource("13_lywhr")
+icon = ExtResource("14_jnv56")
 icon_alignment = 1
 vertical_icon_alignment = 2
 expand_icon = true
@@ -903,13 +880,13 @@ offset_top = 214.0
 offset_right = 927.0
 offset_bottom = 254.0
 
-[node name="1" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/North" instance=ExtResource("4_4mlkj")]
+[node name="1" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/North" instance=ExtResource("5_biifr")]
 visible = false
 layout_mode = 2
 offset_right = 200.0
 offset_bottom = 200.0
-texture_normal = ExtResource("15_0dxs1")
-texture_pressed = ExtResource("16_d7pj1")
+texture_normal = ExtResource("8_i5weq")
+texture_pressed = ExtResource("9_560b4")
 metadata/Object = ""
 metadata/Description = {}
 metadata/Hints = {}
@@ -936,7 +913,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="5" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/East/PuzzleCont" instance=ExtResource("4_4mlkj")]
+[node name="5" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/East/PuzzleCont" instance=ExtResource("5_biifr")]
 visible = false
 layout_mode = 1
 anchors_preset = -1
@@ -948,8 +925,8 @@ offset_right = 0.0
 offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2
-texture_normal = ExtResource("15_0dxs1")
-texture_pressed = ExtResource("16_d7pj1")
+texture_normal = ExtResource("8_i5weq")
+texture_pressed = ExtResource("9_560b4")
 metadata/Object = "Book Desk Item"
 metadata/Description = {
 "Stage_3": "I'll put it down here. Seems like a good place for it."
@@ -960,7 +937,7 @@ metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
 metadata/Sources = {}
 
-[node name="South" type="Control" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel" node_paths=PackedStringArray("DIALOGUE", "F_BOOK", "CAMERAS", "aux")]
+[node name="South" type="Control" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -968,11 +945,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("17_bvebo")
-DIALOGUE = NodePath("../../../../../../CanvasLayer/Settings/SpeechGUI")
-F_BOOK = NodePath("../../../../../../MainRoom/family book")
-CAMERAS = NodePath("../../../../../../Cameras")
-aux = NodePath("../../../../../../AudioController")
+script = ExtResource("16_t7amm")
 
 [node name="PuzzleCont" type="Control" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South"]
 visible = false
@@ -989,7 +962,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="c1" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components" instance=ExtResource("4_4mlkj")]
+[node name="c1" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components" instance=ExtResource("5_biifr")]
 visible = false
 layout_mode = 1
 anchors_preset = -1
@@ -1002,8 +975,8 @@ offset_right = 1262.6
 offset_bottom = 529.76
 grow_horizontal = 2
 grow_vertical = 2
-texture_normal = ExtResource("15_0dxs1")
-texture_pressed = ExtResource("16_d7pj1")
+texture_normal = ExtResource("8_i5weq")
+texture_pressed = ExtResource("9_560b4")
 metadata/Object = "ToReviveAHummingbird"
 metadata/Description = {
 "Stage_2": "This reads, \"To Revive a Hummingbird.\" I remember reading this for my English class. This isn't the book Mum described though."
@@ -1018,7 +991,7 @@ metadata/Sources = {
 "src": "It's just a book. Nothing to cite here."
 }
 
-[node name="c2" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components" instance=ExtResource("4_4mlkj")]
+[node name="c2" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components" instance=ExtResource("5_biifr")]
 visible = false
 layout_mode = 1
 anchors_preset = -1
@@ -1031,8 +1004,8 @@ offset_right = 680.6
 offset_bottom = 801.76
 grow_horizontal = 2
 grow_vertical = 2
-texture_normal = ExtResource("15_0dxs1")
-texture_pressed = ExtResource("16_d7pj1")
+texture_normal = ExtResource("8_i5weq")
+texture_pressed = ExtResource("9_560b4")
 metadata/Object = "FoundBoy"
 metadata/Description = {
 "Stage_2": "This reads, \"Found Boy.\" I remember a lot of people at school were reading this at some point. This isn't the book I'm looking for though."
@@ -1047,7 +1020,7 @@ metadata/Sources = {
 "src": "It's just a book. Nothing to cite here."
 }
 
-[node name="c3" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components" instance=ExtResource("4_4mlkj")]
+[node name="c3" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components" instance=ExtResource("5_biifr")]
 visible = false
 layout_mode = 1
 anchors_preset = -1
@@ -1060,8 +1033,8 @@ offset_right = 1034.6
 offset_bottom = 249.76
 grow_horizontal = 2
 grow_vertical = 2
-texture_normal = ExtResource("15_0dxs1")
-texture_pressed = ExtResource("16_d7pj1")
+texture_normal = ExtResource("8_i5weq")
+texture_pressed = ExtResource("9_560b4")
 metadata/Object = "TheLabyrinthJogger"
 metadata/Description = {
 "Stage_2": "This reads, \"The Labyrinth Jogger\" There was an awful lot of running for a book that has the word \"jogging\". This doesn't fit the description Mum gave, though."
@@ -1076,7 +1049,7 @@ metadata/Sources = {
 "src": "It's just a book. Nothing to cite here."
 }
 
-[node name="c4" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components" instance=ExtResource("4_4mlkj")]
+[node name="c4" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components" instance=ExtResource("5_biifr")]
 visible = false
 layout_mode = 1
 anchors_preset = -1
@@ -1089,8 +1062,8 @@ offset_right = 1400.6
 offset_bottom = 1071.76
 grow_horizontal = 2
 grow_vertical = 2
-texture_normal = ExtResource("15_0dxs1")
-texture_pressed = ExtResource("16_d7pj1")
+texture_normal = ExtResource("8_i5weq")
+texture_pressed = ExtResource("9_560b4")
 metadata/Object = "CGTB"
 metadata/Description = {
 "Stage_2": "This reads, \"Cait's Guide to Blender.\" Not sure why somebody would need a guide on how to use a blender... and isn't the book Mum asked for."
@@ -1105,7 +1078,7 @@ metadata/Sources = {
 "src": "It's just a book. Nothing to cite here."
 }
 
-[node name="c5" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components" instance=ExtResource("4_4mlkj")]
+[node name="c5" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components" instance=ExtResource("5_biifr")]
 visible = false
 layout_mode = 1
 anchors_preset = -1
@@ -1118,8 +1091,8 @@ offset_right = 706.6
 offset_bottom = 249.76
 grow_horizontal = 2
 grow_vertical = 2
-texture_normal = ExtResource("15_0dxs1")
-texture_pressed = ExtResource("16_d7pj1")
+texture_normal = ExtResource("8_i5weq")
+texture_pressed = ExtResource("9_560b4")
 metadata/Object = "TheGreatCatsby"
 metadata/Description = {
 "Stage_2": "This reads, \"The Great Catsby\", another book I had to read for English. Not the book I'm looking for though. This book isn't the descibed one, though."
@@ -1134,7 +1107,7 @@ metadata/Sources = {
 "src": "It's just a book. Nothing to cite here."
 }
 
-[node name="c6" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components" instance=ExtResource("4_4mlkj")]
+[node name="c6" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components" instance=ExtResource("5_biifr")]
 visible = false
 layout_mode = 1
 anchors_preset = -1
@@ -1147,8 +1120,8 @@ offset_right = 1274.6
 offset_bottom = 883.76
 grow_horizontal = 2
 grow_vertical = 2
-texture_normal = ExtResource("15_0dxs1")
-texture_pressed = ExtResource("16_d7pj1")
+texture_normal = ExtResource("8_i5weq")
+texture_pressed = ExtResource("9_560b4")
 metadata/Object = "MagicBook."
 metadata/Description = {
 "Stage_2": "This must be the book Mum was talking about. It's a bit tattered. I'll take it over to the desk."
@@ -1168,7 +1141,7 @@ libraries = {
 "": SubResource("AnimationLibrary_i2hal")
 }
 
-[node name="2" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont" instance=ExtResource("4_4mlkj")]
+[node name="2" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont" instance=ExtResource("5_biifr")]
 visible = false
 layout_mode = 1
 anchors_preset = -1
@@ -1182,8 +1155,8 @@ offset_right = 979.84
 offset_bottom = 679.48
 grow_horizontal = 2
 grow_vertical = 2
-texture_normal = ExtResource("15_0dxs1")
-texture_pressed = ExtResource("16_d7pj1")
+texture_normal = ExtResource("8_i5weq")
+texture_pressed = ExtResource("9_560b4")
 metadata/Object = "TriggerEvent"
 metadata/Hints = {
 "Stage_2": "Remember what Mum said: \"worn, brown coloured, cursive on the front.\""
@@ -1207,13 +1180,13 @@ offset_top = 214.0
 offset_right = 927.0
 offset_bottom = 254.0
 
-[node name="1" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/West" instance=ExtResource("4_4mlkj")]
+[node name="1" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/West" instance=ExtResource("5_biifr")]
 visible = false
 layout_mode = 0
 offset_right = 200.0
 offset_bottom = 200.0
-texture_normal = ExtResource("15_0dxs1")
-texture_pressed = ExtResource("16_d7pj1")
+texture_normal = ExtResource("8_i5weq")
+texture_pressed = ExtResource("9_560b4")
 metadata/Object = ""
 metadata/Description = {}
 metadata/Hints = {}
@@ -1231,13 +1204,13 @@ offset_top = 214.0
 offset_right = 927.0
 offset_bottom = 254.0
 
-[node name="1" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/Up" instance=ExtResource("4_4mlkj")]
+[node name="1" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/Up" instance=ExtResource("5_biifr")]
 visible = false
 layout_mode = 0
 offset_right = 200.0
 offset_bottom = 200.0
-texture_normal = ExtResource("15_0dxs1")
-texture_pressed = ExtResource("16_d7pj1")
+texture_normal = ExtResource("8_i5weq")
+texture_pressed = ExtResource("9_560b4")
 metadata/Object = ""
 metadata/Description = {}
 metadata/Hints = {}
@@ -1255,13 +1228,13 @@ offset_top = 214.0
 offset_right = 927.0
 offset_bottom = 254.0
 
-[node name="1" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/Down" instance=ExtResource("4_4mlkj")]
+[node name="1" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/Down" instance=ExtResource("5_biifr")]
 visible = false
 layout_mode = 0
 offset_right = 200.0
 offset_bottom = 200.0
-texture_normal = ExtResource("15_0dxs1")
-texture_pressed = ExtResource("16_d7pj1")
+texture_normal = ExtResource("8_i5weq")
+texture_pressed = ExtResource("9_560b4")
 metadata/Object = ""
 metadata/Description = {}
 metadata/Hints = {}
@@ -1270,49 +1243,60 @@ metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/CamRotation = 0
 metadata/Sources = {}
 
-[node name="testCam" type="Camera3D" parent="."]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.0602202, -0.205688, 1.05261)
+[node name="testCam2" type="Camera3D" parent="."]
+transform = Transform3D(-1, 0, -4.37115e-07, 0, 1, 0, 4.37115e-07, 0, -1, 12.9361, -2.3705, 16.7682)
+fov = 75.9375
 
-[node name="AudioController" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("18_ptd1j")
+[node name="testCam" type="Camera3D" parent="."]
+transform = Transform3D(0.840311, -0.542104, 1.23229e-07, -1.74846e-07, -4.37114e-08, 1, -0.542104, -0.840311, -1.31516e-07, 67.9523, -2.21221, 104.951)
+fov = 56.25
+
+[node name="beepEntry" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_ina5q")
 bus = &"KnockingBus"
 
-[connection signal="Stage1" from="." to="." method="Stage1Stuff"]
-[connection signal="StartScene" from="." to="." method="FirstDialogue"]
-[connection signal="StartScene" from="." to="Transition" method="PlayWakeAnim"]
-[connection signal="pressed" from="CanvasLayer/Settings/OnItemSelect" to="." method="OnItemSelect"]
-[connection signal="pressed" from="CanvasLayer/Settings/BookInteract" to="." method="OnBookInteract"]
+[node name="beepReject" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_byt6u")
+bus = &"KnockingBus"
+
+[node name="stonewall" parent="." instance=ExtResource("19_tt755")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74.2308, -9.15406, 114.817)
+
+[connection signal="pressed" from="CanvasLayer/Settings/1" to="." method="ToggleMattachine"]
+[connection signal="pressed" from="CanvasLayer/Settings/1" to="InteractableItems" method="CirclesPressed" binds= ["../CanvasLayer/IntroCam/1"]]
+[connection signal="pressed" from="CanvasLayer/Settings/2" to="InteractableItems" method="DialogueByString" flags=6]
+[connection signal="pressed" from="CanvasLayer/Settings/2" to="InteractableItems" method="InteractCircles"]
+[connection signal="pressed" from="CanvasLayer/Settings/3" to="InteractableItems" method="DialogueByString" flags=6]
+[connection signal="pressed" from="CanvasLayer/Settings/3" to="InteractableItems" method="InteractCircles"]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/Back_Button/Back" to="InteractableItems" method="OnBackPressed" flags=18]
-[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/North/1" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/North/1"]]
-[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/North/2" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/North/2"]]
-[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/East/1" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/East/1"]]
-[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/East/2" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/East/2"]]
-[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/East/3" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/East/3"]]
-[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/East/4" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/East/4"]]
-[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/East/5" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/East/5"]]
-[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/South/1" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/South/1"]]
-[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/South/2" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/South/2"]]
-[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/South/3" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/South/3"]]
-[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/South/4" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/South/4"]]
-[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/West/1" to="." method="TriggerDialogueTwo" flags=6]
-[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/West/1" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/West/1"]]
-[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/West/2" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/West/2"]]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/North/1" to="InteractableItems" method="InteractCircles"]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/North/1" to="InteractableItems" method="DialogueByString" flags=6 binds= ["Yvonne"]]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/North/2" to="InteractableItems" method="CirclesPressed"]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/North/2" to="InteractableItems" method="DialogueByString" flags=6 binds= ["Martha"]]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/North/3" to="InteractableItems" method="CirclesPressed"]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/North/3" to="InteractableItems" method="DialogueByString" flags=6 binds= ["Leitsch"]]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/East/1" to="InteractableItems" method="CirclesPressed"]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/South/1" to="InteractableItems" method="CirclesPressed"]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/South/2" to="InteractableItems" method="CirclesPressed"]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/South/3" to="InteractableItems" method="CirclesPressed"]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/South/4" to="InteractableItems" method="CirclesPressed"]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/West/1" to="InteractableItems" method="CirclesPressed"]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/West/2" to="InteractableItems" method="CirclesPressed"]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/East/PuzzleCont/5" to="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South" method="PlaceBookScene"]
-[connection signal="FinalDialogue" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South" to="." method="TriggerDialogueThree"]
-[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c1" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c1"]]
-[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c1" to="InteractableItems" method="ToggleSpecificDirectionPath" binds= ["Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c1"]]
-[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c2" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c2"]]
-[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c2" to="InteractableItems" method="ToggleSpecificDirectionPath" binds= ["Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c2"]]
-[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c3" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c3"]]
-[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c3" to="InteractableItems" method="ToggleSpecificDirectionPath" binds= ["Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c3"]]
-[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c4" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c4"]]
-[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c4" to="InteractableItems" method="ToggleSpecificDirectionPath" binds= ["Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c4"]]
-[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c5" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c5"]]
-[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c5" to="InteractableItems" method="ToggleSpecificDirectionPath" binds= ["Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c5"]]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c1" to="InteractableItems" method="CirclesPressed"]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c1" to="InteractableItems" method="ToggleSpecificDirectionPath"]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c2" to="InteractableItems" method="CirclesPressed"]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c2" to="InteractableItems" method="ToggleSpecificDirectionPath"]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c3" to="InteractableItems" method="CirclesPressed"]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c3" to="InteractableItems" method="ToggleSpecificDirectionPath"]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c4" to="InteractableItems" method="CirclesPressed"]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c4" to="InteractableItems" method="ToggleSpecificDirectionPath"]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c5" to="InteractableItems" method="CirclesPressed"]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c5" to="InteractableItems" method="ToggleSpecificDirectionPath"]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c6" to="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South" method="PuzzleAnswer"]
-[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/2" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/2"]]
-[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/2" to="InteractableItems/Select_Items/Settings/Puzzles" method="InitialisePuzzle" binds= [1]]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/2" to="InteractableItems" method="CirclesPressed"]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/2" to="InteractableItems/Select_Items/Settings/Puzzles" method="InitialisePuzzle"]
 
 [editable path="CanvasLayer/Settings/SpeechGUI"]
-[editable path="MainRoom"]
 [editable path="Cameras"]
+[editable path="stonewall"]

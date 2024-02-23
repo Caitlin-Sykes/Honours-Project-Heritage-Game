@@ -14,8 +14,11 @@ public partial class PuzzleStart : Control
 			case "IntroductionScene":
 				puzzleOne = GetNode<WTP>("PuzzlesPanel/South");
 				break;
+			case "Stonewall":
+				GD.Print("tba");
+				break;
 			default:
-				GD.PrintErr("Either not found the scene, or the name in the switch doesn't match with the root");
+				GD.PrintErr("Error with the scene, or the name in the switch doesn't match with the root");
 				break;
 		}
 		

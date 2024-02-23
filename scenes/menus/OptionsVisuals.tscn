@@ -120,7 +120,7 @@ selected = 1
 popup/item_0/text = "Cascadia"
 popup/item_0/icon = ExtResource("3_fucqk")
 popup/item_0/id = 0
-popup/item_1/text = "Dyslexie"
+popup/item_1/text = "OpenDyslexic"
 popup/item_1/icon = ExtResource("3_fucqk")
 popup/item_1/id = 1
 

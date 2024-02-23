@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Runtime.InteropServices;
 
 public partial class IntroductionScene : Node3D
 {
@@ -12,19 +13,26 @@ public partial class IntroductionScene : Node3D
 
 	private Controls CONTROLS; //instance of controls
 
-	private BaseButton getUpButton; // a button used solely for getting up from the bed
+	private BaseButton GETUPBUTTON; // a button used solely for getting up from the bed
+
+	private ButtonOverwrite INTERACTBOOKBUTTON; //a button used solely for interacting with the book.
 
 	private Cameras CAMERAS; //instance of cameraScript
 
-	private InteractCircles CIRCLES;
+	private InteractCircles CIRCLES; //instance of interactCircles
 
-	private Camera3D introCam; //the camera you start viewing from
+	private Camera3D INTROCAM; //the camera you start viewing from
 	private AnimationPlayer ANIMATION_PLAYER_INTROCAM; // the animation handler for intro 
+	private AnimationPlayer ANIM_PLAYER; // the animation handler for intro 
+
 
 	[Signal]
 	public delegate void Stage1EventHandler(); //handler for progressing looking at smth
 	private SceneState SCENESTATEACCESS; //accesses the singleton for the scenestate
 	private JsonHandler DIALOGUEACCESS; //accesses the singleton for the dialogue json
+
+	[Export]
+	private Transitions TRANSITION;
 
 
 
@@ -40,17 +48,21 @@ public partial class IntroductionScene : Node3D
 		SCENESTATEACCESS.PlayerStatus = SceneState.StatusOfPlayer.InDialogue;
 
 		//Gets button nodes
-		getUpButton = GetNode<BaseButton>("CanvasLayer/Settings/OnItemSelect");
+		GETUPBUTTON = GetNode<BaseButton>("CanvasLayer/Settings/OnItemSelect");
+		INTERACTBOOKBUTTON = GetNode<ButtonOverwrite>("CanvasLayer/Settings/BookInteract");
+
 
 		//Gets camera and animation nodes
 		CAMERAS = GetNode<Cameras>("Cameras");
 		CONTROLS = GetNode<Controls>("Cameras/Controls");
-		introCam = GetNode<Camera3D>("IntroCam");
+		INTROCAM = GetNode<Camera3D>("IntroCam");
 		CIRCLES = GetNode<InteractCircles>("InteractableItems");
 		
-		ANIMATION_PLAYER_INTROCAM = (AnimationPlayer)introCam.GetNode("AnimationPlayer");
-		
-		
+		ANIMATION_PLAYER_INTROCAM = (AnimationPlayer)INTROCAM.GetNode("AnimationPlayer");
+		ANIM_PLAYER = (AnimationPlayer)GetNode("Transition/AnimationPlayer");
+
+
+
 		EmitSignal(SignalName.StartScene); //Signal to start scene
 	}
 
@@ -104,7 +116,7 @@ public partial class IntroductionScene : Node3D
 
 	//A function to toggle the wake up button
 	public void ToggleWakeUpButton() {
-		getUpButton.Visible = !getUpButton.Visible;
+		GETUPBUTTON.Visible = !GETUPBUTTON.Visible;
 	}
 
 	/** 
@@ -130,7 +142,6 @@ public partial class IntroductionScene : Node3D
 	}
 
 	//Should only be accessed once during the initial fire, but after the misc dialogue
-	//show puzzle if boolean is true? go by finding the path and using that to find the puzzle equiv?
 	private async void TriggerDialogueTwo() {
 
 		await ToSignal(DIALOGUE, "LookProgress");
@@ -142,8 +153,41 @@ public partial class IntroductionScene : Node3D
 		DIALOGUE.SwapOverlay();
 
 		SCENESTATEACCESS.sceneState = SceneState.CurrentSceneState.Stage_2; //sets the current scene stage to stage_1
+	}
+
+	//Triggers the dialogue for the final text of intro scene.
+	private async void TriggerDialogueThree()
+	{
+		//Sets the current status to in dialogue
+		SCENESTATEACCESS.PlayerStatus = SceneState.StatusOfPlayer.InDialogue; 
+
+		//Starts playing through the mum dialogue 
+		DIALOGUE.Dialogue(DIALOGUEACCESS.Speech.Mum_Dialogue_2, "Mum_Dialogue_2", new string[] { "8" }); 
+
+		//Hides the overlay
+		DIALOGUE.Select_Items.Visible = false;
+		//Hides the circles
+		CIRCLES.EmitEvent("ToggleEastEvents");
+
+		SCENESTATEACCESS.CurrentObjective = "Open the book.";
+	}
 
 
+	private async void OnBookInteract() {
+	SCENESTATEACCESS.PlayerStatus = SceneState.StatusOfPlayer.InDialogue;
+	GetNode<ButtonOverwrite>("CanvasLayer/Settings/BookInteract").Visible = false;
+
+	//Starts playing through the mum dialogue 
+	DIALOGUE.Dialogue(DIALOGUEACCESS.Speech.Mum_Dialogue_3, "Mum_Dialogue_3", new string[] { "-1" });
+	DIALOGUE.ToggleGUIVisible();
+	//Waits 
+	await ToSignal(DIALOGUE, "DialogueProgress");
+	DIALOGUE.Dialogue(PlayerData.Player.Name, "Ugh... I feel... weird. Mu-", string.Format("res://resources/textures/sprites/main_char/{0}.svg", PlayerData.Player.Avatar));
+
+	ANIM_PLAYER.PlayBackwards("Wake"); //plays the camera wake up animation reversed (sleep)
+	DIALOGUE.ToggleGUIVisible();
+
+	await ToSignal(ANIM_PLAYER, "animation_finished"); //waits for the animation to finish
+	TRANSITION.NextScene("res://scenes/stonewall/Stonewall.tscn");
 	}
 }
-

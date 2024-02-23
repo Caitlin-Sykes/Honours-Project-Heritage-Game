@@ -2,190 +2,513 @@
   "Introduction_Scene": [
     {
       "Id": "1",
+      "Speaker": "Narrator",
+      "Dialogue": "You find yourself in your bedroom, waking up from the inky darkness of sleep. It's relatively early, and you can hear your mum calling you from somewhere in the house.",
+      "Avatar": "res://resources/textures/sprites/guide/1.svg"
+    },
+
+    {
+      "Id": "2",
       "Speaker": "Mum",
       "Dialogue": "{0}, wake up! It's getting late and we have stuff to do!",
       "Avatar": "res://resources/textures/sprites/mother/{0}.svg"
     },
 
     {
-      "Id": "2",
+      "Id": "3",
       "Speaker": "{0}",
       "Dialogue": "Nghhhhhh...",
       "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
     },
 
     {
-      "Id": "3",
+      "Id": "4",
       "Speaker": "Mum",
       "Dialogue": "I mean it, {0}! Don't make me come in with the bucket of water!",
       "Avatar": "res://resources/textures/sprites/mother/{0}.svg"
     },
 
     {
-      "Id": "4",
+      "Id": "5",
       "Speaker": "{0}",
       "Dialogue": "I suppose I better get up...",
       "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
     },
 
     {
-      "Id": "5",
-      "Speaker": "Guide",
-      "Dialogue": "When you see a circle like this, this is something you can click. This can either be to get a better view, something you can interact with, or something to progress the scene. Try clicking on it now.",
+      "Id": "6",
+      "Speaker": "Narrator",
+      "Dialogue": "Your limbs feel like lead, as you roll out of bed, studying the surroundings you called home.",
       "Avatar": "res://resources/textures/sprites/guide/1.svg"
+    },
+
+    {
+      "Id": "7",
+      "Speaker": "Controls",
+      "Dialogue": "When you see a circle like this, this is something you can click. This can either be to get a better view, something you can interact with, or something to progress the scene. Try clicking on it now.",
+      "Avatar": "NULL"
     }
   ],
 
   "Controls": [
     {
       "Id": "1",
-      "Speaker": "Guide",
+      "Speaker": "Controls",
       "Dialogue": "Using the arrows on your screen, or by using WASD, you can move around the room and interact with things. Some rooms will allow you to look up, in which case your screen will look like this.",
       "Avatar": "res://resources/textures/sprites/guide/1.svg"
     },
 
     {
       "Id": "2",
-      "Speaker": "Guide",
+      "Speaker": "Controls",
       "Dialogue": "You can see the up and down arrows have now appeared. In this scene, you won't have to worry about looking up and down, so I will turn them off again.",
-      "Avatar": "res://resources/textures/sprites/guide/1.svg"
+      "Avatar": "NULL"
     },
 
     {
       "Id": "3",
-      "Speaker": "Guide",
+      "Speaker": "Controls",
       "Dialogue": "Similarly to before, anywhere you can see a circle-like object, this is something you can interact with. Try interacting with the wardrobe.",
-      "Avatar": "res://resources/textures/sprites/guide/1.svg"
+      "Avatar": "NULL"
     },
 
     {
       "Id": "4",
-      "Speaker": "Guide",
+      "Speaker": "Controls",
       "Dialogue": "There we go. Any time during the game, if you would like to see the source of any information provided, such as a fact, you can press the 'K' key.",
-      "Avatar": "res://resources/textures/sprites/guide/1.svg"
+      "Avatar": "NULL"
     },
 
     {
       "Id": "5",
-      "Speaker": "Guide",
+      "Speaker": "Controls",
       "Dialogue": "This will show a list of sources that the information was obtained from. This is also available from within the game menu and the game source files- 'Sources.md'",
-      "Avatar": "res://resources/textures/sprites/guide/1.svg"
+      "Avatar": "NULL"
     },
 
     {
       "Id": "6",
-      "Speaker": "Guide",
+      "Speaker": "Controls",
       "Dialogue": "The 'J' key may provide extra information not originally shown. Try pressing 'J' whilst clicking on the poster by the desk.",
-      "Avatar": "res://resources/textures/sprites/guide/1.svg"
+      "Avatar": "NULL"
     },
 
     {
       "Id": "7",
-      "Speaker": "Guide",
+      "Speaker": "Controls",
       "Dialogue": "If you are stuck at any time, or forget what you are supposed to be doing, press the 'L' key to prompt you.",
-      "Avatar": "res://resources/textures/sprites/guide/1.svg"
+      "Avatar": "NULL"
     },
 
     {
       "Id": "8",
-      "Speaker": "Guide",
+      "Speaker": "Controls",
       "Dialogue": "I think that's about it in terms of controls. Have fun- and I think you should interact with the door to tell your mum you're coming.",
-      "Avatar": "res://resources/textures/sprites/guide/1.svg"
+      "Avatar": "NULL"
     }
   ],
 
   "Mum_Dialogue_1": [
     {
       "Id": "1",
+      "Speaker": "Narrator",
+      "Dialogue": "You raise your voice, as you call out to your mum, knowing she would keep yelling until you confirmed you were up.",
+      "Avatar": "res://resources/textures/sprites/guide/1.svg"
+    },
+    {
+      "Id": "2",
       "Speaker": "{0}",
       "Dialogue": "I'm up! What did you need me for?!",
       "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
     },
-
     {
-      "Id": "2",
+      "Id": "3",
       "Speaker": "Mum",
       "Dialogue": "I have something to show you- could you get it from your bookshelf and I'll come up!",
       "Avatar": "res://resources/textures/sprites/mother/{0}.svg"
     },
 
     {
-      "Id": "3",
+      "Id": "4",
       "Speaker": "{0}",
       "Dialogue": "Sure! What am I looking for?",
       "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
     },
 
     {
-      "Id": "4",
+      "Id": "5",
       "Speaker": "Mum",
       "Dialogue": "It's uh, brown coloured. Looks kinda worn. The title is in cursive- just pick it up and put it on your desk!",
       "Avatar": "res://resources/textures/sprites/mother/{0}.svg"
     },
 
     {
-      "Id": "5",
+      "Id": "6",
       "Speaker": "{0}",
       "Dialogue": "Okay! ...a bit random to ask, but I guess I'd better find it.",
       "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
+    },
+
+    {
+      "Id": "7",
+      "Speaker": "Narrator",
+      "Dialogue": "You turn around from the door, and face the room, reading to look for the book.",
+      "Avatar": "res://resources/textures/sprites/guide/1.svg"
     }
   ],
 
   "Mum_Dialogue_2": [
     {
       "Id": "1",
+      "Speaker": "Narrator",
+      "Dialogue": "You place the book on the desk, as your mum knocks, before entering the room.",
+      "Avatar": "res://resources/textures/sprites/guide/1.svg"
+    },
+
+    {
+      "Id": "2",
       "Speaker": "Mum",
       "Dialogue": "Ah you found it then.",
       "Avatar": "res://resources/textures/sprites/mother/{0}.svg"
     },
 
     {
-      "Id": "2",
+      "Id": "3",
       "Speaker": "{0}",
       "Dialogue": "Yeah. But I've never seen this before, Mum.",
       "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
     },
 
     {
-      "Id": "3",
+      "Id": "4",
       "Speaker": "Mum",
       "Dialogue": "That would be because I only put it there last week, thinking you'd notice.",
       "Avatar": "res://resources/textures/sprites/mother/{0}.svg"
     },
 
     {
-      "Id": "4",
+      "Id": "5",
       "Speaker": "{0}",
       "Dialogue": "I uh, don't really look at my bookshelf all that often.",
       "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
     },
 
     {
-      "Id": "5",
+      "Id": "6",
       "Speaker": "Mum",
       "Dialogue": "Teenagers. Anyway, it- you know what, open it. I'll show you what it does.",
       "Avatar": "res://resources/textures/sprites/mother/{0}.svg"
     },
 
     {
-      "Id": "6",
+      "Id": "7",
       "Speaker": "{0}",
       "Dialogue": "What it does? It's just a book-",
       "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
     },
 
     {
-      "Id": "7",
+      "Id": "8",
       "Speaker": "Mum",
       "Dialogue": "Just do it, {0}, please.",
       "Avatar": "res://resources/textures/sprites/mother/{0}.svg"
     },
 
-	{
-    "Id": "8",
-    "Speaker": "{0}",
-    "Dialogue": "Geez. Fine.",
-    "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
-  }
+    {
+      "Id": "9",
+      "Speaker": "{0}",
+      "Dialogue": "Geez. Fine.",
+      "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
+    }
+  ],
+
+  "Mum_Dialogue_3": [
+    {
+      "Id": "1",
+      "Speaker": "Narrator",
+      "Dialogue": "Your hand hovers over the book as you thumb the cover, read to open it.",
+      "Avatar": "res://resources/textures/sprites/guide/1.svg"
+    },
+
+    {
+      "Id": "2",
+      "Speaker": "{0}",
+      "Dialogue": "It's just a book... what's going to happen, it spontaneusly sets alight?",
+      "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
+    }
+  ],
+
+  "Stonewall_Dialogue": [
+    {
+      "Id": "1",
+      "Speaker": "Narrator",
+      "Dialogue": "Your head aches, as you blink your eyes open for the second time today, taking a look at your surroundings, which are clearly not your room anymore.",
+      "Avatar": "res://resources/textures/sprites/guide/1.svg"
+    },
+
+    {
+      "Id": "2",
+      "Speaker": "Narrator",
+      "Dialogue": "You stand in the middle of a street, in front of you, a building covered in lights, with a sign that you can't quite make out from your current position.",
+      "Avatar": "res://resources/textures/sprites/guide/1.svg"
+    },
+
+    {
+      "Id": "3",
+      "Speaker": "{0}",
+      "Dialogue": "What the? Mum? Where are we?",
+      "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
+    },
+
+    {
+      "Id": "4",
+      "Speaker": "Mum",
+      "Dialogue": "We're... I think this is The Stonewall Inn. I remember your grandfather telling me stories- this place meant a lot to him.",
+      "Avatar": "res://resources/textures/sprites/mother/{0}.svg"
+    },
+
+    {
+      "Id": "5",
+      "Speaker": "{0}",
+      "Dialogue": "The Stonewall Inn? As in, 1969 Stonewall Inn? I remember covering it in history.",
+      "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
+    },
+
+    {
+      "Id": "6",
+      "Speaker": "Mum",
+      "Dialogue": "Yeah. The book you opened? It's a bit of an heirloom. Each generation, when you're in your adulthood, you write down your name. Like a family tree.",
+      "Avatar": "res://resources/textures/sprites/mother/{0}.svg"
+    },
+
+    {
+      "Id": "7",
+      "Speaker": "{0}",
+      "Dialogue": "Why?",
+      "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
+    },
+
+    {
+      "Id": "8",
+      "Speaker": "Mum",
+      "Dialogue": "It's just tradition. Then, when someone further down the line opens it to a page, you usually see the memories of your most immediate relative, usually a selection of events that cause intense emotion.",
+      "Avatar": "res://resources/textures/sprites/mother/{0}.svg"
+    },
+
+    {
+      "Id": "9",
+      "Speaker": "{0}",
+      "Dialogue": "So why are we here?",
+      "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
+    },
+
+    {
+      "Id": "10",
+      "Speaker": "Mum",
+      "Dialogue": "We just are. It's not back in time or anything... more like a freeze-frame in history? Have a wander about, see what you can see.",
+      "Avatar": "res://resources/textures/sprites/mother/{0}.svg"
+    },
+
+    {
+      "Id": "11",
+      "Speaker": "{0}",
+      "Dialogue": "Okay... a bit weird mum, 'magic is real' or something like that... I'll deal with that particular thought process later...",
+      "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
+    }
+  ],
+
+  "Stonewall_Yvonne": [
+    {
+      "Id": "1",
+      "Speaker": "{0}",
+      "Dialogue": "Hey Mum, who's this?",
+      "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
+    },
+
+    {
+      "Id": "2",
+      "Speaker": "Mum",
+      "Dialogue": "This is Yvonne Ritter. I think I met her when I four, though I don't really remember it that well.",
+      "Avatar": "res://resources/textures/sprites/mother/{0}.svg"
+    },
+
+    {
+      "Id": "3",
+      "Speaker": "{0}",
+      "Dialogue": "Why is she here? Or rather, why is there a picture of her?",
+      "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
+    },
+
+    {
+      "Id": "4",
+      "Speaker": "Mum",
+      "Dialogue": "We're not strictly back in time. The book... well, it tends to take you to some of the most important memories of the person. The posters are representing the people- to be honest, I don't know how it works.",
+      "Avatar": "res://resources/textures/sprites/mother/{0}.svg"
+    },
+
+    {
+      "Id": "5",
+      "Speaker": "{0}",
+      "Dialogue": "Well, at least it didn't take us to the moment of your birth or something... yuck.",
+      "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
+    },
+
+    {
+      "Id": "6",
+      "Speaker": "Mum",
+      "Dialogue": "She's a similar age to your grandfather. She's still alive, actually, and was a pretty significant activist throughout her life.",
+      "Avatar": "res://resources/textures/sprites/mother/{0}.svg"
+    },
+
+    {
+      "Id": "7",
+      "Speaker": "{0}",
+      "Dialogue": "How so? What kind of things did she do?",
+      "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
+    },
+
+    {
+      "Id": "8",
+      "Speaker": "Mum",
+      "Dialogue": "She was only eighteen when Stonewall happened, it was her birthday. She was assigned male at birth you see, but was Transgender in a time where it wasn't accepted. So there was a lot of subterfuge surrounding her being who she is, because she would be persecuted otherwise.",
+      "Avatar": "res://resources/textures/sprites/mother/{0}.svg",
+      "Source": "https://www.theguardian.com/lifeandstyle/2019/jun/19/stonewall-50th-anniversary-night-that-unleashed-gay-liberation"
+    },
+
+    {
+      "Id": "9",
+      "Speaker": "{0}",
+      "Dialogue": "So... what would happen if you were caught? Why was it illegal? ",
+      "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
+    },
+
+    {
+      "Id": "10",
+      "Speaker": "Mum",
+      "Dialogue": "It was usually imprisonment, along with some sort of criminal charge, sometimes inciting riots, things like that. In one case, it was 'female impersonation with intent to cause a crime'. In the case of Yvonne, to some degree she was lucky, they let her go after arresting her. There was no 'one box fits all' charge.",
+      "Avatar": "res://resources/textures/sprites/mother/{0}.svg",
+      "Source": "https://search.library.wisc.edu/catalog/9913010402402121"
+    },
+
+    {
+      "Id": "11",
+      "Speaker": "{0}",
+      "Dialogue": "I see. Just one last question. Was the Mafia thing true?",
+      "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
+    },
+
+    {
+      "Id": "12",
+      "Speaker": "Mum",
+      "Dialogue": "Yeah. It was. They would bribe the police so Stonewall could remain open. It was essentially a gap in the market, these people had nowhere to go where they were excepted, so by offering a place, they were able to capitalise on the fact they had nowhere else. Gay people, transgender people, all could dance with one another wihtout being persecuted.",
+      "Avatar": "res://resources/textures/sprites/mother/{0}.svg",
+      "Source": "https://search.library.wisc.edu/catalog/9913010402402121"
+    },
+
+    {
+      "Id": "13",
+      "Speaker": "{0}",
+      "Dialogue": "That's really interesting, thank you Mum.",
+      "Avatar": "res://resources/textures/sprites/main_char/{0}.svg",
+      "Source": "https://www.history.com/news/how-the-mob-helped-establish-nycs-gay-bar-scene"
+    }
+  ],
+
+  "Stonewall_Martha": [
+    {
+      "Id": "1",
+      "Speaker": "{0}",
+      "Dialogue": "Is this someone also related to Stonewall?",
+      "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
+    },
+
+    {
+      "Id": "2",
+      "Speaker": "Mum",
+      "Dialogue": "It's... not quite. This is... Martha Shelley I think. She wasn't involved in Stonewall itself, but in the events that followed. She was an activist and writer- she wrote ",
+      "Avatar": "res://resources/textures/sprites/mother/{0}.svg"
+    },
+
+    {
+      "Id": "3",
+      "Speaker": "{0}",
+      "Dialogue": "How do you remember all this stuff?",
+      "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
+    },
+
+    {
+      "Id": "4",
+      "Speaker": "Mum",
+      "Dialogue": "Your grandfather was open about his past, one of the most important things he wanted me to learn was about equality. He was always open about the fact that he was bisexual. He settled down with your grandmother, but would have been just as happy if he had married a man.",
+      "Avatar": "res://resources/textures/sprites/mother/{0}.svg"
+    },
+
+    {
+      "Id": "5",
+      "Speaker": "{0}",
+      "Dialogue": "I guess that makes sense. What else did Martha do?",
+      "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
+    },
+
+    {
+      "Id": "6",
+      "Speaker": "Mum",
+      "Dialogue": "One of the things she was most known for, was for when she climbed on top of a fountain, a month to the day after the riot. Whats she did was share a message to encourage people to 'come out of the shadows and walk in the sunshine'",
+      "Avatar": "res://resources/textures/sprites/mother/{0}.svg",
+      "Source": "https://www.bbc.co.uk/news/world-us-canada-48643756"
+    },
+
+    {
+      "Id": "7",
+      "Speaker": "{0}",
+      "Dialogue": "",
+      "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
+    },
+
+    {
+      "Id": "8",
+      "Speaker": "Mum",
+      "Dialogue": "",
+      "Avatar": "res://resources/textures/sprites/mother/{0}.svg",
+      "Source": "https://www.theguardian.com/lifeandstyle/2019/jun/19/stonewall-50th-anniversary-night-that-unleashed-gay-liberation"
+    },
+
+    {
+      "Id": "9",
+      "Speaker": "{0}",
+      "Dialogue": "",
+      "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
+    },
+
+    {
+      "Id": "10",
+      "Speaker": "Mum",
+      "Dialogue": "",
+      "Avatar": "res://resources/textures/sprites/mother/{0}.svg",
+      "Source": "https://search.library.wisc.edu/catalog/9913010402402121"
+    },
+
+    {
+      "Id": "11",
+      "Speaker": "{0}",
+      "Dialogue": "",
+      "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
+    },
+
+    {
+      "Id": "12",
+      "Speaker": "Mum",
+      "Dialogue": "",
+      "Avatar": "res://resources/textures/sprites/mother/{0}.svg",
+      "Source": "https://search.library.wisc.edu/catalog/9913010402402121"
+    },
+
+    {
+      "Id": "13",
+      "Speaker": "{0}",
+      "Dialogue": "",
+      "Avatar": "res://resources/textures/sprites/main_char/{0}.svg",
+      "Source": "https://www.history.com/news/how-the-mob-helped-establish-nycs-gay-bar-scene"
+    }
   ]
 }

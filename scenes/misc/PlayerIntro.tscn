@@ -160,7 +160,7 @@ layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 1
 theme_type_variation = &"StudentIDLineEdit"
-placeholder_text = "           Enter your character name here "
+placeholder_text = "        Enter your character name here "
 alignment = 1
 max_length = 20
 

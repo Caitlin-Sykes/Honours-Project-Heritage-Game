@@ -14,7 +14,7 @@ public partial class SpeechGUI : Control
 
 	private Cameras CAMERAS; //node to hold instance of cameras
 
-	private CanvasLayer Select_Items; //node to hold instance of select items overlay
+	public CanvasLayer Select_Items; //node to hold instance of select items overlay
 	private CanvasLayer Speech_Overlay; //node to hold instance of overlay
 	
 	[Signal]
@@ -120,6 +120,11 @@ public partial class SpeechGUI : Control
 		{
 			if (!Speech_Overlay.Visible) {
 				Speech_Overlay.Visible = true;
+				Select_Items.Visible = false;
+				//If the actual gui is not visible
+				if (!this.Visible) {
+					this.Visible = true;
+				}
 			}
 
 			//For every bit of speech in the scene
@@ -141,16 +146,23 @@ public partial class SpeechGUI : Control
 					MumDialogueEvent(Speech.Id);
 				}
 
+				else if (name == "Mum_Dialogue_2" && triggerID.Contains(Speech.Id))
+				{
+					MTwoDialogueEvent(Speech.Id);
+				}
+
+				else if (name == "Stonewall_Dialogue" && triggerID.Contains(Speech.Id))
+				{
+					StonewallEvent(Speech.Id);
+				}
+
 				SetNameNode(string.Format(Speech.Speaker, PlayerData.Player.Name));
 				SetSpeechNode(string.Format(Speech.Dialogue, PlayerData.Player.Name));
-				SetAvatarNode(string.Format(Speech.Avatar, PlayerData.Player.Avatar));
+				if (Speech.Avatar != "NULL") {
+					SetAvatarNode(string.Format(Speech.Avatar, PlayerData.Player.Avatar));
+				}
 				await ToSignal(this, "DialogueProgress");
 			}
-		}
-
-		else
-		{
-			throw new InvalidOperationException("Error: something has gone wrong with parsing the dialogue.json.");
 		}
 	}
 
@@ -304,6 +316,38 @@ switch (id)
 			default:
 				return;
 		}
+	}
+
+
+	//Controls the events for the second mum dialogue
+	private async void MTwoDialogueEvent(string id)
+	{
+		switch (id)
+		{
+			case "8":
+				ToggleGUIVisible(); //hides the gui
+				SCENESTATEACCESS.PlayerStatus = SceneState.StatusOfPlayer.FreeRoam; //swaps back to freeroam view
+				GetNode<ButtonOverwrite>("../BookInteract").Visible = true;
+				return;
+
+			default:
+				return;
+		}
+	}
+
+	//Controls the events for the stonewall init scene
+	private void StonewallEvent(string id) {
+		switch (id)
+		{
+			case "9":
+				SCENESTATEACCESS.PlayerStatus = SceneState.StatusOfPlayer.FreeRoam; //swaps back to freeroam view
+				ToggleGUIVisible();
+				return;
+
+			default:
+				return;
+		}
+
 	}
 }
 

@@ -24,8 +24,6 @@ public partial class JsonHandler : Node
 		Speech = System.Text.Json.JsonSerializer.Deserialize<DialogueStruct>(jsonString)!;
 	}
 
-
-
 	//A struct to read in the json string from the corresponding scenes
 	public class DialogueStruct
 	{
@@ -42,7 +40,28 @@ public partial class JsonHandler : Node
 		//An array to hold the Dialogue information matching property "Mum_Dialogue_1" 
 		[JsonPropertyName("Mum_Dialogue_1")]
 		public DialogueStructData[] Mum_Dialogue_1 { get; set; }
-}
+
+		//An array to hold the Dialogue information matching property "Mum_Dialogue_2" 
+		[JsonPropertyName("Mum_Dialogue_2")]
+		public DialogueStructData[] Mum_Dialogue_2 { get; set; }
+
+		//An array to hold the Dialogue information matching property "Mum_Dialogue_2" 
+		[JsonPropertyName("Mum_Dialogue_3")]
+		public DialogueStructData[] Mum_Dialogue_3 { get; set; }
+
+		//An array to hold the Dialogue information matching property "Mum_Dialogue_2" 
+		[JsonPropertyName("Stonewall_Dialogue")] 
+		public DialogueStructData[] Stonewall_Dialogue { get; set; }
+
+		[JsonPropertyName("Stonewall_Yvonne")]
+		public DialogueStructData[] Stonewall_Yvonne { get; set; }
+
+		[JsonPropertyName("Stonewall_Martha")]
+		public DialogueStructData[] Stonewall_Martha{ get; set; }
+
+		[JsonPropertyName("Stonewall_Leitsch")]
+		public DialogueStructData[] Stonewall_Leitsch { get; set; }
+	}
 
 	//A class to contain the variables to store dialogue read in from Dialogue.Json
 	public class DialogueStructData
@@ -65,6 +84,10 @@ public partial class JsonHandler : Node
 		[JsonPropertyName("Avatar")]
 
 		public string Avatar { get; set; }
+
+		[JsonPropertyName("Source")]
+
+		public string Source { get; set; }
 
 	}
 

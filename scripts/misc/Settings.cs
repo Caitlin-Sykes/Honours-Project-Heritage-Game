@@ -13,11 +13,11 @@ public partial class Settings : Control
 	private void InitSettings()
 	{
 
-		//If GetFontDefault returns Dyslexie, sets theme to dyslexie
+		//If GetFontDefault returns Dyslexic, sets theme to dyslexie
 		//Else sets Theme to cascadia
-		if (OptionsVisualsGUI.GetFontDefault() == "Dyslexie")
+		if (OptionsVisualsGUI.GetFontDefault() == "Dyslexic")
 		{
-			Theme = (Theme)GD.Load("res://resources/themes/main_theme_dyslexie.tres");
+			Theme = (Theme)GD.Load("res://resources/themes/main_theme_dyslexic.tres");
 		}
 
 		else
