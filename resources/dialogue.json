@@ -314,7 +314,13 @@
       "Speaker": "{0}",
       "Dialogue": "Okay... a bit weird mum, 'magic is real' or something like that... I'll deal with that particular thought process later...",
       "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
-    }
+    },
+     {
+       "Id": "12",
+       "Speaker": "{0}",
+       "Dialogue": "DEBUG",
+       "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
+     }
   ],
 
   "Stonewall_Yvonne": [

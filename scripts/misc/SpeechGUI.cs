@@ -28,11 +28,15 @@ public partial class SpeechGUI : Control
 
 	private SceneState SCENESTATEACCESS; //accesses the singleton for the scenestate
 
+	private EventDict EVENTDICT; //accesses the singleton for the event dict
+
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		SCENESTATEACCESS = GetNode<SceneState>("/root/SceneStateSingleton"); //accesses the singleton for the scene state
+		EVENTDICT = GetNode<EventDict>("/root/EventDict"); //accesses the singleton for the scene state
+
 		CAMERAS = GetNode<Cameras>("../../../Cameras"); //Gets camera and animation nodes
 		AvatarNode = GetNode<TextureRect>("Main_Dialogue/Avatar"); //Gets instance of Avatar
 		NameNode = GetNode<Label>("Main_Dialogue/Name Container/Name_Box/Name_Label");
@@ -114,57 +118,51 @@ public partial class SpeechGUI : Control
 	}
 
 	//Handles the dialogue if you pass in the Scene. This version handles triggering events at certain IDs
-	public async void Dialogue(JsonHandler.DialogueStructData[] Scene, string name, string[] triggerID)
+	public async void Dialogue(JsonHandler.DialogueStructData[] Scene, string name)
 	{
 		if (Scene != null && SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.InDialogue)
 		{
 			if (!Speech_Overlay.Visible) {
 				Speech_Overlay.Visible = true;
 				Select_Items.Visible = false;
-				//If the actual gui is not visible
-				if (!this.Visible) {
-					this.Visible = true;
-				}
 			}
 
 			//For every bit of speech in the scene
 			foreach (var Speech in Scene)
 			{
-				//If SpeechID == triggerID && Speech.Name matches the name given
-				if (name == "Introduction_Scene" && triggerID.Contains(Speech.Id))
-				{
-					IntroductionSceneEvents(Speech.Id);
-				}
+				if (EVENTDICT.CheckIfSceneTrigger(name, Speech.Id)) {
+					switch (name)
+					{
+						case "Introduction_Scene":
+							IntroductionSceneEvents(Speech.Id);
+							break;
+						case "Controls":
+							ControlsEvents(Speech.Id);
+							break;
+						case "Mum_Dialogue_1":
+							MumDialogueEvent(Speech.Id);
+							break;
+						case "Mum_Dialogue_2":
+							MTwoDialogueEvent(Speech.Id);
+							break;
+						case "Stonewall_Dialogue":
+							StonewallEvent(Speech.Id);
+							break;
+						default:
+							break;
+					}
+				} 
 
-				else if (name == "Controls" && triggerID.Contains(Speech.Id))
-				{
-					ControlsEvents(Speech.Id);
-				}
-
-				else if (name == "Mum_Dialogue_1" && triggerID.Contains(Speech.Id))
-				{
-					MumDialogueEvent(Speech.Id);
-				}
-
-				else if (name == "Mum_Dialogue_2" && triggerID.Contains(Speech.Id))
-				{
-					MTwoDialogueEvent(Speech.Id);
-				}
-
-				else if (name == "Stonewall_Dialogue" && triggerID.Contains(Speech.Id))
-				{
-					StonewallEvent(Speech.Id);
-				}
-
+				//Sets the name and speech
 				SetNameNode(string.Format(Speech.Speaker, PlayerData.Player.Name));
 				SetSpeechNode(string.Format(Speech.Dialogue, PlayerData.Player.Name));
 				if (Speech.Avatar != "NULL") {
 					SetAvatarNode(string.Format(Speech.Avatar, PlayerData.Player.Avatar));
 				}
 				await ToSignal(this, "DialogueProgress");
-			}
+			
 		}
-	}
+	}}
 
 	//Just displays
 	public async void Dialogue(String name, String description, string avatar)
@@ -339,7 +337,7 @@ switch (id)
 	private void StonewallEvent(string id) {
 		switch (id)
 		{
-			case "9":
+			case "12":
 				SCENESTATEACCESS.PlayerStatus = SceneState.StatusOfPlayer.FreeRoam; //swaps back to freeroam view
 				ToggleGUIVisible();
 				return;

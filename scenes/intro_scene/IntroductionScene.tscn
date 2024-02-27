@@ -440,10 +440,10 @@ metadata/ExtraInformation = {
 "Stage_3": "It's just my bed. There isn't anything particularly exciting."
 }
 metadata/NewCamPos = Vector3(0, 0, 0)
-metadata/CamRotation = 0
 metadata/Sources = {
 "src": "No sources here, it's just a bed."
 }
+metadata/CamRotation = Vector3(0, 0, 0)
 
 [node name="2" parent="InteractableItems/Select_Items/Settings/Panel/North" instance=ExtResource("4_4mlkj")]
 visible = false
@@ -470,8 +470,8 @@ metadata/ExtraInformation = {
 "Stage_1": "Apparently, purple chairs are a little hard to come by. I don't know why, purple's a great colour!"
 }
 metadata/NewCamPos = Vector3(0, 0, 0)
-metadata/CamRotation = 0
 metadata/Sources = {}
+metadata/CamRotation = Vector3(0, 0, 0)
 
 [node name="East" type="Control" parent="InteractableItems/Select_Items/Settings/Panel"]
 visible = false
@@ -500,7 +500,7 @@ metadata/Object = "Poster"
 metadata/Description = {
 "Stage_1": "I'd better go see what Mum wants.",
 "Stage_2": "As much as I like the poster, I need to go find the book.",
-"Tutorial": "I got this poster a while ago. Probably spent more time playing that then doing coursework..."
+"Tutorial": "I got this poster a while ago. Probably spent more time playing that than doing coursework..."
 }
 metadata/Hints = {}
 metadata/ExtraInformation = {
@@ -508,11 +508,11 @@ metadata/ExtraInformation = {
 "Source": "It later got a definitive release which was called Persona 5 Royal. It's known for having one of the best modern-day soundtracks, the most famous track being \"Last Surprise.\""
 }
 metadata/NewCamPos = Vector3(1.09332, 0.244675, -1.35129)
-metadata/CamRotation = -90
 metadata/Sources = {
 "Img_Src": " Image from: https://www.amazon.com/Persona-Official-Setting-Picture-JAPANESE/dp/4047331902",
 "Info_Src": "Information from: https://en.wikipedia.org/wiki/Persona_5, {0}"
 }
+metadata/CamRotation = Vector3(0, -90, 0)
 
 [node name="2" parent="InteractableItems/Select_Items/Settings/Panel/East" instance=ExtResource("4_4mlkj")]
 visible = false
@@ -540,8 +540,8 @@ metadata/ExtraInformation = {
 "Stage_1": "It's just a random wardrobe my mum bought."
 }
 metadata/NewCamPos = Vector3(0, 0, 0)
-metadata/CamRotation = 0
 metadata/Sources = {}
+metadata/CamRotation = Vector3(0, 0, 0)
 
 [node name="3" parent="InteractableItems/Select_Items/Settings/Panel/East" instance=ExtResource("4_4mlkj")]
 visible = false
@@ -569,10 +569,10 @@ metadata/ExtraInformation = {
 "Stage_1": "It's just a backpack. That's it. It carries things. Sometimes they're known as rucksacks, schoolbags, or bags."
 }
 metadata/NewCamPos = Vector3(1.09332, -0.755325, -0.44021)
-metadata/CamRotation = 0
 metadata/Sources = {
 "Src_1": "Render from: https://www.turbosquid.com/3d-models/3d-backpack-lowpoly-2024285"
 }
+metadata/CamRotation = Vector3(0, -90, 0)
 
 [node name="4" parent="InteractableItems/Select_Items/Settings/Panel/East" instance=ExtResource("4_4mlkj")]
 visible = false
@@ -600,10 +600,10 @@ metadata/ExtraInformation = {
 "Stage_1": "Somewhere, someone is laughing distantly at the Programmer's Guide for C# book."
 }
 metadata/NewCamPos = Vector3(1.18544, -0.301348, -1.79762)
-metadata/CamRotation = 0
 metadata/Sources = {
 "src": "No sources for this one. Just some random books."
 }
+metadata/CamRotation = Vector3(0, -90, 0)
 
 [node name="5" parent="InteractableItems/Select_Items/Settings/Panel/East" instance=ExtResource("4_4mlkj")]
 visible = false
@@ -630,11 +630,11 @@ metadata/ExtraInformation = {
 "Stage_1": "It's just a generic laptop, though the background is taken from the creator's own laptop. "
 }
 metadata/NewCamPos = Vector3(1.18544, -0.301348, -1.39528)
-metadata/CamRotation = 0
 metadata/Sources = {
 "src": "No sources again. Hi, though."
 }
 metadata/PuzzleEnabled = false
+metadata/CamRotation = Vector3(0, -90, 0)
 
 [node name="South" type="Control" parent="InteractableItems/Select_Items/Settings/Panel"]
 visible = false
@@ -672,10 +672,10 @@ metadata/ExtraInformation = {
 "Stage_1": "A bunch of books with funny names."
 }
 metadata/NewCamPos = Vector3(-0.0602202, 0.362064, 1.33653)
-metadata/CamRotation = 0
 metadata/Sources = {
 "src": "The books are all parodies, so no sources here!"
 }
+metadata/CamRotation = Vector3(0, -180, 0)
 
 [node name="2" parent="InteractableItems/Select_Items/Settings/Panel/South" instance=ExtResource("4_4mlkj")]
 visible = false
@@ -704,11 +704,11 @@ metadata/ExtraInformation = {
 "Stage_1": "I've collected many books over the years, though I should really go through them. Sometimes Mum hijacks it to put her own up."
 }
 metadata/NewCamPos = Vector3(-0.0602202, -0.205688, 1.33653)
-metadata/CamRotation = 0
 metadata/Sources = {
 "src": "Just some parody books, no sources here."
 }
 metadata/PuzzleEnabled = false
+metadata/CamRotation = Vector3(0, -180, 0)
 
 [node name="3" parent="InteractableItems/Select_Items/Settings/Panel/South" instance=ExtResource("4_4mlkj")]
 visible = false
@@ -735,10 +735,10 @@ metadata/ExtraInformation = {
 "Stage_1": "Just some random books. Isn't really anything more to say. "
 }
 metadata/NewCamPos = Vector3(-0.0602202, -0.716625, 1.33653)
-metadata/CamRotation = 0
 metadata/Sources = {
 "src": "Just some random parodied books. No sources here."
 }
+metadata/CamRotation = Vector3(0, -180, 0)
 
 [node name="4" parent="InteractableItems/Select_Items/Settings/Panel/South" instance=ExtResource("4_4mlkj")]
 visible = false
@@ -765,10 +765,10 @@ metadata/ExtraInformation = {
 "Stage_1": "Seriously, it's just a window to the outside."
 }
 metadata/NewCamPos = Vector3(0, 0, 0)
-metadata/CamRotation = 0
 metadata/Sources = {
 "src": "No sources here, just a lovely garden."
 }
+metadata/CamRotation = Vector3(0, -180, 0)
 
 [node name="West" type="Control" parent="InteractableItems/Select_Items/Settings/Panel"]
 visible = false
@@ -804,10 +804,10 @@ metadata/ExtraInformation = {
 "Stage_1": "It's just a door. Nothing special here."
 }
 metadata/NewCamPos = Vector3(0, 0, 0)
-metadata/CamRotation = 0
 metadata/Sources = {
 "src": "No sources again. *Knock knock*"
 }
+metadata/CamRotation = Vector3(0, 0, 0)
 
 [node name="2" parent="InteractableItems/Select_Items/Settings/Panel/West" instance=ExtResource("4_4mlkj")]
 visible = false
@@ -834,8 +834,8 @@ metadata/ExtraInformation = {
 "Stage_1": "Now's really not the time for bed."
 }
 metadata/NewCamPos = Vector3(0, 0, 0)
-metadata/CamRotation = 0
 metadata/Sources = {}
+metadata/CamRotation = Vector3(0, 0, 0)
 
 [node name="Puzzles" type="Control" parent="InteractableItems/Select_Items/Settings"]
 visible = false
@@ -915,8 +915,8 @@ metadata/Description = {}
 metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
-metadata/CamRotation = 0
 metadata/Sources = {}
+metadata/CamRotation = Vector3(0, 0, 0)
 
 [node name="East" type="Control" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel"]
 visible = false
@@ -957,8 +957,8 @@ metadata/Description = {
 metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
-metadata/CamRotation = 0
 metadata/Sources = {}
+metadata/CamRotation = Vector3(0, 0, 0)
 
 [node name="South" type="Control" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel" node_paths=PackedStringArray("DIALOGUE", "F_BOOK", "CAMERAS", "aux")]
 visible = false
@@ -1013,10 +1013,10 @@ metadata/ExtraInformation = {
 "Stage_2": "Most of the books on the bookshelf are based off actual books."
 }
 metadata/NewCamPos = Vector3(0, 0, 0)
-metadata/CamRotation = 0
 metadata/Sources = {
 "src": "It's just a book. Nothing to cite here."
 }
+metadata/CamRotation = Vector3(0, 0, 0)
 
 [node name="c2" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components" instance=ExtResource("4_4mlkj")]
 visible = false
@@ -1042,10 +1042,10 @@ metadata/ExtraInformation = {
 "Stage_2": "Most of the books on the bookshelf are based off actual books."
 }
 metadata/NewCamPos = Vector3(0, 0, 0)
-metadata/CamRotation = 0
 metadata/Sources = {
 "src": "It's just a book. Nothing to cite here."
 }
+metadata/CamRotation = Vector3(0, 0, 0)
 
 [node name="c3" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components" instance=ExtResource("4_4mlkj")]
 visible = false
@@ -1070,11 +1070,11 @@ metadata/Hints = {}
 metadata/ExtraInformation = {
 "Stage_2": "Most of the books on the bookshelf are based off actual books."
 }
-metadata/NewCamPos = Vector3(0, 0, 0)
-metadata/CamRotation = 0
 metadata/Sources = {
 "src": "It's just a book. Nothing to cite here."
 }
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = Vector3(0, 0, 0)
 
 [node name="c4" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components" instance=ExtResource("4_4mlkj")]
 visible = false
@@ -1100,10 +1100,10 @@ metadata/ExtraInformation = {
 "Stage_2": "Most of the books on the bookshelf are based off actual books."
 }
 metadata/NewCamPos = Vector3(0, 0, 0)
-metadata/CamRotation = 0
 metadata/Sources = {
 "src": "It's just a book. Nothing to cite here."
 }
+metadata/CamRotation = Vector3(0, 0, 0)
 
 [node name="c5" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components" instance=ExtResource("4_4mlkj")]
 visible = false
@@ -1129,10 +1129,10 @@ metadata/ExtraInformation = {
 "Stage_2": "Most of the books on the bookshelf are based off actual books."
 }
 metadata/NewCamPos = Vector3(0, 0, 0)
-metadata/CamRotation = 0
 metadata/Sources = {
 "src": "It's just a book. Nothing to cite here."
 }
+metadata/CamRotation = Vector3(0, 0, 0)
 
 [node name="c6" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components" instance=ExtResource("4_4mlkj")]
 visible = false
@@ -1158,10 +1158,10 @@ metadata/ExtraInformation = {
 "Stage_2": "Most of the books on the bookshelf are based off actual books."
 }
 metadata/NewCamPos = Vector3(0, 0, 0)
-metadata/CamRotation = 0
 metadata/Sources = {
 "src": "It's just a book. Nothing to cite here."
 }
+metadata/CamRotation = Vector3(0, 0, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c6"]
 libraries = {
@@ -1192,11 +1192,11 @@ metadata/ExtraInformation = {
 "Stage_1": "It's a bit tattered. Why do we even still have this?"
 }
 metadata/NewCamPos = Vector3(-0.0602202, -0.205688, 1.05261)
-metadata/CamRotation = 0
 metadata/Sources = {}
 metadata/Description = {
 "Stage_2": "Makes sense that a book would be on the bookshelf. Let's take a closer look..."
 }
+metadata/CamRotation = Vector3(0, -180, 0)
 
 [node name="West" type="Control" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel"]
 visible = false
@@ -1219,8 +1219,8 @@ metadata/Description = {}
 metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
-metadata/CamRotation = 0
 metadata/Sources = {}
+metadata/CamRotation = Vector3(0, 0, 0)
 
 [node name="Up" type="Control" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel"]
 visible = false
@@ -1243,8 +1243,8 @@ metadata/Description = {}
 metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
-metadata/CamRotation = 0
 metadata/Sources = {}
+metadata/CamRotation = Vector3(0, 0, 0)
 
 [node name="Down" type="Control" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel"]
 visible = false
@@ -1267,11 +1267,11 @@ metadata/Description = {}
 metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
-metadata/CamRotation = 0
 metadata/Sources = {}
+metadata/CamRotation = Vector3(0, 0, 0)
 
 [node name="testCam" type="Camera3D" parent="."]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.0602202, -0.205688, 1.05261)
+transform = Transform3D(-0.996195, 0, 0.0871558, 0, 1, 0, -0.0871558, 0, -0.996195, -0.0602202, 0.362064, 1.33653)
 
 [node name="AudioController" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("18_ptd1j")

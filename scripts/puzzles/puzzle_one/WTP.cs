@@ -43,7 +43,7 @@ public partial class WTP : Control
         redBtn = redCirc; //sets the red circle
 
         //Changes the camera angle to the one set in the meta data
-        CIRCLES.SetCam(redCirc.GetMeta("NewCamPos").AsVector3(), (float)redCirc.GetMeta("CamRotation"));
+        CIRCLES.SetCam(redCirc.GetMeta("NewCamPos").AsVector3(), (Vector3)redCirc.GetMeta("CamRotation"));
 
         //Toggles the specific components of the puzzle
         EnableAllCircleComponents("PuzzleCont/Components");
@@ -166,7 +166,11 @@ public partial class WTP : Control
 
     private void ProgressPuzzle() {
 
-    CIRCLES.SetCam(Vector3.Zero, 0); //resets camera position
+    CIRCLES.PREVIOUS_POS = Vector3.Zero;
+    CIRCLES.PREVIOUS_ANGLE = new Vector3(0, -180, 0);
+
+
+        CIRCLES.ResetCam(); //resets camera position
     HideAllCircleComponents(); //hides the red circles
 
     SCENESTATEACCESS.PlayerStatus = SceneState.StatusOfPlayer.FreeRoam; //sets the status of the player to free roam

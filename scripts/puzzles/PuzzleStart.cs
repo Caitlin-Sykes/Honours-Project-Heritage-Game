@@ -97,8 +97,4 @@ public partial class PuzzleStart : Control
 				break;
 		}
 	}
-
-	// private void OnPuzzleBack
-
-	// once gets the book, --> click on desk --> initiate mum dialogue --> woah, look kid, book magic dialogue --> woah, transported to stonewall scene.
 }

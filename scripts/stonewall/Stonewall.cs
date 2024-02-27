@@ -39,7 +39,7 @@ public partial class Stonewall : Node
 		SCENESTATEACCESS.CurrentObjective = "Look around The Stonewall Inn";
 
 		//Plays the stonewall entry dialogue scene.
-		DIALOGUE.Dialogue(DIALOGUEACCESS.Speech.Stonewall_Dialogue, "Stonewall_Dialogue", new string[] {"9"});
+		DIALOGUE.Dialogue(DIALOGUEACCESS.Speech.Stonewall_Dialogue, "Stonewall_Dialogue");
 		DIALOGUE.ToggleGUIVisible();
 	}
 
@@ -50,7 +50,8 @@ public partial class Stonewall : Node
 	**/
 
 	//Toggle Mattachine Panel
-	private void ToggleMattachine() {
+	private async void ToggleMattachine() {
+		await ToSignal(DIALOGUE, "LookProgress");
 		MATTACHINE.Visible = !MATTACHINE.Visible;
 	}
 

@@ -65,7 +65,7 @@ public partial class Controls : Node3D
         }
 
         //Reminds player what to do
-         else if (Input.IsKeyPressed(Key.L) && @event.IsPressed() && SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.LookingAtSomething)
+         else if (Input.IsKeyPressed(Key.L) && @event.IsPressed())
         {
             DIALOGUE.ShowObjective();
         }
@@ -79,7 +79,7 @@ public partial class Controls : Node3D
 	**/
 
     // A handler to control clicking on the up gui arrow
-    private void OnUpArrow(Node camera, InputEvent @evnt, Vector3 position, Vector3 normal, int shape_idx) {
+    private void OnUpArrow(InputEvent @evnt) {
 
         //If trigger is left click
         if (@evnt is InputEventMouseButton mouse && SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam && mouse.ButtonIndex == MouseButton.Left && @evnt.IsPressed()) {
@@ -100,10 +100,10 @@ public partial class Controls : Node3D
 	**/   
 
     // A handler to control clicking on the left gui arrow
-    private void OnRightArrow(Node camera, InputEvent @evnt, Vector3 position, Vector3 normal, int shape_idx) {
+    private void OnRightArrow(InputEvent @evnt) {
 
         //If trigger is left click
-        if (@evnt is InputEventMouseButton mouse && SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam && (mouse.ButtonIndex == MouseButton.Left && @evnt.IsPressed())) {
+        if (@evnt is InputEventMouseButton mouse && SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam && mouse.ButtonIndex == MouseButton.Left && @evnt.IsPressed()) {
                     OnRightArrow();
                 }
     }
@@ -120,7 +120,7 @@ public partial class Controls : Node3D
 	**/   
 
     // A handler to control clicking on the bottom gui arrow
-    private void OnDownArrow(Node camera, InputEvent @evnt, Vector3 position, Vector3 normal, int shape_idx) {
+    private void OnDownArrow(InputEvent @evnt) {
 
         //If trigger is left click
         if (@evnt is InputEventMouseButton mouse && SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam && (mouse.ButtonIndex == MouseButton.Left && @evnt.IsPressed())) {
@@ -141,7 +141,7 @@ public partial class Controls : Node3D
 	**/   
 
     // A handler to control clicking on the left gui arrow
-    private void OnLeftArrow(Node camera, InputEvent @evnt, Vector3 position, Vector3 normal, int shape_idx) {
+    private void OnLeftArrow(InputEvent @evnt) {
 
         //If trigger is left click
         if (@evnt is InputEventMouseButton mouse && SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam && mouse.ButtonIndex == MouseButton.Left && @evnt.IsPressed()) {
