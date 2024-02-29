@@ -1,7 +1,6 @@
 using Godot;
 using System;
-using System.Runtime.CompilerServices;
-
+using System.Linq;
 
 
 public partial class InteractCircles : Node3D
@@ -12,7 +11,7 @@ public partial class InteractCircles : Node3D
 
 	private string PLAYER_AVATAR = "res://resources/textures/sprites/main_char/{0}.svg"; //player avatar string
 
-	private string CURRENT_PATH_CIRCLES { get; set; } //current circle
+	public string CURRENT_PATH_CIRCLES { get; set; } //current circle
 
 	private MarginContainer BackButtonContainer; //instance of the back button container
 
@@ -149,33 +148,34 @@ public partial class InteractCircles : Node3D
 
 	public async void CirclesPressed(String path)
 	{
-		//if previous stage != PlayerStatus.Dialogue (aka, coming from freeroam), make gui visible!
-		if (SCENESTATEACCESS.PlayerStatus != SceneState.StatusOfPlayer.InDialogue)
-		{
-			DIALOGUE.ToggleGUIVisible();
-		}
+		// Circles init stuff
+		CirclesInit();
 
-		SCENESTATEACCESS.PreviousState = SCENESTATEACCESS.PlayerStatus; //sets the previous state
-		SCENESTATEACCESS.PlayerStatus = SceneState.StatusOfPlayer.LookingAtSomething;
+		// Sets the circles current path to path
 		CURRENT_PATH_CIRCLES = path;
-
 
 		//If it has a camera position then
 		if (GetNode<ButtonOverwrite>(path).GetMeta("NewCamPos").AsVector3() != Vector3.Zero)
 		{
+			// Toggles direction only if parent isnt called settings
+			if (GetNode<ButtonOverwrite>(path).GetParent().Name != "Settings") {
+				ToggleEventsDirection(GetNode<ButtonOverwrite>(path)); //turns off all the circles 
+			}
 
-			ToggleEventsDirection(GetNode<ButtonOverwrite>(path)); //turns off all the circles 
 			SetCam(GetNode<ButtonOverwrite>(path).GetMeta("NewCamPos").AsVector3(), (Vector3)GetNode<ButtonOverwrite>(path).GetMeta("CamRotation")); //sets the camera to the position and rotation in the meta data
 			ToggleBackButton(); //shows the back button
 		}
 
-
 		//Gets meta description of button clicked 
 		var description = (Godot.Collections.Dictionary<string, string>)GetNode<ButtonOverwrite>(path).GetMeta("Description");
-		
+
 		//If has key then shows dialogue, if not, then break
 		if (description.ContainsKey(SCENESTATEACCESS.CurrentStateAsString()))
 		{
+			if (this.GetParent().Name == "Stonewall") {
+				DIALOGUE.SwapOverlay();
+			}
+
 			DIALOGUE.Dialogue(PlayerData.Player.Name, description[SCENESTATEACCESS.CurrentStateAsString()], string.Format(PLAYER_AVATAR, PlayerData.Player.Avatar));
 		}
 
@@ -230,9 +230,20 @@ public partial class InteractCircles : Node3D
 				DIALOGUE.SkipDialogue(); //skips dialogue
 			}
 		}
+
 	}
 
+	//A function to initialise the things needed for CirclesPressed
+	private void CirclesInit() {
+		//if previous stage != PlayerStatus.Dialogue (aka, coming from freeroam), make gui visible!
+		if (SCENESTATEACCESS.PlayerStatus != SceneState.StatusOfPlayer.InDialogue)
+		{
+			DIALOGUE.ToggleGUIVisible();
+		}
 
+		SCENESTATEACCESS.PreviousState = SCENESTATEACCESS.PlayerStatus; //sets the previous state
+		SCENESTATEACCESS.PlayerStatus = SceneState.StatusOfPlayer.LookingAtSomething;
+	}
 
 	/**
 	* ----------------------------------------------------------------
@@ -247,7 +258,8 @@ public partial class InteractCircles : Node3D
 		ToggleBackButton(); //hides the back button
 		ResetCam(); //resets camera position
 
-		ToggleParentNode(GetNode<ButtonOverwrite>(CURRENT_PATH_CIRCLES)); //hides the current node																	  
+		ToggleParentNode(GetNode<ButtonOverwrite>(CURRENT_PATH_CIRCLES)); //hides the current node	
+														  
 		ToggleEventsDirection(GetNode<ButtonOverwrite>(CURRENT_PATH_CIRCLES)); //Renables the circles
 
 		//Swaps back to dialogue mode

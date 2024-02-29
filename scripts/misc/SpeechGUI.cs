@@ -15,7 +15,7 @@ public partial class SpeechGUI : Control
 	private Cameras CAMERAS; //node to hold instance of cameras
 
 	public CanvasLayer Select_Items; //node to hold instance of select items overlay
-	private CanvasLayer Speech_Overlay; //node to hold instance of overlay
+	public CanvasLayer Speech_Overlay; //node to hold instance of overlay
 	
 	[Signal]
 	public delegate void DialogueProgressEventHandler(); //handler for progressing scene text
@@ -56,12 +56,17 @@ public partial class SpeechGUI : Control
 	//A function to toggle visibility
 	public void ToggleGUIVisible() {
 		this.Visible = !this.Visible;
+		GD.Print("GUI is: " + this.Visible);
 	}
 
 	// A function to swap the overlay
 	public void SwapOverlay() {
 		Speech_Overlay.Visible = !Speech_Overlay.Visible;
 		Select_Items.Visible = !Select_Items.Visible;
+
+		GD.Print("speech overlay: " + Speech_Overlay.Visible);
+		GD.Print("select_items: " + Select_Items.Visible);
+
 	}
 
 	public void SkipDialogue() {
@@ -92,6 +97,13 @@ public partial class SpeechGUI : Control
 		AvatarNode.Texture = (Texture2D) GD.Load(path);
 	}
 
+	// Sets the nodes
+	private void SetConversation(string name, string speech, string path) {
+		SetNameNode(name);
+		SetSpeechNode(speech);
+		SetAvatarNode(path);
+	}
+
 	//Handles the dialogue if you pass in the Scene
 	public async void Dialogue(JsonHandler.DialogueStructData[] Scene)
 	{
@@ -101,10 +113,8 @@ public partial class SpeechGUI : Control
 
 			//For every bit of speech in the scene
 			foreach (var Speech in Scene)
-			{				
-				SetNameNode(string.Format(Speech.Speaker, PlayerData.Player.Name));
-				SetSpeechNode(string.Format(Speech.Dialogue, PlayerData.Player.Name));
-				SetAvatarNode(string.Format(Speech.Avatar, PlayerData.Player.Avatar));
+			{		
+				SetConversation(string.Format(Speech.Speaker, PlayerData.Player.Name), string.Format(Speech.Dialogue, PlayerData.Player.Name), string.Format(Speech.Avatar, PlayerData.Player.Avatar));		
 				await ToSignal(this, "DialogueProgress");
 
 				
@@ -122,10 +132,7 @@ public partial class SpeechGUI : Control
 	{
 		if (Scene != null && SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.InDialogue)
 		{
-			if (!Speech_Overlay.Visible) {
-				Speech_Overlay.Visible = true;
-				Select_Items.Visible = false;
-			}
+			ValidOverlay();
 
 			//For every bit of speech in the scene
 			foreach (var Speech in Scene)
@@ -166,11 +173,9 @@ public partial class SpeechGUI : Control
 
 	//Just displays
 	public async void Dialogue(String name, String description, string avatar)
-	{	
-				SetNameNode(name);
-				SetSpeechNode(description);
-				SetAvatarNode(avatar);
-
+	{
+				SetConversation(name, description, avatar);
+			
 				if (SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam) {
 					await ToSignal(this, "SceneProgress");
 				}
@@ -207,6 +212,13 @@ public partial class SpeechGUI : Control
 		SwapOverlay();
 	}
 
+	private void ValidOverlay() {
+		if (!Speech_Overlay.Visible)
+		{
+			Speech_Overlay.Visible = true;
+			Select_Items.Visible = false;
+		}
+	}
 	/**
 	* ----------------------------------------------------------------
 	*	GUI Input Handlers
@@ -218,16 +230,21 @@ public partial class SpeechGUI : Control
 
 		if (@evnt is InputEventMouseButton && @evnt.IsPressed() && SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.InDialogue) {
 			EmitSignal("DialogueProgress");
+			GD.Print("DialogueProgress");
 		}
 
 		else if (@evnt is InputEventMouseButton && @evnt.IsPressed() && SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam)
 		{
 			EmitSignal("SceneProgress");
+			GD.Print("SceneProgress");
+
 		}
 
 		else if (@evnt is InputEventMouseButton && @evnt.IsPressed() && SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.LookingAtSomething)
 		{
 			EmitSignal("LookProgress");
+			GD.Print("LookProgress");
+
 		}
 	}
 
@@ -247,7 +264,7 @@ public partial class SpeechGUI : Control
 	//Handles all introduction scene events
 	private void IntroductionSceneEvents(string id) {
 		switch (id) {
-			case "5":
+			case "7":
 					GetNode<IntroductionScene>("../../..").ToggleWakeUpButton();
 				return;
 		
@@ -335,9 +352,10 @@ switch (id)
 
 	//Controls the events for the stonewall init scene
 	private void StonewallEvent(string id) {
+		
 		switch (id)
 		{
-			case "12":
+			case "11":
 				SCENESTATEACCESS.PlayerStatus = SceneState.StatusOfPlayer.FreeRoam; //swaps back to freeroam view
 				ToggleGUIVisible();
 				return;
