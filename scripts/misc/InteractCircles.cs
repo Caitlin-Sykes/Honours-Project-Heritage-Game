@@ -274,9 +274,13 @@ public partial class InteractCircles : Node3D
 		ToggleBackButton(); //hides the back button
 		ResetCam(); //resets camera position
 
-		ToggleParentNode(GetNode<ButtonOverwrite>(CURRENT_PATH_CIRCLES)); //hides the current node	
-														  
-		ToggleEventsDirection(GetNode<ButtonOverwrite>(CURRENT_PATH_CIRCLES)); //Renables the circles
+		ToggleParentNode(GetNode<ButtonOverwrite>(CURRENT_PATH_CIRCLES)); //hides the current node		
+
+
+		// If not already visible, show.
+		if (!GetNode<ButtonOverwrite>(CURRENT_PATH_CIRCLES).Visible) {
+			ToggleEventsDirection(GetNode<ButtonOverwrite>(CURRENT_PATH_CIRCLES)); //Renables the circles
+		}
 
 		//Swaps back to dialogue mode
 		SCENESTATEACCESS.PlayerStatus = SCENESTATEACCESS.PreviousState;
@@ -300,11 +304,13 @@ public partial class InteractCircles : Node3D
 		DIALOGUE.SwapOverlay();
 
 		// this line is for when returning to freeroam after clicking the back button
-		if (SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam)
+		if (SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam && GetViewport().GetCamera3D().Name != "IntroCam")
 		{
 			DIALOGUE.SwapOverlay();
 		}
-
+		else if (GetTree().CurrentScene.Name == "Stonewall") {
+			DIALOGUE.ToggleGUIVisible();
+		}
 	}
 
 	//Toggles the back button visibility
