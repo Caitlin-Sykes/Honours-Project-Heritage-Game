@@ -377,6 +377,16 @@ public partial class SpeechGUI : Control
 			case "11":
 				SCENESTATEACCESS.PlayerStatus = SceneState.StatusOfPlayer.FreeRoam; //swaps back to freeroam view
 				ToggleGUIVisible();
+
+				// Enables the three circles
+				for (int i = 0; i < 3; i++)
+				{
+					string path = string.Format("../Pre{0}", i);
+					CIRCLES.ToggleSpecificDirection(GetNode<ButtonOverwrite>(path));
+				}
+
+
+			
 				return;
 
 			default:
