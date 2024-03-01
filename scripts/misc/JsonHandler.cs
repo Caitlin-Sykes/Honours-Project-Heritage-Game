@@ -66,9 +66,6 @@ public partial class JsonHandler : Node
 	//A class to contain the variables to store dialogue read in from Dialogue.Json
 	public class DialogueStructData
 	{
-		[JsonPropertyName("SceneName")]
-		public string SceneName { get; set; }
-
 		[JsonPropertyName("Id")]
 
 		public string Id { get; set; }

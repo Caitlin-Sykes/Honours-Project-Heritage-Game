@@ -139,8 +139,130 @@ libraries = {
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="Settings" type="Control" parent="CanvasLayer"]
+top_level = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme = ExtResource("3_awfmm")
+script = ExtResource("4_mkibg")
+
+[node name="SpeechGUI" parent="CanvasLayer/Settings" node_paths=PackedStringArray("CIRCLES") instance=ExtResource("10_q26tg")]
+visible = false
+top_level = true
+layout_mode = 1
+mouse_filter = 2
+CIRCLES = NodePath("../../../InteractableItems")
+
+[node name="Pre0" parent="CanvasLayer/Settings" instance=ExtResource("5_biifr")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.143
+anchor_top = 0.489
+anchor_right = 0.458
+anchor_bottom = 0.489
+offset_left = 218.44
+offset_top = 234.88
+offset_right = -186.36
+offset_bottom = 434.88
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("6_f0smn")
+texture_pressed = ExtResource("7_t6h5l")
+metadata/Object = "PosterMassachine"
+metadata/Description = {
+"Stage_1": "This looks like a discarded old poster. What does it say?",
+"Stage_2": "I'm going to tajke another look at what it says before I head in.",
+"Stage_3": "Should. not. Be. possible."
+}
+metadata/Hints = {}
+metadata/ExtraInformation = {
+"Stage_1": "As much as I want to, there's no time for bed right now.",
+"Stage_2": "I'm not going back to bed.",
+"Stage_3": "It's just my bed. There isn't anything particularly exciting."
+}
+metadata/Sources = {
+"src": "Image: https://en.wikipedia.org/wiki/File:Get_The_Mafia_and_The_Cops_Out_of_Gay_Bars.jpg"
+}
+metadata/NewCamPos = Vector3(67.2327, -1.64112, 105.346)
+metadata/CamRotation = Vector3(-90, 0, 0)
+
+[node name="Pre1" parent="CanvasLayer/Settings" instance=ExtResource("5_biifr")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.172
+anchor_top = 0.489
+anchor_right = 0.458
+anchor_bottom = 0.489
+offset_left = 1086.6
+offset_top = 239.88
+offset_right = 737.48
+offset_bottom = 439.88
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("6_f0smn")
+texture_pressed = ExtResource("7_t6h5l")
+metadata/Object = "YvonneRitter"
+metadata/Description = {
+"Stage_1": "I'm not too sure who this is.",
+"Stage_2": "This is Yvonne Ritter. I still find the whole \"poster instead of people\" thing weird though...",
+"Stage_3": "I have not implemented this yet."
+}
+metadata/Hints = {}
+metadata/ExtraInformation = {
+"Stage_1": "As much as I want to, there's no time for bed right now.",
+"Stage_2": "I'm not going back to bed.",
+"Stage_3": "It's just my bed. There isn't anything particularly exciting."
+}
+metadata/NewCamPos = Vector3(67.9523, -2.21221, 106.096)
+metadata/Sources = {
+"src": "Image: https://s3.amazonaws.com/americanarchive.org/thumbnail/cpb-aacip-15-96k0r7rb.jpg"
+}
+metadata/CamRotation = Vector3(0, 0, 0)
+
+[node name="Pre2" parent="CanvasLayer/Settings" instance=ExtResource("5_biifr")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.153
+anchor_top = 0.466
+anchor_right = 0.458
+anchor_bottom = 0.548
+offset_left = 684.84
+offset_top = 42.88
+offset_right = 299.24
+offset_bottom = 242.88
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("6_f0smn")
+texture_pressed = ExtResource("7_t6h5l")
+metadata/Object = "YvonneRitter"
+metadata/Description = {
+"Stage_1": "I'm not too sure who this is.",
+"Stage_2": "This is Yvonne Ritter. I still find the whole \"poster instead of people\" thing weird though...",
+"Stage_3": "I have not implemented this yet."
+}
+metadata/Hints = {}
+metadata/ExtraInformation = {
+"Stage_1": "As much as I want to, there's no time for bed right now.",
+"Stage_2": "I'm not going back to bed.",
+"Stage_3": "It's just my bed. There isn't anything particularly exciting."
+}
+metadata/NewCamPos = Vector3(67.9523, -2.21221, 106.096)
+metadata/Sources = {
+"src": "Image: https://s3.amazonaws.com/americanarchive.org/thumbnail/cpb-aacip-15-96k0r7rb.jpg"
+}
+metadata/CamRotation = Vector3(0, 0, 0)
+
 [node name="IntroCam" type="Camera3D" parent="CanvasLayer"]
-transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 76.2327, -0.61576, 121.504)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.2327, -0.61576, 121.504)
 current = true
 
 [node name="MattachineBar" type="PopupPanel" parent="CanvasLayer/IntroCam"]
@@ -153,8 +275,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 4.0
 offset_top = 4.0
-offset_right = -4.0
-offset_bottom = -4.0
+offset_right = 796.0
+offset_bottom = 896.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -183,124 +305,6 @@ We at the Homophile Youth Movement (HYMN) believe that the only way this monopol
 
 HOMOPHILE YOUTH MOVEMENT - HYMN"
 fit_content = true
-
-[node name="Settings" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-mouse_force_pass_scroll_events = false
-theme = ExtResource("3_awfmm")
-script = ExtResource("4_mkibg")
-
-[node name="SpeechGUI" parent="CanvasLayer/Settings" node_paths=PackedStringArray("CIRCLES") instance=ExtResource("10_q26tg")]
-visible = false
-top_level = true
-layout_mode = 1
-mouse_filter = 2
-CIRCLES = NodePath("../../../InteractableItems")
-
-[node name="1" parent="CanvasLayer/Settings" instance=ExtResource("5_biifr")]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.143
-anchor_top = 0.489
-anchor_right = 0.458
-anchor_bottom = 0.489
-offset_left = 232.44
-offset_top = 248.88
-offset_right = -172.36
-offset_bottom = 448.88
-grow_horizontal = 2
-grow_vertical = 2
-texture_normal = ExtResource("6_f0smn")
-texture_pressed = ExtResource("7_t6h5l")
-metadata/Object = "YvonneRitter"
-metadata/Description = {
-"Stage_1": "This looks like a discarded old poster. What does it say?",
-"Stage_2": "I'm going to tajke another look at what it says before I head in.",
-"Stage_3": "Should. not. Be. possible."
-}
-metadata/Hints = {}
-metadata/ExtraInformation = {
-"Stage_1": "As much as I want to, there's no time for bed right now.",
-"Stage_2": "I'm not going back to bed.",
-"Stage_3": "It's just my bed. There isn't anything particularly exciting."
-}
-metadata/NewCamPos = Vector3(67.9523, -2.21221, 104.951)
-metadata/CamRotation = -90
-metadata/Sources = {
-"src": "Image: https://en.wikipedia.org/wiki/File:Get_The_Mafia_and_The_Cops_Out_of_Gay_Bars.jpg"
-}
-
-[node name="2" parent="CanvasLayer/Settings" instance=ExtResource("5_biifr")]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.143
-anchor_top = 0.489
-anchor_right = 0.458
-anchor_bottom = 0.489
-offset_left = 1114.44
-offset_top = 239.88
-offset_right = 709.64
-offset_bottom = 439.88
-grow_horizontal = 2
-grow_vertical = 2
-texture_normal = ExtResource("6_f0smn")
-texture_pressed = ExtResource("7_t6h5l")
-metadata/Object = "YvonneRitter"
-metadata/Description = {
-"Stage_1": "I'm not too sure who this is.",
-"Stage_2": "This is Yvonne Ritter. I still find the whole \"poster instead of people\" thing weird though...",
-"Stage_3": "I have not implemented this yet."
-}
-metadata/Hints = {}
-metadata/ExtraInformation = {
-"Stage_1": "As much as I want to, there's no time for bed right now.",
-"Stage_2": "I'm not going back to bed.",
-"Stage_3": "It's just my bed. There isn't anything particularly exciting."
-}
-metadata/NewCamPos = Vector3(67.9523, -2.21221, 106.096)
-metadata/CamRotation = -90
-metadata/Sources = {
-"src": "Image: https://s3.amazonaws.com/americanarchive.org/thumbnail/cpb-aacip-15-96k0r7rb.jpg"
-}
-
-[node name="3" parent="CanvasLayer/Settings" instance=ExtResource("5_biifr")]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.143
-anchor_top = 0.489
-anchor_right = 0.458
-anchor_bottom = 0.489
-offset_left = 694.44
-offset_top = 42.88
-offset_right = 289.64
-offset_bottom = 242.88
-grow_horizontal = 2
-grow_vertical = 2
-texture_normal = ExtResource("6_f0smn")
-texture_pressed = ExtResource("7_t6h5l")
-metadata/Object = "YvonneRitter"
-metadata/Description = {
-"Stage_1": "I'm not too sure who this is.",
-"Stage_2": "This is Yvonne Ritter. I still find the whole \"poster instead of people\" thing weird though...",
-"Stage_3": "I have not implemented this yet."
-}
-metadata/Hints = {}
-metadata/ExtraInformation = {
-"Stage_1": "As much as I want to, there's no time for bed right now.",
-"Stage_2": "I'm not going back to bed.",
-"Stage_3": "It's just my bed. There isn't anything particularly exciting."
-}
-metadata/NewCamPos = Vector3(67.9523, -2.21221, 106.096)
-metadata/CamRotation = -90
-metadata/Sources = {
-"src": "Image: https://s3.amazonaws.com/americanarchive.org/thumbnail/cpb-aacip-15-96k0r7rb.jpg"
-}
 
 [node name="Cameras" parent="." node_paths=PackedStringArray("CAMERAS", "INTERACT_CIRCLES") instance=ExtResource("11_fdc4n")]
 visible = false
@@ -495,10 +499,10 @@ metadata/ExtraInformation = {
 "Stage_3": "It's just my bed. There isn't anything particularly exciting."
 }
 metadata/NewCamPos = Vector3(-9.6948, 1.26392, -0.459455)
-metadata/CamRotation = 0
 metadata/Sources = {
 "src": "Image: https://s3.amazonaws.com/americanarchive.org/thumbnail/cpb-aacip-15-96k0r7rb.jpg"
 }
+metadata/CamRotation = Vector3(0, 0, 0)
 
 [node name="2" parent="InteractableItems/Select_Items/Settings/Panel/North" instance=ExtResource("5_biifr")]
 visible = false
@@ -527,8 +531,8 @@ metadata/ExtraInformation = {
 "Stage_1": "Apparently, purple chairs are a little hard to come by. I don't know why, purple's a great colour!"
 }
 metadata/NewCamPos = Vector3(-5.05144, 1.26392, -0.459455)
-metadata/CamRotation = 0
 metadata/Sources = {}
+metadata/CamRotation = Vector3(0, 0, 0)
 
 [node name="3" parent="InteractableItems/Select_Items/Settings/Panel/North" instance=ExtResource("5_biifr")]
 visible = false
@@ -557,8 +561,8 @@ metadata/ExtraInformation = {
 "Stage_1": "Apparently, purple chairs are a little hard to come by. I don't know why, purple's a great colour!"
 }
 metadata/NewCamPos = Vector3(0.827879, 1.26392, -0.459455)
-metadata/CamRotation = 0
 metadata/Sources = {}
+metadata/CamRotation = Vector3(0, 0, 0)
 
 [node name="East" type="Control" parent="InteractableItems/Select_Items/Settings/Panel"]
 visible = false
@@ -597,11 +601,11 @@ metadata/ExtraInformation = {
 "Source": "It later got a definitive release which was called Persona 5 Royal. It's known for having one of the best modern-day soundtracks, the most famous track being \"Last Surprise.\""
 }
 metadata/NewCamPos = Vector3(1.09332, 0.244675, -1.35129)
-metadata/CamRotation = -90
 metadata/Sources = {
 "Img_Src": " Image from: https://www.amazon.com/Persona-Official-Setting-Picture-JAPANESE/dp/4047331902",
 "Info_Src": "Information from: https://en.wikipedia.org/wiki/Persona_5, {0}"
 }
+metadata/CamRotation = Vector3(0, 0, 0)
 
 [node name="South" type="Control" parent="InteractableItems/Select_Items/Settings/Panel"]
 visible = false
@@ -641,10 +645,10 @@ metadata/ExtraInformation = {
 "Stage_1": "A bunch of books with funny names."
 }
 metadata/NewCamPos = Vector3(-0.0602202, 0.362064, 1.33653)
-metadata/CamRotation = 0
 metadata/Sources = {
 "src": "The books are all parodies, so no sources here!"
 }
+metadata/CamRotation = Vector3(0, 0, 0)
 
 [node name="2" parent="InteractableItems/Select_Items/Settings/Panel/South" instance=ExtResource("5_biifr")]
 visible = false
@@ -675,11 +679,11 @@ metadata/ExtraInformation = {
 "Stage_1": "I've collected many books over the years, though I should really go through them. Sometimes Mum hijacks it to put her own up."
 }
 metadata/NewCamPos = Vector3(-0.0602202, -0.205688, 1.33653)
-metadata/CamRotation = 0
 metadata/Sources = {
 "src": "Just some parody books, no sources here."
 }
 metadata/PuzzleEnabled = false
+metadata/CamRotation = Vector3(0, 0, 0)
 
 [node name="3" parent="InteractableItems/Select_Items/Settings/Panel/South" instance=ExtResource("5_biifr")]
 visible = false
@@ -708,10 +712,10 @@ metadata/ExtraInformation = {
 "Stage_1": "Just some random books. Isn't really anything more to say. "
 }
 metadata/NewCamPos = Vector3(12.9361, -2.3705, 16.7682)
-metadata/CamRotation = 0
 metadata/Sources = {
 "src": "Just some random parodied books. No sources here."
 }
+metadata/CamRotation = Vector3(0, 0, 0)
 
 [node name="4" parent="InteractableItems/Select_Items/Settings/Panel/South" instance=ExtResource("5_biifr")]
 visible = false
@@ -738,10 +742,10 @@ metadata/ExtraInformation = {
 "Stage_1": "Seriously, it's just a window to the outside."
 }
 metadata/NewCamPos = Vector3(0, 0, 0)
-metadata/CamRotation = 0
 metadata/Sources = {
 "src": "No sources here, just a lovely garden."
 }
+metadata/CamRotation = Vector3(0, 0, 0)
 
 [node name="West" type="Control" parent="InteractableItems/Select_Items/Settings/Panel"]
 visible = false
@@ -779,10 +783,10 @@ metadata/ExtraInformation = {
 "Stage_1": "It's just a door. Nothing special here."
 }
 metadata/NewCamPos = Vector3(-21.674, -2.3705, -1.99833)
-metadata/CamRotation = 0
 metadata/Sources = {
 "src": "No sources again. *Knock knock*"
 }
+metadata/CamRotation = Vector3(0, 0, 0)
 
 [node name="2" parent="InteractableItems/Select_Items/Settings/Panel/West" instance=ExtResource("5_biifr")]
 visible = false
@@ -811,8 +815,8 @@ metadata/ExtraInformation = {
 "Stage_1": "Now's really not the time for bed."
 }
 metadata/NewCamPos = Vector3(0, 0, 0)
-metadata/CamRotation = 0
 metadata/Sources = {}
+metadata/CamRotation = Vector3(0, 0, 0)
 
 [node name="Puzzles" type="Control" parent="InteractableItems/Select_Items/Settings"]
 visible = false
@@ -892,8 +896,8 @@ metadata/Description = {}
 metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
-metadata/CamRotation = 0
 metadata/Sources = {}
+metadata/CamRotation = Vector3(0, 0, 0)
 
 [node name="East" type="Control" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel"]
 visible = false
@@ -934,8 +938,8 @@ metadata/Description = {
 metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
-metadata/CamRotation = 0
 metadata/Sources = {}
+metadata/CamRotation = Vector3(0, 0, 0)
 
 [node name="South" type="Control" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel"]
 visible = false
@@ -986,10 +990,10 @@ metadata/ExtraInformation = {
 "Stage_2": "Most of the books on the bookshelf are based off actual books."
 }
 metadata/NewCamPos = Vector3(0, 0, 0)
-metadata/CamRotation = 0
 metadata/Sources = {
 "src": "It's just a book. Nothing to cite here."
 }
+metadata/CamRotation = Vector3(0, 0, 0)
 
 [node name="c2" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components" instance=ExtResource("5_biifr")]
 visible = false
@@ -1015,10 +1019,10 @@ metadata/ExtraInformation = {
 "Stage_2": "Most of the books on the bookshelf are based off actual books."
 }
 metadata/NewCamPos = Vector3(0, 0, 0)
-metadata/CamRotation = 0
 metadata/Sources = {
 "src": "It's just a book. Nothing to cite here."
 }
+metadata/CamRotation = Vector3(0, 0, 0)
 
 [node name="c3" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components" instance=ExtResource("5_biifr")]
 visible = false
@@ -1044,10 +1048,10 @@ metadata/ExtraInformation = {
 "Stage_2": "Most of the books on the bookshelf are based off actual books."
 }
 metadata/NewCamPos = Vector3(0, 0, 0)
-metadata/CamRotation = 0
 metadata/Sources = {
 "src": "It's just a book. Nothing to cite here."
 }
+metadata/CamRotation = Vector3(0, 0, 0)
 
 [node name="c4" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components" instance=ExtResource("5_biifr")]
 visible = false
@@ -1073,10 +1077,10 @@ metadata/ExtraInformation = {
 "Stage_2": "Most of the books on the bookshelf are based off actual books."
 }
 metadata/NewCamPos = Vector3(0, 0, 0)
-metadata/CamRotation = 0
 metadata/Sources = {
 "src": "It's just a book. Nothing to cite here."
 }
+metadata/CamRotation = Vector3(0, 0, 0)
 
 [node name="c5" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components" instance=ExtResource("5_biifr")]
 visible = false
@@ -1102,10 +1106,10 @@ metadata/ExtraInformation = {
 "Stage_2": "Most of the books on the bookshelf are based off actual books."
 }
 metadata/NewCamPos = Vector3(0, 0, 0)
-metadata/CamRotation = 0
 metadata/Sources = {
 "src": "It's just a book. Nothing to cite here."
 }
+metadata/CamRotation = Vector3(0, 0, 0)
 
 [node name="c6" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components" instance=ExtResource("5_biifr")]
 visible = false
@@ -1131,10 +1135,10 @@ metadata/ExtraInformation = {
 "Stage_2": "Most of the books on the bookshelf are based off actual books."
 }
 metadata/NewCamPos = Vector3(0, 0, 0)
-metadata/CamRotation = 0
 metadata/Sources = {
 "src": "It's just a book. Nothing to cite here."
 }
+metadata/CamRotation = Vector3(0, 0, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c6"]
 libraries = {
@@ -1165,11 +1169,11 @@ metadata/ExtraInformation = {
 "Stage_1": "It's a bit tattered. Why do we even still have this?"
 }
 metadata/NewCamPos = Vector3(-0.0602202, -0.205688, 1.05261)
-metadata/CamRotation = 0
 metadata/Sources = {}
 metadata/Description = {
 "Stage_2": "Makes sense that a book would be on the bookshelf. Let's take a closer look..."
 }
+metadata/CamRotation = Vector3(0, 0, 0)
 
 [node name="West" type="Control" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel"]
 visible = false
@@ -1192,8 +1196,8 @@ metadata/Description = {}
 metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
-metadata/CamRotation = 0
 metadata/Sources = {}
+metadata/CamRotation = Vector3(0, 0, 0)
 
 [node name="Up" type="Control" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel"]
 visible = false
@@ -1216,8 +1220,8 @@ metadata/Description = {}
 metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
-metadata/CamRotation = 0
 metadata/Sources = {}
+metadata/CamRotation = Vector3(0, 0, 0)
 
 [node name="Down" type="Control" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel"]
 visible = false
@@ -1240,15 +1244,15 @@ metadata/Description = {}
 metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
-metadata/CamRotation = 0
 metadata/Sources = {}
+metadata/CamRotation = Vector3(0, 0, 0)
 
 [node name="testCam2" type="Camera3D" parent="."]
 transform = Transform3D(-1, 0, -4.37115e-07, 0, 1, 0, 4.37115e-07, 0, -1, 12.9361, -2.3705, 16.7682)
 fov = 75.9375
 
 [node name="testCam" type="Camera3D" parent="."]
-transform = Transform3D(0.840311, -0.542104, 1.23229e-07, -1.74846e-07, -4.37114e-08, 1, -0.542104, -0.840311, -1.31516e-07, 67.9523, -2.21221, 104.951)
+transform = Transform3D(1, 0, 0, 0, 0.052336, 0.99863, 0, -0.99863, 0.052336, 67.2327, -1.64112, 105.346)
 fov = 56.25
 
 [node name="beepEntry" type="AudioStreamPlayer" parent="."]
@@ -1262,12 +1266,12 @@ bus = &"KnockingBus"
 [node name="stonewall" parent="." instance=ExtResource("19_tt755")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74.2308, -9.15406, 114.817)
 
-[connection signal="pressed" from="CanvasLayer/Settings/1" to="." method="ToggleMattachine"]
-[connection signal="pressed" from="CanvasLayer/Settings/1" to="InteractableItems" method="CirclesPressed" binds= ["../CanvasLayer/IntroCam/1"]]
-[connection signal="pressed" from="CanvasLayer/Settings/2" to="InteractableItems" method="DialogueByString" flags=6]
-[connection signal="pressed" from="CanvasLayer/Settings/2" to="InteractableItems" method="InteractCircles"]
-[connection signal="pressed" from="CanvasLayer/Settings/3" to="InteractableItems" method="DialogueByString" flags=6]
-[connection signal="pressed" from="CanvasLayer/Settings/3" to="InteractableItems" method="InteractCircles"]
+[connection signal="pressed" from="CanvasLayer/Settings/Pre0" to="." method="ToggleMattachine"]
+[connection signal="pressed" from="CanvasLayer/Settings/Pre0" to="InteractableItems" method="CirclesPressed" binds= ["../CanvasLayer/Settings/Pre0"]]
+[connection signal="pressed" from="CanvasLayer/Settings/Pre1" to="InteractableItems" method="DialogueByString" flags=6]
+[connection signal="pressed" from="CanvasLayer/Settings/Pre1" to="InteractableItems" method="InteractCircles" binds= ["../CanvasLayer/Settings/Pre1"]]
+[connection signal="pressed" from="CanvasLayer/Settings/Pre2" to="InteractableItems" method="DialogueByString" flags=6]
+[connection signal="pressed" from="CanvasLayer/Settings/Pre2" to="InteractableItems" method="InteractCircles" binds= ["../CanvasLayer/Settings/Pre2"]]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/Back_Button/Back" to="InteractableItems" method="OnBackPressed" flags=18]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/North/1" to="InteractableItems" method="InteractCircles"]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/North/1" to="InteractableItems" method="DialogueByString" flags=6 binds= ["Yvonne"]]

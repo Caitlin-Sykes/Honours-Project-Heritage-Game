@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 SceneStateSingleton="*res://scripts/misc/SceneState.cs"
 DialogueImport="*res://scripts/misc/JsonHandler.cs"
+EventDict="*res://scripts/misc/EventDict.cs"
 
 [display]
 

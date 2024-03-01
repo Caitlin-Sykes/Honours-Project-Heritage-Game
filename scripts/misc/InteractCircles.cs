@@ -1,7 +1,7 @@
 using Godot;
+using Godot.Collections;
 using System;
-using System.Runtime.CompilerServices;
-
+using System.Linq;
 
 
 public partial class InteractCircles : Node3D
@@ -12,7 +12,7 @@ public partial class InteractCircles : Node3D
 
 	private string PLAYER_AVATAR = "res://resources/textures/sprites/main_char/{0}.svg"; //player avatar string
 
-	private string CURRENT_PATH_CIRCLES { get; set; } //current circle
+	public string CURRENT_PATH_CIRCLES { get; set; } //current circle
 
 	private MarginContainer BackButtonContainer; //instance of the back button container
 
@@ -20,15 +20,16 @@ public partial class InteractCircles : Node3D
 
 	private JsonHandler DIALOGUEACCESS; //accesses the singleton for the dialogue json
 
+	public Vector3 PREVIOUS_POS; //vector for previous Cam pos
+	public Vector3 PREVIOUS_ANGLE; //vector for previous Cam angle
 
 	private PuzzleStart PUZZLES; //instance of puzzles
-
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		BackButtonContainer = GetNode<MarginContainer>("Select_Items/Settings/Panel/Back_Button");
-		PUZZLES = GetNode<PuzzleStart>("Select_Items/Settings/Puzzles");
+		BackButtonContainer = GetNode<MarginContainer>("Select_Items/Settings/Panel/Back_Button"); //Gets the back button
+		PUZZLES = GetNode<PuzzleStart>("Select_Items/Settings/Puzzles"); //gets instance of puzzles
 		SCENESTATEACCESS = GetNode<SceneState>("/root/SceneStateSingleton"); //accesses the singleton for the scene state
 		DIALOGUEACCESS = GetNode<JsonHandler>("/root/DialogueImport"); //accesses the singleton for the dialogue json
 	}
@@ -45,6 +46,7 @@ public partial class InteractCircles : Node3D
 		DIALOGUE.Dialogue((Godot.Collections.Dictionary<string, string>)GetNode<ButtonOverwrite>(CURRENT_PATH_CIRCLES).GetMeta("ExtraInformation"));
 	}
 
+	//Called from control, on K press
 	public void ShowSources()
 	{
 		DIALOGUE.Dialogue((Godot.Collections.Dictionary<string, string>)GetNode<ButtonOverwrite>(CURRENT_PATH_CIRCLES).GetMeta("Sources"));
@@ -61,7 +63,6 @@ public partial class InteractCircles : Node3D
 		// If the circle has puzzle enabled value and its true call check puzzle 
 		if (cir.HasMeta("PuzzleEnabled") && cir.GetMeta("PuzzleEnabled").AsBool())
 		{
-
 			PUZZLES.CheckPuzzle(cir);
 		}
 
@@ -72,16 +73,14 @@ public partial class InteractCircles : Node3D
 			//Enables any puzzles
 			//For every circle in the direction container, toggles them
 			foreach (var circle in parNode.GetChildren())
-					{
-			
-						//parNode is the parent of cir node
-						//Gets the path by getting the circles parent's name and the circles own name (ie, /North/1)
-						if (circle is ButtonOverwrite btnO) {
-										btnO.Visible = !btnO.Visible;
-									}
-									
-						}
-		}
+				{
+					//parNode is the parent of cir node
+					//Gets the path by getting the circles parent's name and the circles own name (ie, /North/1)
+					if (circle is ButtonOverwrite btnO) {
+						btnO.Visible = !btnO.Visible;
+					}		
+				}
+			}
 	}
 
 	//Toggles the visibility of the parent node
@@ -89,14 +88,12 @@ public partial class InteractCircles : Node3D
 	{
 		if (cir.GetParent() is Control parNode) {
 			parNode.Visible = !parNode.Visible;
-
 		}
 	}
 
 	//Enables a specific event circle
 	public void ToggleSpecificDirection(ButtonOverwrite cir)
 	{
-
 		//Gets the circle to be enabled, passed in by path
 		try
 		{
@@ -108,8 +105,6 @@ public partial class InteractCircles : Node3D
 		{
 			GD.PrintErr("Cannot find the circle to be disabled. Is the object correct? Specific Error is: " + e.Message);
 		}
-
-
 	}
 
 	//Enables/Disables a specific event circle by path
@@ -149,70 +144,40 @@ public partial class InteractCircles : Node3D
 		}
 	}
 
-	// Handles on circle click
-	//Sets the node path as well
 
+	/**
+	* ----------------------------------------------------------------
+	* Circles Pressed function and associated functions
+	* ----------------------------------------------------------------
+	**/
+
+	// Handles on circle click
 	public async void CirclesPressed(String path)
 	{
-		//if previous stage != PlayerStatus.Dialogue (aka, coming from freeroam), make gui visible!
-		if (SCENESTATEACCESS.PlayerStatus != SceneState.StatusOfPlayer.InDialogue)
-		{
-			DIALOGUE.ToggleGUIVisible();
-		}
+		// Circles init stuff
+		CirclesInit();
 
-		SCENESTATEACCESS.PreviousState = SCENESTATEACCESS.PlayerStatus; //sets the previous state
-		SCENESTATEACCESS.PlayerStatus = SceneState.StatusOfPlayer.LookingAtSomething;
+		// Sets the circles current path to path
 		CURRENT_PATH_CIRCLES = path;
 
-
-		//If it has a camera position then
-		if (GetNode<ButtonOverwrite>(path).GetMeta("NewCamPos").AsVector3() != Vector3.Zero)
-		{
-
-			ToggleEventsDirection(GetNode<ButtonOverwrite>(path)); //turns off all the circles 
-			SetCam(GetNode<ButtonOverwrite>(path).GetMeta("NewCamPos").AsVector3(), (float)GetNode<ButtonOverwrite>(path).GetMeta("CamRotation")); //sets the camera to the position and rotation in the meta data
-			ToggleBackButton(); //shows the back button
-		}
-
-
+		CheckForCamPosition();
+		
 		//Gets meta description of button clicked 
 		var description = (Godot.Collections.Dictionary<string, string>)GetNode<ButtonOverwrite>(path).GetMeta("Description");
-		
-		//If has key then shows dialogue, if not, then break
-		if (description.ContainsKey(SCENESTATEACCESS.CurrentStateAsString()))
-		{
-			DIALOGUE.Dialogue(PlayerData.Player.Name, description[SCENESTATEACCESS.CurrentStateAsString()], string.Format(PLAYER_AVATAR, PlayerData.Player.Avatar));
-		}
 
-		//Breaks out the function if it doesn't have the key
-		else
-		{
-			if (GetNode<ButtonOverwrite>(path).GetMeta("Object").AsString() != "Door")
-			{
-				//Swaps back to dialogue mode
-				SCENESTATEACCESS.PlayerStatus = SCENESTATEACCESS.PreviousState;
-				return;
-			}
-
-			else
-			{
-				SCENESTATEACCESS.PlayerStatus = SceneState.StatusOfPlayer.FreeRoam; //swaps the status to in dialogue
-				return;
-			}
-		}
-
-
+		// Validates the description
+		ValidateDescription(description);
 
 		//Swap back to gui speech
 		DIALOGUE.SwapOverlay();
 
-		DIALOGUE.Visible = true; //toggles the speech gui
+		//toggles the speech gui
+		DIALOGUE.Visible = true; 
 
 		//Awaits the dialogue progression
 		await ToSignal(DIALOGUE, "LookProgress");
 
-
-		// Swap back to normal view
+		// Swap back to free-roam view
 		DIALOGUE.SwapOverlay();
 
 		//If the camera isn't moved
@@ -235,9 +200,66 @@ public partial class InteractCircles : Node3D
 				DIALOGUE.SkipDialogue(); //skips dialogue
 			}
 		}
+
 	}
 
+	//A function to check whether the cam needs to be moved
+	private void CheckForCamPosition() {
+		//If it has a camera position then
+		if (GetNode<ButtonOverwrite>(CURRENT_PATH_CIRCLES).GetMeta("NewCamPos").AsVector3() != Vector3.Zero)
+		{
+			// Toggles direction only if parent isnt called settings
+			if (GetNode<ButtonOverwrite>(CURRENT_PATH_CIRCLES).GetParent().Name != "Settings")
+			{
+				ToggleEventsDirection(GetNode<ButtonOverwrite>(CURRENT_PATH_CIRCLES)); //turns off all the circles 
+			}
 
+			SetCam(GetNode<ButtonOverwrite>(CURRENT_PATH_CIRCLES).GetMeta("NewCamPos").AsVector3(), (Vector3)GetNode<ButtonOverwrite>(CURRENT_PATH_CIRCLES).GetMeta("CamRotation")); //sets the camera to the position and rotation in the meta data
+			ToggleBackButton(); //shows the back button
+		}
+	}
+
+	//A function to initialise the things needed for CirclesPressed
+	private void CirclesInit() {
+		//if previous stage != PlayerStatus.Dialogue (aka, coming from freeroam), make gui visible!
+		if (SCENESTATEACCESS.PlayerStatus != SceneState.StatusOfPlayer.InDialogue)
+		{
+			DIALOGUE.ToggleGUIVisible();
+		}
+
+		SCENESTATEACCESS.PreviousState = SCENESTATEACCESS.PlayerStatus; //sets the previous state
+		SCENESTATEACCESS.PlayerStatus = SceneState.StatusOfPlayer.LookingAtSomething;
+	}
+
+	//A function to validate the description metadata
+	private void ValidateDescription(Dictionary<string, string> description) {
+		//If has key then shows dialogue, if not, then break
+		if (description.ContainsKey(SCENESTATEACCESS.CurrentStateAsString()))
+		{
+			if (this.GetParent().Name != "IntroductionScene")
+			{
+				DIALOGUE.SwapOverlay();
+			}
+
+			DIALOGUE.Dialogue(PlayerData.Player.Name, description[SCENESTATEACCESS.CurrentStateAsString()], string.Format(PLAYER_AVATAR, PlayerData.Player.Avatar));
+		}
+
+		//Breaks out the function if it doesn't have the key
+		else
+		{
+			if (GetNode<ButtonOverwrite>(CURRENT_PATH_CIRCLES).GetMeta("Object").AsString() != "Door")
+			{
+				//Swaps back to dialogue mode
+				SCENESTATEACCESS.PlayerStatus = SCENESTATEACCESS.PreviousState;
+			}
+
+			else
+			{
+				SCENESTATEACCESS.PlayerStatus = SceneState.StatusOfPlayer.FreeRoam; //swaps the status to in dialogue
+			}
+		}
+
+	}
 
 	/**
 	* ----------------------------------------------------------------
@@ -250,10 +272,15 @@ public partial class InteractCircles : Node3D
 	private void OnBackPressed()
 	{
 		ToggleBackButton(); //hides the back button
-		SetCam(Vector3.Zero, 0); //resets camera position
+		ResetCam(); //resets camera position
 
-		ToggleParentNode(GetNode<ButtonOverwrite>(CURRENT_PATH_CIRCLES)); //hides the current node																	  
-		ToggleEventsDirection(GetNode<ButtonOverwrite>(CURRENT_PATH_CIRCLES)); //Renables the circles
+		ToggleParentNode(GetNode<ButtonOverwrite>(CURRENT_PATH_CIRCLES)); //hides the current node		
+
+
+		// If not already visible, show.
+		if (!GetNode<ButtonOverwrite>(CURRENT_PATH_CIRCLES).Visible) {
+			ToggleEventsDirection(GetNode<ButtonOverwrite>(CURRENT_PATH_CIRCLES)); //Renables the circles
+		}
 
 		//Swaps back to dialogue mode
 		SCENESTATEACCESS.PlayerStatus = SCENESTATEACCESS.PreviousState;
@@ -277,11 +304,13 @@ public partial class InteractCircles : Node3D
 		DIALOGUE.SwapOverlay();
 
 		// this line is for when returning to freeroam after clicking the back button
-		if (SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam)
+		if (SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam && GetViewport().GetCamera3D().Name != "IntroCam")
 		{
 			DIALOGUE.SwapOverlay();
 		}
-
+		else if (GetTree().CurrentScene.Name == "Stonewall") {
+			DIALOGUE.ToggleGUIVisible();
+		}
 	}
 
 	//Toggles the back button visibility
@@ -291,11 +320,13 @@ public partial class InteractCircles : Node3D
 	}
 
 	//Sets current Camera position
-	public void SetCam(Vector3 pos, float angle)
+	public void SetCam(Vector3 pos, Vector3 angle)
 	{
 		Camera3D curCam = GetViewport().GetCamera3D(); //Gets the current active camera
+		PREVIOUS_POS = curCam.Position;
+		PREVIOUS_ANGLE = curCam.RotationDegrees;
 		curCam.Position = pos; //Sets current camera to the position
-		curCam.Rotate(curCam.Transform.Origin, angle); //rotates to the rotation
+		curCam.RotationDegrees = angle; //rotates to the rotation
 
 	}
 
@@ -306,6 +337,12 @@ public partial class InteractCircles : Node3D
 		curCam.Position = cam.Position; //Sets current camera to the position
 		curCam.Rotate(curCam.Transform.Origin, 0); //rotates to the rotation
 
+	}
+
+	public void ResetCam() {
+		Camera3D curCam = GetViewport().GetCamera3D(); //Gets the current active camera
+		curCam.Position = PREVIOUS_POS; //Sets current camera to the position
+		curCam.RotationDegrees = PREVIOUS_ANGLE; //rotates to the rotation
 	}
 
 	/**

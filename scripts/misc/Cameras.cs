@@ -5,6 +5,7 @@ using System;
 public partial class Cameras : Node
 {
 
+	//enum for directions
 	public enum Direction
 	{
 		North,
@@ -13,11 +14,11 @@ public partial class Cameras : Node
 		West,
 		Up,
 		Down,
-	} //enum for directions
+	}
 
 
 	[Export]
-	private Godot.Collections.Array<Camera3D> CAMERAS { get; set; }
+	private Godot.Collections.Array<Camera3D> CAMERAS { get; set; } //Array of cameras
 
 	private Direction dir; // instance of direction
 	public Direction previousDir { get; set; } // used only when going up and down
@@ -131,6 +132,7 @@ public partial class Cameras : Node
 			case Direction.Down:
 				return 5;
 			default:
+				GD.PrintErr("An invalid direction was passed through. Please check what you're passing in.");
 				return -1;
 		}
 	}
@@ -175,7 +177,7 @@ public partial class Cameras : Node
 	*	Handles moving the cameras
 	* ----------------------------------------------------------------
 	**/
-	//BUG: camera moving can be a bit buggy if clicked fast in quick succession
+	
 	//Method to handle turning left
 	public void TurnLeft()
 	{
@@ -299,6 +301,7 @@ public partial class Cameras : Node
 				break;
 
 			default:
+				GD.PrintErr("An invalid direction was passed through. Please confirm your input.");
 				throw new ArgumentException("Not a valid direction");
 		}
 
@@ -318,7 +321,7 @@ public partial class Cameras : Node
 			if (EnableEvents)
 			{
 				INTERACT_CIRCLES.EmitEvent("ToggleDownEvents");
-				INTERACT_CIRCLES.EmitEvent(string.Format("Toggle{}Events", ToDirection(previousDir)));
+				INTERACT_CIRCLES.EmitEvent(string.Format("Toggle{0}Events", ToDirection(previousDir)));
 			}
 
 			//Sets camera arrows for down camera invisible
@@ -338,7 +341,7 @@ public partial class Cameras : Node
 			if (EnableEvents)
 			{
 				INTERACT_CIRCLES.EmitEvent("ToggleUpEvents");
-				INTERACT_CIRCLES.EmitEvent(string.Format("Toggle{}Events", ToDirection(dir)));
+				INTERACT_CIRCLES.EmitEvent(string.Format("Toggle{0}Events", ToDirection(dir)));
 			}
 
 			//Sets current direction arrows invisible
@@ -349,8 +352,6 @@ public partial class Cameras : Node
 			previousDir = dir;
 			dir = Direction.Up;
 		}
-
-		//todo: else later play "oof doesnt work" sound, or a sound indicative of that
 	}
 
 
@@ -373,7 +374,7 @@ public partial class Cameras : Node
 			if (EnableEvents)
 			{
 				INTERACT_CIRCLES.EmitEvent("ToggleUpEvents");
-				INTERACT_CIRCLES.EmitEvent(string.Format("Toggle{}Events", ToDirection(previousDir)));
+				INTERACT_CIRCLES.EmitEvent(string.Format("Toggle{0}Events", ToDirection(previousDir)));
 			}
 
 
@@ -394,7 +395,7 @@ public partial class Cameras : Node
 			if (EnableEvents)
 			{
 				INTERACT_CIRCLES.EmitEvent("ToggleUpEvents");
-				INTERACT_CIRCLES.EmitEvent(string.Format("Toggle{}Events", ToDirection(dir)));
+				INTERACT_CIRCLES.EmitEvent(string.Format("Toggle{0}Events", ToDirection(dir)));
 			}
 
 			//Sets down camera to visible
@@ -402,10 +403,7 @@ public partial class Cameras : Node
 			previousDir = dir;
 			dir = Direction.Down;
 		}
-
-		//todo: else later play "oof doesnt work" sound, or a sound indicative of that
 	}
-
 }
 
 

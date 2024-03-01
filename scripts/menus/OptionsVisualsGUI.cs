@@ -3,10 +3,10 @@ using System;
 public partial class OptionsVisualsGUI : Control
 {
 
-	private static readonly string FONT_OPTION_BUTTON_PATH = "Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/Fonts";
-	private static readonly string FONT_SIZE_OPTION_BUTTON_PATH = "Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/Font_Size";
+	private static readonly string FONT_OPTION_BUTTON_PATH = "Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/Fonts"; //path to the font button path
+	private static readonly string FONT_SIZE_OPTION_BUTTON_PATH = "Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/Font_Size"; //path to the font size button path
 
-	private static readonly string FULL_SCREEN_OPTION_BUTTON_PATH = "Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/Full_Screen";
+	private static readonly string FULL_SCREEN_OPTION_BUTTON_PATH = "Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/Full_Screen"; //path to the full screen path
 
 	private Transitions TRANSITION; //instance of transition
 	
@@ -36,22 +36,22 @@ public partial class OptionsVisualsGUI : Control
 	// Init Settings for Scene
 	private void InitSettings() {
 		//If GetFontDefault returns Dyslexic, sets theme to dyslexie
-			//Else sets Theme to cascadia
-			if (OptionsVisualsGUI.GetFontDefault() == "Dyslexic") {
-				Theme = (Theme)GD.Load("res://resources/themes/main_theme_dyslexic.tres");
-			}
+		//Else sets Theme to cascadia
+		if (GetFontDefault() == "Dyslexic") {
+			Theme = (Theme)GD.Load("res://resources/themes/main_theme_dyslexic.tres");
+		}
 
-			else {
-				Theme = (Theme)GD.Load("res://resources/themes/main_theme_cascadia.tres");
-			}
+		else {
+			Theme = (Theme)GD.Load("res://resources/themes/main_theme_cascadia.tres");
+		}
 
-			//Converts GetFontSizeDefault to int (as it returns the default size)
-			Theme.DefaultFontSize = OptionsVisualsGUI.GetFontSizeDefault().ToInt();
+		//Converts GetFontSizeDefault to int (as it returns the default size)
+		Theme.DefaultFontSize = GetFontSizeDefault().ToInt();
 
-	
-			if (OptionsVisualsGUI.GetFullScreenDefault()) {
-				DisplayServer.WindowSetMode(DisplayServer.WindowMode.Fullscreen);
-			}
+
+		if (GetFullScreenDefault()) {
+			DisplayServer.WindowSetMode(DisplayServer.WindowMode.Fullscreen);
+		}
 	}
 
 
@@ -87,7 +87,7 @@ public partial class OptionsVisualsGUI : Control
 
 	// Selects the default options
 	public void SetFontSizeDefault() {
-		//Sets default setting to Dyslexic if CURRENT_FONT is Dyslexic
+
 		//Otherwise sets it to Cascadia
 		if (GetFontSizeDefault() == DEFAULT.ToString()) {
 			GetNode<OptionButton>(FONT_SIZE_OPTION_BUTTON_PATH).Select(0); //with 0 being the index of default
