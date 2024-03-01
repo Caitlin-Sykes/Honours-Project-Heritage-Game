@@ -1,4 +1,5 @@
 using Godot;
+using Godot.Collections;
 using System;
 using System.Linq;
 
@@ -143,9 +144,14 @@ public partial class InteractCircles : Node3D
 		}
 	}
 
-	// Handles on circle click
-	//Sets the node path as well
 
+	/**
+	* ----------------------------------------------------------------
+	* Circles Pressed function and associated functions
+	* ----------------------------------------------------------------
+	**/
+
+	// Handles on circle click
 	public async void CirclesPressed(String path)
 	{
 		// Circles init stuff
@@ -154,60 +160,24 @@ public partial class InteractCircles : Node3D
 		// Sets the circles current path to path
 		CURRENT_PATH_CIRCLES = path;
 
-		//If it has a camera position then
-		if (GetNode<ButtonOverwrite>(path).GetMeta("NewCamPos").AsVector3() != Vector3.Zero)
-		{
-			// Toggles direction only if parent isnt called settings
-			if (GetNode<ButtonOverwrite>(path).GetParent().Name != "Settings") {
-				ToggleEventsDirection(GetNode<ButtonOverwrite>(path)); //turns off all the circles 
-			}
-
-			SetCam(GetNode<ButtonOverwrite>(path).GetMeta("NewCamPos").AsVector3(), (Vector3)GetNode<ButtonOverwrite>(path).GetMeta("CamRotation")); //sets the camera to the position and rotation in the meta data
-			ToggleBackButton(); //shows the back button
-		}
-
+		CheckForCamPosition();
+		
 		//Gets meta description of button clicked 
 		var description = (Godot.Collections.Dictionary<string, string>)GetNode<ButtonOverwrite>(path).GetMeta("Description");
 
-		//If has key then shows dialogue, if not, then break
-		if (description.ContainsKey(SCENESTATEACCESS.CurrentStateAsString()))
-		{
-			if (this.GetParent().Name == "Stonewall") {
-				DIALOGUE.SwapOverlay();
-			}
-
-			DIALOGUE.Dialogue(PlayerData.Player.Name, description[SCENESTATEACCESS.CurrentStateAsString()], string.Format(PLAYER_AVATAR, PlayerData.Player.Avatar));
-		}
-
-		//Breaks out the function if it doesn't have the key
-		else
-		{
-			if (GetNode<ButtonOverwrite>(path).GetMeta("Object").AsString() != "Door")
-			{
-				//Swaps back to dialogue mode
-				SCENESTATEACCESS.PlayerStatus = SCENESTATEACCESS.PreviousState;
-				return;
-			}
-
-			else
-			{
-				SCENESTATEACCESS.PlayerStatus = SceneState.StatusOfPlayer.FreeRoam; //swaps the status to in dialogue
-				return;
-			}
-		}
-
-
+		// Validates the description
+		ValidateDescription(description);
 
 		//Swap back to gui speech
 		DIALOGUE.SwapOverlay();
 
-		DIALOGUE.Visible = true; //toggles the speech gui
+		//toggles the speech gui
+		DIALOGUE.Visible = true; 
 
 		//Awaits the dialogue progression
 		await ToSignal(DIALOGUE, "LookProgress");
 
-
-		// Swap back to normal view
+		// Swap back to free-roam view
 		DIALOGUE.SwapOverlay();
 
 		//If the camera isn't moved
@@ -233,6 +203,22 @@ public partial class InteractCircles : Node3D
 
 	}
 
+	//A function to check whether the cam needs to be moved
+	private void CheckForCamPosition() {
+		//If it has a camera position then
+		if (GetNode<ButtonOverwrite>(CURRENT_PATH_CIRCLES).GetMeta("NewCamPos").AsVector3() != Vector3.Zero)
+		{
+			// Toggles direction only if parent isnt called settings
+			if (GetNode<ButtonOverwrite>(CURRENT_PATH_CIRCLES).GetParent().Name != "Settings")
+			{
+				ToggleEventsDirection(GetNode<ButtonOverwrite>(CURRENT_PATH_CIRCLES)); //turns off all the circles 
+			}
+
+			SetCam(GetNode<ButtonOverwrite>(CURRENT_PATH_CIRCLES).GetMeta("NewCamPos").AsVector3(), (Vector3)GetNode<ButtonOverwrite>(CURRENT_PATH_CIRCLES).GetMeta("CamRotation")); //sets the camera to the position and rotation in the meta data
+			ToggleBackButton(); //shows the back button
+		}
+	}
+
 	//A function to initialise the things needed for CirclesPressed
 	private void CirclesInit() {
 		//if previous stage != PlayerStatus.Dialogue (aka, coming from freeroam), make gui visible!
@@ -243,6 +229,36 @@ public partial class InteractCircles : Node3D
 
 		SCENESTATEACCESS.PreviousState = SCENESTATEACCESS.PlayerStatus; //sets the previous state
 		SCENESTATEACCESS.PlayerStatus = SceneState.StatusOfPlayer.LookingAtSomething;
+	}
+
+	//A function to validate the description metadata
+	private void ValidateDescription(Dictionary<string, string> description) {
+		//If has key then shows dialogue, if not, then break
+		if (description.ContainsKey(SCENESTATEACCESS.CurrentStateAsString()))
+		{
+			if (this.GetParent().Name != "IntroductionScene")
+			{
+				DIALOGUE.SwapOverlay();
+			}
+
+			DIALOGUE.Dialogue(PlayerData.Player.Name, description[SCENESTATEACCESS.CurrentStateAsString()], string.Format(PLAYER_AVATAR, PlayerData.Player.Avatar));
+		}
+
+		//Breaks out the function if it doesn't have the key
+		else
+		{
+			if (GetNode<ButtonOverwrite>(CURRENT_PATH_CIRCLES).GetMeta("Object").AsString() != "Door")
+			{
+				//Swaps back to dialogue mode
+				SCENESTATEACCESS.PlayerStatus = SCENESTATEACCESS.PreviousState;
+			}
+
+			else
+			{
+				SCENESTATEACCESS.PlayerStatus = SceneState.StatusOfPlayer.FreeRoam; //swaps the status to in dialogue
+			}
+		}
+
 	}
 
 	/**
