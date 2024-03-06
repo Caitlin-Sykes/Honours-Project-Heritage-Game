@@ -45,13 +45,17 @@ public partial class JsonHandler : Node
 		[JsonPropertyName("Mum_Dialogue_2")]
 		public DialogueStructData[] Mum_Dialogue_2 { get; set; }
 
-		//An array to hold the Dialogue information matching property "Mum_Dialogue_2" 
+		//An array to hold the Dialogue information matching property "Mum_Dialogue_3" 
 		[JsonPropertyName("Mum_Dialogue_3")]
 		public DialogueStructData[] Mum_Dialogue_3 { get; set; }
 
-		//An array to hold the Dialogue information matching property "Mum_Dialogue_2" 
+		//An array to hold the Dialogue information matching property "Stonewall_Dialogue" 
 		[JsonPropertyName("Stonewall_Dialogue")] 
 		public DialogueStructData[] Stonewall_Dialogue { get; set; }
+
+		//An array to hold the Dialogue information matching property "Stonewall_Dialogue_Inside" 
+		[JsonPropertyName("Stonewall_Dialogue_Inside")]
+		public DialogueStructData[] Stonewall_Dialogue_Inside { get; set; }
 
 		[JsonPropertyName("Stonewall_Yvonne")]
 		public DialogueStructData[] Stonewall_Yvonne { get; set; }

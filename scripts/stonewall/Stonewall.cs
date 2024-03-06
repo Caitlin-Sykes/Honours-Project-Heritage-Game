@@ -15,6 +15,8 @@ public partial class Stonewall : Node
 	private JsonHandler DIALOGUEACCESS; //accesses the singleton for the dialogue json
 
 	private PopupPanel MATTACHINE; //accesses the matachine popup panels
+	private PopupPanel GLFPOSTER; //accesses the GLF popup panels
+
 
 
 	// Called when the node enters the scene tree for the first time.
@@ -25,6 +27,7 @@ public partial class Stonewall : Node
 		
 		//Gets the pop up panels
 		MATTACHINE = GetNode<PopupPanel>("CanvasLayer/IntroCam/MattachineBar");
+		GLFPOSTER = GetNode<PopupPanel>("CanvasLayer/IntroCam/GLFPoster");
 
 
 		//Gets camera and animation nodes
@@ -53,6 +56,41 @@ public partial class Stonewall : Node
 	private async void ToggleMattachine() {
 		await ToSignal(DIALOGUE, "LookProgress");
 		MATTACHINE.Visible = !MATTACHINE.Visible;
+	}
+
+	//Toggle Poster Panel
+	private async void ToggleGLFPoster()
+	{
+		await ToSignal(DIALOGUE, "LookProgress");
+		GLFPOSTER.Visible = !GLFPOSTER.Visible;
+	}
+
+	/** 
+	* ------------------------------------------------------------------
+	* Handlers for moving into Stonewall
+	* ------------------------------------------------------------------
+	**/
+
+	// Handles swapping camera from IntroCam to West
+	private void MoveIntoStonewall() {
+		// Gets the camera
+		Camera3D cam = GetNode<Camera3D>("Cameras/Controls/UI/West");
+
+		// Disables the four circles
+		for (int i = 0; i < 4; i++)
+		{
+			string path = string.Format("CanvasLayer/Settings/Pre{0}", i);
+			CIRCLES.ToggleSpecificDirection(GetNode<ButtonOverwrite>(path));
+		}
+
+		cam.Current = true;
+
+		DIALOGUE.ToggleGUIVisible();
+
+		SCENESTATEACCESS.CurrentObjective = "Explore the inside of Stonewall";
+		SCENESTATEACCESS.PlayerStatus = SceneState.StatusOfPlayer.InDialogue;
+		 
+		DIALOGUE.Dialogue(DIALOGUEACCESS.Speech.Stonewall_Dialogue_Inside, "Inside_Stonewall");
 	}
 
 }

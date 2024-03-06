@@ -31,6 +31,9 @@ public partial class IntroductionScene : Node3D
 	private SceneState SCENESTATEACCESS; //accesses the singleton for the scenestate
 	private JsonHandler DIALOGUEACCESS; //accesses the singleton for the dialogue json
 
+	private PlayerData PLAYERDATA; //accesses the singleton for the PLAYERDATA
+
+
 	[Export]
 	private Transitions TRANSITION;
 
@@ -42,6 +45,9 @@ public partial class IntroductionScene : Node3D
 		//Gets the singletons
 		SCENESTATEACCESS = GetNode<SceneState>("/root/SceneStateSingleton"); //scene state
 		DIALOGUEACCESS = GetNode<JsonHandler>("/root/DialogueImport"); //dialogue json
+		PLAYERDATA = GetNode<PlayerData>("/root/PlayerData"); //dialogue json
+
+
 
 		//Sets the initial scene state, the current objective, and the status of the player in a singleton
 		SCENESTATEACCESS.CurrentObjective = "Follow the tutorial";
@@ -186,7 +192,7 @@ public partial class IntroductionScene : Node3D
 	//Waits 
 	await ToSignal(DIALOGUE, "DialogueProgress");
 	// Plays dialogue
-	DIALOGUE.Dialogue(PlayerData.Player.Name, "Ugh... I feel... weird. Mu-", string.Format("res://resources/textures/sprites/main_char/{0}.svg", PlayerData.Player.Avatar));
+	DIALOGUE.Dialogue(PLAYERDATA.Player.Name, "Ugh... I feel... weird. Mu-", string.Format("res://resources/textures/sprites/main_char/{0}.svg", PLAYERDATA.Player.Avatar));
 
 	ANIM_PLAYER.PlayBackwards("Wake"); //plays the camera wake up animation reversed (sleep)
 	DIALOGUE.ToggleGUIVisible(); //hides the dialogue gui

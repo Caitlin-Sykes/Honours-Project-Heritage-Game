@@ -317,6 +317,70 @@
     }
   ],
 
+  "Stonewall_Dialogue_Inside": [
+    {
+      "Id": "1",
+      "Speaker": "Narrator",
+      "Dialogue": "As you enter the inn, you noticed that the floors are covered in shards of broken glasses, fallen stools, and an assortment of broken items.",
+      "Avatar": "res://resources/textures/sprites/guide/1.svg"
+    },
+    {
+      "Id": "2",
+      "Speaker": "Narrator",
+      "Dialogue": "It's vaguely dark and abandoned on the inside, as though nobody has walked through in a long time.",
+      "Avatar": "res://resources/textures/sprites/guide/1.svg"
+    },
+
+    {
+      "Id": "3",
+      "Speaker": "{0}",
+      "Dialogue": "It's a little... messy in here. I can't imagine it was normally like this, was it Mum?",
+      "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
+    },
+
+    {
+      "Id": "4",
+      "Speaker": "Mum",
+      "Dialogue": "If I had to hazard a guess, I would assume we're sometime after the Stonewall Riots, purely going off the sign outside and the condition it is in here.",
+      "Avatar": "res://resources/textures/sprites/mother/{0}.svg"
+    },
+
+    {
+      "Id": "5",
+      "Speaker": "{0}",
+      "Dialogue": "How so?",
+      "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
+    },
+
+    {
+      "Id": "6",
+      "Speaker": "Mum",
+      "Dialogue": "The GLF - the Gay Liberation Front - was created following Stonewall. It wasn't much after, but it was definitely following the events. Since the sign outside was for that, it helps figure the date out a bit.",
+      "Avatar": "res://resources/textures/sprites/mother/{0}.svg"
+    },
+
+    {
+      "Id": "7",
+      "Speaker": "{0}",
+      "Dialogue": "I ask again, how do you just know this stuff?",
+      "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
+    },
+
+    {
+      "Id": "8",
+      "Speaker": "Mum",
+      "Dialogue": "I grew up with the stories. I guess some of them stick. Anyway, take a look around. Maybe they'll be something interesting.",
+      "Avatar": "res://resources/textures/sprites/mother/{0}.svg"
+    },
+
+    {
+      "Id": "9",
+      "Speaker": "{0}",
+      "Dialogue": "Alright, Mum. I'll do that.",
+      "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
+    }
+  ],
+
   "Stonewall_Yvonne": [
     {
       "Id": "1",

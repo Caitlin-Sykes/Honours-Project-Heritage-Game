@@ -14,7 +14,9 @@ public partial class EventDict : Node2D
         EventLookup.Add("Controls", new string[] {"1", "3", "7", "8"});
         EventLookup.Add("Mum_Dialogue_1", new string[] { "5" });
         EventLookup.Add("Mum_Dialogue_2", new string[] { "8" });
-        EventLookup.Add("Stonewall_Dialogue", new string[] { "11" });
+        EventLookup.Add("Stonewall_Dialogue", new string[] { "11" }); 
+        EventLookup.Add("Inside_Stonewall", new string[] { "9" });
+
     }
 
     //A function to check if the id is present 

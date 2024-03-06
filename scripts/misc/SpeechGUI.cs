@@ -30,12 +30,17 @@ public partial class SpeechGUI : Control
 
 	private EventDict EVENTDICT; //accesses the singleton for the event dict
 
+	private PlayerData PLAYERDATA; //accesses the singleton for the PLAYERDATA
+
+
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		SCENESTATEACCESS = GetNode<SceneState>("/root/SceneStateSingleton"); //accesses the singleton for the scene state
 		EVENTDICT = GetNode<EventDict>("/root/EventDict"); //accesses the singleton for the scene state
+		PLAYERDATA = GetNode<PlayerData>("/root/PlayerData"); //accesses the singleton for the scene state
+
 
 		CAMERAS = GetNode<Cameras>("../../../Cameras"); //Gets camera and animation nodes
 		AvatarNode = GetNode<TextureRect>("Main_Dialogue/Avatar"); //Gets instance of Avatar
@@ -119,7 +124,7 @@ public partial class SpeechGUI : Control
 			//For every bit of speech in the scene
 			foreach (var Speech in Scene)
 			{
-				SetConversation(string.Format(Speech.Speaker, PlayerData.Player.Name), string.Format(Speech.Dialogue, PlayerData.Player.Name), string.Format(Speech.Avatar, PlayerData.Player.Avatar));
+				SetConversation(string.Format(Speech.Speaker, PLAYERDATA.Player.Name), string.Format(Speech.Dialogue, PLAYERDATA.Player.Name), string.Format(Speech.Avatar, PLAYERDATA.Player.Avatar));
 				await ToSignal(this, "DialogueProgress");
 
 
@@ -161,17 +166,20 @@ public partial class SpeechGUI : Control
 						case "Stonewall_Dialogue":
 							StonewallEvent(Speech.Id);
 							break;
+						case "Inside_Stonewall":
+							InsideStoneWallEvent(Speech.Id);
+							break;
 						default:
 							break;
 					}
 				}
 
 				//Sets the name and speech
-				SetNameNode(string.Format(Speech.Speaker, PlayerData.Player.Name));
-				SetSpeechNode(string.Format(Speech.Dialogue, PlayerData.Player.Name));
+				SetNameNode(string.Format(Speech.Speaker, PLAYERDATA.Player.Name));
+				SetSpeechNode(string.Format(Speech.Dialogue, PLAYERDATA.Player.Name));
 				if (Speech.Avatar != "NULL")
 				{
-					SetAvatarNode(string.Format(Speech.Avatar, PlayerData.Player.Avatar));
+					SetAvatarNode(string.Format(Speech.Avatar, PLAYERDATA.Player.Avatar));
 				}
 				await ToSignal(this, "DialogueProgress");
 
@@ -179,8 +187,8 @@ public partial class SpeechGUI : Control
 		}
 	}
 
-	//Just displays
-	public async void Dialogue(String name, String description, string avatar)
+    //Just displays
+    public async void Dialogue(String name, String description, string avatar)
 	{
 		SetConversation(name, description, avatar);
 
@@ -203,8 +211,8 @@ public partial class SpeechGUI : Control
 		SwapOverlay();
 
 		// Sets the player name and avatar
-		SetNameNode(PlayerData.Player.Name);
-		SetAvatarNode(string.Format("res://resources/textures/sprites/main_char/{0}.svg", PlayerData.Player.Avatar));
+		SetNameNode(PLAYERDATA.Player.Name);
+		SetAvatarNode(string.Format("res://resources/textures/sprites/main_char/{0}.svg", PLAYERDATA.Player.Avatar));
 
 		//if meta is not null
 		if (extraInfo is not null)
@@ -371,7 +379,6 @@ public partial class SpeechGUI : Control
 	//Controls the events for the stonewall init scene
 	private void StonewallEvent(string id)
 	{
-
 		switch (id)
 		{
 			case "11":
@@ -379,16 +386,38 @@ public partial class SpeechGUI : Control
 				ToggleGUIVisible();
 
 				// Enables the three circles
-				for (int i = 0; i < 3; i++)
+				for (int i = 0; i < 4; i++)
 				{
 					string path = string.Format("../Pre{0}", i);
 					CIRCLES.ToggleSpecificDirection(GetNode<ButtonOverwrite>(path));
 				}
-
-
-			
 				return;
 
+			default:
+				return;
+		}
+
+	}
+
+
+	// Controls the events for inside of stonewall
+	private async void InsideStoneWallEvent(string id)
+	{
+		switch (id)
+		{
+			case "9":
+				await ToSignal(this, "DialogueProgress");
+
+				// Sets scene to free roam
+				SCENESTATEACCESS.PlayerStatus = SceneState.StatusOfPlayer.FreeRoam; //swaps back to freeroam view
+				ToggleGUIVisible();
+
+				// Toggles the events
+				CIRCLES.ToggleEventsDirection(GetNode<ButtonOverwrite>("../../../InteractableItems/Select_Items/Settings/Panel/West/1"));
+				// Enables the arrows and current cameras
+				CAMERAS.SetCurrentCamera(GetViewport().GetCamera3D());
+				SwapOverlay();
+				break;
 			default:
 				return;
 		}

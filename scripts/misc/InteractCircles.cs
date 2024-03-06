@@ -23,6 +23,8 @@ public partial class InteractCircles : Node3D
 	public Vector3 PREVIOUS_POS; //vector for previous Cam pos
 	public Vector3 PREVIOUS_ANGLE; //vector for previous Cam angle
 
+	private PlayerData PLAYERDATA; //accesses the singleton for the PLAYERDATA
+
 	private PuzzleStart PUZZLES; //instance of puzzles
 
 	// Called when the node enters the scene tree for the first time.
@@ -32,6 +34,8 @@ public partial class InteractCircles : Node3D
 		PUZZLES = GetNode<PuzzleStart>("Select_Items/Settings/Puzzles"); //gets instance of puzzles
 		SCENESTATEACCESS = GetNode<SceneState>("/root/SceneStateSingleton"); //accesses the singleton for the scene state
 		DIALOGUEACCESS = GetNode<JsonHandler>("/root/DialogueImport"); //accesses the singleton for the dialogue json
+		PLAYERDATA = GetNode<PlayerData>("/root/PLAYERDATA"); //accesses the singleton for the scene state
+
 	}
 
 	/**
@@ -233,31 +237,38 @@ public partial class InteractCircles : Node3D
 
 	//A function to validate the description metadata
 	private void ValidateDescription(Dictionary<string, string> description) {
-		//If has key then shows dialogue, if not, then break
-		if (description.ContainsKey(SCENESTATEACCESS.CurrentStateAsString()))
-		{
-			if (this.GetParent().Name != "IntroductionScene")
+		try {
+			//If has key then shows dialogue, if not, then break
+			if (description.ContainsKey(SCENESTATEACCESS.CurrentStateAsString()))
 			{
-				DIALOGUE.SwapOverlay();
+				if (this.GetParent().Name != "IntroductionScene")
+				{
+					DIALOGUE.SwapOverlay();
+				}
+
+				DIALOGUE.Dialogue(PLAYERDATA.Player.Name, description[SCENESTATEACCESS.CurrentStateAsString()], string.Format(PLAYER_AVATAR, PLAYERDATA.Player.Avatar));
 			}
 
-			DIALOGUE.Dialogue(PlayerData.Player.Name, description[SCENESTATEACCESS.CurrentStateAsString()], string.Format(PLAYER_AVATAR, PlayerData.Player.Avatar));
-		}
-
-		//Breaks out the function if it doesn't have the key
-		else
-		{
-			if (GetNode<ButtonOverwrite>(CURRENT_PATH_CIRCLES).GetMeta("Object").AsString() != "Door")
-			{
-				//Swaps back to dialogue mode
-				SCENESTATEACCESS.PlayerStatus = SCENESTATEACCESS.PreviousState;
-			}
-
+			//Breaks out the function if it doesn't have the key
 			else
 			{
-				SCENESTATEACCESS.PlayerStatus = SceneState.StatusOfPlayer.FreeRoam; //swaps the status to in dialogue
+				if (GetNode<ButtonOverwrite>(CURRENT_PATH_CIRCLES).GetMeta("Object").AsString() != "Door")
+				{
+					//Swaps back to dialogue mode
+					SCENESTATEACCESS.PlayerStatus = SCENESTATEACCESS.PreviousState;
+				}
+
+				else
+				{
+					SCENESTATEACCESS.PlayerStatus = SceneState.StatusOfPlayer.FreeRoam; //swaps the status to in dialogue
+				}
 			}
 		}
+		catch (Exception e) { 
+			GD.PrintErr("Failed to get the meta data of the passed in dictionary: " + e);
+			GD.PrintErr(string.Format("Dictionary: {0}, CurrentSceneState: {1}, PlayerStatus: {2}", description, SCENESTATEACCESS.CurrentStateAsString(), SCENESTATEACCESS.PlayerStatus));
+		}
+	
 
 	}
 
