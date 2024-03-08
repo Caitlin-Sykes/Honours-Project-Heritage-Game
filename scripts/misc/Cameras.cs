@@ -245,6 +245,7 @@ public partial class Cameras : Node
 	//Method to handle turning right
 	public void TurnRight()
 	{
+
 		//Changes camera depending on what the current direction is
 		switch (dir)
 		{

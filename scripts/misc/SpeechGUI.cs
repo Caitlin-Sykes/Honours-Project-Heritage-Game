@@ -252,21 +252,16 @@ public partial class SpeechGUI : Control
 		if (@evnt is InputEventMouseButton && @evnt.IsPressed() && SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.InDialogue)
 		{
 			EmitSignal("DialogueProgress");
-			GD.Print("DialogueProgress");
 		}
 
 		else if (@evnt is InputEventMouseButton && @evnt.IsPressed() && SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam)
 		{
 			EmitSignal("SceneProgress");
-			GD.Print("SceneProgress");
-
 		}
 
 		else if (@evnt is InputEventMouseButton && @evnt.IsPressed() && SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.LookingAtSomething)
 		{
 			EmitSignal("LookProgress");
-			GD.Print("LookProgress");
-
 		}
 	}
 
@@ -411,9 +406,7 @@ public partial class SpeechGUI : Control
 				// Sets scene to free roam
 				SCENESTATEACCESS.PlayerStatus = SceneState.StatusOfPlayer.FreeRoam; //swaps back to freeroam view
 				ToggleGUIVisible();
-
-				// Toggles the events
-				CIRCLES.ToggleEventsDirection(GetNode<ButtonOverwrite>("../../../InteractableItems/Select_Items/Settings/Panel/West/1"));
+			
 				// Enables the arrows and current cameras
 				CAMERAS.SetCurrentCamera(GetViewport().GetCamera3D());
 				SwapOverlay();

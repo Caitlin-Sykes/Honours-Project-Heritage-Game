@@ -34,7 +34,7 @@ public partial class InteractCircles : Node3D
 		PUZZLES = GetNode<PuzzleStart>("Select_Items/Settings/Puzzles"); //gets instance of puzzles
 		SCENESTATEACCESS = GetNode<SceneState>("/root/SceneStateSingleton"); //accesses the singleton for the scene state
 		DIALOGUEACCESS = GetNode<JsonHandler>("/root/DialogueImport"); //accesses the singleton for the dialogue json
-		PLAYERDATA = GetNode<PlayerData>("/root/PLAYERDATA"); //accesses the singleton for the scene state
+		PLAYERDATA = GetNode<PlayerData>("/root/PlayerData"); //accesses the singleton for the scene state
 
 	}
 
@@ -175,6 +175,11 @@ public partial class InteractCircles : Node3D
 		//Swap back to gui speech
 		DIALOGUE.SwapOverlay();
 
+		// In case the order gets messed up
+		if (!DIALOGUE.Speech_Overlay.Visible) {
+			DIALOGUE.SwapOverlay();
+		}
+
 		//toggles the speech gui
 		DIALOGUE.Visible = true; 
 
@@ -189,6 +194,7 @@ public partial class InteractCircles : Node3D
 		{
 			if (GetNode<ButtonOverwrite>(path).GetMeta("Object").AsString() != "Door")
 			{
+				GD.PrintErr("i am going back to: " + SCENESTATEACCESS.PlayerStatus);
 				//Swaps back to dialogue mode
 				SCENESTATEACCESS.PlayerStatus = SCENESTATEACCESS.PreviousState;
 			}
@@ -200,11 +206,9 @@ public partial class InteractCircles : Node3D
 				DIALOGUE.SwapOverlay();
 
 				SCENESTATEACCESS.PlayerStatus = SceneState.StatusOfPlayer.InDialogue; //swaps the status to in dialogue
-
 				DIALOGUE.SkipDialogue(); //skips dialogue
 			}
 		}
-
 	}
 
 	//A function to check whether the cam needs to be moved

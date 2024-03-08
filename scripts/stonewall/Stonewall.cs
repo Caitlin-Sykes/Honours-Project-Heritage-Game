@@ -33,7 +33,7 @@ public partial class Stonewall : Node
 		//Gets camera and animation nodes
 		CAMERAS = GetNode<Cameras>("Cameras");
 		CONTROLS = GetNode<Controls>("Cameras/Controls");
-		INTROCAM = GetNode<Camera3D>("IntroCam");
+		INTROCAM = GetNode<Camera3D>("CanvasLayer/IntroCam/");
 		CIRCLES = GetNode<InteractCircles>("InteractableItems");
 
 		//Actual Scene Init Stuff
@@ -86,6 +86,7 @@ public partial class Stonewall : Node
 		cam.Current = true;
 
 		DIALOGUE.ToggleGUIVisible();
+		CAMERAS.ToggleEvents();
 
 		SCENESTATEACCESS.CurrentObjective = "Explore the inside of Stonewall";
 		SCENESTATEACCESS.PlayerStatus = SceneState.StatusOfPlayer.InDialogue;

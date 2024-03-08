@@ -33,7 +33,6 @@ public partial class PuzzleStart : Control
 
 	//A function to check if a puzzle is present, and whether to enable it or not
 	public void CheckPuzzle(ButtonOverwrite circle) {
-		GD.Print(circle.Name);
 		try {
 			//If = true and has the meta
 			if (circle.HasMeta("PuzzleEnabled") && (bool)circle.GetMeta("PuzzleEnabled")) {

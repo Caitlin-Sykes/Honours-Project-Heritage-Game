@@ -642,7 +642,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="1" parent="InteractableItems/Select_Items/Settings/Panel/East" instance=ExtResource("5_biifr")]
+[node name="5" parent="InteractableItems/Select_Items/Settings/Panel/East" instance=ExtResource("5_biifr")]
 visible = false
 layout_mode = 1
 anchors_preset = -1
@@ -780,41 +780,12 @@ metadata/Hints = {}
 metadata/ExtraInformation = {
 "Stage_1": "Just some random books. Isn't really anything more to say. "
 }
-metadata/NewCamPos = Vector3(12.9361, -2.3705, 16.7682)
+metadata/NewCamPos = Vector3(12.9361, -2.3705, 8.15624)
 metadata/Sources = {
-"src": "Just some random parodied books. No sources here."
+"src": "It's just a dancefloor, No sources here."
 }
-metadata/CamRotation = Vector3(0, 0, 0)
-
-[node name="4" parent="InteractableItems/Select_Items/Settings/Panel/South" instance=ExtResource("5_biifr")]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.222
-anchor_top = 0.435
-anchor_right = 0.29
-anchor_bottom = 0.45
-offset_right = 69.44
-offset_bottom = 183.8
-grow_horizontal = 2
-grow_vertical = 2
-texture_normal = ExtResource("6_f0smn")
-texture_pressed = ExtResource("7_t6h5l")
-metadata/Object = "Window"
-metadata/Description = {
-"Stage_1": "A window to the outside.",
-"Stage_2": "I don't think the book is outside, somehow.",
-"Stage_3": "I don't need to mess with the window now."
-}
-metadata/Hints = {}
-metadata/ExtraInformation = {
-"Stage_1": "Seriously, it's just a window to the outside."
-}
-metadata/NewCamPos = Vector3(0, 0, 0)
-metadata/Sources = {
-"src": "No sources here, just a lovely garden."
-}
-metadata/CamRotation = Vector3(0, 0, 0)
+metadata/CamRotation = Vector3(0, 180, 0)
+metadata/PuzzleEnabled = true
 
 [node name="West" type="Control" parent="InteractableItems/Select_Items/Settings/Panel"]
 visible = false
@@ -843,19 +814,19 @@ texture_normal = ExtResource("6_f0smn")
 texture_pressed = ExtResource("7_t6h5l")
 metadata/Object = "Doorway"
 metadata/Description = {
-"Stage_1": "Time to see what my mum wanted me for.",
-"Stage_2": "Mum's just coming, I'd better find the book.",
-"Stage_3": "I better put the book on the desk and not hang out by the door."
+"Stage_1": "This is just the bathroom, I don't think they'll be anything interesting in there.",
+"Stage_2": "I don't need anything from in there.",
+"Stage_3": "It's just the bathroom. "
 }
 metadata/Hints = {}
 metadata/ExtraInformation = {
-"Stage_1": "It's just a door. Nothing special here."
+"Stage_1": "It's just a doorway. Nothing special here."
 }
-metadata/NewCamPos = Vector3(-21.674, -2.3705, -1.99833)
 metadata/Sources = {
 "src": "No sources again. *Knock knock*"
 }
 metadata/CamRotation = Vector3(0, 0, 0)
+metadata/NewCamPos = Vector3(0, 0, 0)
 
 [node name="2" parent="InteractableItems/Select_Items/Settings/Panel/West" instance=ExtResource("5_biifr")]
 visible = false
@@ -873,7 +844,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture_normal = ExtResource("6_f0smn")
 texture_pressed = ExtResource("7_t6h5l")
-metadata/Object = "Door"
+metadata/Object = "BathroomDoor"
 metadata/Description = {
 "Stage_1": "I don't need to go through there right now. ",
 "Stage_2": "tbd",
@@ -1214,7 +1185,7 @@ libraries = {
 "": SubResource("AnimationLibrary_i2hal")
 }
 
-[node name="2" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont" instance=ExtResource("5_biifr")]
+[node name="3" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont" instance=ExtResource("5_biifr")]
 visible = false
 layout_mode = 1
 anchors_preset = -1
@@ -1317,11 +1288,11 @@ metadata/Sources = {}
 metadata/CamRotation = Vector3(0, 0, 0)
 
 [node name="testCam2" type="Camera3D" parent="."]
-transform = Transform3D(-1, 0, -4.37115e-07, 0, 1, 0, 4.37115e-07, 0, -1, 12.9361, -2.3705, 16.7682)
+transform = Transform3D(-1, 0, -4.37115e-07, 0, 1, 0, 4.37115e-07, 0, -1, 12.9361, -2.3705, 8.15624)
 fov = 75.9375
 
 [node name="testCam" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 88.502, -0.886894, 104.783)
+transform = Transform3D(-1, -8.74228e-08, 7.64274e-15, -8.74228e-08, 1, -8.74228e-08, 0, -8.74228e-08, -1, 11.2191, -2.10032, 6.35714)
 fov = 56.25
 
 [node name="beepEntry" type="AudioStreamPlayer" parent="."]
@@ -1351,19 +1322,18 @@ surface_material_override/0 = SubResource("StandardMaterial3D_6h7en")
 [connection signal="pressed" from="CanvasLayer/Settings/Pre2" to="InteractableItems" method="CirclesPressed" binds= ["../CanvasLayer/Settings/Pre2"]]
 [connection signal="pressed" from="CanvasLayer/Settings/Pre3" to="." method="MoveIntoStonewall"]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/Back_Button/Back" to="InteractableItems" method="OnBackPressed" flags=18]
-[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/North/1" to="InteractableItems" method="InteractCircles"]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/North/1" to="InteractableItems" method="DialogueByString" flags=6 binds= ["Yvonne"]]
-[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/North/2" to="InteractableItems" method="CirclesPressed"]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/North/1" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/North/1"]]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/North/2" to="InteractableItems" method="DialogueByString" flags=6 binds= ["Martha"]]
-[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/North/3" to="InteractableItems" method="CirclesPressed"]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/North/2" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/North/2"]]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/North/3" to="InteractableItems" method="DialogueByString" flags=6 binds= ["Leitsch"]]
-[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/East/1" to="InteractableItems" method="CirclesPressed"]
-[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/South/1" to="InteractableItems" method="CirclesPressed"]
-[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/South/2" to="InteractableItems" method="CirclesPressed"]
-[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/South/3" to="InteractableItems" method="CirclesPressed"]
-[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/South/4" to="InteractableItems" method="CirclesPressed"]
-[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/West/1" to="InteractableItems" method="CirclesPressed"]
-[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/West/2" to="InteractableItems" method="CirclesPressed"]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/North/3" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/North/3"]]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/East/5" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/East/5"]]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/South/1" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/South/1"]]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/South/2" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/South/2"]]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/South/3" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/South/3"]]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/West/1" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/West/1"]]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/West/2" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/West/2"]]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/East/PuzzleCont/5" to="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South" method="PlaceBookScene"]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c1" to="InteractableItems" method="ToggleSpecificDirectionPath"]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c1" to="InteractableItems" method="CirclesPressed"]
@@ -1376,8 +1346,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_6h7en")
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c5" to="InteractableItems" method="ToggleSpecificDirectionPath"]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c5" to="InteractableItems" method="CirclesPressed"]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c6" to="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South" method="PuzzleAnswer"]
-[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/2" to="InteractableItems" method="CirclesPressed"]
-[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/2" to="InteractableItems/Select_Items/Settings/Puzzles" method="InitialisePuzzle"]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/3" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/3"]]
 
 [editable path="CanvasLayer/Settings/SpeechGUI"]
 [editable path="Cameras"]
