@@ -172,12 +172,13 @@ mouse_force_pass_scroll_events = false
 theme = ExtResource("3_awfmm")
 script = ExtResource("4_mkibg")
 
-[node name="SpeechGUI" parent="CanvasLayer/Settings" node_paths=PackedStringArray("CIRCLES") instance=ExtResource("10_q26tg")]
+[node name="SpeechGUI" parent="CanvasLayer/Settings" node_paths=PackedStringArray("CIRCLES", "Select_Items_Second") instance=ExtResource("10_q26tg")]
 visible = false
 top_level = true
 layout_mode = 1
 mouse_filter = 2
 CIRCLES = NodePath("../../../InteractableItems")
+Select_Items_Second = NodePath("../../../InteractableItems2/Select_Items")
 
 [node name="Pre0" parent="CanvasLayer/Settings" instance=ExtResource("5_biifr")]
 visible = false
@@ -1205,17 +1206,18 @@ texture_normal = ExtResource("8_i5weq")
 texture_pressed = ExtResource("9_560b4")
 metadata/Object = "TriggerEvent"
 metadata/Hints = {
-"Stage_2": "This is eee"
+"Stage_1": "Let's head through to here and see what's in here.",
+"Stage_2": "stage_2 waffle aaaaa"
 }
 metadata/ExtraInformation = {
 "Stage_1": "It's a bit tattered. Why do we even still have this?"
 }
-metadata/NewCamPos = Vector3(-0.0602202, -0.205688, 1.05261)
 metadata/Sources = {}
 metadata/Description = {
 "Stage_2": "Makes sense that a book would be on the bookshelf. Let's take a closer look..."
 }
 metadata/CamRotation = Vector3(0, 0, 0)
+metadata/NewCamPos = Vector3(0, 0, 0)
 
 [node name="West" type="Control" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel"]
 visible = false
@@ -1409,9 +1411,9 @@ transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, -3.72
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c5" to="InteractableItems" method="ToggleSpecificDirectionPath"]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c6" to="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South" method="PuzzleAnswer"]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/3" to="." method="MoveToSafeSide"]
-[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/3" to="InteractableItems" method="CirclesPressed" flags=6 binds= ["Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzlesCont/3"]]
 
 [editable path="CanvasLayer/Settings/SpeechGUI"]
 [editable path="Cameras"]
 [editable path="stonewall"]
+[editable path="InteractableItems2"]
 [editable path="CamerasTwo"]

@@ -193,8 +193,6 @@ private Direction ToDirection(string dir)
 	//Method to handle turning left
 	public void TurnLeft()
 	{	
-		GD.Print("Script Object: " + Name + "Script State: " + this.state);
-
 		if (this.state != State.Disabled) {
 		//Changes camera depending on what the current direction is
 		switch (dir)

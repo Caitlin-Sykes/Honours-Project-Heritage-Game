@@ -44,6 +44,8 @@ public partial class SceneState : Node {
 	public StatusOfPlayer PlayerStatus; //current player state
 	public StatusOfPlayer PreviousState; //previous player state
 
+	public string CURRENT_PATH_CIRCLES; //holds the path to the circles
+
 	public string CurrentObjective; //the current objective
 
 }

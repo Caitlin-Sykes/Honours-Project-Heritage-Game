@@ -15,7 +15,12 @@ public partial class SpeechGUI : Control
 	private Cameras CAMERAS; //node to hold instance of cameras
 
 	public CanvasLayer Select_Items; //node to hold instance of select items overlay
+	
+	[Export]
+	public CanvasLayer Select_Items_Second; //node to hold instance of select items overlay for secondary nodes
 	public CanvasLayer Speech_Overlay; //node to hold instance of overlay
+
+	public CanvasLayer Active_Canvas_Layer;
 
 	[Signal]
 	public delegate void DialogueProgressEventHandler(); //handler for progressing scene text
@@ -46,10 +51,12 @@ public partial class SpeechGUI : Control
 		AvatarNode = GetNode<TextureRect>("Main_Dialogue/Avatar"); //Gets instance of Avatar
 		NameNode = GetNode<Label>("Main_Dialogue/Name Container/Name_Box/Name_Label");
 		SpeechNode = GetNode<Label>("Main_Dialogue/Speech_Container/Speech"); //Gets instance of Speech
+		
+		// Active layers
 		Select_Items = GetNode<CanvasLayer>("../../../InteractableItems/Select_Items"); //Gets instance of select items
+		Active_Canvas_Layer = Select_Items;
+
 		Speech_Overlay = GetNode<CanvasLayer>("../.."); //Gets instance of overlay
-
-
 	}
 
 	/**
@@ -69,17 +76,29 @@ public partial class SpeechGUI : Control
 	public void SwapOverlay()
 	{
 		Speech_Overlay.Visible = !Speech_Overlay.Visible;
-		Select_Items.Visible = !Select_Items.Visible;
+		Active_Canvas_Layer.Visible = !Active_Canvas_Layer.Visible;
 
 		GD.Print("speech overlay: " + Speech_Overlay.Visible);
-		GD.Print("select_items: " + Select_Items.Visible);
+		GD.Print("Select items : " + Active_Canvas_Layer.Visible + " " + Active_Canvas_Layer);
 
 	}
 
+	//Emits a signal to skip dialogue
 	public void SkipDialogue()
 	{
 		EmitSignal("DialogueProgress");
 	}
+
+	// A function to disable the primary item overlay, and enable the secondary item overlay
+	public void EnableSecondaryItemOverlay() {
+		Active_Canvas_Layer = Select_Items_Second;
+	}
+
+	// A function to disable the secondary item overlay, and enable the primary item overlay
+	public void DisableSecondaryItemOverlay() {
+		Active_Canvas_Layer = Select_Items;
+	}
+
 
 
 	/**

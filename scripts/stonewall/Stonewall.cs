@@ -54,7 +54,6 @@ public partial class Stonewall : Node
 		//Sets Camera Normal to enabled
 		CAMERAS.state = Cameras.State.Enabled;
 
-		GD.PrintErr("normal cam is: " + CAMERAS.state + ", bar cam is " + CAMERASBAR.state);
 	}
 
 	/** 
@@ -107,21 +106,56 @@ public partial class Stonewall : Node
 
 	//Handles moving from main room to the side with the safe
 	private void MoveToSafeSide() {
-		GD.Print("Going to the safe side");
-		//go to south camera.
+
+		//go to south camera on the other side, and sets it to true
 		Camera3D cam = CAMERASBAR.CAMERAS[2];
-		cam.Current=true;
+
+		// Swaps the active cameras between cluster 1 and 2
+		// Sets current cam to cameras bar
 		SwapActiveCameraPod();
+
+		// Toggles the secondary item overlay
+		DIALOGUE.EnableSecondaryItemOverlay();
+		DIALOGUE.Active_Canvas_Layer.Visible = true;
+
+		// Enables the events
+		CAMERASBAR.EnableEvents = true;
+		CAMERASBAR.SetCurrentCamera(cam);
+
+		// Sets status back to free roam
+		SCENESTATEACCESS.PlayerStatus = SceneState.StatusOfPlayer.FreeRoam;
+
+		//Locks input for cluster 1. enables input for cluster two
+		CAMERAS.state = Cameras.State.Disabled;
+		CAMERASBAR.state = Cameras.State.Enabled;
+
 	}
 
 	//Handles moving from main room to the side with the safe
 	private void MoveToNormalSide()
 	{
 		GD.Print("Going to the normal side");
-		//go to south camera.
+		
+		//go to south camera on the other side, and sets it to true
 		Camera3D cam = CAMERAS.CAMERAS[2];
 		cam.Current = true;
+
+		// Swaps the active cameras between cluster 1 and 2
+		// Sets current cam to cameras bar
 		SwapActiveCameraPod();
+		CAMERASBAR.SetCurrentCamera(cam);
+
+		// Sets status back to free roam
+		SCENESTATEACCESS.PlayerStatus = SceneState.StatusOfPlayer.FreeRoam;
+
+		// Toggles the secondary item overlay
+		DIALOGUE.DisableSecondaryItemOverlay();
+		DIALOGUE.Active_Canvas_Layer.Visible = true;
+
+		//Locks input for cluster 2. enables input for cluster 1
+		CAMERAS.state = Cameras.State.Enabled;
+		CAMERASBAR.state = Cameras.State.Disabled;
+
 	}
 
 	// A function to swap which camera pod is active, by toggling cameras state.

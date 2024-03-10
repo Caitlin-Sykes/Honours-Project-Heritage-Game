@@ -11,9 +11,6 @@ public partial class InteractCircles : Node3D
 	private SpeechGUI DIALOGUE; //instance of speech gui
 
 	private string PLAYER_AVATAR = "res://resources/textures/sprites/main_char/{0}.svg"; //player avatar string
-
-	public string CURRENT_PATH_CIRCLES { get; set; } //current circle
-
 	private MarginContainer BackButtonContainer; //instance of the back button container
 
 	private SceneState SCENESTATEACCESS; //accesses the singleton for the 
@@ -47,13 +44,13 @@ public partial class InteractCircles : Node3D
 	// Called from control, on J Key press
 	public void ShowExtraInformation()
 	{
-		DIALOGUE.Dialogue((Godot.Collections.Dictionary<string, string>)GetNode<ButtonOverwrite>(CURRENT_PATH_CIRCLES).GetMeta("ExtraInformation"));
+		DIALOGUE.Dialogue((Godot.Collections.Dictionary<string, string>)GetNode<ButtonOverwrite>(SCENESTATEACCESS.CURRENT_PATH_CIRCLES).GetMeta("ExtraInformation"));
 	}
 
 	//Called from control, on K press
 	public void ShowSources()
 	{
-		DIALOGUE.Dialogue((Godot.Collections.Dictionary<string, string>)GetNode<ButtonOverwrite>(CURRENT_PATH_CIRCLES).GetMeta("Sources"));
+		DIALOGUE.Dialogue((Godot.Collections.Dictionary<string, string>)GetNode<ButtonOverwrite>(SCENESTATEACCESS.CURRENT_PATH_CIRCLES).GetMeta("Sources"));
 	}
 	/**
 	* ----------------------------------------------------------------
@@ -162,7 +159,7 @@ public partial class InteractCircles : Node3D
 		CirclesInit();
 
 		// Sets the circles current path to path
-		CURRENT_PATH_CIRCLES = path;
+		SCENESTATEACCESS.CURRENT_PATH_CIRCLES = path;
 
 		CheckForCamPosition();
 		
@@ -214,15 +211,15 @@ public partial class InteractCircles : Node3D
 	//A function to check whether the cam needs to be moved
 	private void CheckForCamPosition() {
 		//If it has a camera position then
-		if (GetNode<ButtonOverwrite>(CURRENT_PATH_CIRCLES).GetMeta("NewCamPos").AsVector3() != Vector3.Zero)
+		if (GetNode<ButtonOverwrite>(SCENESTATEACCESS.CURRENT_PATH_CIRCLES).GetMeta("NewCamPos").AsVector3() != Vector3.Zero)
 		{
 			// Toggles direction only if parent isnt called settings
-			if (GetNode<ButtonOverwrite>(CURRENT_PATH_CIRCLES).GetParent().Name != "Settings")
+			if (GetNode<ButtonOverwrite>(SCENESTATEACCESS.CURRENT_PATH_CIRCLES).GetParent().Name != "Settings")
 			{
-				ToggleEventsDirection(GetNode<ButtonOverwrite>(CURRENT_PATH_CIRCLES)); //turns off all the circles 
+				ToggleEventsDirection(GetNode<ButtonOverwrite>(SCENESTATEACCESS.CURRENT_PATH_CIRCLES)); //turns off all the circles 
 			}
 
-			SetCam(GetNode<ButtonOverwrite>(CURRENT_PATH_CIRCLES).GetMeta("NewCamPos").AsVector3(), (Vector3)GetNode<ButtonOverwrite>(CURRENT_PATH_CIRCLES).GetMeta("CamRotation")); //sets the camera to the position and rotation in the meta data
+			SetCam(GetNode<ButtonOverwrite>(SCENESTATEACCESS.CURRENT_PATH_CIRCLES).GetMeta("NewCamPos").AsVector3(), (Vector3)GetNode<ButtonOverwrite>(SCENESTATEACCESS.CURRENT_PATH_CIRCLES).GetMeta("CamRotation")); //sets the camera to the position and rotation in the meta data
 			ToggleBackButton(); //shows the back button
 		}
 	}
@@ -256,7 +253,7 @@ public partial class InteractCircles : Node3D
 			//Breaks out the function if it doesn't have the key
 			else
 			{
-				if (GetNode<ButtonOverwrite>(CURRENT_PATH_CIRCLES).GetMeta("Object").AsString() != "Door")
+				if (GetNode<ButtonOverwrite>(SCENESTATEACCESS.CURRENT_PATH_CIRCLES).GetMeta("Object").AsString() != "Door")
 				{
 					//Swaps back to dialogue mode
 					SCENESTATEACCESS.PlayerStatus = SCENESTATEACCESS.PreviousState;
@@ -289,12 +286,12 @@ public partial class InteractCircles : Node3D
 		ToggleBackButton(); //hides the back button
 		ResetCam(); //resets camera position
 
-		ToggleParentNode(GetNode<ButtonOverwrite>(CURRENT_PATH_CIRCLES)); //hides the current node		
+		ToggleParentNode(GetNode<ButtonOverwrite>(SCENESTATEACCESS.CURRENT_PATH_CIRCLES)); //hides the current node		
 
 
 		// If not already visible, show.
-		if (!GetNode<ButtonOverwrite>(CURRENT_PATH_CIRCLES).Visible) {
-			ToggleEventsDirection(GetNode<ButtonOverwrite>(CURRENT_PATH_CIRCLES)); //Renables the circles
+		if (!GetNode<ButtonOverwrite>(SCENESTATEACCESS.CURRENT_PATH_CIRCLES).Visible) {
+			ToggleEventsDirection(GetNode<ButtonOverwrite>(SCENESTATEACCESS.CURRENT_PATH_CIRCLES)); //Renables the circles
 		}
 
 		//Swaps back to dialogue mode
@@ -303,7 +300,7 @@ public partial class InteractCircles : Node3D
 		//If the previous state is freeroam
 		if (SCENESTATEACCESS.PreviousState == SceneState.StatusOfPlayer.FreeRoam)
 		{
-			var parNode = (Control)GetNode<ButtonOverwrite>(CURRENT_PATH_CIRCLES).GetParent();
+			var parNode = (Control)GetNode<ButtonOverwrite>(SCENESTATEACCESS.CURRENT_PATH_CIRCLES).GetParent();
 
 			//Sets visible to true
 			if (!parNode.Visible)

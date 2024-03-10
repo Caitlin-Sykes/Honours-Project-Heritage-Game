@@ -33,6 +33,7 @@ public partial class Controls : Node3D
         //Checks for key presses
 		if (Input.IsKeyPressed(Key.A) && @event.IsPressed() && SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam)
         {
+            GD.Print("Script Object: " + Name + "Script State: " + CAMERAS.state);
             OnLeftArrow();
         }
 
