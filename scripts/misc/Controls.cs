@@ -4,6 +4,7 @@ using System;
 public partial class Controls : Node3D
 {
 
+    [Export]
     private Cameras CAMERAS; // Instance of cameras script
 
     private Transitions TRANSITION; //Handles screen transitions
@@ -24,8 +25,6 @@ public partial class Controls : Node3D
 		SCENESTATEACCESS = GetNode<SceneState>("/root/SceneStateSingleton"); //accesses the singleton for the scene state
 
         TRANSITION = GetNode<Transitions>("../../Transition");
-
-        CAMERAS = GetNode<Cameras>("../../Cameras");
 	}
 
     //Handles inputs

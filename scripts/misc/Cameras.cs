@@ -16,11 +16,20 @@ public partial class Cameras : Node
 		Down,
 	}
 
+	// enum for state, used for when there's more than one pod of camera
+	public enum State
+	{
+		Enabled,
+		Disabled
+	}
+
 
 	[Export]
-	private Godot.Collections.Array<Camera3D> CAMERAS { get; set; } //Array of cameras
+	public Godot.Collections.Array<Camera3D> CAMERAS { get; set; } //Array of cameras
 
 	private Direction dir; // instance of direction
+	public State state; // instance of state
+
 	public Direction previousDir { get; set; } // used only when going up and down
 	private int cameraVisible { get; set; } //holds array position of camera to display
 
@@ -28,16 +37,19 @@ public partial class Cameras : Node
 
 	[Export]
 	private InteractCircles INTERACT_CIRCLES; //instance of InteractCircles
-	
 
-	/** 
-	* ----------------------------------------------------------------
-	*	Misc Handlers
-	* ----------------------------------------------------------------
-	**/
 
-	//A function to convert string to type Direction
-	private Direction ToDirection(string dir)
+	public override void _Ready() {
+		state = State.Disabled;
+	}
+/** 
+* ----------------------------------------------------------------
+*	Misc Handlers
+* ----------------------------------------------------------------
+**/
+
+//A function to convert string to type Direction
+private Direction ToDirection(string dir)
 	{
 		switch (dir)
 		{
@@ -180,8 +192,10 @@ public partial class Cameras : Node
 	
 	//Method to handle turning left
 	public void TurnLeft()
-	{
+	{	
+		GD.Print("Script Object: " + Name + "Script State: " + this.state);
 
+		if (this.state != State.Disabled) {
 		//Changes camera depending on what the current direction is
 		switch (dir)
 		{
@@ -239,15 +253,18 @@ public partial class Cameras : Node
 			default:
 				throw new ArgumentException("Not a valid direction");
 		}
-
+		}
 	}
 
 	//Method to handle turning right
 	public void TurnRight()
 	{
 
-		//Changes camera depending on what the current direction is
-		switch (dir)
+		if (state != State.Disabled)
+		{
+
+			//Changes camera depending on what the current direction is
+			switch (dir)
 		{
 			//If current camera is north, set current camera to east
 			case Direction.North:
@@ -304,15 +321,18 @@ public partial class Cameras : Node
 			default:
 				GD.PrintErr("An invalid direction was passed through. Please confirm your input.");
 				throw new ArgumentException("Not a valid direction");
-		}
+		}}
 
 	}
 
 	//Method to handle looking up (for scenes that are allowed)
 	public void TurnUp()
 	{
-		//If direction is down, moves camera to previous position
-		if (dir == Direction.Down)
+		if (state != State.Disabled)
+		{
+
+			//If direction is down, moves camera to previous position
+			if (dir == Direction.Down)
 		{
 
 			//Enables camera arrows and makes it main camera
@@ -352,7 +372,7 @@ public partial class Cameras : Node
 			CAMERAS[4].Current = true;
 			previousDir = dir;
 			dir = Direction.Up;
-		}
+		}}
 	}
 
 
@@ -361,8 +381,11 @@ public partial class Cameras : Node
 	//Method to handle looking down
 	public void TurnDown()
 	{
-		//If direction is up, moves camera to previous position
-		if (dir == Direction.Up)
+		if (state != State.Disabled)
+		{
+
+			//If direction is up, moves camera to previous position
+			if (dir == Direction.Up)
 		{
 
 			//Enables camera arrows and makes it main camera
@@ -404,7 +427,7 @@ public partial class Cameras : Node
 			previousDir = dir;
 			dir = Direction.Down;
 		}
-	}
+	}}
 }
 
 

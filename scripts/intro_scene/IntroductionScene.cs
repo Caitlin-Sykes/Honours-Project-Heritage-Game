@@ -46,6 +46,7 @@ public partial class IntroductionScene : Node3D
 		SCENESTATEACCESS = GetNode<SceneState>("/root/SceneStateSingleton"); //scene state
 		DIALOGUEACCESS = GetNode<JsonHandler>("/root/DialogueImport"); //dialogue json
 		PLAYERDATA = GetNode<PlayerData>("/root/PlayerData"); //dialogue json
+		CAMERAS.state = Cameras.State.Enabled; //enables that cameras
 
 
 

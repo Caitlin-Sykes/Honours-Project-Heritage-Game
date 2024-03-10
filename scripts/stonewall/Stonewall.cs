@@ -10,6 +10,8 @@ public partial class Stonewall : Node
 
 	private Controls CONTROLS; //instance of controls
 	private Cameras CAMERAS; //instance of cameraScript
+	private Cameras CAMERASBAR; //instance of bar side camera Script
+
 	private InteractCircles CIRCLES; //instance of interactCircles
 	private Camera3D INTROCAM; //the camera you start viewing from
 	private JsonHandler DIALOGUEACCESS; //accesses the singleton for the dialogue json
@@ -32,6 +34,10 @@ public partial class Stonewall : Node
 
 		//Gets camera and animation nodes
 		CAMERAS = GetNode<Cameras>("Cameras");
+
+		//Gets camera and animation nodes
+		CAMERASBAR = GetNode<Cameras>("CamerasTwo");
+
 		CONTROLS = GetNode<Controls>("Cameras/Controls");
 		INTROCAM = GetNode<Camera3D>("CanvasLayer/IntroCam/");
 		CIRCLES = GetNode<InteractCircles>("InteractableItems");
@@ -44,6 +50,11 @@ public partial class Stonewall : Node
 		//Plays the stonewall entry dialogue scene.
 		DIALOGUE.Dialogue(DIALOGUEACCESS.Speech.Stonewall_Dialogue, "Stonewall_Dialogue");
 		DIALOGUE.ToggleGUIVisible();
+
+		//Sets Camera Normal to enabled
+		CAMERAS.state = Cameras.State.Enabled;
+
+		GD.PrintErr("normal cam is: " + CAMERAS.state + ", bar cam is " + CAMERASBAR.state);
 	}
 
 	/** 
@@ -67,7 +78,7 @@ public partial class Stonewall : Node
 
 	/** 
 	* ------------------------------------------------------------------
-	* Handlers for moving into Stonewall
+	* Handlers for moving around Stonewall
 	* ------------------------------------------------------------------
 	**/
 
@@ -92,6 +103,41 @@ public partial class Stonewall : Node
 		SCENESTATEACCESS.PlayerStatus = SceneState.StatusOfPlayer.InDialogue;
 		 
 		DIALOGUE.Dialogue(DIALOGUEACCESS.Speech.Stonewall_Dialogue_Inside, "Inside_Stonewall");
+	}
+
+	//Handles moving from main room to the side with the safe
+	private void MoveToSafeSide() {
+		GD.Print("Going to the safe side");
+		//go to south camera.
+		Camera3D cam = CAMERASBAR.CAMERAS[2];
+		cam.Current=true;
+		SwapActiveCameraPod();
+	}
+
+	//Handles moving from main room to the side with the safe
+	private void MoveToNormalSide()
+	{
+		GD.Print("Going to the normal side");
+		//go to south camera.
+		Camera3D cam = CAMERAS.CAMERAS[2];
+		cam.Current = true;
+		SwapActiveCameraPod();
+	}
+
+	// A function to swap which camera pod is active, by toggling cameras state.
+	private void SwapActiveCameraPod() {
+		switch(CAMERAS.state) {
+			case Cameras.State.Enabled:
+				CAMERAS.state = Cameras.State.Disabled; //disables one side
+				CAMERASBAR.state = Cameras.State.Enabled; //enables the other
+				break;
+			case Cameras.State.Disabled:
+				CAMERAS.state = Cameras.State.Enabled; //enables one side
+				CAMERASBAR.state = Cameras.State.Disabled; //disables the other
+				break;
+
+		}
+
 	}
 
 }
