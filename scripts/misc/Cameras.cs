@@ -27,7 +27,10 @@ public partial class Cameras : Node
 	[Export]
 	public Godot.Collections.Array<Camera3D> CAMERAS { get; set; } //Array of cameras
 
-	private Direction dir; // instance of direction
+	// public Direction dir; // instance of direction
+
+	private SceneState SCENESTATEACCESS; //accesses the singleton for the 
+
 	public State state; // instance of state
 
 	public Direction previousDir { get; set; } // used only when going up and down
@@ -41,15 +44,16 @@ public partial class Cameras : Node
 
 	public override void _Ready() {
 		state = State.Disabled;
+		SCENESTATEACCESS = GetNode<SceneState>("/root/SceneStateSingleton"); //accesses the singleton for the scene state
 	}
-/** 
-* ----------------------------------------------------------------
-*	Misc Handlers
-* ----------------------------------------------------------------
-**/
+	/** 
+	* ----------------------------------------------------------------
+	*	Misc Handlers
+	* ----------------------------------------------------------------
+	**/
 
-//A function to convert string to type Direction
-private Direction ToDirection(string dir)
+	//A function to convert string to type Direction
+	private Direction ToDirection(string dir)
 	{
 		switch (dir)
 		{
@@ -172,11 +176,11 @@ private Direction ToDirection(string dir)
 		SetArrowsInvisible(GetViewport().GetCamera3D());
 		cam.Current = true;
 		SetArrowsVisible(cam);
-		dir = ToDirection(cam.Name);
+		SCENESTATEACCESS.DIR = ToDirection(cam.Name);
 
 		//If events are enabled
 		if (EnableEvents) {
-			INTERACT_CIRCLES.EmitEvent(String.Format("Toggle{0}Events", (dir)));
+			INTERACT_CIRCLES.EmitEvent(String.Format("Toggle{0}Events", (SCENESTATEACCESS.DIR)));
 	}
 	}
 
@@ -195,11 +199,11 @@ private Direction ToDirection(string dir)
 	{	
 		if (this.state != State.Disabled) {
 		//Changes camera depending on what the current direction is
-		switch (dir)
+		switch (SCENESTATEACCESS.DIR)
 		{
 			//If current camera is north, set current camera to west
 			case Direction.North:
-				dir = Direction.West;
+				SCENESTATEACCESS.DIR = Direction.West;
 				SetArrowsInvisible(CAMERAS[0]);
 				SetArrowsVisible(CAMERAS[3]);
 				if (EnableEvents) {
@@ -211,7 +215,7 @@ private Direction ToDirection(string dir)
 
 			//If current camera is east, set current camera to north
 			case Direction.East:
-				dir = Direction.North;
+				SCENESTATEACCESS.DIR = Direction.North;
 				SetArrowsInvisible(CAMERAS[1]);
 				SetArrowsVisible(CAMERAS[0]);
 				if (EnableEvents)
@@ -224,7 +228,7 @@ private Direction ToDirection(string dir)
 
 			//If current camera is south, set current camera to East
 			case Direction.South:
-				dir = Direction.East;
+				SCENESTATEACCESS.DIR = Direction.East;
 				SetArrowsInvisible(CAMERAS[2]);
 				SetArrowsVisible(CAMERAS[1]);
 				if (EnableEvents)
@@ -237,7 +241,7 @@ private Direction ToDirection(string dir)
 
 			//If current camera is west, set current camera to south
 			case Direction.West:
-				dir = Direction.South;
+				SCENESTATEACCESS.DIR = Direction.South;
 				SetArrowsInvisible(CAMERAS[3]);
 				SetArrowsVisible(CAMERAS[2]);
 				if (EnableEvents)
@@ -262,11 +266,11 @@ private Direction ToDirection(string dir)
 		{
 
 			//Changes camera depending on what the current direction is
-			switch (dir)
+			switch (SCENESTATEACCESS.DIR)
 		{
 			//If current camera is north, set current camera to east
 			case Direction.North:
-				dir = Direction.East;
+				SCENESTATEACCESS.DIR = Direction.East;
 				SetArrowsInvisible(CAMERAS[0]);
 				SetArrowsVisible(CAMERAS[1]);
 				if (EnableEvents)
@@ -279,7 +283,7 @@ private Direction ToDirection(string dir)
 
 			//If current camera is east, set current camera to north
 			case Direction.East:
-				dir = Direction.South;
+				SCENESTATEACCESS.DIR = Direction.South;
 				SetArrowsInvisible(CAMERAS[1]);
 				SetArrowsVisible(CAMERAS[2]);
 				if (EnableEvents)
@@ -292,7 +296,7 @@ private Direction ToDirection(string dir)
 
 			//If current camera is south, set current camera to East
 			case Direction.South:
-				dir = Direction.West;
+				SCENESTATEACCESS.DIR = Direction.West;
 				SetArrowsInvisible(CAMERAS[2]);
 				SetArrowsVisible(CAMERAS[3]);
 				if (EnableEvents)
@@ -305,7 +309,7 @@ private Direction ToDirection(string dir)
 
 			//If current camera is west, set current camera to south
 			case Direction.West:
-				dir = Direction.North;
+				SCENESTATEACCESS.DIR = Direction.North;
 				SetArrowsInvisible(CAMERAS[3]);
 				SetArrowsVisible(CAMERAS[0]);
 				if (EnableEvents)
@@ -330,7 +334,7 @@ private Direction ToDirection(string dir)
 		{
 
 			//If direction is down, moves camera to previous position
-			if (dir == Direction.Down)
+			if (SCENESTATEACCESS.DIR == Direction.Down)
 		{
 
 			//Enables camera arrows and makes it main camera
@@ -346,12 +350,12 @@ private Direction ToDirection(string dir)
 			//Sets camera arrows for down camera invisible
 			SetArrowsInvisible(CAMERAS[5]);
 
-			//Sets current dir to previousDir
-			dir = previousDir;
+				//Sets current dir to previousDir
+				SCENESTATEACCESS.DIR = previousDir;
 		}
 
 		//If direction is not up
-		else if (dir != Direction.Up)
+		else if (SCENESTATEACCESS.DIR != Direction.Up)
 		{
 
 			//Sets down camera visible
@@ -360,16 +364,16 @@ private Direction ToDirection(string dir)
 			if (EnableEvents)
 			{
 				INTERACT_CIRCLES.EmitEvent("ToggleUpEvents");
-				INTERACT_CIRCLES.EmitEvent(string.Format("Toggle{0}Events", ToDirection(dir)));
+				INTERACT_CIRCLES.EmitEvent(string.Format("Toggle{0}Events", ToDirection(SCENESTATEACCESS.DIR)));
 			}
 
 			//Sets current direction arrows invisible
-			SetArrowsInvisible(CAMERAS[GetIndexOfDirection(dir)]);
+			SetArrowsInvisible(CAMERAS[GetIndexOfDirection(SCENESTATEACCESS.DIR)]);
 
 			//Sets down camera to visible
 			CAMERAS[4].Current = true;
-			previousDir = dir;
-			dir = Direction.Up;
+			previousDir = SCENESTATEACCESS.DIR;
+			SCENESTATEACCESS.DIR = Direction.Up;
 		}}
 	}
 
@@ -383,7 +387,7 @@ private Direction ToDirection(string dir)
 		{
 
 			//If direction is up, moves camera to previous position
-			if (dir == Direction.Up)
+			if (SCENESTATEACCESS.DIR == Direction.Up)
 		{
 
 			//Enables camera arrows and makes it main camera
@@ -401,29 +405,29 @@ private Direction ToDirection(string dir)
 
 
 			//Sets new current dir
-			dir = previousDir;
+			SCENESTATEACCESS.DIR = previousDir;
 		}
 
 		//If direction is not down
-		else if (dir != Direction.Down)
+		else if (SCENESTATEACCESS.DIR != Direction.Down)
 		{
 
 			//Sets down camera visible
 			SetSingleArrowVisible(CAMERAS[5], "*Up_Arrow_Parent");
 
 			//Sets current direction arrows invisible
-			SetArrowsInvisible(CAMERAS[GetIndexOfDirection(dir)]);
+			SetArrowsInvisible(CAMERAS[GetIndexOfDirection(SCENESTATEACCESS.DIR)]);
 
 			if (EnableEvents)
 			{
 				INTERACT_CIRCLES.EmitEvent("ToggleUpEvents");
-				INTERACT_CIRCLES.EmitEvent(string.Format("Toggle{0}Events", ToDirection(dir)));
+				INTERACT_CIRCLES.EmitEvent(string.Format("Toggle{0}Events", ToDirection(SCENESTATEACCESS.DIR)));
 			}
 
 			//Sets down camera to visible
 			CAMERAS[5].Current = true;
-			previousDir = dir;
-			dir = Direction.Down;
+			previousDir = SCENESTATEACCESS.DIR;
+			SCENESTATEACCESS.DIR = Direction.Down;
 		}
 	}}
 }

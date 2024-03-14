@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bixuqtx8jjvtl"]
+[gd_scene load_steps=30 format=3 uid="uid://bixuqtx8jjvtl"]
 
 [ext_resource type="Script" path="res://scripts/stonewall/Stonewall.cs" id="1_lwk4g"]
 [ext_resource type="Script" path="res://scripts/misc/Transitions.cs" id="2_xig76"]
@@ -16,11 +16,9 @@
 [ext_resource type="PackedScene" uid="uid://c3yc0s2xdcxsu" path="res://scenes/misc/AudioButtons.tscn" id="13_k2ut2"]
 [ext_resource type="Texture2D" uid="uid://dsdt4amufrxcn" path="res://resources/textures/icons/arrow.png" id="14_jnv56"]
 [ext_resource type="Script" path="res://scripts/puzzles/PuzzleStart.cs" id="15_wr1ab"]
-[ext_resource type="Script" path="res://scripts/puzzles/puzzle_one/WTP.cs" id="16_t7amm"]
 [ext_resource type="AudioStream" uid="uid://dqs84mrokbg33" path="res://resources/audio/soundeffects/beepEntry.mp3" id="17_ina5q"]
 [ext_resource type="AudioStream" uid="uid://d0su6xkka23m2" path="res://resources/audio/soundeffects/beepReject.mp3" id="18_byt6u"]
 [ext_resource type="PackedScene" uid="uid://cxiyifxmaaurk" path="res://resources/models/stonewall/stonewall.blend" id="19_tt755"]
-[ext_resource type="PackedScene" uid="uid://crsfpi7xpwrd2" path="res://scenes/misc/InteractableItems.tscn" id="21_hn1jg"]
 
 [sub_resource type="Animation" id="Animation_7a53q"]
 resource_name = "Transition_Fade_In"
@@ -67,58 +65,6 @@ _data = {
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qb8qr"]
 
-[sub_resource type="Animation" id="Animation_jjjoe"]
-resource_name = "FadeInBook"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../../../../../../../../../MainRoom/family book_moved:transparency")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [1.0, 0.0]
-}
-
-[sub_resource type="Animation" id="Animation_sgohh"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../../../../../../../../../MainRoom/family book_moved:transparency")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.0]
-}
-
-[sub_resource type="Animation" id="Animation_ua7v7"]
-resource_name = "ShowBook"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../../../../../../../../../MainRoom/family book:transparency")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_i2hal"]
-_data = {
-"FadeInBook": SubResource("Animation_jjjoe"),
-"RESET": SubResource("Animation_sgohh"),
-"ShowBook": SubResource("Animation_ua7v7")
-}
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5r74a"]
 transparency = 2
 alpha_scissor_threshold = 0.5
@@ -137,9 +83,12 @@ alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
 albedo_color = Color(0.592157, 0.686275, 0.854902, 1)
 
-[node name="Stonewall" type="Node3D" node_paths=PackedStringArray("DIALOGUE")]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sngad"]
+
+[node name="Stonewall" type="Node3D" node_paths=PackedStringArray("DIALOGUE", "CIRCLES_OTHER")]
 script = ExtResource("1_lwk4g")
 DIALOGUE = NodePath("CanvasLayer/Settings/SpeechGUI")
+CIRCLES_OTHER = NodePath("InteractableItems2")
 
 [node name="Transition" type="ColorRect" parent="."]
 top_level = true
@@ -471,6 +420,7 @@ visible = false
 follow_viewport_enabled = true
 
 [node name="Settings" type="Control" parent="InteractableItems/Select_Items"]
+top_level = true
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -992,7 +942,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("16_t7amm")
 
 [node name="PuzzleCont" type="Control" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South"]
 visible = false
@@ -1183,11 +1132,6 @@ metadata/Sources = {
 }
 metadata/CamRotation = Vector3(0, 0, 0)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c6"]
-libraries = {
-"": SubResource("AnimationLibrary_i2hal")
-}
-
 [node name="3" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont" instance=ExtResource("5_biifr")]
 visible = false
 layout_mode = 1
@@ -1292,11 +1236,11 @@ metadata/Sources = {}
 metadata/CamRotation = Vector3(0, 0, 0)
 
 [node name="testCam2" type="Camera3D" parent="."]
-transform = Transform3D(-1, 0, -4.37115e-07, 0, 1, 0, 4.37115e-07, 0, -1, 12.9361, -2.3705, 8.15624)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.9361, -2.3705, 23.7792)
 fov = 75.9375
 
 [node name="testCam" type="Camera3D" parent="."]
-transform = Transform3D(-1, -8.74228e-08, 7.64274e-15, -8.74228e-08, 1, -8.74228e-08, 0, -8.74228e-08, -1, 11.2191, -2.10032, 6.35714)
+transform = Transform3D(-1, -8.74228e-08, 1.11955e-14, -8.74228e-08, 1, -8.74228e-08, -3.55271e-15, -8.74228e-08, -1, 13.568, -1.13676, 7.37108)
 fov = 56.25
 
 [node name="beepEntry" type="AudioStreamPlayer" parent="."]
@@ -1319,8 +1263,978 @@ surface_material_override/0 = SubResource("StandardMaterial3D_465l0")
 [node name="windows_003" parent="stonewall" index="4"]
 surface_material_override/0 = SubResource("StandardMaterial3D_6h7en")
 
-[node name="InteractableItems2" parent="." node_paths=PackedStringArray("DIALOGUE") instance=ExtResource("21_hn1jg")]
+[node name="InteractableItems2" type="Node3D" parent="." node_paths=PackedStringArray("DIALOGUE")]
+script = ExtResource("12_q6550")
 DIALOGUE = NodePath("../CanvasLayer/Settings/SpeechGUI")
+
+[node name="Select_Items" type="CanvasLayer" parent="InteractableItems2"]
+layer = 10
+visible = false
+follow_viewport_enabled = true
+
+[node name="Settings" type="Control" parent="InteractableItems2/Select_Items"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme = ExtResource("3_awfmm")
+script = ExtResource("4_mkibg")
+
+[node name="Panel" type="Panel" parent="InteractableItems2/Select_Items/Settings"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_sngad")
+
+[node name="Back_Button" type="MarginContainer" parent="InteractableItems2/Select_Items/Settings/Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -420.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 114.0
+grow_horizontal = 0
+
+[node name="Back" parent="InteractableItems2/Select_Items/Settings/Panel/Back_Button" instance=ExtResource("13_k2ut2")]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 1
+tooltip_text = "Go back to the settings menu"
+theme_type_variation = &"GreenButton"
+text = "Back"
+icon = ExtResource("14_jnv56")
+icon_alignment = 1
+vertical_icon_alignment = 2
+expand_icon = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Shadow" type="Panel" parent="InteractableItems2/Select_Items/Settings/Panel/Back_Button/Back"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 94.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="North" type="Control" parent="InteractableItems2/Select_Items/Settings/Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="1" parent="InteractableItems2/Select_Items/Settings/Panel/North" instance=ExtResource("5_biifr")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.062
+anchor_top = 0.392
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1600.96
+offset_bottom = -456.64
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("6_f0smn")
+texture_pressed = ExtResource("7_t6h5l")
+metadata/Object = "BathroomAgain"
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/Sources = {}
+metadata/CamRotation = Vector3(0, 0, 0)
+
+[node name="2" parent="InteractableItems2/Select_Items/Settings/Panel/North" instance=ExtResource("5_biifr")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.778
+anchor_top = 0.475
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -226.24
+offset_bottom = -367.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("6_f0smn")
+texture_pressed = ExtResource("7_t6h5l")
+metadata/Object = "SideEntrance"
+metadata/Description = {
+"Stage_1": "Let's go back to the other side."
+}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(12.9361, -2.3705, 23.7792)
+metadata/Sources = {}
+metadata/PuzzleEnabled = true
+metadata/CamRotation = Vector3(0, 0, 0)
+
+[node name="East" type="Control" parent="InteractableItems2/Select_Items/Settings/Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="5" parent="InteractableItems2/Select_Items/Settings/Panel/East" instance=ExtResource("5_biifr")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.559
+anchor_top = 0.557
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -646.72
+offset_bottom = -278.44
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("6_f0smn")
+texture_pressed = ExtResource("7_t6h5l")
+metadata/Object = "Poster"
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/Sources = {}
+metadata/CamRotation = Vector3(0, 0, 0)
+
+[node name="2" parent="InteractableItems2/Select_Items/Settings/Panel/East" instance=ExtResource("5_biifr")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.062
+anchor_top = 0.494
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1600.96
+offset_bottom = -346.48
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("6_f0smn")
+texture_pressed = ExtResource("7_t6h5l")
+metadata/Object = "DoorwayTwo"
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/Sources = {}
+metadata/CamRotation = Vector3(0, 0, 0)
+
+[node name="South" type="Control" parent="InteractableItems2/Select_Items/Settings/Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="1" parent="InteractableItems2/Select_Items/Settings/Panel/South" instance=ExtResource("5_biifr")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.859
+anchor_top = 0.437
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -70.72
+offset_bottom = -408.04
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("6_f0smn")
+texture_pressed = ExtResource("7_t6h5l")
+metadata/Object = "Stairs"
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/Sources = {}
+metadata/CamRotation = Vector3(0, 0, 0)
+
+[node name="2" parent="InteractableItems2/Select_Items/Settings/Panel/South" instance=ExtResource("5_biifr")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.66
+anchor_top = 0.73
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -452.8
+offset_bottom = -91.6
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("6_f0smn")
+texture_pressed = ExtResource("7_t6h5l")
+metadata/Object = "Bar"
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/Sources = {}
+metadata/CamRotation = Vector3(0, 0, 0)
+
+[node name="West" type="Control" parent="InteractableItems2/Select_Items/Settings/Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="1" parent="InteractableItems2/Select_Items/Settings/Panel/West" instance=ExtResource("5_biifr")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.539
+anchor_top = 0.922
+anchor_right = 1.0
+anchor_bottom = 1.215
+offset_right = -1720.0
+offset_bottom = -880.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("6_f0smn")
+texture_pressed = ExtResource("7_t6h5l")
+metadata/Object = "BehindBar"
+metadata/Description = {
+"Stage_1": "I wonder if there is anything hiding behind the bar..."
+}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(24.5909, -2.10032, -3.85966)
+metadata/Sources = {}
+metadata/CamRotation = Vector3(180, 0, 0)
+
+[node name="2" parent="InteractableItems2/Select_Items/Settings/Panel/West" instance=ExtResource("5_biifr")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.402
+anchor_top = 0.693
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -948.16
+offset_bottom = -131.56
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("6_f0smn")
+texture_pressed = ExtResource("7_t6h5l")
+metadata/Object = "FallenBarstools"
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/Sources = {}
+metadata/CamRotation = Vector3(0, 0, 0)
+
+[node name="3" parent="InteractableItems2/Select_Items/Settings/Panel/West" instance=ExtResource("5_biifr")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.676
+anchor_top = 0.445
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -422.08
+offset_bottom = -399.4
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("6_f0smn")
+texture_pressed = ExtResource("7_t6h5l")
+metadata/Object = "BathroomAgain"
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/Sources = {}
+metadata/CamRotation = Vector3(0, 0, 0)
+
+[node name="Up" type="Control" parent="InteractableItems2/Select_Items/Settings/Panel"]
+visible = false
+layout_mode = 2
+anchors_preset = 0
+offset_left = 887.0
+offset_top = 214.0
+offset_right = 927.0
+offset_bottom = 254.0
+
+[node name="1" parent="InteractableItems2/Select_Items/Settings/Panel/Up" instance=ExtResource("5_biifr")]
+visible = false
+layout_mode = 2
+offset_left = -887.0
+offset_top = -214.0
+offset_right = -687.0
+offset_bottom = -14.0
+texture_normal = ExtResource("6_f0smn")
+texture_pressed = ExtResource("7_t6h5l")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/Sources = {}
+metadata/CamRotation = Vector3(0, 0, 0)
+
+[node name="2" parent="InteractableItems2/Select_Items/Settings/Panel/Up" instance=ExtResource("5_biifr")]
+visible = false
+layout_mode = 2
+offset_left = -887.0
+offset_top = -214.0
+offset_right = -687.0
+offset_bottom = -14.0
+texture_normal = ExtResource("6_f0smn")
+texture_pressed = ExtResource("7_t6h5l")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/Sources = {}
+metadata/CamRotation = Vector3(0, 0, 0)
+
+[node name="3" parent="InteractableItems2/Select_Items/Settings/Panel/Up" instance=ExtResource("5_biifr")]
+visible = false
+layout_mode = 2
+offset_left = -887.0
+offset_top = -214.0
+offset_right = -687.0
+offset_bottom = -14.0
+texture_normal = ExtResource("6_f0smn")
+texture_pressed = ExtResource("7_t6h5l")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/Sources = {}
+metadata/CamRotation = Vector3(0, 0, 0)
+
+[node name="4" parent="InteractableItems2/Select_Items/Settings/Panel/Up" instance=ExtResource("5_biifr")]
+visible = false
+layout_mode = 2
+offset_left = -887.0
+offset_top = -214.0
+offset_right = -687.0
+offset_bottom = -14.0
+texture_normal = ExtResource("6_f0smn")
+texture_pressed = ExtResource("7_t6h5l")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/Sources = {}
+metadata/CamRotation = Vector3(0, 0, 0)
+
+[node name="5" parent="InteractableItems2/Select_Items/Settings/Panel/Up" instance=ExtResource("5_biifr")]
+visible = false
+layout_mode = 2
+offset_left = -887.0
+offset_top = -214.0
+offset_right = -687.0
+offset_bottom = -14.0
+texture_normal = ExtResource("6_f0smn")
+texture_pressed = ExtResource("7_t6h5l")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/Sources = {}
+metadata/CamRotation = Vector3(0, 0, 0)
+
+[node name="6" parent="InteractableItems2/Select_Items/Settings/Panel/Up" instance=ExtResource("5_biifr")]
+visible = false
+layout_mode = 2
+offset_left = -887.0
+offset_top = -214.0
+offset_right = -687.0
+offset_bottom = -14.0
+texture_normal = ExtResource("6_f0smn")
+texture_pressed = ExtResource("7_t6h5l")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/Sources = {}
+metadata/CamRotation = Vector3(0, 0, 0)
+
+[node name="Down" type="Control" parent="InteractableItems2/Select_Items/Settings/Panel"]
+visible = false
+layout_mode = 2
+anchors_preset = 0
+offset_left = 887.0
+offset_top = 214.0
+offset_right = 927.0
+offset_bottom = 254.0
+
+[node name="1" parent="InteractableItems2/Select_Items/Settings/Panel/Down" instance=ExtResource("5_biifr")]
+visible = false
+layout_mode = 2
+offset_left = -887.0
+offset_top = -214.0
+offset_right = -687.0
+offset_bottom = -14.0
+texture_normal = ExtResource("6_f0smn")
+texture_pressed = ExtResource("7_t6h5l")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+metadata/Sources = {}
+
+[node name="2" parent="InteractableItems2/Select_Items/Settings/Panel/Down" instance=ExtResource("5_biifr")]
+visible = false
+layout_mode = 2
+offset_left = -887.0
+offset_top = -214.0
+offset_right = -687.0
+offset_bottom = -14.0
+texture_normal = ExtResource("6_f0smn")
+texture_pressed = ExtResource("7_t6h5l")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+metadata/Sources = {}
+
+[node name="3" parent="InteractableItems2/Select_Items/Settings/Panel/Down" instance=ExtResource("5_biifr")]
+visible = false
+layout_mode = 2
+offset_left = -887.0
+offset_top = -214.0
+offset_right = -687.0
+offset_bottom = -14.0
+texture_normal = ExtResource("6_f0smn")
+texture_pressed = ExtResource("7_t6h5l")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+metadata/Sources = {}
+
+[node name="4" parent="InteractableItems2/Select_Items/Settings/Panel/Down" instance=ExtResource("5_biifr")]
+visible = false
+layout_mode = 2
+offset_left = -887.0
+offset_top = -214.0
+offset_right = -687.0
+offset_bottom = -14.0
+texture_normal = ExtResource("6_f0smn")
+texture_pressed = ExtResource("7_t6h5l")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+metadata/Sources = {}
+
+[node name="5" parent="InteractableItems2/Select_Items/Settings/Panel/Down" instance=ExtResource("5_biifr")]
+visible = false
+layout_mode = 2
+offset_left = -887.0
+offset_top = -214.0
+offset_right = -687.0
+offset_bottom = -14.0
+texture_normal = ExtResource("6_f0smn")
+texture_pressed = ExtResource("7_t6h5l")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+metadata/Sources = {}
+
+[node name="6" parent="InteractableItems2/Select_Items/Settings/Panel/Down" instance=ExtResource("5_biifr")]
+visible = false
+layout_mode = 2
+offset_left = -887.0
+offset_top = -214.0
+offset_right = -687.0
+offset_bottom = -14.0
+texture_normal = ExtResource("6_f0smn")
+texture_pressed = ExtResource("7_t6h5l")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/CamRotation = 0
+metadata/Sources = {}
+
+[node name="Puzzles" type="Control" parent="InteractableItems2/Select_Items/Settings"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("15_wr1ab")
+
+[node name="PuzzlesPanel" type="Panel" parent="InteractableItems2/Select_Items/Settings/Puzzles"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_qb8qr")
+
+[node name="Back_Button" type="MarginContainer" parent="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -420.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 114.0
+grow_horizontal = 0
+
+[node name="Back" parent="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/Back_Button" instance=ExtResource("13_k2ut2")]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 1
+tooltip_text = "Go back to the settings menu"
+theme_type_variation = &"GreenButton"
+text = "Back"
+icon = ExtResource("14_jnv56")
+icon_alignment = 1
+vertical_icon_alignment = 2
+expand_icon = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Shadow" type="Panel" parent="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/Back_Button/Back"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 94.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="North" type="Control" parent="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PuzzleCont" type="Control" parent="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/North"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="2" parent="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/North/PuzzleCont" instance=ExtResource("5_biifr")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.48
+anchor_top = 0.402
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("8_i5weq")
+texture_pressed = ExtResource("9_560b4")
+metadata/Object = "Book Desk Item"
+metadata/Description = {
+"Stage_3": "I'll put it down here. Seems like a good place for it."
+}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/Sources = {}
+metadata/CamRotation = Vector3(0, 0, 0)
+
+[node name="East" type="Control" parent="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PuzzleCont" type="Control" parent="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/East"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="5" parent="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/East/PuzzleCont" instance=ExtResource("5_biifr")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.243
+anchor_top = 0.54
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("8_i5weq")
+texture_pressed = ExtResource("9_560b4")
+metadata/Object = "Book Desk Item"
+metadata/Description = {
+"Stage_3": "I'll put it down here. Seems like a good place for it."
+}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/Sources = {}
+metadata/CamRotation = Vector3(0, 0, 0)
+
+[node name="South" type="Control" parent="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PuzzleCont" type="Control" parent="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/South"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Components" type="Control" parent="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="c1" parent="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components" instance=ExtResource("5_biifr")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.473
+anchor_right = 0.485
+anchor_bottom = 0.481
+offset_left = 1082.0
+offset_top = 330.08
+offset_right = 1262.6
+offset_bottom = 529.76
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("8_i5weq")
+texture_pressed = ExtResource("9_560b4")
+metadata/Object = "ToReviveAHummingbird"
+metadata/Description = {
+"Stage_2": "This reads, \"To Revive a Hummingbird.\" I remember reading this for my English class. This isn't the book Mum described though."
+}
+metadata/Hints = {}
+metadata/ExtraInformation = {
+"Stage_2": "Most of the books on the bookshelf are based off actual books."
+}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/Sources = {
+"src": "It's just a book. Nothing to cite here."
+}
+metadata/CamRotation = Vector3(0, 0, 0)
+
+[node name="c2" parent="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components" instance=ExtResource("5_biifr")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.473
+anchor_right = 0.485
+anchor_bottom = 0.481
+offset_left = 500.0
+offset_top = 602.08
+offset_right = 680.6
+offset_bottom = 801.76
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("8_i5weq")
+texture_pressed = ExtResource("9_560b4")
+metadata/Object = "FoundBoy"
+metadata/Description = {
+"Stage_2": "This reads, \"Found Boy.\" I remember a lot of people at school were reading this at some point. This isn't the book I'm looking for though."
+}
+metadata/Hints = {}
+metadata/ExtraInformation = {
+"Stage_2": "Most of the books on the bookshelf are based off actual books."
+}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/Sources = {
+"src": "It's just a book. Nothing to cite here."
+}
+metadata/CamRotation = Vector3(0, 0, 0)
+
+[node name="c3" parent="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components" instance=ExtResource("5_biifr")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.473
+anchor_right = 0.485
+anchor_bottom = 0.481
+offset_left = 854.0
+offset_top = 50.08
+offset_right = 1034.6
+offset_bottom = 249.76
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("8_i5weq")
+texture_pressed = ExtResource("9_560b4")
+metadata/Object = "TheLabyrinthJogger"
+metadata/Description = {
+"Stage_2": "This reads, \"The Labyrinth Jogger\" There was an awful lot of running for a book that has the word \"jogging\". This doesn't fit the description Mum gave, though."
+}
+metadata/Hints = {}
+metadata/ExtraInformation = {
+"Stage_2": "Most of the books on the bookshelf are based off actual books."
+}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/Sources = {
+"src": "It's just a book. Nothing to cite here."
+}
+metadata/CamRotation = Vector3(0, 0, 0)
+
+[node name="c4" parent="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components" instance=ExtResource("5_biifr")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.473
+anchor_right = 0.485
+anchor_bottom = 0.481
+offset_left = 1220.0
+offset_top = 872.08
+offset_right = 1400.6
+offset_bottom = 1071.76
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("8_i5weq")
+texture_pressed = ExtResource("9_560b4")
+metadata/Object = "CGTB"
+metadata/Description = {
+"Stage_2": "This reads, \"Cait's Guide to Blender.\" Not sure why somebody would need a guide on how to use a blender... and isn't the book Mum asked for."
+}
+metadata/Hints = {}
+metadata/ExtraInformation = {
+"Stage_2": "Most of the books on the bookshelf are based off actual books."
+}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/Sources = {
+"src": "It's just a book. Nothing to cite here."
+}
+metadata/CamRotation = Vector3(0, 0, 0)
+
+[node name="c5" parent="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components" instance=ExtResource("5_biifr")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.473
+anchor_right = 0.485
+anchor_bottom = 0.481
+offset_left = 526.0
+offset_top = 50.08
+offset_right = 706.6
+offset_bottom = 249.76
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("8_i5weq")
+texture_pressed = ExtResource("9_560b4")
+metadata/Object = "TheGreatCatsby"
+metadata/Description = {
+"Stage_2": "This reads, \"The Great Catsby\", another book I had to read for English. Not the book I'm looking for though. This book isn't the descibed one, though."
+}
+metadata/Hints = {}
+metadata/ExtraInformation = {
+"Stage_2": "Most of the books on the bookshelf are based off actual books."
+}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/Sources = {
+"src": "It's just a book. Nothing to cite here."
+}
+metadata/CamRotation = Vector3(0, 0, 0)
+
+[node name="c6" parent="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components" instance=ExtResource("5_biifr")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.473
+anchor_right = 0.485
+anchor_bottom = 0.481
+offset_left = 1094.0
+offset_top = 684.08
+offset_right = 1274.6
+offset_bottom = 883.76
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("8_i5weq")
+texture_pressed = ExtResource("9_560b4")
+metadata/Object = "MagicBook."
+metadata/Description = {
+"Stage_2": "This must be the book Mum was talking about. It's a bit tattered. I'll take it over to the desk."
+}
+metadata/Hints = {}
+metadata/ExtraInformation = {
+"Stage_2": "Most of the books on the bookshelf are based off actual books."
+}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/Sources = {
+"src": "It's just a book. Nothing to cite here."
+}
+metadata/CamRotation = Vector3(0, 0, 0)
+
+[node name="3" parent="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont" instance=ExtResource("5_biifr")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.427
+anchor_top = 0.481
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 802.76
+offset_top = 500.24
+offset_right = 979.84
+offset_bottom = 679.48
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("8_i5weq")
+texture_pressed = ExtResource("9_560b4")
+metadata/Object = "TriggerEvent"
+metadata/Hints = {
+"Stage_1": "Let's head through to here and see what's in here.",
+"Stage_2": "stage_2 waffle aaaaa"
+}
+metadata/ExtraInformation = {
+"Stage_1": "It's a bit tattered. Why do we even still have this?"
+}
+metadata/Sources = {}
+metadata/Description = {
+"Stage_2": "Makes sense that a book would be on the bookshelf. Let's take a closer look..."
+}
+metadata/CamRotation = Vector3(0, 0, 0)
+metadata/NewCamPos = Vector3(0, 0, 0)
+
+[node name="West" type="Control" parent="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel"]
+visible = false
+layout_mode = 2
+anchors_preset = 0
+offset_left = 887.0
+offset_top = 214.0
+offset_right = 927.0
+offset_bottom = 254.0
+
+[node name="1" parent="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/West" instance=ExtResource("5_biifr")]
+visible = false
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 200.0
+texture_normal = ExtResource("8_i5weq")
+texture_pressed = ExtResource("9_560b4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/Sources = {}
+metadata/CamRotation = Vector3(0, 0, 0)
+
+[node name="Up" type="Control" parent="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel"]
+visible = false
+layout_mode = 2
+anchors_preset = 0
+offset_left = 887.0
+offset_top = 214.0
+offset_right = 927.0
+offset_bottom = 254.0
+
+[node name="1" parent="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/Up" instance=ExtResource("5_biifr")]
+visible = false
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 200.0
+texture_normal = ExtResource("8_i5weq")
+texture_pressed = ExtResource("9_560b4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/Sources = {}
+metadata/CamRotation = Vector3(0, 0, 0)
+
+[node name="Down" type="Control" parent="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel"]
+visible = false
+layout_mode = 2
+anchors_preset = 0
+offset_left = 887.0
+offset_top = 214.0
+offset_right = 927.0
+offset_bottom = 254.0
+
+[node name="1" parent="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/Down" instance=ExtResource("5_biifr")]
+visible = false
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 200.0
+texture_normal = ExtResource("8_i5weq")
+texture_pressed = ExtResource("9_560b4")
+metadata/Object = ""
+metadata/Description = {}
+metadata/Hints = {}
+metadata/ExtraInformation = {}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/Sources = {}
+metadata/CamRotation = Vector3(0, 0, 0)
 
 [node name="CamerasTwo" parent="." node_paths=PackedStringArray("INTERACT_CIRCLES") instance=ExtResource("11_fdc4n")]
 INTERACT_CIRCLES = NodePath("../InteractableItems2")
@@ -1386,34 +2300,47 @@ transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, -3.72
 [connection signal="pressed" from="CanvasLayer/Settings/Pre2" to="InteractableItems" method="CirclesPressed" binds= ["../CanvasLayer/Settings/Pre2"]]
 [connection signal="pressed" from="CanvasLayer/Settings/Pre3" to="." method="MoveIntoStonewall"]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/Back_Button/Back" to="InteractableItems" method="OnBackPressed" flags=18]
-[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/North/1" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/North/1"]]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/North/1" to="InteractableItems" method="DialogueByString" flags=6 binds= ["Yvonne"]]
-[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/North/2" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/North/2"]]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/North/1" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/North/1"]]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/North/2" to="InteractableItems" method="DialogueByString" flags=6 binds= ["Martha"]]
-[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/North/3" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/North/3"]]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/North/2" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/North/2"]]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/North/3" to="InteractableItems" method="DialogueByString" flags=6 binds= ["Leitsch"]]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/North/3" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/North/3"]]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/East/5" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/East/5"]]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/South/1" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/South/1"]]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/South/2" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/South/2"]]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/South/3" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/South/3"]]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/West/1" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/West/1"]]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/West/2" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/West/2"]]
-[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/East/PuzzleCont/5" to="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South" method="PlaceBookScene"]
-[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c1" to="InteractableItems" method="CirclesPressed"]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c1" to="InteractableItems" method="ToggleSpecificDirectionPath"]
-[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c2" to="InteractableItems" method="CirclesPressed"]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c1" to="InteractableItems" method="CirclesPressed"]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c2" to="InteractableItems" method="ToggleSpecificDirectionPath"]
-[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c3" to="InteractableItems" method="CirclesPressed"]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c2" to="InteractableItems" method="CirclesPressed"]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c3" to="InteractableItems" method="ToggleSpecificDirectionPath"]
-[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c4" to="InteractableItems" method="CirclesPressed"]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c3" to="InteractableItems" method="CirclesPressed"]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c4" to="InteractableItems" method="ToggleSpecificDirectionPath"]
-[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c5" to="InteractableItems" method="CirclesPressed"]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c4" to="InteractableItems" method="CirclesPressed"]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c5" to="InteractableItems" method="ToggleSpecificDirectionPath"]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c5" to="InteractableItems" method="CirclesPressed"]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c6" to="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South" method="PuzzleAnswer"]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/3" to="." method="MoveToSafeSide"]
+[connection signal="pressed" from="InteractableItems2/Select_Items/Settings/Panel/Back_Button/Back" to="InteractableItems2" method="OnBackPressed" flags=18]
+[connection signal="pressed" from="InteractableItems2/Select_Items/Settings/Panel/North/2" to="InteractableItems2" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/North/2"]]
+[connection signal="pressed" from="InteractableItems2/Select_Items/Settings/Panel/West/1" to="InteractableItems2" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/West/1"]]
+[connection signal="pressed" from="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/North/PuzzleCont/2" to="." method="MoveToNormalSide"]
+[connection signal="pressed" from="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c1" to="InteractableItems" method="ToggleSpecificDirectionPath"]
+[connection signal="pressed" from="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c1" to="InteractableItems" method="CirclesPressed"]
+[connection signal="pressed" from="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c2" to="InteractableItems" method="ToggleSpecificDirectionPath"]
+[connection signal="pressed" from="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c2" to="InteractableItems" method="CirclesPressed"]
+[connection signal="pressed" from="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c3" to="InteractableItems" method="ToggleSpecificDirectionPath"]
+[connection signal="pressed" from="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c3" to="InteractableItems" method="CirclesPressed"]
+[connection signal="pressed" from="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c4" to="InteractableItems" method="ToggleSpecificDirectionPath"]
+[connection signal="pressed" from="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c4" to="InteractableItems" method="CirclesPressed"]
+[connection signal="pressed" from="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c5" to="InteractableItems" method="ToggleSpecificDirectionPath"]
+[connection signal="pressed" from="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c5" to="InteractableItems" method="CirclesPressed"]
+[connection signal="pressed" from="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/3" to="." method="MoveToNormalSide"]
 
 [editable path="CanvasLayer/Settings/SpeechGUI"]
 [editable path="Cameras"]
 [editable path="stonewall"]
-[editable path="InteractableItems2"]
 [editable path="CamerasTwo"]

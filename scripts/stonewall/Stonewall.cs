@@ -13,6 +13,10 @@ public partial class Stonewall : Node
 	private Cameras CAMERASBAR; //instance of bar side camera Script
 
 	private InteractCircles CIRCLES; //instance of interactCircles
+
+	[Export]
+	private InteractCircles CIRCLES_OTHER; //instance of interactCircles
+
 	private Camera3D INTROCAM; //the camera you start viewing from
 	private JsonHandler DIALOGUEACCESS; //accesses the singleton for the dialogue json
 
@@ -107,23 +111,34 @@ public partial class Stonewall : Node
 	//Handles moving from main room to the side with the safe
 	private void MoveToSafeSide() {
 
+		// Hides the red circle
+		ButtonOverwrite btn = GetNode<ButtonOverwrite>("InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/3");
+		btn.Visible = false;
+
 		//go to south camera on the other side, and sets it to true
+		CIRCLES.ResetCam();
 		Camera3D cam = CAMERASBAR.CAMERAS[2];
 
 		// Swaps the active cameras between cluster 1 and 2
 		// Sets current cam to cameras bar
 		SwapActiveCameraPod();
 
-		// Toggles the secondary item overlay
+		// Hides the back button
+		CIRCLES.ToggleBackButton();
+
+		// Toggles the secondary item overlay and disables the second one
 		DIALOGUE.EnableSecondaryItemOverlay();
 		DIALOGUE.Active_Canvas_Layer.Visible = true;
+		DIALOGUE.Select_Items.Visible = false;
 
 		// Enables the events
 		CAMERASBAR.EnableEvents = true;
 		CAMERASBAR.SetCurrentCamera(cam);
 
-		// Sets status back to free roam
+		// Sets status back to free roam and sets direction to south
 		SCENESTATEACCESS.PlayerStatus = SceneState.StatusOfPlayer.FreeRoam;
+		SCENESTATEACCESS.DIR = Cameras.Direction.South;
+
 
 		//Locks input for cluster 1. enables input for cluster two
 		CAMERAS.state = Cameras.State.Disabled;
@@ -135,22 +150,33 @@ public partial class Stonewall : Node
 	private void MoveToNormalSide()
 	{
 		GD.Print("Going to the normal side");
-		
-		//go to south camera on the other side, and sets it to true
-		Camera3D cam = CAMERAS.CAMERAS[2];
-		cam.Current = true;
 
+		// Hides the red circle
+		CIRCLES_OTHER.ToggleSpecificDirection(GetNode<ButtonOverwrite>("InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/North/PuzzleCont/2"));
+		//go to north camera on the other side, and sets it to true
+		Camera3D cam = CAMERAS.CAMERAS[0];
 		// Swaps the active cameras between cluster 1 and 2
+		CIRCLES.ResetCam();
+
 		// Sets current cam to cameras bar
 		SwapActiveCameraPod();
-		CAMERASBAR.SetCurrentCamera(cam);
 
-		// Sets status back to free roam
-		SCENESTATEACCESS.PlayerStatus = SceneState.StatusOfPlayer.FreeRoam;
+		// Hides the back button
+		CIRCLES.ToggleBackButton();
+		// CIRCLES_OTHER.ToggleBackButton();
 
-		// Toggles the secondary item overlay
+		// Toggles the secondary item overlay and disables the second one
 		DIALOGUE.DisableSecondaryItemOverlay();
-		DIALOGUE.Active_Canvas_Layer.Visible = true;
+		DIALOGUE.Active_Canvas_Layer.Visible = false;
+		DIALOGUE.Select_Items.Visible = true;
+
+		// Enables the events
+		CAMERAS.EnableEvents = true;
+		CAMERAS.SetCurrentCamera(cam);
+
+		// Sets status back to free roam and dir to north
+		SCENESTATEACCESS.PlayerStatus = SceneState.StatusOfPlayer.FreeRoam;
+		SCENESTATEACCESS.DIR = Cameras.Direction.North;
 
 		//Locks input for cluster 2. enables input for cluster 1
 		CAMERAS.state = Cameras.State.Enabled;

@@ -46,6 +46,11 @@ public partial class SceneState : Node {
 
 	public string CURRENT_PATH_CIRCLES; //holds the path to the circles
 
+	public Cameras.Direction DIR;
+
+	public Cameras.Direction PREVIOUS_DIR;
+
+
 	public string CurrentObjective; //the current objective
 
 }
