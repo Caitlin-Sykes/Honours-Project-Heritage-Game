@@ -42,6 +42,14 @@ public partial class IntroductionScene : Node3D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+
+		//Gets camera and animation nodes
+		CAMERAS = GetNode<Cameras>("Cameras");
+		CONTROLS = GetNode<Controls>("Cameras/Controls");
+		INTROCAM = GetNode<Camera3D>("IntroCam");
+		CIRCLES = GetNode<InteractCircles>("InteractableItems");
+
+
 		//Gets the singletons
 		SCENESTATEACCESS = GetNode<SceneState>("/root/SceneStateSingleton"); //scene state
 		DIALOGUEACCESS = GetNode<JsonHandler>("/root/DialogueImport"); //dialogue json
@@ -59,13 +67,6 @@ public partial class IntroductionScene : Node3D
 		GETUPBUTTON = GetNode<BaseButton>("CanvasLayer/Settings/OnItemSelect");
 		INTERACTBOOKBUTTON = GetNode<ButtonOverwrite>("CanvasLayer/Settings/BookInteract");
 
-
-		//Gets camera and animation nodes
-		CAMERAS = GetNode<Cameras>("Cameras");
-		CONTROLS = GetNode<Controls>("Cameras/Controls");
-		INTROCAM = GetNode<Camera3D>("IntroCam");
-		CIRCLES = GetNode<InteractCircles>("InteractableItems");
-		
 		//Gets the animation player and intro cam
 		ANIMATION_PLAYER_INTROCAM = (AnimationPlayer)INTROCAM.GetNode("AnimationPlayer");
 		ANIM_PLAYER = (AnimationPlayer)GetNode("Transition/AnimationPlayer");

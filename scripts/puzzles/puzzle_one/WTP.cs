@@ -2,6 +2,7 @@ using System;
 using Godot;
 public partial class WTP : Control
 {
+        [Export]
         private PuzzleStart PUZZLES; //instance of PuzzleStart
 
         private InteractCircles CIRCLES; //instance of interact circles
@@ -30,7 +31,6 @@ public partial class WTP : Control
 
     public override void _Ready()
     {
-        PUZZLES = GetNode<PuzzleStart>("../../");
         CIRCLES = GetNode<InteractCircles>("../../../../../");
         ANIM_PLAYER = GetNode<AnimationPlayer>("PuzzleCont/Components/c6/AnimationPlayer"); //the animation player
         SCENESTATEACCESS = GetNode<SceneState>("/root/SceneStateSingleton"); //accesses the singleton for the scene state
@@ -46,7 +46,7 @@ public partial class WTP : Control
         CIRCLES.SetCam(redCirc.GetMeta("NewCamPos").AsVector3(), (Vector3)redCirc.GetMeta("CamRotation"));
 
         //Toggles the specific components of the puzzle
-        EnableAllCircleComponents("PuzzleCont/Components");
+        PUZZLES.EnableAllCircleComponents("PuzzlesPanel/South/PuzzleCont/Components");
 
         //Toggles parent nodes
         PUZZLES.TogglePuzzleVisibility(redCirc);
@@ -58,38 +58,6 @@ public partial class WTP : Control
         CIRCLES.ToggleSpecificDirection(redCirc);
     }
 
-    /**
-    * ----------------------------------------------------------------
-    * Handlers for the puzzle components
-    * ----------------------------------------------------------------
-    **/
-
-    //Handlers all the clickable components
-    private void EnableAllCircleComponents(String path) {
-        
-        Control components = GetNode<Control>(path);
-
-        //Toggles visibility of the parent node
-        components.Visible = !components.Visible;
-        //For every circle in the components container, toggles them
-        foreach (ButtonOverwrite circle in components.GetChildren())
-        {   
-                circle.Visible = !circle.Visible;  
-        }
-    }
-
-    //Handlers all the clickable components
-    private void HideAllCircleComponents()
-    {
-
-        Control components = GetNode<Control>("PuzzleCont/Components");
-
-        //For every circle in the components container, toggles them
-        foreach (ButtonOverwrite circle in components.GetChildren())
-        {
-            circle.Visible = false;
-        }
-    }
 
     /**
     * ----------------------------------------------------------------
@@ -170,8 +138,8 @@ public partial class WTP : Control
     CIRCLES.PREVIOUS_ANGLE = new Vector3(0, -180, 0);
 
 
-        CIRCLES.ResetCam(); //resets camera position
-    HideAllCircleComponents(); //hides the red circles
+    CIRCLES.ResetCam(); //resets camera position
+    PUZZLES.HideAllCircleComponents("PuzzlesPanel/South/PuzzleCont/Components"); //hides the red circles
 
     SCENESTATEACCESS.PlayerStatus = SceneState.StatusOfPlayer.FreeRoam; //sets the status of the player to free roam
     SCENESTATEACCESS.sceneState = SceneState.CurrentSceneState.Stage_3;
@@ -180,7 +148,7 @@ public partial class WTP : Control
     CIRCLES.EmitEvent(string.Format("Toggle{0}Events", GetViewport().GetCamera3D().Name)); //Triggers the south camera circles
     PUZZLES.TogglePuzzleVisibility(redBtn); //disable the parents visibility
     GetNode<ButtonOverwrite>("../../../Panel/South/2").SetMeta("PuzzleEnabled", false); //disables the puzzle for the middle bookshelf
-    GetNode<ButtonOverwrite>("../../../Panel/East/5").SetMeta("PuzzleEnabled", true); //disables the puzzle for the middle bookshelf
+    GetNode<ButtonOverwrite>("../../../Panel/East/5").SetMeta("PuzzleEnabled", true); //enables placing the book on the desk
     
     }
 }

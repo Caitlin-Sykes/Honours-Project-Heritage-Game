@@ -5,6 +5,9 @@ public partial class PuzzleStart : Control
 {
 	private WTP puzzleOne;
 
+	private Safecracking puzzleTwo;
+
+
 	public static string CURRENT_RED_CIRCLE {get;set;}
 
 	public override void _Ready() {
@@ -15,7 +18,7 @@ public partial class PuzzleStart : Control
 				puzzleOne = GetNode<WTP>("PuzzlesPanel/South");
 				break;
 			case "Stonewall":
-				GD.Print("tba");
+				// puzzleTwo = GetNode<Safecracking>("PuzzlesPanel/West");
 				break;
 			default:
 				GD.PrintErr("Error with the scene, or the name in the switch doesn't match with the root");
@@ -78,7 +81,41 @@ public partial class PuzzleStart : Control
 	public void ToggleSpecificCircleVisibility(ButtonOverwrite circ) {
 		circ.Visible = !circ.Visible;
 	}
-		
+
+	//Handlers all the clickable components
+	public void EnableAllCircleComponents(String path)
+	{
+
+		Control components = GetNode<Control>(path);
+
+		//Toggles visibility of the parent node
+		components.Visible = !components.Visible;
+		//For every circle/panel in the components container, toggles them
+		foreach (var comp in components.GetChildren())
+		{
+			if (comp is ButtonOverwrite circle) {
+				circle.Visible = !circle.Visible;
+			}
+
+			else if (comp is Panel panel) {
+				panel.Visible = !panel.Visible; ;
+			}
+		}
+	}
+
+	//Handlers all the clickable components
+	public void HideAllCircleComponents(String path)
+	{
+
+		Control components = GetNode<Control>(path);
+
+		//For every circle in the components container, toggles them
+		foreach (ButtonOverwrite circle in components.GetChildren())
+		{
+			circle.Visible = false;
+		}
+	}
+
 	/**
 	* ----------------------------------------------------------------
 	* Initialize Puzzle
@@ -93,6 +130,10 @@ public partial class PuzzleStart : Control
 		switch (puzzID) {
 			case 1:
 				puzzleOne.InitPuzzle();
+				break;
+
+			case 2:
+				// puzzleTwo.InitPuzzle();
 				break;
 		}
 	}

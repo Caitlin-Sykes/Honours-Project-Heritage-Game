@@ -962,7 +962,7 @@ metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/Sources = {}
 metadata/CamRotation = Vector3(0, 0, 0)
 
-[node name="South" type="Control" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel" node_paths=PackedStringArray("DIALOGUE", "F_BOOK", "CAMERAS", "aux")]
+[node name="South" type="Control" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel" node_paths=PackedStringArray("PUZZLES", "DIALOGUE", "F_BOOK", "CAMERAS", "aux")]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -971,6 +971,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("17_bvebo")
+PUZZLES = NodePath("../..")
 DIALOGUE = NodePath("../../../../../../CanvasLayer/Settings/SpeechGUI")
 F_BOOK = NodePath("../../../../../../MainRoom/family book")
 CAMERAS = NodePath("../../../../../../Cameras")

@@ -1,58 +1,184 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
-public partial class Safecracking : Node
+public partial class Safecracking : Control
 {
-    private int[] code = new int[4]  {1,9,6,9}; //stores the correct code for the safe.
-    private int[] attempt = new int [4]; //stores the attempted codes for the safe
+    private List<int> code = new List<int>() { 1, 9, 6, 9 }; //stores the correct code for the safe.
+    private List<int> attempt = new List<int>(); //stores the attempted codes for the safe
 
     private int fullAttempt = 0;
+
+    private PuzzleStart PUZZLES; //instance of PuzzleStart
+
+    [Export]
+    private InteractCircles CIRCLES_TWO; //instance of interact circles
 
     [Export]
     private AudioStreamPlayer beepReject;
 
     [Export]
-    private AudioStreamPlayer beepGeneric;
+    private AudioStreamPlayer beepAccept;
 
-// Called when the node enters the scene tree for the first time.
+    [Export]
+    private Label PinScreen; //for showing the numbers entered
+
+    private ButtonOverwrite redBtn; //to store the main puzzle button
+
+
+    // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
+        PUZZLES = GetNode<PuzzleStart>("../../");
     }
 
-    private void OnButtonPress(int pin) { 
-        
-        
-        //If the length
-        if (code.Length !> 4) {
-            code.Append<int>(pin).ToArray();
-            beepGeneric.Play();
+    /** 
+    * ----------------------------------------------------------------
+    *	Puzzle Init Handlers
+    * ----------------------------------------------------------------
+    **/
+
+    public void InitPuzzle()
+    {
+
+        //Gets the red circle
+        ButtonOverwrite redCirc = GetNode<ButtonOverwrite>("PuzzleCont/2");
+        redBtn = redCirc; //sets the red circle
+
+        //Changes the camera angle to the one set in the meta data
+        CIRCLES_TWO.SetCam(redCirc.GetMeta("NewCamPos").AsVector3(), (Vector3)redCirc.GetMeta("CamRotation"));
+
+        GetNode<Control>("PuzzleCont").Visible = false;
+
+        //Toggles the specific components of the puzzle
+        PUZZLES.EnableAllCircleComponents("PuzzlesPanel/West/PuzzleCont/Components");
+    }
+
+    /** 
+    * ----------------------------------------------------------------
+    *	Button Entry Functions
+    * ----------------------------------------------------------------
+    **/
+    private void OnButtonPress(int pin)
+    {
+
+        //If the length is < 4 then add to list and screen
+        if (attempt.ToList().Count < 4)
+        {
+            attempt.Add(pin);
+            AppendToScreenText(pin);
         }
 
-        else {
-            GD.Print("**********Eventually Play a Pissed Off Beeping Noise****************");
-            GD.Print("text to say pin be four.");
+        //Play reject beep and set screen to this
+        else
+        {
+            beepReject.Play();
+            PinScreen.Text = "*Pin = 4*";
+
         }
     }
 
-    private void OnSubmitButton() {
+    private void OnSubmitButton()
+    {
+
         //If the code and array match exactly (inc. length)
-        if (code.SequenceEqual(attempt)) {
+        if (code.SequenceEqual(attempt))
+        {
             GD.Print("***Happy Beeps***");
-            //opn safe//progress
+            beepAccept.Play();
         }
 
-        else {
+        else
+        {
             GD.Print("*** sad beeps ***");
+
+            // Displays wrong pin to screen
+            PinScreen.Text = "*Wrong Pin*";
+
+            // Plays reject noise
+            beepReject.Play();
+
             //Clears the submitted array
-            attempt = new int [4];
+            attempt = new List<int>();
         }
 
     }
 
     //A function that when called, clears the numbers entered
-    private void ClearNumbers() {
+    private void ClearNumbers()
+    {
         //show dialogue to clear attempts
-        attempt = new int[4];
+        attempt = new List<int>();
+        ResetScreen();
+    }
+
+    // A function that when called will delete the latest number entered
+    private void DeleteLatest()
+    {
+        // Creates an array one shorted the the current as long as it has >1 num
+        if (attempt.Count != 1)
+        {
+
+            //Gets the last number entered
+            int numRemove = attempt.Last();
+
+            //Reverses the attempts so the last number is the first    
+            attempt.Reverse();
+
+            //Removes the last entered number (remove removes the first instance only)
+            attempt.Remove(numRemove);
+
+            //Puts it the right way around again
+            attempt.Reverse();
+
+            // Updates the screen
+            UpdateScreenText();
+        }
+
+        else
+        {
+            ClearNumbers();
+        }
+    }
+
+
+
+    /** 
+    * ----------------------------------------------------------------
+    *	Screen Display Functions
+    * ----------------------------------------------------------------
+    **/
+
+    //A function that will append the screen to show what numbers are entered
+    private void AppendToScreenText(int pin)
+    {
+
+        //If the number of attempts is != 1 then append
+        if (attempt.Count != 1) {
+            string currentText = PinScreen.Text;
+            currentText += pin;
+            PinScreen.Text = currentText;
+        }
+
+        // Otherwise reset PinScreen and just add the num
+        else {
+            PinScreen.Text = pin.ToString();
+        }
+       
+    }
+
+    //A function that will update the screen to remove the deleted number
+    private void UpdateScreenText()
+    {
+        foreach (int pin in attempt) {
+            PinScreen.Text += string.Format("*{0}*", pin.ToString());
+        }
+    }
+
+    //A function that will reset the screen to the default
+    private void ResetScreen()
+    {
+        PinScreen.Text = "*Enter Pin*";
     }
 }

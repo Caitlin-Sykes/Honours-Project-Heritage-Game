@@ -191,7 +191,6 @@ public partial class InteractCircles : Node3D
 		{
 			if (GetNode<ButtonOverwrite>(path).GetMeta("Object").AsString() != "Door")
 			{
-				GD.PrintErr("i am going back to: " + SCENESTATEACCESS.PlayerStatus);
 				//Swaps back to dialogue mode
 				SCENESTATEACCESS.PlayerStatus = SCENESTATEACCESS.PreviousState;
 			}

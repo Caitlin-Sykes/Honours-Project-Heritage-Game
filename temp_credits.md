@@ -21,8 +21,9 @@ https://pixabay.com/sound-effects//?utm_source=link-attribution&utm_medium=refer
 https://pixabay.com/sound-effects/search/knocking%20on%20the%20door/ - knocking mp3 for knocking on doors from Pixabay
 https://pixabay.com/users/edr-1177074/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=8333 - EdR safe entry pin from Pixabay
 https://pixabay.com/sound-effects/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=6151" - reject pin, by Pixabay
-https://pixabay.com/sound-effects/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=6387" - by Pixabay, warning, beeps full
 https://uppbeat.io/t/cedric-vermue/passing-clouds - Music from #Uppbeat (free for Creators!): License code: S8HBXZTMUN5TMGGW - used in main menu
+
+https://pixabay.com/sound-effects/opening-small-safe-87536/ - beepSuccessOpen.mp3 for the successful opening of the safe - by Pixabay, 
 
 [SPRITES]
 https://www.dicebear.com/playground/ - for character speaking sprites

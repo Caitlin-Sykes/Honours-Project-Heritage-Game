@@ -116,7 +116,7 @@ public partial class Stonewall : Node
 		btn.Visible = false;
 
 		//go to south camera on the other side, and sets it to true
-		CIRCLES.ResetCam();
+		CIRCLES.ResetCam(); 
 		Camera3D cam = CAMERASBAR.CAMERAS[2];
 
 		// Swaps the active cameras between cluster 1 and 2
@@ -149,8 +149,6 @@ public partial class Stonewall : Node
 	//Handles moving from main room to the side with the safe
 	private void MoveToNormalSide()
 	{
-		GD.Print("Going to the normal side");
-
 		// Hides the red circle
 		CIRCLES_OTHER.ToggleSpecificDirection(GetNode<ButtonOverwrite>("InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/North/PuzzleCont/2"));
 		//go to north camera on the other side, and sets it to true

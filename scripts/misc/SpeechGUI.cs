@@ -69,7 +69,6 @@ public partial class SpeechGUI : Control
 	public void ToggleGUIVisible()
 	{
 		this.Visible = !this.Visible;
-		GD.Print("GUI is: " + this.Visible);
 	}
 
 	// A function to swap the overlay
@@ -77,10 +76,6 @@ public partial class SpeechGUI : Control
 	{
 		Speech_Overlay.Visible = !Speech_Overlay.Visible;
 		Active_Canvas_Layer.Visible = !Active_Canvas_Layer.Visible;
-
-		GD.Print("speech overlay: " + Speech_Overlay.Visible);
-		GD.Print("Select items : " + Active_Canvas_Layer.Visible + " " + Active_Canvas_Layer);
-
 	}
 
 	//Emits a signal to skip dialogue
