@@ -65,6 +65,12 @@ public partial class JsonHandler : Node
 
 		[JsonPropertyName("Stonewall_Leitsch")]
 		public DialogueStructData[] Stonewall_Leitsch { get; set; }
+
+		[JsonPropertyName("Safe_Incorrect_TooManyDigits")]
+		public DialogueStructData[] Safe_Incorrect_TMD { get; set; }
+
+		[JsonPropertyName("Safe_Incorrect_WrongCode")]
+		public DialogueStructData[] Safe_Incorrect_WC { get; set; }
 	}
 
 	//A class to contain the variables to store dialogue read in from Dialogue.Json

@@ -131,9 +131,19 @@ public partial class SpeechGUI : Control
 	//Handles the dialogue if you pass in the Scene
 	public async void Dialogue(JsonHandler.DialogueStructData[] Scene)
 	{
+		bool hiddenBefore = false;
+		GD.Print("Scene is: " + Scene);
+		GD.Print("PlayerStatus: " + SCENESTATEACCESS.PlayerStatus);
+		
 		//Skips the whole thing if the speech overlay isn't visible
-		if (Scene != null && Speech_Overlay.Visible && SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.InDialogue)
+		if (Scene != null && SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.InDialogue)
 		{
+			GD.Print("Got in the loop correctly");
+
+			if (!Speech_Overlay.Visible) {
+				SwapOverlay();
+				hiddenBefore = true;
+			}
 
 			//For every bit of speech in the scene
 			foreach (var Speech in Scene)
@@ -143,12 +153,18 @@ public partial class SpeechGUI : Control
 
 
 			}
+
+			if (hiddenBefore)
+			{
+				SwapOverlay();
+				SCENESTATEACCESS.PlayerStatus = SceneState.StatusOfPlayer.LookingAtSomething;
+			}
 		}
 
-		else
-		{
-			throw new System.InvalidOperationException("Error: something has gone wrong with parsing the dialogue.json");
-		}
+		// else
+		// {
+		// 	throw new System.InvalidOperationException("Error: something has gone wrong with parsing the dialogue.json");
+		// }
 	}
 
 	//Handles the dialogue if you pass in the Scene. This version handles triggering events at certain IDs

@@ -8,6 +8,8 @@ public partial class Safecracking : Control
     private List<int> code = new List<int>() { 1, 9, 6, 9 }; //stores the correct code for the safe.
     private List<int> attempt = new List<int>(); //stores the attempted codes for the safe
 
+    private SceneState SCENESTATEACCESS; //accesses the singleton for the scene state
+
     private int fullAttempt = 0;
 
     private PuzzleStart PUZZLES; //instance of PuzzleStart
@@ -31,6 +33,7 @@ public partial class Safecracking : Control
     public override void _Ready()
     {
         PUZZLES = GetNode<PuzzleStart>("../../");
+        SCENESTATEACCESS = GetNode<SceneState>("/root/SceneStateSingleton"); //accesses the singleton for the scene state
     }
 
     /** 
@@ -60,6 +63,8 @@ public partial class Safecracking : Control
     *	Button Entry Functions
     * ----------------------------------------------------------------
     **/
+
+    //On num pad press
     private void OnButtonPress(int pin)
     {
 
@@ -75,27 +80,32 @@ public partial class Safecracking : Control
         {
             beepReject.Play();
             PinScreen.Text = "*Pin = 4*";
-
+            SCENESTATEACCESS.PlayerStatus = SceneState.StatusOfPlayer.InDialogue;
+            CIRCLES_TWO.DialogueByString("Safe_Incorrect_TMD");
         }
     }
 
+    // On submit button press
     private void OnSubmitButton()
     {
 
         //If the code and array match exactly (inc. length)
         if (code.SequenceEqual(attempt))
         {
-            GD.Print("***Happy Beeps***");
+            PinScreen.Text = "*Opening*";
             beepAccept.Play();
+            //PuzzleAnswer();
         }
 
         else
         {
-            GD.Print("*** sad beeps ***");
-
             // Displays wrong pin to screen
             PinScreen.Text = "*Wrong Pin*";
 
+            SCENESTATEACCESS.PlayerStatus = SceneState.StatusOfPlayer.InDialogue;
+            // Plays dialogue for wrong pin
+            CIRCLES_TWO.DialogueByString("Safe_Incorrect_WrongCode");
+            
             // Plays reject noise
             beepReject.Play();
 
@@ -142,8 +152,6 @@ public partial class Safecracking : Control
         }
     }
 
-
-
     /** 
     * ----------------------------------------------------------------
     *	Screen Display Functions
@@ -171,8 +179,9 @@ public partial class Safecracking : Control
     //A function that will update the screen to remove the deleted number
     private void UpdateScreenText()
     {
+        PinScreen.Text = "";
         foreach (int pin in attempt) {
-            PinScreen.Text += string.Format("*{0}*", pin.ToString());
+            PinScreen.Text += string.Format("{0}", pin.ToString());
         }
     }
 
@@ -181,4 +190,17 @@ public partial class Safecracking : Control
     {
         PinScreen.Text = "*Enter Pin*";
     }
+
+
+    /** 
+    * ----------------------------------------------------------------
+    *	Button Entry Functions
+    * ----------------------------------------------------------------
+    **/
+
+    // A function that executes what happens after the puzzle is solved
+    private void PuzzleAnswer() {
+    }
+
+
 }

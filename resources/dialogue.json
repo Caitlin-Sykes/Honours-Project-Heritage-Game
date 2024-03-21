@@ -574,5 +574,22 @@
       "Avatar": "res://resources/textures/sprites/main_char/{0}.svg",
       "Source": "https://www.history.com/news/how-the-mob-helped-establish-nycs-gay-bar-scene"
     }
+  ],
+
+  "Safe_Incorrect_TooManyDigits": [
+    {
+      "Id": "1",
+      "Speaker": "{0}",
+      "Dialogue": "Hmm. It seems that the safe only takes 4 numbers in its pin. I wonder if I can find the answer somewhere...",
+      "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
+    }
+  ],
+  "Safe_Incorrect_WrongCode": [
+    {
+      "Id": "1",
+      "Speaker": "{0}",
+      "Dialogue": "That seems to be the wrong pin. I wonder if it's written down somewhere.",
+      "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
+    }
   ]
 }

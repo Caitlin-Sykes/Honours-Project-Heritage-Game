@@ -13,7 +13,7 @@ public partial class InteractCircles : Node3D
 	private string PLAYER_AVATAR = "res://resources/textures/sprites/main_char/{0}.svg"; //player avatar string
 	private MarginContainer BackButtonContainer; //instance of the back button container
 
-	private SceneState SCENESTATEACCESS; //accesses the singleton for the 
+	private SceneState SCENESTATEACCESS; //accesses the singleton for the scene state
 
 	private JsonHandler DIALOGUEACCESS; //accesses the singleton for the dialogue json
 
@@ -129,7 +129,7 @@ public partial class InteractCircles : Node3D
 	//A handler for passing in the jsonhandler by string
 	public void DialogueByString(string DialogueStructName)
 	{
-		switch(DialogueStructName) {
+		switch (DialogueStructName) {
 			case "Yvonne":
 				DIALOGUE.Dialogue(DIALOGUEACCESS.Speech.Stonewall_Yvonne);
 				return;
@@ -138,6 +138,12 @@ public partial class InteractCircles : Node3D
 				return;
 			case "Leitsch":
 				DIALOGUE.Dialogue(DIALOGUEACCESS.Speech.Stonewall_Leitsch);
+				return;
+			case "Safe_Incorrect_WrongCode":
+				DIALOGUE.Dialogue(DIALOGUEACCESS.Speech.Safe_Incorrect_WC);
+				return;
+			case "Safe_Incorrect_TMD":
+				DIALOGUE.Dialogue(DIALOGUEACCESS.Speech.Safe_Incorrect_TMD);
 				return;
 			default:
 				GD.PrintErr("Tried accessing a dialogue that's not in the switch case.");
