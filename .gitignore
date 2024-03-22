@@ -21,6 +21,7 @@ blender_src/
 # Rider ignored files
 /modules.xml
 /.idea.Honours Testing.iml
+.idea/
 /contentModel.xml
 /projectSettingsUpdater.xml
 # Editor-based HTTP Client requests
