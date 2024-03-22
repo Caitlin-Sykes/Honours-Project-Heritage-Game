@@ -200,6 +200,7 @@ public partial class Safecracking : Control
 
     // A function that executes what happens after the puzzle is solved
     private void PuzzleAnswer() {
+        
     }
 
 

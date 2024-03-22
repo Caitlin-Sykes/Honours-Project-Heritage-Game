@@ -759,14 +759,12 @@ grow_vertical = 2
 visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.219
-anchor_top = 0.435
-anchor_right = 0.219
-anchor_bottom = 0.641
-offset_left = 522.52
-offset_top = -8.79999
-offset_right = 722.52
-offset_bottom = -31.28
+anchor_left = 0.105
+anchor_top = 0.487
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = ExtResource("6_f0smn")
@@ -791,30 +789,35 @@ metadata/NewCamPos = Vector3(0, 0, 0)
 visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.855
-anchor_top = 0.504
-anchor_right = 0.947
-anchor_bottom = 0.542
-offset_left = -1461.6
-offset_top = -111.32
-offset_right = -1438.24
-offset_bottom = 47.64
+anchor_left = 0.487
+anchor_top = 0.425
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = ExtResource("6_f0smn")
 texture_pressed = ExtResource("7_t6h5l")
-metadata/Object = "BathroomDoor"
+metadata/Object = "DiscoDoor"
 metadata/Description = {
-"Stage_1": "I don't need to go through there right now. ",
-"Stage_2": "tbd",
-"Stage_3": "tbd"
+"Stage_1": "This leads to another dance floor. Let's see if there's anything in there.",
+"Stage_2": "There's not really much in here, is there?",
+"Stage_3": "It's a little sad that a place with so much history got torn up the way it did."
 }
 metadata/Hints = {}
 metadata/ExtraInformation = {
-"Stage_1": "Now's really not the time for bed."
+"Stage_1": "Many people spent time at Stonewall, as a place to hang out and be themselves without persecution.",
+"Stage_2": "Often described as a dive bar, it wasn't as nice as some of the bars in the city.",
+"Stage_3": "However, because of its appearence, and the fact the owners would serve to all people,",
+"Stage_4": " it got very popular, and was frequented by many of the LGBTQ+ community.",
+"Stage_5": "There was also ties between the Mafia and Stonewall, due to its clientele, the Mafia took advantage of the gap in the market. "
 }
-metadata/NewCamPos = Vector3(0, 0, 0)
-metadata/Sources = {}
+metadata/NewCamPos = Vector3(-23.0756, -2.3705, -2.40411)
+metadata/Sources = {
+"src": "https://www.pbs.org/wgbh/americanexperience/features/stonewall-inn-through-years/",
+"src2": "https://www.pbs.org/wgbh/americanexperience/features/stonewall-why-did-mafia-own-bar/"
+}
 metadata/CamRotation = Vector3(0, 0, 0)
 
 [node name="Puzzles" type="Control" parent="InteractableItems/Select_Items/Settings"]
@@ -1242,7 +1245,7 @@ metadata/Sources = {}
 metadata/CamRotation = Vector3(0, 0, 0)
 
 [node name="testCam2" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.9361, -2.3705, 23.7792)
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -23.0756, -2.3705, -2.40411)
 fov = 75.9375
 
 [node name="testCam" type="Camera3D" parent="."]
