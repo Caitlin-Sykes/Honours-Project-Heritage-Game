@@ -198,4 +198,24 @@ public partial class Stonewall : Node
 
 	}
 
+
+	/**
+	* ------------------------------------------------------------------
+	* Misc Handlers
+	* ------------------------------------------------------------------
+	**/
+
+	//Hides the intro circles during circles pressed
+	private void HideThreeIntroCircles()
+	{
+		Control parent = GetNode<Control>("CanvasLayer/Settings");
+		foreach (var child in parent.GetChildren())
+		{
+			if (child is ButtonOverwrite btn)
+			{
+				btn.Visible = false;
+			}
+		}
+		
+	}
 }
