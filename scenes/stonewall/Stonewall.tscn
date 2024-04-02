@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://bixuqtx8jjvtl"]
+[gd_scene load_steps=34 format=3 uid="uid://cdavvdbwlrmxm"]
 
 [ext_resource type="Script" path="res://scripts/stonewall/Stonewall.cs" id="1_lwk4g"]
 [ext_resource type="Script" path="res://scripts/misc/Transitions.cs" id="2_xig76"]
@@ -68,6 +68,9 @@ _data = {
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qb8qr"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mm8wc"]
+bg_color = Color(0, 0, 0, 0.545098)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5r74a"]
 transparency = 2
 alpha_scissor_threshold = 0.5
@@ -87,9 +90,6 @@ alpha_antialiasing_mode = 0
 albedo_color = Color(0.592157, 0.686275, 0.854902, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sngad"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mm8wc"]
-bg_color = Color(0, 0, 0, 0.545098)
 
 [node name="Stonewall" type="Node3D" node_paths=PackedStringArray("DIALOGUE", "CIRCLES_OTHER")]
 script = ExtResource("1_lwk4g")
@@ -281,8 +281,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 4.0
 offset_top = 4.0
-offset_right = 796.0
-offset_bottom = 896.0
+offset_right = -4.0
+offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -322,8 +322,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 4.0
 offset_top = 4.0
-offset_right = 996.0
-offset_bottom = 496.0
+offset_right = -4.0
+offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -818,7 +818,8 @@ metadata/Sources = {
 "src": "https://www.pbs.org/wgbh/americanexperience/features/stonewall-inn-through-years/",
 "src2": "https://www.pbs.org/wgbh/americanexperience/features/stonewall-why-did-mafia-own-bar/"
 }
-metadata/CamRotation = Vector3(0, 0, 0)
+metadata/CamRotation = Vector3(0, 90, 0)
+metadata/PuzzleEnabled = true
 
 [node name="Puzzles" type="Control" parent="InteractableItems/Select_Items/Settings"]
 visible = false
@@ -1181,20 +1182,493 @@ offset_top = 214.0
 offset_right = 927.0
 offset_bottom = 254.0
 
-[node name="1" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/West" instance=ExtResource("5_biifr")]
+[node name="PuzzleCont" type="Control" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/West"]
 visible = false
-layout_mode = 0
-offset_right = 200.0
-offset_bottom = 200.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Components" type="Control" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="c1" type="TextureButton" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/Components"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.624
+anchor_top = 0.418
+anchor_right = 3.571
+anchor_bottom = 0.428
+offset_right = -5458.24
+offset_bottom = 189.2
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+size_flags_horizontal = 3
+size_flags_vertical = 3
 texture_normal = ExtResource("8_i5weq")
 texture_pressed = ExtResource("9_560b4")
-metadata/Object = ""
-metadata/Description = {}
+script = ExtResource("21_476oy")
+metadata/Object = "ToReviveAHummingbird"
+metadata/Description = {
+"Stage_2": "This reads, \"To Revive a Hummingbird.\" I remember reading this for my English class. This isn't the book Mum described though."
+}
+metadata/Hints = {}
+metadata/ExtraInformation = {
+"Stage_2": "Most of the books on the bookshelf are based off actual books."
+}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/Sources = {
+"src": "It's just a book. Nothing to cite here."
+}
+metadata/CamRotation = Vector3(0, 0, 0)
+
+[node name="ClickButton" type="AudioStreamPlayer2D" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/Components/c1"]
+stream = ExtResource("17_ina5q")
+
+[node name="c2" type="TextureButton" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/Components"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.666
+anchor_top = 0.418
+anchor_right = 3.571
+anchor_bottom = 0.428
+offset_right = -5377.6
+offset_bottom = 189.2
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("8_i5weq")
+texture_pressed = ExtResource("9_560b4")
+script = ExtResource("21_476oy")
+metadata/Object = "ToReviveAHummingbird"
+metadata/Description = {
+"Stage_2": "This reads, \"To Revive a Hummingbird.\" I remember reading this for my English class. This isn't the book Mum described though."
+}
+metadata/Hints = {}
+metadata/ExtraInformation = {
+"Stage_2": "Most of the books on the bookshelf are based off actual books."
+}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/Sources = {
+"src": "It's just a book. Nothing to cite here."
+}
+metadata/CamRotation = Vector3(0, 0, 0)
+
+[node name="ClickButton" type="AudioStreamPlayer2D" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/Components/c2"]
+stream = ExtResource("17_ina5q")
+
+[node name="c3" type="TextureButton" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/Components"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.713
+anchor_top = 0.418
+anchor_right = 3.571
+anchor_bottom = 0.428
+offset_right = -5458.24
+offset_bottom = 189.2
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("8_i5weq")
+texture_pressed = ExtResource("9_560b4")
+script = ExtResource("21_476oy")
+metadata/Object = "ToReviveAHummingbird"
+metadata/Description = {
+"Stage_2": "This reads, \"To Revive a Hummingbird.\" I remember reading this for my English class. This isn't the book Mum described though."
+}
+metadata/Hints = {}
+metadata/ExtraInformation = {
+"Stage_2": "Most of the books on the bookshelf are based off actual books."
+}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/Sources = {
+"src": "It's just a book. Nothing to cite here."
+}
+metadata/CamRotation = Vector3(0, 0, 0)
+
+[node name="ClickButton" type="AudioStreamPlayer2D" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/Components/c3"]
+stream = ExtResource("17_ina5q")
+
+[node name="c4" type="TextureButton" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/Components"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.624
+anchor_top = 0.519
+anchor_right = 3.571
+anchor_bottom = 0.581
+offset_right = -5458.24
+offset_bottom = 189.2
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("8_i5weq")
+texture_pressed = ExtResource("9_560b4")
+script = ExtResource("21_476oy")
+metadata/Object = "ToReviveAHummingbird"
+metadata/Description = {
+"Stage_2": "This reads, \"To Revive a Hummingbird.\" I remember reading this for my English class. This isn't the book Mum described though."
+}
+metadata/Hints = {}
+metadata/ExtraInformation = {
+"Stage_2": "Most of the books on the bookshelf are based off actual books."
+}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/Sources = {
+"src": "It's just a book. Nothing to cite here."
+}
+metadata/CamRotation = Vector3(0, 0, 0)
+
+[node name="ClickButton" type="AudioStreamPlayer2D" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/Components/c4"]
+stream = ExtResource("17_ina5q")
+
+[node name="c5" type="TextureButton" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/Components"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.666
+anchor_top = 0.519
+anchor_right = 3.571
+anchor_bottom = 0.581
+offset_right = -5377.6
+offset_bottom = 189.2
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("8_i5weq")
+texture_pressed = ExtResource("9_560b4")
+script = ExtResource("21_476oy")
+metadata/Object = "ToReviveAHummingbird"
+metadata/Description = {
+"Stage_2": "This reads, \"To Revive a Hummingbird.\" I remember reading this for my English class. This isn't the book Mum described though."
+}
+metadata/Hints = {}
+metadata/ExtraInformation = {
+"Stage_2": "Most of the books on the bookshelf are based off actual books."
+}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/Sources = {
+"src": "It's just a book. Nothing to cite here."
+}
+metadata/CamRotation = Vector3(0, 0, 0)
+
+[node name="ClickButton" type="AudioStreamPlayer2D" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/Components/c5"]
+stream = ExtResource("17_ina5q")
+
+[node name="c6" type="TextureButton" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/Components"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.713
+anchor_top = 0.519
+anchor_right = 3.571
+anchor_bottom = 0.581
+offset_right = -5458.24
+offset_bottom = 189.2
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("8_i5weq")
+texture_pressed = ExtResource("9_560b4")
+script = ExtResource("21_476oy")
+metadata/Object = "ToReviveAHummingbird"
+metadata/Description = {
+"Stage_2": "This reads, \"To Revive a Hummingbird.\" I remember reading this for my English class. This isn't the book Mum described though."
+}
+metadata/Hints = {}
+metadata/ExtraInformation = {
+"Stage_2": "Most of the books on the bookshelf are based off actual books."
+}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/Sources = {
+"src": "It's just a book. Nothing to cite here."
+}
+metadata/CamRotation = Vector3(0, 0, 0)
+
+[node name="ClickButton" type="AudioStreamPlayer2D" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/Components/c6"]
+stream = ExtResource("17_ina5q")
+
+[node name="c8" type="TextureButton" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/Components"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.624
+anchor_top = 0.63
+anchor_right = 3.571
+anchor_bottom = 0.63
+offset_right = -5458.24
+offset_bottom = 189.2
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("8_i5weq")
+texture_pressed = ExtResource("9_560b4")
+script = ExtResource("21_476oy")
+metadata/Object = "ToReviveAHummingbird"
+metadata/Description = {
+"Stage_2": "This reads, \"To Revive a Hummingbird.\" I remember reading this for my English class. This isn't the book Mum described though."
+}
+metadata/Hints = {}
+metadata/ExtraInformation = {
+"Stage_2": "Most of the books on the bookshelf are based off actual books."
+}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/Sources = {
+"src": "It's just a book. Nothing to cite here."
+}
+metadata/CamRotation = Vector3(0, 0, 0)
+
+[node name="ClickButton" type="AudioStreamPlayer2D" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/Components/c8"]
+stream = ExtResource("17_ina5q")
+
+[node name="c9" type="TextureButton" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/Components"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.666
+anchor_top = 0.63
+anchor_right = 3.571
+anchor_bottom = 0.63
+offset_right = -5377.6
+offset_bottom = 189.2
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("8_i5weq")
+texture_pressed = ExtResource("9_560b4")
+script = ExtResource("21_476oy")
+metadata/Object = "ToReviveAHummingbird"
+metadata/Description = {
+"Stage_2": "This reads, \"To Revive a Hummingbird.\" I remember reading this for my English class. This isn't the book Mum described though."
+}
+metadata/Hints = {}
+metadata/ExtraInformation = {
+"Stage_2": "Most of the books on the bookshelf are based off actual books."
+}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/Sources = {
+"src": "It's just a book. Nothing to cite here."
+}
+metadata/CamRotation = Vector3(0, 0, 0)
+
+[node name="ClickButton" type="AudioStreamPlayer2D" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/Components/c9"]
+stream = ExtResource("17_ina5q")
+
+[node name="c10" type="TextureButton" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/Components"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.713
+anchor_top = 0.63
+anchor_right = 3.571
+anchor_bottom = 0.63
+offset_right = -5458.24
+offset_bottom = 189.2
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("8_i5weq")
+texture_pressed = ExtResource("9_560b4")
+script = ExtResource("21_476oy")
+metadata/Object = "ToReviveAHummingbird"
+metadata/Description = {
+"Stage_2": "This reads, \"To Revive a Hummingbird.\" I remember reading this for my English class. This isn't the book Mum described though."
+}
+metadata/Hints = {}
+metadata/ExtraInformation = {
+"Stage_2": "Most of the books on the bookshelf are based off actual books."
+}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/Sources = {
+"src": "It's just a book. Nothing to cite here."
+}
+metadata/CamRotation = Vector3(0, 0, 0)
+
+[node name="ClickButton" type="AudioStreamPlayer2D" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/Components/c10"]
+stream = ExtResource("17_ina5q")
+
+[node name="c11" type="TextureButton" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/Components"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.624
+anchor_top = 0.725
+anchor_right = 3.571
+anchor_bottom = 0.741
+offset_right = -5458.24
+offset_bottom = 189.2
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("8_i5weq")
+texture_pressed = ExtResource("9_560b4")
+script = ExtResource("21_476oy")
+metadata/Object = "ToReviveAHummingbird"
+metadata/Description = {
+"Stage_2": "This reads, \"To Revive a Hummingbird.\" I remember reading this for my English class. This isn't the book Mum described though."
+}
+metadata/Hints = {}
+metadata/ExtraInformation = {
+"Stage_2": "Most of the books on the bookshelf are based off actual books."
+}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/Sources = {
+"src": "It's just a book. Nothing to cite here."
+}
+metadata/CamRotation = Vector3(0, 0, 0)
+
+[node name="ClickButton" type="AudioStreamPlayer2D" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/Components/c11"]
+stream = ExtResource("17_ina5q")
+
+[node name="c12" type="TextureButton" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/Components"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.666
+anchor_top = 0.725
+anchor_right = 3.571
+anchor_bottom = 0.741
+offset_right = -5377.6
+offset_bottom = 189.2
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("8_i5weq")
+texture_pressed = ExtResource("9_560b4")
+script = ExtResource("21_476oy")
+metadata/Object = "ToReviveAHummingbird"
+metadata/Description = {
+"Stage_2": "This reads, \"To Revive a Hummingbird.\" I remember reading this for my English class. This isn't the book Mum described though."
+}
+metadata/Hints = {}
+metadata/ExtraInformation = {
+"Stage_2": "Most of the books on the bookshelf are based off actual books."
+}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/Sources = {
+"src": "It's just a book. Nothing to cite here."
+}
+metadata/CamRotation = Vector3(0, 0, 0)
+
+[node name="ClickButton" type="AudioStreamPlayer2D" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/Components/c12"]
+stream = ExtResource("17_ina5q")
+
+[node name="c13" type="TextureButton" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/Components"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.713
+anchor_top = 0.725
+anchor_right = 3.571
+anchor_bottom = 0.741
+offset_right = -5458.24
+offset_bottom = 189.2
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("8_i5weq")
+texture_pressed = ExtResource("9_560b4")
+script = ExtResource("21_476oy")
+metadata/Object = "ToReviveAHummingbird"
+metadata/Description = {
+"Stage_2": "This reads, \"To Revive a Hummingbird.\" I remember reading this for my English class. This isn't the book Mum described though."
+}
+metadata/Hints = {}
+metadata/ExtraInformation = {
+"Stage_2": "Most of the books on the bookshelf are based off actual books."
+}
+metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/Sources = {
+"src": "It's just a book. Nothing to cite here."
+}
+metadata/CamRotation = Vector3(0, 0, 0)
+
+[node name="ClickButton" type="AudioStreamPlayer2D" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/Components/c13"]
+stream = ExtResource("17_ina5q")
+
+[node name="c7" type="Panel" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/Components"]
+visible = false
+custom_minimum_size = Vector2(375, 75)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.737
+anchor_top = 0.546
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -709.76
+offset_bottom = -1005.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mm8wc")
+
+[node name="Label" type="Label" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/Components/c7"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "*Enter Pin*"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="2" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont" instance=ExtResource("5_biifr")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.477
+anchor_top = 0.516
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -804.16
+offset_bottom = -322.72
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("8_i5weq")
+texture_pressed = ExtResource("9_560b4")
+metadata/Object = "TriggerEvent"
+metadata/Description = {
+"Stage_1": "Hmm, I wonder what's in here. Maybe something useful? Let's see if I can find the pin..."
+}
 metadata/Hints = {}
 metadata/ExtraInformation = {}
-metadata/NewCamPos = Vector3(0, 0, 0)
+metadata/NewCamPos = Vector3(18.4202, -2.44224, -3.99687)
 metadata/Sources = {}
-metadata/CamRotation = Vector3(0, 0, 0)
+metadata/CamRotation = Vector3(0, -270, 0)
 
 [node name="Up" type="Control" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel"]
 visible = false
@@ -2685,11 +3159,11 @@ transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, -3.72
 [node name="DirectionalLight3D" parent="CamerasTwo/Controls/UI/Down/MarginContainer" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, -3.72927e-07, 31.2729)
 
-[connection signal="pressed" from="CanvasLayer/Settings/Pre0" to="." method="ToggleMattachine"]
 [connection signal="pressed" from="CanvasLayer/Settings/Pre0" to="." method="HideThreeIntroCircles"]
+[connection signal="pressed" from="CanvasLayer/Settings/Pre0" to="." method="ToggleMattachine"]
 [connection signal="pressed" from="CanvasLayer/Settings/Pre0" to="InteractableItems" method="CirclesPressed" binds= ["../CanvasLayer/Settings/Pre0"]]
-[connection signal="pressed" from="CanvasLayer/Settings/Pre1" to="." method="ToggleGLFPoster"]
 [connection signal="pressed" from="CanvasLayer/Settings/Pre1" to="." method="HideThreeIntroCircles"]
+[connection signal="pressed" from="CanvasLayer/Settings/Pre1" to="." method="ToggleGLFPoster"]
 [connection signal="pressed" from="CanvasLayer/Settings/Pre1" to="InteractableItems" method="CirclesPressed" binds= ["../CanvasLayer/Settings/Pre1"]]
 [connection signal="pressed" from="CanvasLayer/Settings/Pre2" to="." method="HideThreeIntroCircles"]
 [connection signal="pressed" from="CanvasLayer/Settings/Pre2" to="InteractableItems" method="CirclesPressed" binds= ["../CanvasLayer/Settings/Pre2"]]
@@ -2719,6 +3193,19 @@ transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, -3.72
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c5" to="InteractableItems" method="CirclesPressed"]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c6" to="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South" method="PuzzleAnswer"]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/3" to="." method="MoveToSafeSide"]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/Components/c1" to="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/West" method="OnButtonPress"]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/Components/c2" to="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/West" method="OnButtonPress"]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/Components/c3" to="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/West" method="OnButtonPress"]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/Components/c4" to="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/West" method="OnButtonPress"]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/Components/c5" to="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/West" method="OnButtonPress"]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/Components/c6" to="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/West" method="OnButtonPress"]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/Components/c8" to="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/West" method="OnButtonPress"]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/Components/c9" to="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/West" method="OnButtonPress"]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/Components/c10" to="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/West" method="OnButtonPress"]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/Components/c11" to="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/West" method="DeleteLatest"]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/Components/c12" to="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/West" method="OnButtonPress"]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/Components/c13" to="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/West" method="OnSubmitButton"]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/2" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/2"]]
 [connection signal="pressed" from="InteractableItems2/Select_Items/Settings/Panel/Back_Button/Back" to="InteractableItems2" method="OnBackPressed" flags=18]
 [connection signal="pressed" from="InteractableItems2/Select_Items/Settings/Panel/North/2" to="InteractableItems2" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/North/2"]]
 [connection signal="pressed" from="InteractableItems2/Select_Items/Settings/Panel/West/2" to="InteractableItems2" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/West/2"]]

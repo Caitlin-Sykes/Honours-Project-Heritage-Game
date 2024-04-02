@@ -216,6 +216,6 @@ public partial class Stonewall : Node
 				btn.Visible = false;
 			}
 		}
-		
+
 	}
 }

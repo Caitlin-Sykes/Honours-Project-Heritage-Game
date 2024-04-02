@@ -47,11 +47,30 @@ public partial class InteractCircles : Node3D
 		DIALOGUE.Dialogue((Godot.Collections.Dictionary<string, string>)GetNode<ButtonOverwrite>(SCENESTATEACCESS.CURRENT_PATH_CIRCLES).GetMeta("ExtraInformation"));
 	}
 
-	//Called from control, on K press
+	//Called from control, on K press show sources if looking at smth
 	public void ShowSources()
 	{
 		DIALOGUE.Dialogue((Godot.Collections.Dictionary<string, string>)GetNode<ButtonOverwrite>(SCENESTATEACCESS.CURRENT_PATH_CIRCLES).GetMeta("Sources"));
 	}
+	
+	//Called from control, on K press show sources if in dialogue
+	public void ShowDialogueSources()
+	{
+		//If the current dialogue is not null and the source is not null
+		if (DIALOGUEACCESS.CURRENT_DIALOGUE != null && DIALOGUEACCESS.CURRENT_DIALOGUE.Source != "")
+		{
+			DIALOGUE.Dialogue(DIALOGUEACCESS.CURRENT_DIALOGUE.Speaker, DIALOGUEACCESS.CURRENT_DIALOGUE.Dialogue, "res://resources/textures/sprites/guide/1.svg");	
+		}
+
+		else
+		{
+			DIALOGUE.Dialogue("Narrator", "There is no source for this piece of dialogue",
+				"res://resources/textures/sprites/guide/1.svg");
+		}
+	}
+
+
+
 	/**
 	* ----------------------------------------------------------------
 	* Handlers for enabling and disabling event circles
@@ -129,6 +148,8 @@ public partial class InteractCircles : Node3D
 	//A handler for passing in the jsonhandler by string
 	public void DialogueByString(string DialogueStructName)
 	{
+		SCENESTATEACCESS.PlayerStatus = SceneState.StatusOfPlayer.InDialogue;
+
 		switch (DialogueStructName) {
 			case "Yvonne":
 				DIALOGUE.Dialogue(DIALOGUEACCESS.Speech.Stonewall_Yvonne);
@@ -161,6 +182,7 @@ public partial class InteractCircles : Node3D
 	// Handles on circle click
 	public async void CirclesPressed(String path)
 	{
+		GD.PrintErr("actually calling circ pressed.");
 		// Circles init stuff
 		CirclesInit();
 
@@ -171,7 +193,7 @@ public partial class InteractCircles : Node3D
 		
 		//Gets meta description of button clicked 
 		var description = (Godot.Collections.Dictionary<string, string>)GetNode<ButtonOverwrite>(path).GetMeta("Description");
-
+		
 		// Validates the description
 		ValidateDescription(description);
 
@@ -182,16 +204,15 @@ public partial class InteractCircles : Node3D
 		if (!DIALOGUE.Speech_Overlay.Visible) {
 			DIALOGUE.SwapOverlay();
 		}
-
 		//toggles the speech gui
 		DIALOGUE.Visible = true; 
-
+		
 		//Awaits the dialogue progression
 		await ToSignal(DIALOGUE, "LookProgress");
-
+		
 		// Swap back to free-roam view
 		DIALOGUE.SwapOverlay();
-
+		
 		//If the camera isn't moved
 		if (GetNode<ButtonOverwrite>(path).GetMeta("NewCamPos").AsVector3() == Vector3.Zero)
 		{
@@ -200,13 +221,13 @@ public partial class InteractCircles : Node3D
 				//Swaps back to dialogue mode
 				SCENESTATEACCESS.PlayerStatus = SCENESTATEACCESS.PreviousState;
 			}
-
+		
 			//If tutorial
 			if (SCENESTATEACCESS.sceneState == SceneState.CurrentSceneState.Tutorial)
 			{
 				// Swap back to gui view
 				DIALOGUE.SwapOverlay();
-
+		
 				SCENESTATEACCESS.PlayerStatus = SceneState.StatusOfPlayer.InDialogue; //swaps the status to in dialogue
 				DIALOGUE.SkipDialogue(); //skips dialogue
 			}
@@ -244,17 +265,17 @@ public partial class InteractCircles : Node3D
 	//A function to validate the description metadata
 	private void ValidateDescription(Dictionary<string, string> description) {
 		try {
-			//If has key then shows dialogue, if not, then break
-			if (description.ContainsKey(SCENESTATEACCESS.CurrentStateAsString()))
-			{
-				if (this.GetParent().Name != "IntroductionScene")
-				{
-					DIALOGUE.SwapOverlay();
-				}
-
-				DIALOGUE.Dialogue(PLAYERDATA.Player.Name, description[SCENESTATEACCESS.CurrentStateAsString()], string.Format(PLAYER_AVATAR, PLAYERDATA.Player.Avatar));
-			}
-
+			// If has key then shows dialogue, if not, then break
+			 if (description.ContainsKey(SCENESTATEACCESS.CurrentStateAsString()))
+			 {
+			 	if (this.GetParent().Name != "IntroductionScene")
+			 	{
+			 		DIALOGUE.SwapOverlay();
+			 	}
+			
+			 	DIALOGUE.Dialogue(PLAYERDATA.Player.Name, description[SCENESTATEACCESS.CurrentStateAsString()], string.Format(PLAYER_AVATAR, PLAYERDATA.Player.Avatar));
+			 }
+			
 			//Breaks out the function if it doesn't have the key
 			else
 			{
@@ -263,7 +284,7 @@ public partial class InteractCircles : Node3D
 					//Swaps back to dialogue mode
 					SCENESTATEACCESS.PlayerStatus = SCENESTATEACCESS.PreviousState;
 				}
-
+			
 				else
 				{
 					SCENESTATEACCESS.PlayerStatus = SceneState.StatusOfPlayer.FreeRoam; //swaps the status to in dialogue
@@ -284,6 +305,12 @@ public partial class InteractCircles : Node3D
 	* ----------------------------------------------------------------
 	**/
 
+	//Returns current button gameobject from path
+	public ButtonOverwrite ReturnCurrentButton()
+	{
+		return GetNode<ButtonOverwrite>(SCENESTATEACCESS.CURRENT_PATH_CIRCLES);
+	}
+	
 	//On back button click
 	// Returns to camera origin
 	private void OnBackPressed()

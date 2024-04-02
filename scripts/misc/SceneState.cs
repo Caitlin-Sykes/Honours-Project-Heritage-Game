@@ -50,7 +50,6 @@ public partial class SceneState : Node {
 
 	public Cameras.Direction PREVIOUS_DIR;
 
-
 	public string CurrentObjective; //the current objective
 
 }

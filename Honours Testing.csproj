@@ -4,4 +4,10 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <RootNamespace>HonoursTesting</RootNamespace>
   </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove=".idea\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Remove=".idea\**" />
+  </ItemGroup>
 </Project>

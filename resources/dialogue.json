@@ -517,62 +517,85 @@
     {
       "Id": "6",
       "Speaker": "Mum",
-      "Dialogue": "One of the things she was most known for, was for when she climbed on top of a fountain, a month to the day after the riot. Whats she did was share a message to encourage people to 'come out of the shadows and walk in the sunshine'",
+      "Dialogue": "One of the things she was most known for, was for when she climbed on top of a fountain, a month to the day after the riot. What she did was share a message to encourage people to 'come out of the shadows and walk in the sunshine'",
       "Avatar": "res://resources/textures/sprites/mother/{0}.svg",
       "Source": "https://www.bbc.co.uk/news/world-us-canada-48643756"
+    }
+  ],
+
+  "Stonewall_Leitsch": [
+    {
+      "Id": "1",
+      "Speaker": "{0}",
+      "Dialogue": "So if the other two were involved in Stonewall, was this person involved in Stonewall?",
+      "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
+    },
+
+    {
+      "Id": "2",
+      "Speaker": "Mum",
+      "Dialogue": "Ah, that's Dick Leitsch. He was the leader of something called the Mattachine Society.",
+      "Avatar": "res://resources/textures/sprites/mother/{0}.svg",
+      "Source": "https://makinggayhistory.com/podcast/dick-leitsch/"
+    },
+
+    {
+      "Id": "3",
+      "Speaker": "{0}",
+      "Dialogue": "What's that? I remember seeing something outside that had their name on it... kind of like a Manifesto.",
+      "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
+    },
+    {
+      "Id": "4",
+      "Speaker": "Mum",
+      "Dialogue": "The Mattachine Society as it came to be known, was one of the earliest movements regarding LGBTQ+ rights. The period of time in which they operated was known as the 'Homophile Movement'",
+      "Avatar": "res://resources/textures/sprites/mother/{0}.svg",
+      "Source": "https://guides.loc.gov/lgbtq-studies/before-stonewall/mattachine"
+    },
+
+    {
+      "Id": "5",
+      "Speaker": "{0}",
+      "Dialogue": "Oh? So what was their involvement with Stonewall then?",
+      "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
+    },
+
+    {
+      "Id": "6",
+      "Speaker": "Mum",
+      "Dialogue": "He was in a relationship with one of the main participants of the Stonewall Riots, someone by the name of Craig Rodwell, who owned a fairly famous bookshop by the name of the Oscar Wilde Bookshop.",
+      "Avatar": "res://resources/textures/sprites/mother/{0}.svg",
+      "Source": "https://makinggayhistory.com/podcast/dick-leitsch/"
     },
 
     {
       "Id": "7",
       "Speaker": "{0}",
-      "Dialogue": "",
+      "Dialogue": "So... what did Dick and Craig do then?",
       "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
     },
 
     {
       "Id": "8",
       "Speaker": "Mum",
-      "Dialogue": "",
+      "Dialogue": "They were both present at Stonewall on the nights of the event, and key to the first marches and protests regarding equal rights. Dick participated in one of the earliest acts of protest, a sit in where they would announce that they were gay, waited to be told to leave, and then sue the owners.",
       "Avatar": "res://resources/textures/sprites/mother/{0}.svg",
-      "Source": "https://www.theguardian.com/lifeandstyle/2019/jun/19/stonewall-50th-anniversary-night-that-unleashed-gay-liberation"
+      "Source": "https://en.wikipedia.org/wiki/Dick_Leitsch"
     },
 
     {
       "Id": "9",
-      "Speaker": "{0}",
-      "Dialogue": "",
-      "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
+      "Speaker": "Mum",
+      "Dialogue": "They did a lot of other things for the LGBTQ+- in fact, it might be a little long to talk about now. But they contributed a lot, especially here in 1969, but really, all throughout the 1960's",
+      "Avatar": "res://resources/textures/sprites/mother/{0}.svg",
+      "Source": "https://www.history.com/news/stonewall-riots-facts-gay-rights-lgbt"
     },
 
     {
       "Id": "10",
-      "Speaker": "Mum",
-      "Dialogue": "",
-      "Avatar": "res://resources/textures/sprites/mother/{0}.svg",
-      "Source": "https://search.library.wisc.edu/catalog/9913010402402121"
-    },
-
-    {
-      "Id": "11",
       "Speaker": "{0}",
-      "Dialogue": "",
+      "Dialogue": "Alright Mum, guess I'll keep looking around then.",
       "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
-    },
-
-    {
-      "Id": "12",
-      "Speaker": "Mum",
-      "Dialogue": "",
-      "Avatar": "res://resources/textures/sprites/mother/{0}.svg",
-      "Source": "https://search.library.wisc.edu/catalog/9913010402402121"
-    },
-
-    {
-      "Id": "13",
-      "Speaker": "{0}",
-      "Dialogue": "",
-      "Avatar": "res://resources/textures/sprites/main_char/{0}.svg",
-      "Source": "https://www.history.com/news/how-the-mob-helped-establish-nycs-gay-bar-scene"
     }
   ],
 

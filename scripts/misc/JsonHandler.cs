@@ -10,6 +10,7 @@ public partial class JsonHandler : Node
 
 	public DialogueStruct Speech; //Holds all speech for the game
 
+	public DialogueStructData CURRENT_DIALOGUE; //for storing the current bit of dialogue
 	public override void _Ready() {
 		PreLoadDialogue();
 	}
@@ -76,6 +77,15 @@ public partial class JsonHandler : Node
 	//A class to contain the variables to store dialogue read in from Dialogue.Json
 	public class DialogueStructData
 	{
+		public DialogueStructData(string id, string speaker, string dialogue, string avatar, string source)
+		{
+			Id = id;
+			Speaker = speaker;
+			Dialogue = dialogue;
+			Avatar = avatar;
+			Source = source;
+
+		}
 		[JsonPropertyName("Id")]
 
 		public string Id { get; set; }

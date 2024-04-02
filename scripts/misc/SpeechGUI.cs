@@ -21,6 +21,9 @@ public partial class SpeechGUI : Control
 	public CanvasLayer Speech_Overlay; //node to hold instance of overlay
 
 	public CanvasLayer Active_Canvas_Layer;
+	
+	private JsonHandler DIALOGUEACCESS; //accesses the singleton for the dialogue json
+
 
 	[Signal]
 	public delegate void DialogueProgressEventHandler(); //handler for progressing scene text
@@ -45,6 +48,7 @@ public partial class SpeechGUI : Control
 		SCENESTATEACCESS = GetNode<SceneState>("/root/SceneStateSingleton"); //accesses the singleton for the scene state
 		EVENTDICT = GetNode<EventDict>("/root/EventDict"); //accesses the singleton for the scene state
 		PLAYERDATA = GetNode<PlayerData>("/root/PlayerData"); //accesses the singleton for the scene state
+		DIALOGUEACCESS = GetNode<JsonHandler>("/root/DialogueImport"); //accesses the singleton for the dialogue json
 
 
 		CAMERAS = GetNode<Cameras>("../../../Cameras"); //Gets camera and animation nodes
@@ -132,23 +136,27 @@ public partial class SpeechGUI : Control
 	public async void Dialogue(JsonHandler.DialogueStructData[] Scene)
 	{
 		bool hiddenBefore = false;
-		GD.Print("Scene is: " + Scene);
-		GD.Print("PlayerStatus: " + SCENESTATEACCESS.PlayerStatus);
-		
 		//Skips the whole thing if the speech overlay isn't visible
 		if (Scene != null && SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.InDialogue)
 		{
-			GD.Print("Got in the loop correctly");
-
-			if (!Speech_Overlay.Visible) {
-				SwapOverlay();
+			if (!Speech_Overlay.Visible)
+			{
+				GD.Print("overlya not vld");
+				//Checks if speech dialogue overlay is vis, swaps it if not
+				ValidOverlay();
+				ValidGUI();
 				hiddenBefore = true;
 			}
 
 			//For every bit of speech in the scene
 			foreach (var Speech in Scene)
 			{
-				SetConversation(string.Format(Speech.Speaker, PLAYERDATA.Player.Name), string.Format(Speech.Dialogue, PLAYERDATA.Player.Name), string.Format(Speech.Avatar, PLAYERDATA.Player.Avatar));
+				//Gets current bit of dialogue and saves to a variable
+				DIALOGUEACCESS.CURRENT_DIALOGUE = new JsonHandler.DialogueStructData(Speech.Id, Speech.Speaker,
+					Speech.Dialogue, Speech.Avatar, Speech.Source);
+				SetConversation(string.Format(Speech.Speaker, PLAYERDATA.Player.Name),
+					string.Format(Speech.Dialogue, PLAYERDATA.Player.Name),
+					string.Format(Speech.Avatar, PLAYERDATA.Player.Avatar));
 				await ToSignal(this, "DialogueProgress");
 
 
@@ -157,14 +165,16 @@ public partial class SpeechGUI : Control
 			if (hiddenBefore)
 			{
 				SwapOverlay();
+				ToggleGUIVisible();
 				SCENESTATEACCESS.PlayerStatus = SceneState.StatusOfPlayer.LookingAtSomething;
 			}
 		}
 
-		// else
-		// {
-		// 	throw new System.InvalidOperationException("Error: something has gone wrong with parsing the dialogue.json");
-		// }
+		else
+		{
+			throw new System.InvalidOperationException(
+				"Error: something has gone wrong with parsing the dialogue.json");
+		}
 	}
 
 	//Handles the dialogue if you pass in the Scene. This version handles triggering events at certain IDs
@@ -177,6 +187,9 @@ public partial class SpeechGUI : Control
 			//For every bit of speech in the scene
 			foreach (var Speech in Scene)
 			{
+				//Gets current bit of dialogue and saves to a variable
+				DIALOGUEACCESS.CURRENT_DIALOGUE = new JsonHandler.DialogueStructData(Speech.Id, Speech.Speaker,
+					Speech.Dialogue, Speech.Avatar, Speech.Source);
 				if (EVENTDICT.CheckIfSceneTrigger(name, Speech.Id))
 				{
 					switch (name)
@@ -220,25 +233,18 @@ public partial class SpeechGUI : Control
     //Just displays
     public async void Dialogue(String name, String description, string avatar)
 	{
+		ValidOverlay();
+		ValidGUI();
+		
 		SetConversation(name, description, avatar);
-
-		if (SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam)
-		{
-			await ToSignal(this, "SceneProgress");
-		}
-
-		else if (SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.InDialogue)
-		{
-			await ToSignal(this, "DialogueProgress");
-		}
 	}
 
 	//For source display
 	public async void Dialogue(Dictionary<string, string> extraInfo)
 	{
-
-		//Swaps overlay 
-		SwapOverlay();
+		//Checks if speech dialogue overlay is vis, swaps it if not
+		ValidOverlay();
+		ValidGUI();
 
 		// Sets the player name and avatar
 		SetNameNode(PLAYERDATA.Player.Name);
@@ -247,7 +253,6 @@ public partial class SpeechGUI : Control
 		//if meta is not null
 		if (extraInfo is not null)
 		{
-
 			//foreach key in the extraInfo dict, show the dialogue and await progression signal
 			foreach (string key in extraInfo.Keys)
 			{
@@ -259,14 +264,34 @@ public partial class SpeechGUI : Control
 
 		//Hides dialogue again
 		SwapOverlay();
+
+		if (CIRCLES.ReturnCurrentButton().GetParent().Name == "Settings")
+		{
+			GD.PrintErr("Got into the if statement cause parent is Settings");
+			//Hides gui
+			ToggleGUIVisible();
+			//SwapsOverlay
+			SwapOverlay();
+			GD.Print("Should have executed *something*");
+		}
 	}
 
+	//Forces SpeechOverlay to be active
 	private void ValidOverlay()
 	{
 		if (!Speech_Overlay.Visible)
 		{
 			Speech_Overlay.Visible = true;
-			Select_Items.Visible = false;
+			Active_Canvas_Layer.Visible = false;
+		}
+	}
+
+	//Forces GUI display to be visible
+	private void ValidGUI()
+	{
+		if (!this.Visible)
+		{
+			ToggleGUIVisible();
 		}
 	}
 	/**
@@ -296,11 +321,9 @@ public partial class SpeechGUI : Control
 	}
 
 	//Shows the current objective of the player
-	public void ShowObjective()
+	public async void ShowObjective()
 	{
-		SetNameNode("Guide");
-		SetAvatarNode("res://resources/textures/sprites/guide/1.svg");
-		SetSpeechNode(SCENESTATEACCESS.CurrentObjective);
+		Dialogue("Guide", SCENESTATEACCESS.CurrentObjective,"res://resources/textures/sprites/guide/1.svg");
 	}
 
 	/**

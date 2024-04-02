@@ -57,10 +57,15 @@ public partial class Controls : Node3D
             CIRCLES.ShowExtraInformation();
         }
 
-        //Shows sources
+        //Shows sources if looking at something
         else if (Input.IsKeyPressed(Key.K) && @event.IsPressed() && SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.LookingAtSomething)
         {
             CIRCLES.ShowSources();
+        }
+        
+        else if (Input.IsKeyPressed(Key.K) && @event.IsPressed() && SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.InDialogue)
+        {
+            CIRCLES.ShowDialogueSources();
         }
 
         //Reminds player what to do
@@ -83,7 +88,7 @@ public partial class Controls : Node3D
         //If trigger is left click
         if (@evnt is InputEventMouseButton mouse && SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam && mouse.ButtonIndex == MouseButton.Left && @evnt.IsPressed()) {
                     OnUpArrow();
-                }
+        }
     }
 
     // A function to handle Up arrow movement, prompted by the W key
@@ -104,7 +109,7 @@ public partial class Controls : Node3D
         //If trigger is left click
         if (@evnt is InputEventMouseButton mouse && SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam && mouse.ButtonIndex == MouseButton.Left && @evnt.IsPressed()) {
                     OnRightArrow();
-                }
+        }
     }
 
     
@@ -124,7 +129,7 @@ public partial class Controls : Node3D
         //If trigger is left click
         if (@evnt is InputEventMouseButton mouse && SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam && (mouse.ButtonIndex == MouseButton.Left && @evnt.IsPressed())) {
                     OnDownArrow();
-                }
+        }
     }
 
     
@@ -145,7 +150,7 @@ public partial class Controls : Node3D
         //If trigger is left click
         if (@evnt is InputEventMouseButton mouse && SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam && mouse.ButtonIndex == MouseButton.Left && @evnt.IsPressed()) {
                     OnLeftArrow();
-                }
+        }
     }
 
     

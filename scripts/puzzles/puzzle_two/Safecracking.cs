@@ -81,6 +81,7 @@ public partial class Safecracking : Control
             beepReject.Play();
             PinScreen.Text = "*Pin = 4*";
             SCENESTATEACCESS.PlayerStatus = SceneState.StatusOfPlayer.InDialogue;
+
             CIRCLES_TWO.DialogueByString("Safe_Incorrect_TMD");
         }
     }
@@ -89,30 +90,34 @@ public partial class Safecracking : Control
     private void OnSubmitButton()
     {
 
-        //If the code and array match exactly (inc. length)
-        if (code.SequenceEqual(attempt))
+        if (attempt.Count != 0)
         {
-            PinScreen.Text = "*Opening*";
-            beepAccept.Play();
-            //PuzzleAnswer();
-        }
+            //If the code and array match exactly (inc. length)
+            if (code.SequenceEqual(attempt))
+            {
+                PinScreen.Text = "*Opening*";
+                beepAccept.Play();
+                //PuzzleAnswer();
+            }
+        
+            else
+            {
+                // Displays wrong pin to screen
+                PinScreen.Text = "*Wrong Pin*";
 
-        else
-        {
-            // Displays wrong pin to screen
-            PinScreen.Text = "*Wrong Pin*";
-
-            SCENESTATEACCESS.PlayerStatus = SceneState.StatusOfPlayer.InDialogue;
-            // Plays dialogue for wrong pin
-            CIRCLES_TWO.DialogueByString("Safe_Incorrect_WrongCode");
+                SCENESTATEACCESS.PlayerStatus = SceneState.StatusOfPlayer.InDialogue;
+                
+                // Plays dialogue for wrong pin
+                CIRCLES_TWO.DialogueByString("Safe_Incorrect_WrongCode");
             
-            // Plays reject noise
-            beepReject.Play();
+                // Plays reject noise
+                beepReject.Play();
 
-            //Clears the submitted array
-            attempt = new List<int>();
+                //Clears the submitted array
+                attempt = new List<int>();
+            }
+
         }
-
     }
 
     //A function that when called, clears the numbers entered
