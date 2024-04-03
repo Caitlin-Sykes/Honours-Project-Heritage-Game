@@ -161,12 +161,12 @@ public partial class Stonewall : Node
 
 		// Hides the back button
 		CIRCLES.ToggleBackButton();
-		// CIRCLES_OTHER.ToggleBackButton();
+		CIRCLES.HideMasterPuzzle();
 
 		// Toggles the secondary item overlay and disables the second one
 		DIALOGUE.DisableSecondaryItemOverlay();
-		DIALOGUE.Active_Canvas_Layer.Visible = false;
-		DIALOGUE.Select_Items.Visible = true;
+		DIALOGUE.Active_Canvas_Layer.Visible = true;
+		DIALOGUE.Select_Items_Second.Visible = false;
 
 		// Enables the events
 		CAMERAS.EnableEvents = true;

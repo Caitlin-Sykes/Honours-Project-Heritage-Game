@@ -39,9 +39,9 @@ public partial class SpeechGUI : Control
 	private EventDict EVENTDICT; //accesses the singleton for the event dict
 
 	private PlayerData PLAYERDATA; //accesses the singleton for the PLAYERDATA
-
-
-
+	
+	public bool CalledOutwidthDialogue = false; //determines whether extra steps are needed
+	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -141,7 +141,7 @@ public partial class SpeechGUI : Control
 		{
 			if (!Speech_Overlay.Visible)
 			{
-				GD.Print("overlya not vld");
+				GD.Print("hidden b4");
 				//Checks if speech dialogue overlay is vis, swaps it if not
 				ValidOverlay();
 				ValidGUI();
@@ -154,12 +154,10 @@ public partial class SpeechGUI : Control
 				//Gets current bit of dialogue and saves to a variable
 				DIALOGUEACCESS.CURRENT_DIALOGUE = new JsonHandler.DialogueStructData(Speech.Id, Speech.Speaker,
 					Speech.Dialogue, Speech.Avatar, Speech.Source);
-				SetConversation(string.Format(Speech.Speaker, PLAYERDATA.Player.Name),
+					SetConversation(string.Format(Speech.Speaker, PLAYERDATA.Player.Name),
 					string.Format(Speech.Dialogue, PLAYERDATA.Player.Name),
 					string.Format(Speech.Avatar, PLAYERDATA.Player.Avatar));
 				await ToSignal(this, "DialogueProgress");
-
-
 			}
 
 			if (hiddenBefore)
@@ -167,6 +165,11 @@ public partial class SpeechGUI : Control
 				SwapOverlay();
 				ToggleGUIVisible();
 				SCENESTATEACCESS.PlayerStatus = SceneState.StatusOfPlayer.LookingAtSomething;
+			}
+
+			else
+			{
+				GD.Print("not hidden b4");
 			}
 		}
 
@@ -237,6 +240,32 @@ public partial class SpeechGUI : Control
 		ValidGUI();
 		
 		SetConversation(name, description, avatar);
+		
+		//If its called outwidth dialogue, do these extra steps
+		if (CalledOutwidthDialogue)
+		{
+			GD.Print("Not called in dialogue");
+			CalledOutwidthDialogue = false;
+			
+			if (SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.InDialogue)
+			{
+				await ToSignal(this,"DialogueProgress");
+			}
+
+			else if (SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam)
+			{
+				await ToSignal(this,"SceneProgress");
+			}
+
+			else if (SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.LookingAtSomething)
+			{
+				await ToSignal(this,"LookProgress");
+			}			
+			
+			GD.Print("acter signal");
+			Speech_Overlay.Visible = false;
+			Active_Canvas_Layer.Visible = true;
+		}
 	}
 
 	//For source display
@@ -281,6 +310,7 @@ public partial class SpeechGUI : Control
 	{
 		if (!Speech_Overlay.Visible)
 		{
+			GD.Print("forcing overlay to be vis");
 			Speech_Overlay.Visible = true;
 			Active_Canvas_Layer.Visible = false;
 		}
@@ -291,6 +321,7 @@ public partial class SpeechGUI : Control
 	{
 		if (!this.Visible)
 		{
+			GD.Print("forcing it to be visiblke");
 			ToggleGUIVisible();
 		}
 	}
@@ -307,23 +338,28 @@ public partial class SpeechGUI : Control
 		if (@evnt is InputEventMouseButton && @evnt.IsPressed() && SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.InDialogue)
 		{
 			EmitSignal("DialogueProgress");
+			GD.Print("DialogueProgress");
 		}
 
 		else if (@evnt is InputEventMouseButton && @evnt.IsPressed() && SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam)
 		{
 			EmitSignal("SceneProgress");
+			GD.Print("SceneProgress");
+
 		}
 
 		else if (@evnt is InputEventMouseButton && @evnt.IsPressed() && SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.LookingAtSomething)
 		{
 			EmitSignal("LookProgress");
+			GD.Print("LookProgress");
+
 		}
 	}
 
 	//Shows the current objective of the player
-	public async void ShowObjective()
+	public void ShowObjective()
 	{
-		Dialogue("Guide", SCENESTATEACCESS.CurrentObjective,"res://resources/textures/sprites/guide/1.svg");
+		Dialogue("Guide", SCENESTATEACCESS.CurrentObjective, "res://resources/textures/sprites/guide/1.svg");
 	}
 
 	/**

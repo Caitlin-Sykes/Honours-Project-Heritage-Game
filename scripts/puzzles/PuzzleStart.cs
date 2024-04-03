@@ -85,7 +85,6 @@ public partial class PuzzleStart : Control
 	//Handlers all the clickable components
 	public void EnableAllCircleComponents(String path)
 	{
-
 		Control components = GetNode<Control>(path);
 
 		//Toggles visibility of the parent node

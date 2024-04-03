@@ -16,9 +16,7 @@ public partial class Controls : Node3D
     private SpeechGUI DIALOGUE; //Instance of SpeechGUI
 
     private SceneState SCENESTATEACCESS; //accesses the singleton for the scenestate
-
-
-
+    
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
 	{
@@ -70,8 +68,9 @@ public partial class Controls : Node3D
 
         //Reminds player what to do
          else if (Input.IsKeyPressed(Key.L) && @event.IsPressed())
-        {
-            DIALOGUE.ShowObjective();
+         { 
+             DIALOGUE.CalledOutwidthDialogue = true; 
+             DIALOGUE.ShowObjective();
         }
 
     }

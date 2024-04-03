@@ -126,6 +126,12 @@ public partial class InteractCircles : Node3D
 			GD.PrintErr("Cannot find the circle to be disabled. Is the object correct? Specific Error is: " + e.Message);
 		}
 	}
+	
+	//Hides a specific puzzle
+	public void HideMasterPuzzle()
+	{
+		GetNode<Control>("Select_Items/Settings/Puzzles").Visible = false;
+	}
 
 	//Enables/Disables a specific event circle by path
 	public void ToggleSpecificDirectionPath(string cirPath)
@@ -152,12 +158,15 @@ public partial class InteractCircles : Node3D
 
 		switch (DialogueStructName) {
 			case "Yvonne":
+				DIALOGUE.Speech_Overlay.Visible = false;
 				DIALOGUE.Dialogue(DIALOGUEACCESS.Speech.Stonewall_Yvonne);
 				return;
 			case "Martha":
+				DIALOGUE.Speech_Overlay.Visible = false;
 				DIALOGUE.Dialogue(DIALOGUEACCESS.Speech.Stonewall_Martha);
 				return;
 			case "Leitsch":
+				DIALOGUE.Speech_Overlay.Visible = false;
 				DIALOGUE.Dialogue(DIALOGUEACCESS.Speech.Stonewall_Leitsch);
 				return;
 			case "Safe_Incorrect_WrongCode":
@@ -182,7 +191,6 @@ public partial class InteractCircles : Node3D
 	// Handles on circle click
 	public async void CirclesPressed(String path)
 	{
-		GD.PrintErr("actually calling circ pressed.");
 		// Circles init stuff
 		CirclesInit();
 
