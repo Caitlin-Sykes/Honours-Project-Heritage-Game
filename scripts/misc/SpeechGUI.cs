@@ -260,11 +260,19 @@ public partial class SpeechGUI : Control
 			else if (SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.LookingAtSomething)
 			{
 				await ToSignal(this,"LookProgress");
-			}			
+			}
+
+			//If not the intro cam
+			if (GetViewport().GetCamera3D().Name != "IntroCam")
+			{
+				Speech_Overlay.Visible = false;
+				Active_Canvas_Layer.Visible = true;
+			}
+			else
+			{
+				this.Visible = false;
+			}
 			
-			GD.Print("acter signal");
-			Speech_Overlay.Visible = false;
-			Active_Canvas_Layer.Visible = true;
 		}
 	}
 
@@ -321,7 +329,6 @@ public partial class SpeechGUI : Control
 	{
 		if (!this.Visible)
 		{
-			GD.Print("forcing it to be visiblke");
 			ToggleGUIVisible();
 		}
 	}

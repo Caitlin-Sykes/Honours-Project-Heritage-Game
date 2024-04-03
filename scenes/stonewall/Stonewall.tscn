@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://cdavvdbwlrmxm"]
+[gd_scene load_steps=39 format=3 uid="uid://cdavvdbwlrmxm"]
 
 [ext_resource type="Script" path="res://scripts/stonewall/Stonewall.cs" id="1_lwk4g"]
 [ext_resource type="Script" path="res://scripts/misc/Transitions.cs" id="2_xig76"]
@@ -24,6 +24,7 @@
 [ext_resource type="AudioStream" uid="uid://d0su6xkka23m2" path="res://resources/audio/soundeffects/beepReject.mp3" id="18_byt6u"]
 [ext_resource type="PackedScene" uid="uid://cxiyifxmaaurk" path="res://resources/models/stonewall/stonewall.blend" id="19_tt755"]
 [ext_resource type="Script" path="res://scripts/puzzles/puzzle_two/Safecracking.cs" id="20_2s2lp"]
+[ext_resource type="AudioStream" uid="uid://e8bg7v1buqm" path="res://resources/audio/gui/ClickButton.mp3" id="20_x4cic"]
 [ext_resource type="Script" path="res://scripts/misc/ButtonOverwrite.cs" id="21_476oy"]
 
 [sub_resource type="Animation" id="Animation_7a53q"]
@@ -1480,7 +1481,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="c1" type="TextureButton" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/Components"]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.65
@@ -1517,7 +1517,7 @@ metadata/Description = {
 }
 
 [node name="ClickButton" type="AudioStreamPlayer2D" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/Components/c1"]
-stream = ExtResource("17_ina5q")
+stream = ExtResource("20_x4cic")
 
 [node name="c2" type="TextureButton" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/Components"]
 visible = false
@@ -1551,7 +1551,7 @@ metadata/Sources = {
 metadata/CamRotation = Vector3(0, 0, 0)
 
 [node name="ClickButton" type="AudioStreamPlayer2D" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/Components/c2"]
-stream = ExtResource("17_ina5q")
+stream = ExtResource("20_x4cic")
 
 [node name="2" parent="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont" instance=ExtResource("5_biifr")]
 visible = false
@@ -3196,8 +3196,8 @@ transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, -3.72
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c5" to="InteractableItems" method="ToggleSpecificDirectionPath"]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c6" to="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South" method="PuzzleAnswer"]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/3" to="." method="MoveToSafeSide"]
-[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/Components/c1" to="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/West" method="OnButtonPress"]
-[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/Components/c2" to="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/West" method="OnButtonPress"]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/Components/c1" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/Components/c1"]]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/Components/c2" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/Components/c2"]]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/2" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/2"]]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/2" to="InteractableItems/Select_Items/Settings/Puzzles" method="ToggleSpecificCircleVisibility" binds= ["PuzzlesPanel/West/PuzzleCont/2"]]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/2" to="InteractableItems/Select_Items/Settings/Puzzles" method="EnableAllCircleComponents" binds= ["PuzzlesPanel/West/PuzzleCont/Components"]]
