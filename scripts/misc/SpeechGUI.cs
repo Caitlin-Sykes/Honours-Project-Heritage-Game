@@ -268,9 +268,20 @@ public partial class SpeechGUI : Control
 				Speech_Overlay.Visible = false;
 				Active_Canvas_Layer.Visible = true;
 			}
+			
 			else
 			{
-				this.Visible = false;
+				if (SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.LookingAtSomething)
+				{
+					GD.Print("lookin at smth");
+					Active_Canvas_Layer.Visible = true;
+					Speech_Overlay.Visible = false;
+				}
+
+				else
+				{
+					this.Visible = false;
+				}
 			}
 			
 		}
@@ -305,11 +316,10 @@ public partial class SpeechGUI : Control
 		if (CIRCLES.ReturnCurrentButton().GetParent().Name == "Settings")
 		{
 			GD.PrintErr("Got into the if statement cause parent is Settings");
-			//Hides gui
-			ToggleGUIVisible();
+	
 			//SwapsOverlay
-			SwapOverlay();
-			GD.Print("Should have executed *something*");
+			Active_Canvas_Layer.Visible = true;
+			Speech_Overlay.Visible = false;
 		}
 	}
 

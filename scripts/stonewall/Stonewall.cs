@@ -55,8 +55,8 @@ public partial class Stonewall : Node
 		DIALOGUE.Dialogue(DIALOGUEACCESS.Speech.Stonewall_Dialogue, "Stonewall_Dialogue");
 		DIALOGUE.ToggleGUIVisible();
 
-		//Sets Camera Normal to enabled
-		CAMERAS.state = Cameras.State.Enabled;
+		//Sets Camera Normal to disabled
+		CAMERAS.state = Cameras.State.Disabled;
 
 	}
 
@@ -101,6 +101,8 @@ public partial class Stonewall : Node
 
 		DIALOGUE.ToggleGUIVisible();
 		CAMERAS.ToggleEvents();
+		CAMERAS.state = Cameras.State.Enabled; //enables that cameras
+
 
 		SCENESTATEACCESS.CurrentObjective = "Explore the inside of Stonewall";
 		SCENESTATEACCESS.PlayerStatus = SceneState.StatusOfPlayer.InDialogue;
