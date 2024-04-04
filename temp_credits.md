@@ -54,4 +54,6 @@ https://americanarchive.org/catalog/cpb-aacip_15-pr7mp4wr01 - Dick Leitsch, imag
         
         https://joaquimlivraria.files.wordpress.com/2019/06/marthashelley-stonewall.jpg - Martha Shelley, image taken from the credited source. Used in Stonewall
 
+        https://www.glf-foundation.org/timeline
+
     [DICK LEITSCH]

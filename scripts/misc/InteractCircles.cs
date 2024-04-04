@@ -326,7 +326,9 @@ public partial class InteractCircles : Node3D
 		ToggleBackButton(); //hides the back button
 		ResetCam(); //resets camera position
 
-		ToggleParentNode(GetNode<ButtonOverwrite>(SCENESTATEACCESS.CURRENT_PATH_CIRCLES)); //hides the current node		
+		// ToggleParentNode(GetNode<ButtonOverwrite>(SCENESTATEACCESS.CURRENT_PATH_CIRCLES)); //hides the current node
+		// DIALOGUE.Speech_Overlay.Visible = false;
+		// DIALOGUE.Active_Canvas_Layer.Visible = true;
 
 
 		// If not already visible, show.
@@ -362,6 +364,14 @@ public partial class InteractCircles : Node3D
 		}
 		else if (GetTree().CurrentScene.Name == "Stonewall") {
 			DIALOGUE.ToggleGUIVisible();
+			
+			//Rly bad practice, this entire script ideally needs a rewrite
+			if (ReturnCurrentButton().Name == "1" && ReturnCurrentButton().GetMeta("Object").ToString() == "Yvonne" || ReturnCurrentButton().Name == "2" && ReturnCurrentButton().GetMeta("Object").ToString() == "Martha" || ReturnCurrentButton().Name == "3" && ReturnCurrentButton().GetMeta("Object").ToString() == "Leitsch")
+			{
+				DIALOGUE.Speech_Overlay.Visible = false;
+				DIALOGUE.Active_Canvas_Layer.Visible = true;
+				SCENESTATEACCESS.PlayerStatus = SceneState.StatusOfPlayer.FreeRoam;
+			}
 		}
 	}
 

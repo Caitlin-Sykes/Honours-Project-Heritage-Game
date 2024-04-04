@@ -520,6 +520,28 @@
       "Dialogue": "One of the things she was most known for, was for when she climbed on top of a fountain, a month to the day after the riot. What she did was share a message to encourage people to 'come out of the shadows and walk in the sunshine'",
       "Avatar": "res://resources/textures/sprites/mother/{0}.svg",
       "Source": "https://www.bbc.co.uk/news/world-us-canada-48643756"
+    },
+
+    {
+      "Id": "7",
+      "Speaker": "{0}",
+      "Dialogue": "Oh? She seems quite important then, and it's an inspiring message for those who feel persecuted.",
+      "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
+    },
+
+    {
+      "Id": "8",
+      "Speaker": "Mum",
+      "Dialogue": "She was also present at the first meeting of the Gay Liberation Front, being the one to introduce the group and give it, it's name, with each word meaning a different thing.",
+      "Avatar": "res://resources/textures/sprites/mother/{0}.svg",
+      "Source": "https://www.glf-foundation.org/timeline"
+    },
+
+    {
+      "Id": "9",
+      "Speaker": "{0}",
+      "Dialogue": "You really are just a fountain of knowledge, aren't you, Mum?",
+      "Avatar": "res://resources/textures/sprites/main_char/{0}.svg"
     }
   ],
 

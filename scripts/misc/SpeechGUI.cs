@@ -315,8 +315,6 @@ public partial class SpeechGUI : Control
 
 		if (CIRCLES.ReturnCurrentButton().GetParent().Name == "Settings")
 		{
-			GD.PrintErr("Got into the if statement cause parent is Settings");
-	
 			//SwapsOverlay
 			Active_Canvas_Layer.Visible = true;
 			Speech_Overlay.Visible = false;
@@ -328,7 +326,6 @@ public partial class SpeechGUI : Control
 	{
 		if (!Speech_Overlay.Visible)
 		{
-			GD.Print("forcing overlay to be vis");
 			Speech_Overlay.Visible = true;
 			Active_Canvas_Layer.Visible = false;
 		}

@@ -159,18 +159,21 @@ texture_normal = ExtResource("6_f0smn")
 texture_pressed = ExtResource("7_t6h5l")
 metadata/Object = "PosterMassachine"
 metadata/Description = {
-"Stage_1": "This looks like a discarded old poster. What does it say?",
+"Stage_1": "This looks like a discarded old leaflet. What does it say?",
 "Stage_2": "I'm going to tajke another look at what it says before I head in.",
 "Stage_3": "Should. not. Be. possible."
 }
 metadata/Hints = {}
 metadata/ExtraInformation = {
-"Stage_1": "As much as I want to, there's no time for bed right now.",
-"Stage_2": "I'm not going back to bed.",
-"Stage_3": "It's just my bed. There isn't anything particularly exciting."
+"Stage_1": "This leaflet was handed around New York, proceeding the second night of Stonewall, by Craig Rodwell. The version shown is an abridged version",
+"Stage_2": "of the actual leaflet. This leaflet was also posted in a newspaper,",
+"Stage_3": "titled \"Gay Power\", which advertised itself as the first gay newspaper in New York City."
 }
 metadata/Sources = {
-"src": "Image: https://en.wikipedia.org/wiki/File:Get_The_Mafia_and_The_Cops_Out_of_Gay_Bars.jpg"
+"src": "Image: https://en.wikipedia.org/wiki/File:Get_The_Mafia_and_The_Cops_Out_of_Gay_Bars.jpg",
+"srk": "https://hyperallergic.com/838167/the-radical-queer-aesthetics-of-gay-power-magazine/",
+"stv": "Information: https://www.loc.gov/item/sn93023131/",
+"stvcc": "https://web.archive.org/web/20110712032306/http://www.villagevoice.com/2008-06-17/news/before-stonewall/"
 }
 metadata/NewCamPos = Vector3(67.2327, -1.64112, 105.346)
 metadata/CamRotation = Vector3(-90, 0, 0)
@@ -200,14 +203,18 @@ metadata/Description = {
 metadata/Hints = {}
 metadata/ExtraInformation = {
 "Stage_1": "The GLF had branches all over the world, but was founded in the US, shortly after the events of Stonewall.",
-"Stage_2": "Due to disagreements within the society, it ceased operations in 1972.",
-"Stage_3": ""
+"Stage_2": "Due to disagreements within the society, it ceased operations in 1972. Many people turned towards this group, due to them being more forwards in their protesting.",
+"Stage_3": "It reportedly got its name with the following reasoning: \" “Gay” implied the new radical",
+"Stage_4": "out-of-the-closet generation—no longer a quasi-apologetic “homophile group.” “Liberation” implied its broad and radical agenda, a word used at that time by the Women’s, Vietnamese, Black and other freedom movements. “Front” denoted ",
+"Stage_5": "an umbrella coalition uniting a diverse group of lesbian and gay people despite their differences in class, age, gender, race and ethnicity.\" (see source marked \"quote\")"
 }
 metadata/NewCamPos = Vector3(88.502, -0.886894, 104.783)
 metadata/Sources = {
 "src": "Image: Made by Developer",
 "src_2": "Information: https://blogs.lse.ac.uk/lsehistory/2023/04/25/the-gay-liberation-front/",
-"src_3": "http://www.glbtqarchive.com/ssh/gay_liberation_front_S.pdf"
+"src_3": "http://www.glbtqarchive.com/ssh/gay_liberation_front_S.pdf",
+"srf": "https://www.lgbtqhp.org/post/come-out",
+"ss": "Quote: https://www.glf-foundation.org/timeline"
 }
 metadata/CamRotation = Vector3(-90, 0, 0)
 
@@ -235,13 +242,16 @@ metadata/Description = {
 }
 metadata/Hints = {}
 metadata/ExtraInformation = {
-"Stage_1": "The Mattachine Society was an organisation dedicated to gay rights. ",
-"Stage_2": "I'm not going back to bed.",
-"Stage_3": "It's just my bed. There isn't anything particularly exciting."
+"Stage_1": "The Mattachine Society was an organisation dedicated to gay rights. They were originally founded in 1950, founded by someone called Harry Hay.",
+"Stage_2": "The Mattachine Society took heavy inspiration on its structure from the Communist Party, and became one",
+"Stage_3": "of the leading groups that were active during that period of LGBTQ+ campaigning.",
+"Stage_4": "The Mattachine Society aimed to protest through peaceful methods, through both legal methods and political ones. On the night of Stonewall, they wrote this on the window to discourage further riots."
 }
 metadata/NewCamPos = Vector3(79.48, -3.66453, 107.096)
 metadata/Sources = {
-"src": "https://www.history.com/topics/gay-rights/the-stonewall-riots"
+"src": "https://www.history.com/topics/gay-rights/the-stonewall-riots",
+"srk": "https://guides.loc.gov/lgbtq-studies/before-stonewall/mattachine",
+"sss": "https://www.nps.gov/articles/000/mattachine-society.htm"
 }
 metadata/CamRotation = Vector3(0, 0, 0)
 
@@ -794,21 +804,23 @@ grow_horizontal = 2
 grow_vertical = 2
 texture_normal = ExtResource("6_f0smn")
 texture_pressed = ExtResource("7_t6h5l")
-metadata/Object = "YvonneRitter"
+metadata/Object = "Yvonne"
 metadata/Description = {
 "Stage_1": "I'm not too sure who this is.",
 "Stage_2": "This is Yvonne Ritter. I still find the whole \"poster instead of people\" thing weird though...",
-"Stage_3": "I have not implemented this yet."
+"Stage_3": "Yvonne Ritter is an interesting person, I can't believe my grandfather met her."
 }
 metadata/Hints = {}
 metadata/ExtraInformation = {
-"Stage_1": "As much as I want to, there's no time for bed right now.",
-"Stage_2": "I'm not going back to bed.",
-"Stage_3": "It's just my bed. There isn't anything particularly exciting."
+"Stage_1": "Yvonne Ritter was present at Stonewall, it occuring on the night of her 18th birthday.",
+"Stage_2": "She's Transgender, according to my mum, so she was born a male but identifies as a woman, something which was illegal back then.",
+"Stage_3": "The Mafia were heavily involved in places like the Stonewall, providing places for LGBTQ+ people to drink and be who they were without persecution."
 }
 metadata/NewCamPos = Vector3(-9.6948, 1.26392, -0.459455)
 metadata/Sources = {
-"src": "Image: https://s3.amazonaws.com/americanarchive.org/thumbnail/cpb-aacip-15-96k0r7rb.jpg"
+"ee": "https://search.library.wisc.edu/catalog/9913010402402121",
+"src": "Image: https://s3.amazonaws.com/americanarchive.org/thumbnail/cpb-aacip-15-96k0r7rb.jpg",
+"src2": "Information: https://www.theguardian.com/lifeandstyle/2019/jun/19/stonewall-50th-anniversary-night-that-unleashed-gay-liberation"
 }
 metadata/CamRotation = Vector3(0, 0, 0)
 
@@ -830,16 +842,23 @@ texture_normal = ExtResource("6_f0smn")
 texture_pressed = ExtResource("7_t6h5l")
 metadata/Object = "Martha"
 metadata/Description = {
-"Stage_1": "It's my really comfy desk chair.",
-"Stage_2": "The book doesn't seem to be on the chair.",
-"Stage_3": "I'd better put it on the desk, not the chair."
+"Stage_1": "Who is this?",
+"Stage_2": "This is Martha Shelley, someone instrumental to fighting for LGBTQ+ equality.",
+"Stage_3": "n/a"
 }
 metadata/Hints = {}
 metadata/ExtraInformation = {
-"Stage_1": "Apparently, purple chairs are a little hard to come by. I don't know why, purple's a great colour!"
+"Stage_1": "While Martha Shelley didn't participate in Stonewall herself, but she was instrumental in the events which followed it.",
+"Stage_2": "One of the things she is known for, is climbing on top of a fountain, a month to the day after Stonewall, encouraging people to come out ",
+"Stage_3": "of hiding, and to be who they are. She was also the person to introduce",
+"Stage_4": "the Gay Liberation Front as its name, the same meeting where they discussed their aims."
 }
 metadata/NewCamPos = Vector3(-5.05144, 1.26392, -0.459455)
-metadata/Sources = {}
+metadata/Sources = {
+"ss": "https://www.glf-foundation.org/timeline",
+"sstc": " Image: https://joaquimlivraria.files.wordpress.com/2019/06/marthashelley-stonewall.jpg",
+"sw": "Information: https://www.bbc.co.uk/news/world-us-canada-48643756"
+}
 metadata/CamRotation = Vector3(0, 0, 0)
 
 [node name="3" parent="InteractableItems/Select_Items/Settings/Panel/North" instance=ExtResource("5_biifr")]
@@ -3172,11 +3191,11 @@ transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, -3.72
 [connection signal="input_event" from="Cameras/Controls/UI/Down/MarginContainer/Arrows/Up_Arrow_Parent" to="Cameras/Controls" method="OnUpArrow" flags=18]
 [connection signal="input_event" from="Cameras/Controls/UI/Down/MarginContainer/Arrows/Down_Arrow_Parent" to="Cameras/Controls" method="OnDownArrow" flags=18]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/Back_Button/Back" to="InteractableItems" method="OnBackPressed" flags=18]
-[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/North/1" to="InteractableItems" method="DialogueByString" flags=6 binds= ["Yvonne"]]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/North/1" to="InteractableItems" method="DialogueByString" flags=7 binds= ["Yvonne"]]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/North/1" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/North/1"]]
-[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/North/2" to="InteractableItems" method="DialogueByString" flags=6 binds= ["Martha"]]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/North/2" to="InteractableItems" method="DialogueByString" flags=7 binds= ["Martha"]]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/North/2" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/North/2"]]
-[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/North/3" to="InteractableItems" method="DialogueByString" flags=6 binds= ["Leitsch"]]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/North/3" to="InteractableItems" method="DialogueByString" flags=7 binds= ["Leitsch"]]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/North/3" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/North/3"]]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/East/5" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/East/5"]]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/South/1" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/South/1"]]
