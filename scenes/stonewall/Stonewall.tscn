@@ -2873,7 +2873,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture_normal = ExtResource("8_i5weq")
 texture_pressed = ExtResource("9_560b4")
-metadata/Object = "TriggerEvent"
+metadata/Object = "TriggerEventBack"
 metadata/Description = {
 "Stage_1": "Hmm, I wonder what's in here. Maybe something useful? Let's see if I can find the pin..."
 }
@@ -3024,6 +3024,7 @@ transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, -3.72
 [connection signal="pressed" from="InteractableItems2/Select_Items/Settings/Panel/East/2" to="InteractableItems2" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/East/2"]]
 [connection signal="pressed" from="InteractableItems2/Select_Items/Settings/Panel/South/1" to="InteractableItems2" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/South/1"]]
 [connection signal="pressed" from="InteractableItems2/Select_Items/Settings/Panel/South/2" to="InteractableItems2" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/South/2"]]
+[connection signal="pressed" from="InteractableItems2/Select_Items/Settings/Panel/West/2" to="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/West" method="SetCurrentPos"]
 [connection signal="pressed" from="InteractableItems2/Select_Items/Settings/Panel/West/2" to="InteractableItems2" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/West/2"]]
 [connection signal="pressed" from="InteractableItems2/Select_Items/Settings/Panel/West/1" to="InteractableItems2" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/West/1"]]
 [connection signal="pressed" from="InteractableItems2/Select_Items/Settings/Panel/West/3" to="InteractableItems2" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/West/3"]]

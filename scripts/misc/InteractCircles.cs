@@ -374,6 +374,7 @@ public partial class InteractCircles : Node3D
 		{
 			DIALOGUE.SwapOverlay();
 		}
+		// bug fixing function for one complicated scene 
 		else if (GetTree().CurrentScene.Name == "Stonewall") {
 			DIALOGUE.ToggleGUIVisible();
 			
@@ -383,6 +384,14 @@ public partial class InteractCircles : Node3D
 				DIALOGUE.Speech_Overlay.Visible = false;
 				DIALOGUE.Active_Canvas_Layer.Visible = true;
 				SCENESTATEACCESS.PlayerStatus = SceneState.StatusOfPlayer.FreeRoam;
+			}
+			//For one specific broken button where on back it does not go back so needs its own code to fix it
+			else if (ReturnCurrentButton().GetMeta("Object").ToString() == "TriggerEventBack" || ReturnCurrentButton().Name == "2")
+			{
+				DIALOGUE.Select_Items_Second.Visible = true;
+				DIALOGUE.Speech_Overlay.Visible = false;
+				SCENESTATEACCESS.PlayerStatus = SceneState.StatusOfPlayer.FreeRoam;
+				ToggleBackButton();
 			}
 		}
 	}
@@ -396,13 +405,14 @@ public partial class InteractCircles : Node3D
 	//Sets current Camera position
 	public void SetCam(Vector3 pos, Vector3 angle)
 	{
-		Camera3D curCam = GetViewport().GetCamera3D(); //Gets the current active camera
 		
-		PREVIOUS_POS = curCam.Position;
-		PREVIOUS_ANGLE = curCam.RotationDegrees;
+			Camera3D curCam = GetViewport().GetCamera3D(); //Gets the current active camera
 		
-		curCam.Position = pos; //Sets current camera to the position
-		curCam.RotationDegrees = angle; //rotates to the rotation
+			PREVIOUS_POS = curCam.Position;
+			PREVIOUS_ANGLE = curCam.RotationDegrees;
+		
+			curCam.Position = pos; //Sets current camera to the position
+			curCam.RotationDegrees = angle; //rotates to the rotation
 
 	}
 
@@ -417,8 +427,22 @@ public partial class InteractCircles : Node3D
 
 	public void ResetCam() {
 		Camera3D curCam = GetViewport().GetCamera3D(); //Gets the current active camera
-		curCam.Position = PREVIOUS_POS; //Sets current camera to the position
-		curCam.RotationDegrees = PREVIOUS_ANGLE; //rotates to the rotation
+		GD.Print("RESET CAM");
+		if (this.Name == "InteractableItems2" && GetNode<ButtonOverwrite>(SCENESTATEACCESS.CURRENT_PATH_CIRCLES).Name == "2")
+		{
+			GD.Print("two pinged, in int item 2");
+			Safecracking sc = GetNode<Safecracking>("Select_Items/Settings/Puzzles/PuzzlesPanel/West");
+			
+			curCam.Position = sc.BACKUP_POS; //Sets current camera to the position
+			curCam.RotationDegrees = sc.BACKUP_ANGLE; //rotates to the rotation
+			ToggleEventsDirection(GetNode<ButtonOverwrite>("Select_Items/Settings/Panel/West/2"));
+		}
+		else
+		{
+			curCam.Position = PREVIOUS_POS; //Sets current camera to the position
+			curCam.RotationDegrees = PREVIOUS_ANGLE; //rotates to the rotation
+		}
+		
 	}
 
 	/**

@@ -28,6 +28,9 @@ public partial class Safecracking : Control
 
     private ButtonOverwrite redBtn; //to store the main puzzle button
 
+    public Vector3 BACKUP_POS; //for the angle and position in a puzzle
+    public Vector3 BACKUP_ANGLE;
+
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -56,6 +59,15 @@ public partial class Safecracking : Control
 
         //Toggles the specific components of the puzzle
         PUZZLES.EnableAllCircleComponents("PuzzlesPanel/West/PuzzleCont/Components");
+    }
+
+    //Set the very specific position
+    private void SetCurrentPos()
+    {
+        Camera3D curCam = GetViewport().GetCamera3D(); //Gets the current active camera
+		
+        BACKUP_POS = curCam.Position;
+        BACKUP_ANGLE = curCam.RotationDegrees;
     }
 
     /** 

@@ -166,11 +166,6 @@ public partial class SpeechGUI : Control
 				ToggleGUIVisible();
 				SCENESTATEACCESS.PlayerStatus = SceneState.StatusOfPlayer.LookingAtSomething;
 			}
-
-			else
-			{
-				GD.Print("not hidden b4");
-			}
 		}
 
 		else
@@ -244,7 +239,6 @@ public partial class SpeechGUI : Control
 		//If its called outwidth dialogue, do these extra steps
 		if (CalledOutwidthDialogue)
 		{
-			GD.Print("Not called in dialogue");
 			CalledOutwidthDialogue = false;
 			
 			if (SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.InDialogue)
