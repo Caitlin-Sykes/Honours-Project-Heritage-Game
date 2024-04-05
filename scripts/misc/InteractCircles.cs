@@ -386,7 +386,7 @@ public partial class InteractCircles : Node3D
 				SCENESTATEACCESS.PlayerStatus = SceneState.StatusOfPlayer.FreeRoam;
 			}
 			//For one specific broken button where on back it does not go back so needs its own code to fix it
-			else if (ReturnCurrentButton().GetMeta("Object").ToString() == "TriggerEventBack" || ReturnCurrentButton().Name == "2")
+			else if (ReturnCurrentButton().GetMeta("Object").ToString() == "TriggerEventBack" && ReturnCurrentButton().Name == "2" )
 			{
 				DIALOGUE.Select_Items_Second.Visible = true;
 				DIALOGUE.Speech_Overlay.Visible = false;
@@ -428,7 +428,7 @@ public partial class InteractCircles : Node3D
 	public void ResetCam() {
 		Camera3D curCam = GetViewport().GetCamera3D(); //Gets the current active camera
 		GD.Print("RESET CAM");
-		if (this.Name == "InteractableItems2" && GetNode<ButtonOverwrite>(SCENESTATEACCESS.CURRENT_PATH_CIRCLES).Name == "2")
+		if (this.Name == "InteractableItems2" && GetNode<ButtonOverwrite>(SCENESTATEACCESS.CURRENT_PATH_CIRCLES).Name == "2" && GetNode<ButtonOverwrite>(SCENESTATEACCESS.CURRENT_PATH_CIRCLES).GetParent().GetParent().Name == "West")
 		{
 			GD.Print("two pinged, in int item 2");
 			Safecracking sc = GetNode<Safecracking>("Select_Items/Settings/Puzzles/PuzzlesPanel/West");
