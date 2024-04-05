@@ -171,8 +171,8 @@ metadata/ExtraInformation = {
 }
 metadata/Sources = {
 "src": "Image: https://en.wikipedia.org/wiki/File:Get_The_Mafia_and_The_Cops_Out_of_Gay_Bars.jpg",
-"srk": "https://hyperallergic.com/838167/the-radical-queer-aesthetics-of-gay-power-magazine/",
-"stv": "Information: https://www.loc.gov/item/sn93023131/",
+"srk": "Information: https://hyperallergic.com/838167/the-radical-queer-aesthetics-of-gay-power-magazine/",
+"stv": "https://www.loc.gov/item/sn93023131/",
 "stvcc": "https://web.archive.org/web/20110712032306/http://www.villagevoice.com/2008-06-17/news/before-stonewall/"
 }
 metadata/NewCamPos = Vector3(67.2327, -1.64112, 105.346)
@@ -249,7 +249,7 @@ metadata/ExtraInformation = {
 }
 metadata/NewCamPos = Vector3(79.48, -3.66453, 107.096)
 metadata/Sources = {
-"src": "https://www.history.com/topics/gay-rights/the-stonewall-riots",
+"src": "Information: https://www.history.com/topics/gay-rights/the-stonewall-riots",
 "srk": "https://guides.loc.gov/lgbtq-studies/before-stonewall/mattachine",
 "sss": "https://www.nps.gov/articles/000/mattachine-society.htm"
 }
@@ -754,7 +754,7 @@ custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_horizontal = 1
 size_flags_vertical = 1
-tooltip_text = "Go back to the settings menu"
+tooltip_text = "Go back"
 theme_type_variation = &"GreenButton"
 text = "Back"
 icon = ExtResource("14_jnv56")
@@ -813,14 +813,15 @@ metadata/Description = {
 metadata/Hints = {}
 metadata/ExtraInformation = {
 "Stage_1": "Yvonne Ritter was present at Stonewall, it occuring on the night of her 18th birthday.",
-"Stage_2": "She's Transgender, according to my mum, so she was born a male but identifies as a woman, something which was illegal back then.",
+"Stage_2": "She's Transgender, so she was born a male but identifies as a woman, something which was illegal back then.",
 "Stage_3": "The Mafia were heavily involved in places like the Stonewall, providing places for LGBTQ+ people to drink and be who they were without persecution."
 }
 metadata/NewCamPos = Vector3(-9.6948, 1.26392, -0.459455)
 metadata/Sources = {
-"ee": "https://search.library.wisc.edu/catalog/9913010402402121",
-"src": "Image: https://s3.amazonaws.com/americanarchive.org/thumbnail/cpb-aacip-15-96k0r7rb.jpg",
-"src2": "Information: https://www.theguardian.com/lifeandstyle/2019/jun/19/stonewall-50th-anniversary-night-that-unleashed-gay-liberation"
+"ee": "Image: https://s3.amazonaws.com/americanarchive.org/thumbnail/cpb-aacip-15-96k0r7rb.jpg",
+"src": "Information: https://search.library.wisc.edu/catalog/9913010402402121",
+"src2": "https://www.theguardian.com/lifeandstyle/2019/jun/19/stonewall-50th-anniversary-night-that-unleashed-gay-liberation",
+"ss": "https://www.history.com/news/how-the-mob-helped-establish-nycs-gay-bar-scene"
 }
 metadata/CamRotation = Vector3(0, 0, 0)
 
@@ -855,9 +856,9 @@ metadata/ExtraInformation = {
 }
 metadata/NewCamPos = Vector3(-5.05144, 1.26392, -0.459455)
 metadata/Sources = {
-"ss": "https://www.glf-foundation.org/timeline",
-"sstc": " Image: https://joaquimlivraria.files.wordpress.com/2019/06/marthashelley-stonewall.jpg",
-"sw": "Information: https://www.bbc.co.uk/news/world-us-canada-48643756"
+"ss": " Image: https://joaquimlivraria.files.wordpress.com/2019/06/marthashelley-stonewall.jpg",
+"sstc": "Information: https://www.glf-foundation.org/timeline",
+"sw": "https://www.bbc.co.uk/news/world-us-canada-48643756"
 }
 metadata/CamRotation = Vector3(0, 0, 0)
 
@@ -916,21 +917,21 @@ grow_horizontal = 2
 grow_vertical = 2
 texture_normal = ExtResource("6_f0smn")
 texture_pressed = ExtResource("7_t6h5l")
-metadata/Object = "Poster"
+metadata/Object = "Bar"
 metadata/Description = {
-"Stage_1": "I'd better go see what Mum wants.",
-"Stage_2": "As much as I like the poster, I need to go find the book.",
-"Tutorial": "I got this poster a while ago. Probably spent more time playing that then doing coursework..."
+"Stage_1": "Just going to check behind the bar... no there doesn't seem to be anything here apart from some spilt glasses.",
+"Stage_2": "There's nothing here.",
+"Tutorial": "n/a"
 }
 metadata/Hints = {}
 metadata/ExtraInformation = {
 "Info": "This poster is from a game called Persona 5. It is a role playing game released in 2016.",
 "Source": "It later got a definitive release which was called Persona 5 Royal. It's known for having one of the best modern-day soundtracks, the most famous track being \"Last Surprise.\""
 }
-metadata/NewCamPos = Vector3(1.09332, 0.244675, -1.35129)
+metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/Sources = {
-"Img_Src": " Image from: https://www.amazon.com/Persona-Official-Setting-Picture-JAPANESE/dp/4047331902",
-"Info_Src": "Information from: https://en.wikipedia.org/wiki/Persona_5, {0}"
+"Img_Src": "",
+"Info_Src": ""
 }
 metadata/CamRotation = Vector3(0, 0, 0)
 
@@ -964,14 +965,14 @@ texture_pressed = ExtResource("7_t6h5l")
 metadata/Object = "BathroomDoor1"
 metadata/Description = {
 "Stage_1": "This leads to the bathroom. I don't need it right now.",
-"Stage_2": "tbd",
+"Stage_2": "I doubt the code to the safe is in the bathroom, that seems a bad place to keep it.",
 "Stage_3": "tbd"
 }
 metadata/Hints = {}
 metadata/ExtraInformation = {
-"Stage_1": "A bunch of books with funny names."
+"Stage_1": ""
 }
-metadata/NewCamPos = Vector3(-0.0602202, 0.362064, 1.33653)
+metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/Sources = {
 "src": "The books are all parodies, so no sources here!"
 }
@@ -995,8 +996,8 @@ texture_normal = ExtResource("6_f0smn")
 texture_pressed = ExtResource("7_t6h5l")
 metadata/Object = "BathroomDoor2"
 metadata/Description = {
-"Stage_1": "This is the other door to the bathroom. ",
-"Stage_2": "tbd",
+"Stage_1": "This is the  door to the other bathroom. ",
+"Stage_2": "I still doubt the code to the safe is in the bathroom",
 "Stage_3": "tbd"
 }
 metadata/Hints = {
@@ -1005,12 +1006,10 @@ metadata/Hints = {
 metadata/ExtraInformation = {
 "Stage_1": "I've collected many books over the years, though I should really go through them. Sometimes Mum hijacks it to put her own up."
 }
-metadata/NewCamPos = Vector3(-0.0602202, -0.205688, 1.33653)
-metadata/Sources = {
-"src": "Just some parody books, no sources here."
-}
+metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/PuzzleEnabled = false
 metadata/CamRotation = Vector3(0, 0, 0)
+metadata/Sources = {}
 
 [node name="3" parent="InteractableItems/Select_Items/Settings/Panel/South" instance=ExtResource("5_biifr")]
 visible = false
@@ -1031,12 +1030,12 @@ texture_pressed = ExtResource("7_t6h5l")
 metadata/Object = "Dancefloor2"
 metadata/Description = {
 "Stage_1": "This leads to the dancefloor.",
-"Stage_2": "tbd",
+"Stage_2": "Maybe the code is through here somewhere.",
 "Stage_3": "tbd"
 }
 metadata/Hints = {}
 metadata/ExtraInformation = {
-"Stage_1": "Just some random books. Isn't really anything more to say. "
+"Stage_1": ""
 }
 metadata/NewCamPos = Vector3(12.9361, -2.3705, 8.15624)
 metadata/Sources = {
@@ -1874,7 +1873,10 @@ grow_vertical = 2
 texture_normal = ExtResource("6_f0smn")
 texture_pressed = ExtResource("7_t6h5l")
 metadata/Object = "Stairs"
-metadata/Description = {}
+metadata/Description = {
+"Stage_1": "This is the stairs- though I don't need to go up there.",
+"Stage_2": "I don't need to go up here."
+}
 metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
@@ -1896,7 +1898,10 @@ grow_vertical = 2
 texture_normal = ExtResource("6_f0smn")
 texture_pressed = ExtResource("7_t6h5l")
 metadata/Object = "Bar"
-metadata/Description = {}
+metadata/Description = {
+"Stage_1": "The bar is fairly empty- though you can see stains from spilt drinks.",
+"Stage_2": "There's nothing on here that would suggest to me there's a code here."
+}
 metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
@@ -1929,7 +1934,8 @@ texture_normal = ExtResource("6_f0smn")
 texture_pressed = ExtResource("7_t6h5l")
 metadata/Object = "BehindBar"
 metadata/Description = {
-"Stage_1": "I wonder if there is anything hiding behind the bar..."
+"Stage_1": "I wonder if there is anything hiding behind the bar...",
+"Stage_2": "Let's take another look at the safe."
 }
 metadata/Hints = {}
 metadata/ExtraInformation = {}
@@ -1953,11 +1959,21 @@ grow_vertical = 2
 texture_normal = ExtResource("6_f0smn")
 texture_pressed = ExtResource("7_t6h5l")
 metadata/Object = "FallenBarstools"
-metadata/Description = {}
+metadata/Description = {
+"Stage_1": "A bunch of fallen bar stools. It looks like the occupants of them left in a hurry.",
+"Stage_2": "I doubt there's a code for the safe here."
+}
 metadata/Hints = {}
-metadata/ExtraInformation = {}
+metadata/ExtraInformation = {
+"aaa": "to a series of riots that would take place over 6 nights.  ",
+"ex": "of the bars often had alcohol hidden so they could resume business almost immediately after a raid.",
+"jnsp": "The night of Stonewall was the first time any of the occupants had fought back against the raids however, leading ",
+"src": "Raids of bars and places that tended to those who were LGBTQ+ were not uncommon in 1960's, and often, the owners"
+}
 metadata/NewCamPos = Vector3(0, 0, 0)
-metadata/Sources = {}
+metadata/Sources = {
+"Information:": "Information: https://journals.sagepub.com/doi/epdf/10.1177/000312240607100502"
+}
 metadata/CamRotation = Vector3(0, 0, 0)
 
 [node name="3" parent="InteractableItems2/Select_Items/Settings/Panel/West" instance=ExtResource("5_biifr")]
@@ -1975,234 +1991,15 @@ grow_vertical = 2
 texture_normal = ExtResource("6_f0smn")
 texture_pressed = ExtResource("7_t6h5l")
 metadata/Object = "BathroomAgain"
-metadata/Description = {}
+metadata/Description = {
+"Stage_1": "This is the bathroom from the other side.",
+"Stage_2": "I don't need to go in here right now."
+}
 metadata/Hints = {}
 metadata/ExtraInformation = {}
 metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/Sources = {}
 metadata/CamRotation = Vector3(0, 0, 0)
-
-[node name="Up" type="Control" parent="InteractableItems2/Select_Items/Settings/Panel"]
-visible = false
-layout_mode = 2
-anchors_preset = 0
-offset_left = 887.0
-offset_top = 214.0
-offset_right = 927.0
-offset_bottom = 254.0
-
-[node name="1" parent="InteractableItems2/Select_Items/Settings/Panel/Up" instance=ExtResource("5_biifr")]
-visible = false
-layout_mode = 2
-offset_left = -887.0
-offset_top = -214.0
-offset_right = -687.0
-offset_bottom = -14.0
-texture_normal = ExtResource("6_f0smn")
-texture_pressed = ExtResource("7_t6h5l")
-metadata/Object = ""
-metadata/Description = {}
-metadata/Hints = {}
-metadata/ExtraInformation = {}
-metadata/NewCamPos = Vector3(0, 0, 0)
-metadata/Sources = {}
-metadata/CamRotation = Vector3(0, 0, 0)
-
-[node name="2" parent="InteractableItems2/Select_Items/Settings/Panel/Up" instance=ExtResource("5_biifr")]
-visible = false
-layout_mode = 2
-offset_left = -887.0
-offset_top = -214.0
-offset_right = -687.0
-offset_bottom = -14.0
-texture_normal = ExtResource("6_f0smn")
-texture_pressed = ExtResource("7_t6h5l")
-metadata/Object = ""
-metadata/Description = {}
-metadata/Hints = {}
-metadata/ExtraInformation = {}
-metadata/NewCamPos = Vector3(0, 0, 0)
-metadata/Sources = {}
-metadata/CamRotation = Vector3(0, 0, 0)
-
-[node name="3" parent="InteractableItems2/Select_Items/Settings/Panel/Up" instance=ExtResource("5_biifr")]
-visible = false
-layout_mode = 2
-offset_left = -887.0
-offset_top = -214.0
-offset_right = -687.0
-offset_bottom = -14.0
-texture_normal = ExtResource("6_f0smn")
-texture_pressed = ExtResource("7_t6h5l")
-metadata/Object = ""
-metadata/Description = {}
-metadata/Hints = {}
-metadata/ExtraInformation = {}
-metadata/NewCamPos = Vector3(0, 0, 0)
-metadata/Sources = {}
-metadata/CamRotation = Vector3(0, 0, 0)
-
-[node name="4" parent="InteractableItems2/Select_Items/Settings/Panel/Up" instance=ExtResource("5_biifr")]
-visible = false
-layout_mode = 2
-offset_left = -887.0
-offset_top = -214.0
-offset_right = -687.0
-offset_bottom = -14.0
-texture_normal = ExtResource("6_f0smn")
-texture_pressed = ExtResource("7_t6h5l")
-metadata/Object = ""
-metadata/Description = {}
-metadata/Hints = {}
-metadata/ExtraInformation = {}
-metadata/NewCamPos = Vector3(0, 0, 0)
-metadata/Sources = {}
-metadata/CamRotation = Vector3(0, 0, 0)
-
-[node name="5" parent="InteractableItems2/Select_Items/Settings/Panel/Up" instance=ExtResource("5_biifr")]
-visible = false
-layout_mode = 2
-offset_left = -887.0
-offset_top = -214.0
-offset_right = -687.0
-offset_bottom = -14.0
-texture_normal = ExtResource("6_f0smn")
-texture_pressed = ExtResource("7_t6h5l")
-metadata/Object = ""
-metadata/Description = {}
-metadata/Hints = {}
-metadata/ExtraInformation = {}
-metadata/NewCamPos = Vector3(0, 0, 0)
-metadata/Sources = {}
-metadata/CamRotation = Vector3(0, 0, 0)
-
-[node name="6" parent="InteractableItems2/Select_Items/Settings/Panel/Up" instance=ExtResource("5_biifr")]
-visible = false
-layout_mode = 2
-offset_left = -887.0
-offset_top = -214.0
-offset_right = -687.0
-offset_bottom = -14.0
-texture_normal = ExtResource("6_f0smn")
-texture_pressed = ExtResource("7_t6h5l")
-metadata/Object = ""
-metadata/Description = {}
-metadata/Hints = {}
-metadata/ExtraInformation = {}
-metadata/NewCamPos = Vector3(0, 0, 0)
-metadata/Sources = {}
-metadata/CamRotation = Vector3(0, 0, 0)
-
-[node name="Down" type="Control" parent="InteractableItems2/Select_Items/Settings/Panel"]
-visible = false
-layout_mode = 2
-anchors_preset = 0
-offset_left = 887.0
-offset_top = 214.0
-offset_right = 927.0
-offset_bottom = 254.0
-
-[node name="1" parent="InteractableItems2/Select_Items/Settings/Panel/Down" instance=ExtResource("5_biifr")]
-visible = false
-layout_mode = 2
-offset_left = -887.0
-offset_top = -214.0
-offset_right = -687.0
-offset_bottom = -14.0
-texture_normal = ExtResource("6_f0smn")
-texture_pressed = ExtResource("7_t6h5l")
-metadata/Object = ""
-metadata/Description = {}
-metadata/Hints = {}
-metadata/ExtraInformation = {}
-metadata/NewCamPos = Vector3(0, 0, 0)
-metadata/CamRotation = 0
-metadata/Sources = {}
-
-[node name="2" parent="InteractableItems2/Select_Items/Settings/Panel/Down" instance=ExtResource("5_biifr")]
-visible = false
-layout_mode = 2
-offset_left = -887.0
-offset_top = -214.0
-offset_right = -687.0
-offset_bottom = -14.0
-texture_normal = ExtResource("6_f0smn")
-texture_pressed = ExtResource("7_t6h5l")
-metadata/Object = ""
-metadata/Description = {}
-metadata/Hints = {}
-metadata/ExtraInformation = {}
-metadata/NewCamPos = Vector3(0, 0, 0)
-metadata/CamRotation = 0
-metadata/Sources = {}
-
-[node name="3" parent="InteractableItems2/Select_Items/Settings/Panel/Down" instance=ExtResource("5_biifr")]
-visible = false
-layout_mode = 2
-offset_left = -887.0
-offset_top = -214.0
-offset_right = -687.0
-offset_bottom = -14.0
-texture_normal = ExtResource("6_f0smn")
-texture_pressed = ExtResource("7_t6h5l")
-metadata/Object = ""
-metadata/Description = {}
-metadata/Hints = {}
-metadata/ExtraInformation = {}
-metadata/NewCamPos = Vector3(0, 0, 0)
-metadata/CamRotation = 0
-metadata/Sources = {}
-
-[node name="4" parent="InteractableItems2/Select_Items/Settings/Panel/Down" instance=ExtResource("5_biifr")]
-visible = false
-layout_mode = 2
-offset_left = -887.0
-offset_top = -214.0
-offset_right = -687.0
-offset_bottom = -14.0
-texture_normal = ExtResource("6_f0smn")
-texture_pressed = ExtResource("7_t6h5l")
-metadata/Object = ""
-metadata/Description = {}
-metadata/Hints = {}
-metadata/ExtraInformation = {}
-metadata/NewCamPos = Vector3(0, 0, 0)
-metadata/CamRotation = 0
-metadata/Sources = {}
-
-[node name="5" parent="InteractableItems2/Select_Items/Settings/Panel/Down" instance=ExtResource("5_biifr")]
-visible = false
-layout_mode = 2
-offset_left = -887.0
-offset_top = -214.0
-offset_right = -687.0
-offset_bottom = -14.0
-texture_normal = ExtResource("6_f0smn")
-texture_pressed = ExtResource("7_t6h5l")
-metadata/Object = ""
-metadata/Description = {}
-metadata/Hints = {}
-metadata/ExtraInformation = {}
-metadata/NewCamPos = Vector3(0, 0, 0)
-metadata/CamRotation = 0
-metadata/Sources = {}
-
-[node name="6" parent="InteractableItems2/Select_Items/Settings/Panel/Down" instance=ExtResource("5_biifr")]
-visible = false
-layout_mode = 2
-offset_left = -887.0
-offset_top = -214.0
-offset_right = -687.0
-offset_bottom = -14.0
-texture_normal = ExtResource("6_f0smn")
-texture_pressed = ExtResource("7_t6h5l")
-metadata/Object = ""
-metadata/Description = {}
-metadata/Hints = {}
-metadata/ExtraInformation = {}
-metadata/NewCamPos = Vector3(0, 0, 0)
-metadata/CamRotation = 0
-metadata/Sources = {}
 
 [node name="Puzzles" type="Control" parent="InteractableItems2/Select_Items/Settings"]
 visible = false
@@ -2224,7 +2021,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_qb8qr")
 
 [node name="Back_Button" type="MarginContainer" parent="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel"]
-visible = false
+top_level = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
@@ -2240,7 +2037,7 @@ custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_horizontal = 1
 size_flags_vertical = 1
-tooltip_text = "Go back to the settings menu"
+tooltip_text = "Go back"
 theme_type_variation = &"GreenButton"
 text = "Back"
 icon = ExtResource("14_jnv56")
@@ -3203,38 +3000,46 @@ transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, -3.72
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/South/3" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/South/3"]]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/West/1" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/West/1"]]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Panel/West/2" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/West/2"]]
-[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c1" to="InteractableItems" method="CirclesPressed"]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c1" to="InteractableItems" method="ToggleSpecificDirectionPath"]
-[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c2" to="InteractableItems" method="CirclesPressed"]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c1" to="InteractableItems" method="CirclesPressed"]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c2" to="InteractableItems" method="ToggleSpecificDirectionPath"]
-[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c3" to="InteractableItems" method="CirclesPressed"]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c2" to="InteractableItems" method="CirclesPressed"]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c3" to="InteractableItems" method="ToggleSpecificDirectionPath"]
-[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c4" to="InteractableItems" method="CirclesPressed"]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c3" to="InteractableItems" method="CirclesPressed"]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c4" to="InteractableItems" method="ToggleSpecificDirectionPath"]
-[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c5" to="InteractableItems" method="CirclesPressed"]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c4" to="InteractableItems" method="CirclesPressed"]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c5" to="InteractableItems" method="ToggleSpecificDirectionPath"]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c5" to="InteractableItems" method="CirclesPressed"]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c6" to="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South" method="PuzzleAnswer"]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/3" to="." method="MoveToSafeSide"]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/Components/c1" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/Components/c1"]]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/Components/c2" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/Components/c2"]]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/2" to="InteractableItems" method="CirclesPressed" binds= ["Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/2"]]
-[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/2" to="InteractableItems/Select_Items/Settings/Puzzles" method="ToggleSpecificCircleVisibility" binds= ["PuzzlesPanel/West/PuzzleCont/2"]]
 [connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/2" to="InteractableItems/Select_Items/Settings/Puzzles" method="EnableAllCircleComponents" binds= ["PuzzlesPanel/West/PuzzleCont/Components"]]
+[connection signal="pressed" from="InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/2" to="InteractableItems/Select_Items/Settings/Puzzles" method="ToggleSpecificCircleVisibility" binds= ["PuzzlesPanel/West/PuzzleCont/2"]]
 [connection signal="pressed" from="InteractableItems2/Select_Items/Settings/Panel/Back_Button/Back" to="InteractableItems2" method="OnBackPressed" flags=18]
+[connection signal="pressed" from="InteractableItems2/Select_Items/Settings/Panel/North/1" to="InteractableItems2" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/North/1"]]
 [connection signal="pressed" from="InteractableItems2/Select_Items/Settings/Panel/North/2" to="InteractableItems2" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/North/2"]]
+[connection signal="pressed" from="InteractableItems2/Select_Items/Settings/Panel/East/5" to="InteractableItems2" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/East/5"]]
+[connection signal="pressed" from="InteractableItems2/Select_Items/Settings/Panel/East/2" to="InteractableItems2" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/East/2"]]
+[connection signal="pressed" from="InteractableItems2/Select_Items/Settings/Panel/South/1" to="InteractableItems2" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/South/1"]]
+[connection signal="pressed" from="InteractableItems2/Select_Items/Settings/Panel/South/2" to="InteractableItems2" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/South/2"]]
 [connection signal="pressed" from="InteractableItems2/Select_Items/Settings/Panel/West/2" to="InteractableItems2" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/West/2"]]
+[connection signal="pressed" from="InteractableItems2/Select_Items/Settings/Panel/West/1" to="InteractableItems2" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/West/1"]]
+[connection signal="pressed" from="InteractableItems2/Select_Items/Settings/Panel/West/3" to="InteractableItems2" method="CirclesPressed" binds= ["Select_Items/Settings/Panel/West/3"]]
+[connection signal="pressed" from="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/Back_Button/Back" to="InteractableItems2" method="OnBackPressed"]
 [connection signal="pressed" from="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/North/PuzzleCont/2" to="." method="MoveToNormalSide"]
 [connection signal="pressed" from="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/East/PuzzleCont/2" to="." method="MoveToNormalSide"]
-[connection signal="pressed" from="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c1" to="InteractableItems" method="CirclesPressed"]
 [connection signal="pressed" from="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c1" to="InteractableItems" method="ToggleSpecificDirectionPath"]
-[connection signal="pressed" from="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c2" to="InteractableItems" method="CirclesPressed"]
+[connection signal="pressed" from="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c1" to="InteractableItems" method="CirclesPressed"]
 [connection signal="pressed" from="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c2" to="InteractableItems" method="ToggleSpecificDirectionPath"]
-[connection signal="pressed" from="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c3" to="InteractableItems" method="CirclesPressed"]
+[connection signal="pressed" from="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c2" to="InteractableItems" method="CirclesPressed"]
 [connection signal="pressed" from="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c3" to="InteractableItems" method="ToggleSpecificDirectionPath"]
-[connection signal="pressed" from="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c4" to="InteractableItems" method="CirclesPressed"]
+[connection signal="pressed" from="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c3" to="InteractableItems" method="CirclesPressed"]
 [connection signal="pressed" from="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c4" to="InteractableItems" method="ToggleSpecificDirectionPath"]
-[connection signal="pressed" from="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c5" to="InteractableItems" method="CirclesPressed"]
+[connection signal="pressed" from="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c4" to="InteractableItems" method="CirclesPressed"]
 [connection signal="pressed" from="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c5" to="InteractableItems" method="ToggleSpecificDirectionPath"]
+[connection signal="pressed" from="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/Components/c5" to="InteractableItems" method="CirclesPressed"]
 [connection signal="pressed" from="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/3" to="." method="MoveToNormalSide"]
 [connection signal="pressed" from="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/Components/c1" to="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/West" method="OnButtonPress" binds= [1]]
 [connection signal="pressed" from="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/Components/c2" to="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/West" method="OnButtonPress" binds= [2]]

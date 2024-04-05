@@ -216,7 +216,22 @@ public partial class InteractCircles : Node3D
 		DIALOGUE.Visible = true; 
 		
 		//Awaits the dialogue progression
-		await ToSignal(DIALOGUE, "LookProgress");
+		if (SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.LookingAtSomething)
+		{
+			await ToSignal(DIALOGUE, "LookProgress");
+		}
+		
+		else if (SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.InDialogue)
+		{
+			await ToSignal(DIALOGUE, "DialogueProgress");
+		}
+
+		else
+		{
+			await ToSignal(DIALOGUE, "SceneProgress");
+
+		}
+		GD.Print("eahaa aftr sign");
 		
 		// Swap back to free-roam view
 		DIALOGUE.SwapOverlay();
@@ -323,13 +338,10 @@ public partial class InteractCircles : Node3D
 	// Returns to camera origin
 	private void OnBackPressed()
 	{
+		GD.Print(GetNode<ButtonOverwrite>(SCENESTATEACCESS.CURRENT_PATH_CIRCLES).Name);
+		
 		ToggleBackButton(); //hides the back button
 		ResetCam(); //resets camera position
-
-		// ToggleParentNode(GetNode<ButtonOverwrite>(SCENESTATEACCESS.CURRENT_PATH_CIRCLES)); //hides the current node
-		// DIALOGUE.Speech_Overlay.Visible = false;
-		// DIALOGUE.Active_Canvas_Layer.Visible = true;
-
 
 		// If not already visible, show.
 		if (!GetNode<ButtonOverwrite>(SCENESTATEACCESS.CURRENT_PATH_CIRCLES).Visible) {
@@ -374,7 +386,7 @@ public partial class InteractCircles : Node3D
 			}
 		}
 	}
-
+	
 	//Toggles the back button visibility
 	public void ToggleBackButton()
 	{
@@ -385,8 +397,10 @@ public partial class InteractCircles : Node3D
 	public void SetCam(Vector3 pos, Vector3 angle)
 	{
 		Camera3D curCam = GetViewport().GetCamera3D(); //Gets the current active camera
+		
 		PREVIOUS_POS = curCam.Position;
 		PREVIOUS_ANGLE = curCam.RotationDegrees;
+		
 		curCam.Position = pos; //Sets current camera to the position
 		curCam.RotationDegrees = angle; //rotates to the rotation
 

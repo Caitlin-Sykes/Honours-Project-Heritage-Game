@@ -35,25 +35,55 @@ https://www.amazon.com/Persona-Official-Setting-Picture-JAPANESE/dp/4047331902. 
 
 https://en.wikipedia.org/wiki/File:Get_The_Mafia_and_The_Cops_Out_of_Gay_Bars.jpg - Image used for one of the bits outside Stonewall.
 
-https://americanarchive.org/catalog/cpb-aacip_15-pr7mp4wr01 - Dick Leitsch, image taken from the credited source. Used in Stonewall
-
 [PEOPLE]
     [YVONNE RITTER]:
-        https://search.library.wisc.edu/catalog/9913010402402121 - Stonewall uprising. Yvonne Ritter interview. Part 1. (2011).
-        Boston, MA :WGBH Educational Foundation. Accessed on 12/02/2024
 
-        https://www.theguardian.com/lifeandstyle/2019/jun/19/stonewall-50th-anniversary-night-that-unleashed-gay-liberation - Pilkington, E. (2019, June 19). The riot that changed America's gay rights movement forever. The Guardian. Accessed on 13/02/2024
+        https://s3.amazonaws.com/americanarchive.org/thumbnail/cpb-aacip-15-96k0r7rb.jpg - image of Yvonne Ritter, used in Stonewall. Taken from the credited source.
 
-        https://www.history.com/news/how-the-mob-helped-establish-nycs-gay-bar-scene - Holland, B. (2017, June 22). How the Mob Helped Establish NYC’s Gay Bar Scene. HISTORY. Accessed on 13/02/2024
+        https://search.library.wisc.edu/catalog/9913010402402121
 
-        https://s3.amazonaws.com/americanarchive.org/thumbnail/cpb-aacip-15-96k0r7rb.jpg - image of Yvonne Ritter, used in Stonewall. Taken from the credited source. 
+        https://www.theguardian.com/lifeandstyle/2019/jun/19/stonewall-50th-anniversary-night-that-unleashed-gay-liberation
+
+        https://www.history.com/news/how-the-mob-helped-establish-nycs-gay-bar-scene
 
     [MARTHA SHELLEY]:
 
-        https://www.bbc.co.uk/news/world-us-canada-48643756 - Geoghegan, T. (2019, June 17). Stonewall: A riot that changed millions of lives. BBC News. Accessed on 13/02/2024
-        
-        https://joaquimlivraria.files.wordpress.com/2019/06/marthashelley-stonewall.jpg - Martha Shelley, image taken from the credited source. Used in Stonewall
-
+        https://joaquimlivraria.files.wordpress.com/2019/06/marthashelley-stonewall.jpg
+    
+        https://www.bbc.co.uk/news/world-us-canada-48643756
+    
         https://www.glf-foundation.org/timeline
 
     [DICK LEITSCH]
+
+        https://americanarchive.org/catalog/cpb-aacip_15-pr7mp4wr01 - Dick Leitsch, image taken from the credited source. Used in Stonewall
+        https://makinggayhistory.com/podcast/dick-leitsch/
+        https://guides.loc.gov/lgbtq-studies/before-stonewall/mattachine 
+        https://en.wikipedia.org/wiki/Dick_Leitsch
+        https://www.history.com/news/stonewall-riots-facts-gay-rights-lgbt 
+        https://info.umkc.edu/makinghistory/the-homophile-movement/
+
+[MISC SOURCES]
+    [MATTACHINE]
+        
+        https://www.history.com/topics/gay-rights/the-stonewall-riots
+        https://guides.loc.gov/lgbtq-studies/before-stonewall/mattachine
+        https://www.nps.gov/articles/000/mattachine-society.htm
+        https://en.wikipedia.org/wiki/File:Get_The_Mafia_and_The_Cops_Out_of_Gay_Bars.jpg
+        https://hyperallergic.com/838167/the-radical-queer-aesthetics-of-gay-power-magazine/
+        https://www.loc.gov/item/sn93023131/
+        https://web.archive.org/web/20110712032306/http://www.villagevoice.com/2008-06-17/news/before-stonewall/
+
+    [GAY LIBERATION FRONT]
+        
+         https://blogs.lse.ac.uk/lsehistory/2023/04/25/the-gay-liberation-front/
+         http://www.glbtqarchive.com/ssh/gay_liberation_front_S.pdf
+         https://www.lgbtqhp.org/post/come-out
+         https://www.glf-foundation.org/timeline
+
+    [STONEWALL]
+
+        https://www.pbs.org/wgbh/americanexperience/features/stonewall-inn-through-years/
+        https://www.pbs.org/wgbh/americanexperience/features/stonewall-why-did-mafia-own-bar/
+        https://journals.sagepub.com/doi/epdf/10.1177/000312240607100502
+        https://www.history.com/topics/gay-rights/the-stonewall-riots
