@@ -62,6 +62,7 @@ public partial class IntroductionScene : Node3D
 		SCENESTATEACCESS.CurrentObjective = "Follow the tutorial";
 		SCENESTATEACCESS.sceneState = SceneState.CurrentSceneState.Tutorial;
 		SCENESTATEACCESS.PlayerStatus = SceneState.StatusOfPlayer.InDialogue;
+		SCENESTATEACCESS.TimesStuck = -1;
 
 		//Gets button nodes
 		GETUPBUTTON = GetNode<BaseButton>("CanvasLayer/Settings/OnItemSelect");

@@ -51,5 +51,8 @@ public partial class SceneState : Node {
 	public Cameras.Direction PREVIOUS_DIR;
 
 	public string CurrentObjective; //the current objective
+	
+	public int TimesStuck = -1; //keeps track of the number of times stuck
+
 
 }

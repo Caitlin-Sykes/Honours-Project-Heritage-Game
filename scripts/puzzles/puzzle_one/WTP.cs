@@ -38,6 +38,9 @@ public partial class WTP : Control
     //Initialises all the components for the puzzle
     public void InitPuzzle() {
         
+        
+        SCENESTATEACCESS.TimesStuck = 0;
+
         //Gets the red circle
         ButtonOverwrite redCirc = GetNode<ButtonOverwrite>("PuzzleCont/2");
         redBtn = redCirc; //sets the red circle

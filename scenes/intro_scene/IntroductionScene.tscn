@@ -149,6 +149,12 @@ _data = {
 script = ExtResource("1_wn8em")
 DIALOGUE = NodePath("CanvasLayer/Settings/SpeechGUI")
 TRANSITION = NodePath("Transition")
+metadata/Hints = {
+"0": "Think about what was said- where could it be?",
+"10": "Have you checked the bookshelf?",
+"15": "It's on the middle shelf of the book shelf.",
+"5": "in your house, where would you keep a book?"
+}
 
 [node name="Transition" type="ColorRect" parent="."]
 modulate = Color(0, 0, 0, 1)
@@ -228,11 +234,12 @@ metadata/Sources = {
 "src": "It's just a book. Nothing to cite here."
 }
 
-[node name="SpeechGUI" parent="CanvasLayer/Settings" node_paths=PackedStringArray("CIRCLES") instance=ExtResource("4_x2lrc")]
+[node name="SpeechGUI" parent="CanvasLayer/Settings" node_paths=PackedStringArray("PARENT", "CIRCLES") instance=ExtResource("4_x2lrc")]
 visible = false
 top_level = true
 layout_mode = 1
 mouse_filter = 2
+PARENT = NodePath("../../..")
 CIRCLES = NodePath("../../../InteractableItems")
 
 [node name="IntroCam" type="Camera3D" parent="."]

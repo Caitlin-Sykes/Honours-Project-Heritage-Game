@@ -31,9 +31,11 @@ https://www.dicebear.com/playground/ - for character speaking sprites
 [TEXTURES]:
 https://www.freepik.com/free-photo/brick-wall-texture_1033953.htm#page=2&query=brick%20texture%20seamless&position=43&from_view=search&track=ais&uuid=9b7bac6d-a674-4f3e-902e-6f4f3c7d5f9f - Bricks for stonewall
 
-https://www.amazon.com/Persona-Official-Setting-Picture-JAPANESE/dp/4047331902. - Persona 5 Poster, modelled by me, image taken from the credited source.
+https://www.amazon.com/Persona-Official-Setting-Picture-JAPANESE/dp/4047331902. - Persona 5 Poster, modelled by me
 
 https://en.wikipedia.org/wiki/File:Get_The_Mafia_and_The_Cops_Out_of_Gay_Bars.jpg - Image used for one of the bits outside Stonewall.
+
+https://news.google.com/newspapers?nid=KEtq3P1Vf8oC&dat=19690703&printsec=frontpage&hl=en - newspaper article
 
 [PEOPLE]
     [YVONNE RITTER]:
@@ -87,3 +89,13 @@ https://en.wikipedia.org/wiki/File:Get_The_Mafia_and_The_Cops_Out_of_Gay_Bars.jp
         https://www.pbs.org/wgbh/americanexperience/features/stonewall-why-did-mafia-own-bar/
         https://journals.sagepub.com/doi/epdf/10.1177/000312240607100502
         https://www.history.com/topics/gay-rights/the-stonewall-riots
+
+    [SIGN]
+        https://t-vox.org/history/stonewall-riots
+        https://en.wikipedia.org/wiki/Howard_R._Leary
+        https://en.wikipedia.org/wiki/Stonewall_riots
+        https://www.thesun.co.uk/news/18999623/stonewall-riots-gay-pride-lgbtq-rights-march-police/
+        https://digitalcollections.nypl.org/items/2e807240-e134-0136-1b27-2f4d2ebbfaa2
+        https://today.tamu.edu/2019/06/26/stonewalls-impact-50-years-later/
+        https://www.nyclgbtsites.org/site/christopher-park/
+        https://afterstonewall.nycitynewsservice.com/50-years-of-stonewall-then-now/

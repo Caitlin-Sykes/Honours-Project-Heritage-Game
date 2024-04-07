@@ -5,7 +5,8 @@ using System.Linq;
 
 public partial class Safecracking : Control
 {
-    private List<int> code = new List<int>() { 1, 9, 6, 9 }; //stores the correct code for the safe.
+    private List<int> code = new List<int>() { 0, 3, 1, 8 }; //stores the correct code for the safe.
+    
     private List<int> attempt = new List<int>(); //stores the attempted codes for the safe
 
     private SceneState SCENESTATEACCESS; //accesses the singleton for the scene state
@@ -37,6 +38,7 @@ public partial class Safecracking : Control
     {
         PUZZLES = GetNode<PuzzleStart>("../../");
         SCENESTATEACCESS = GetNode<SceneState>("/root/SceneStateSingleton"); //accesses the singleton for the scene state
+        SCENESTATEACCESS.TimesStuck = -1;
     }
 
     /** 
@@ -48,6 +50,10 @@ public partial class Safecracking : Control
     public void InitPuzzle()
     {
 
+        SCENESTATEACCESS.TimesStuck = 0;
+        SCENESTATEACCESS.CurrentObjective = "Find the code for the safe.";
+        SCENESTATEACCESS.sceneState = SceneState.CurrentSceneState.Stage_2;
+        
         //Gets the red circle
         ButtonOverwrite redCirc = GetNode<ButtonOverwrite>("PuzzleCont/2");
         redBtn = redCirc; //sets the red circle

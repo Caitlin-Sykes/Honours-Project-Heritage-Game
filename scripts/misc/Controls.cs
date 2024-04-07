@@ -72,6 +72,13 @@ public partial class Controls : Node3D
              DIALOGUE.CalledOutwidthDialogue = true; 
              DIALOGUE.ShowObjective();
         }
+        
+         //Reminds player what to do
+         else if (Input.IsKeyPressed(Key.H) && @event.IsPressed())
+         { 
+             DIALOGUE.ShowHint();
+         }
+
 
     }
 

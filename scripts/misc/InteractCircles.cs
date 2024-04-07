@@ -11,7 +11,7 @@ public partial class InteractCircles : Node3D
 	private SpeechGUI DIALOGUE; //instance of speech gui
 
 	private string PLAYER_AVATAR = "res://resources/textures/sprites/main_char/{0}.svg"; //player avatar string
-	private MarginContainer BackButtonContainer; //instance of the back button container
+	public MarginContainer BackButtonContainer; //instance of the back button container
 
 	private SceneState SCENESTATEACCESS; //accesses the singleton for the scene state
 
@@ -84,6 +84,7 @@ public partial class InteractCircles : Node3D
 		if (cir.HasMeta("PuzzleEnabled") && cir.GetMeta("PuzzleEnabled").AsBool())
 		{
 			PUZZLES.CheckPuzzle(cir);
+			GD.Print("in puzzle enabled in toggle events");
 		}
 
 		if (cir.GetParent() is Control parNode) {
@@ -191,6 +192,7 @@ public partial class InteractCircles : Node3D
 	// Handles on circle click
 	public async void CirclesPressed(String path)
 	{
+		GD.Print("--------" + path);
 		// Circles init stuff
 		CirclesInit();
 
@@ -226,23 +228,34 @@ public partial class InteractCircles : Node3D
 			await ToSignal(DIALOGUE, "DialogueProgress");
 		}
 
-		else
+		else if (SCENESTATEACCESS.PlayerStatus == SceneState.StatusOfPlayer.FreeRoam)
 		{
 			await ToSignal(DIALOGUE, "SceneProgress");
-
 		}
-		GD.Print("eahaa aftr sign");
+
+		else
+		{
+			GD.PrintErr("shouldnt rly be here");
+		}
 		
+		GD.Print("aftr waiting");
 		// Swap back to free-roam view
 		DIALOGUE.SwapOverlay();
 		
 		//If the camera isn't moved
 		if (GetNode<ButtonOverwrite>(path).GetMeta("NewCamPos").AsVector3() == Vector3.Zero)
 		{
+			GD.Print("in the no move func");
 			if (GetNode<ButtonOverwrite>(path).GetMeta("Object").AsString() != "Door")
 			{
 				//Swaps back to dialogue mode
 				SCENESTATEACCESS.PlayerStatus = SCENESTATEACCESS.PreviousState;
+				GD.Print("Player status is now: " + SCENESTATEACCESS.PlayerStatus);
+				if (DIALOGUE.Speech_Overlay.Visible != false)
+				{
+					DIALOGUE.Speech_Overlay.Visible = false;
+					DIALOGUE.Active_Canvas_Layer.Visible = true;
+				}
 			}
 		
 			//If tutorial
@@ -255,6 +268,9 @@ public partial class InteractCircles : Node3D
 				DIALOGUE.SkipDialogue(); //skips dialogue
 			}
 		}
+		
+		GD.Print("end func");
+
 	}
 
 	//A function to check whether the cam needs to be moved
@@ -265,6 +281,7 @@ public partial class InteractCircles : Node3D
 			// Toggles direction only if parent isnt called settings
 			if (GetNode<ButtonOverwrite>(SCENESTATEACCESS.CURRENT_PATH_CIRCLES).GetParent().Name != "Settings")
 			{
+				GD.Print("in check cam for pos");
 				ToggleEventsDirection(GetNode<ButtonOverwrite>(SCENESTATEACCESS.CURRENT_PATH_CIRCLES)); //turns off all the circles 
 			}
 
@@ -386,12 +403,15 @@ public partial class InteractCircles : Node3D
 				SCENESTATEACCESS.PlayerStatus = SceneState.StatusOfPlayer.FreeRoam;
 			}
 			//For one specific broken button where on back it does not go back so needs its own code to fix it
-			else if (ReturnCurrentButton().GetMeta("Object").ToString() == "TriggerEventBack" && ReturnCurrentButton().Name == "2" )
+			else if (ReturnCurrentButton().GetMeta("Object").ToString() == "TriggerEventBack" || ReturnCurrentButton().GetMeta("Object").ToString() == "TriggerEvent" && ReturnCurrentButton().Name == "2" ||  ReturnCurrentButton().Name == "c1" ||  ReturnCurrentButton().Name == "c2")
 			{
-				DIALOGUE.Select_Items_Second.Visible = true;
-				DIALOGUE.Speech_Overlay.Visible = false;
+				GD.Print("pingi");
 				SCENESTATEACCESS.PlayerStatus = SceneState.StatusOfPlayer.FreeRoam;
-				ToggleBackButton();
+				DIALOGUE.Select_Items.Visible = true;
+				DIALOGUE.Speech_Overlay.Visible = false;
+				// HideMasterPuzzle();
+				PUZZLES.TogglePuzzleVisibility(GetNode<ButtonOverwrite>("Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/2"));
+				ToggleEventsDirection(GetNode<ButtonOverwrite>("Select_Items/Settings/Panel/West/1"));
 			}
 		}
 	}
@@ -427,7 +447,7 @@ public partial class InteractCircles : Node3D
 
 	public void ResetCam() {
 		Camera3D curCam = GetViewport().GetCamera3D(); //Gets the current active camera
-		GD.Print("RESET CAM");
+	
 		if (this.Name == "InteractableItems2" && GetNode<ButtonOverwrite>(SCENESTATEACCESS.CURRENT_PATH_CIRCLES).Name == "2" && GetNode<ButtonOverwrite>(SCENESTATEACCESS.CURRENT_PATH_CIRCLES).GetParent().GetParent().Name == "West")
 		{
 			GD.Print("two pinged, in int item 2");
@@ -437,8 +457,44 @@ public partial class InteractCircles : Node3D
 			curCam.RotationDegrees = sc.BACKUP_ANGLE; //rotates to the rotation
 			ToggleEventsDirection(GetNode<ButtonOverwrite>("Select_Items/Settings/Panel/West/2"));
 		}
-		else
+		
+		else 
 		{
+			GD.Print("yh");
+			try
+			{
+				if (this.Name == "InteractableItems" &&
+				    GetNode<ButtonOverwrite>(SCENESTATEACCESS.CURRENT_PATH_CIRCLES).Name == "2" &&
+				    GetTree().CurrentScene.Name == "Stonewall")
+				{
+					if (GetNode<ButtonOverwrite>(SCENESTATEACCESS.CURRENT_PATH_CIRCLES).GetParent().GetParent().Name ==
+					    "West")
+					{
+						GD.Print("ping west");
+						ToggleEventsDirection(GetNode<ButtonOverwrite>("Select_Items/Settings/Panel/West/2"));
+					}
+					
+					else if (GetNode<ButtonOverwrite>(SCENESTATEACCESS.CURRENT_PATH_CIRCLES).GetParent().GetParent()
+						         .Name == "North")
+					{
+						GD.Print("ping north");
+						ToggleEventsDirection(GetNode<ButtonOverwrite>("Select_Items/Settings/Panel/North/2"));
+					}
+					
+					// SCENESTATEACCESS.PlayerStatus = SceneState.StatusOfPlayer.FreeRoam;
+					// DIALOGUE.Select_Items.Visible = true;
+					// DIALOGUE.Speech_Overlay.Visible = false;
+
+				}
+				
+			
+			}
+
+			catch(Exception e)
+			{
+				GD.Print("Weird error: " + e);
+			}
+			
 			curCam.Position = PREVIOUS_POS; //Sets current camera to the position
 			curCam.RotationDegrees = PREVIOUS_ANGLE; //rotates to the rotation
 		}

@@ -5,6 +5,8 @@ using Godot.Collections;
 
 public partial class SpeechGUI : Control
 {
+	[Export] 
+	private Node PARENT; //root node
 	[Export]
 	private InteractCircles CIRCLES; //instance of circles
 	private TextureRect AvatarNode; //node to hold avatar image
@@ -61,7 +63,8 @@ public partial class SpeechGUI : Control
 		Active_Canvas_Layer = Select_Items;
 
 		Speech_Overlay = GetNode<CanvasLayer>("../.."); //Gets instance of overlay
-	}
+
+}
 
 	/**
 	* ----------------------------------------------------------------
@@ -367,7 +370,60 @@ public partial class SpeechGUI : Control
 	//Shows the current objective of the player
 	public void ShowObjective()
 	{
-		Dialogue("Guide", SCENESTATEACCESS.CurrentObjective, "res://resources/textures/sprites/guide/1.svg");
+		Dialogue("Narrator", SCENESTATEACCESS.CurrentObjective, "res://resources/textures/sprites/guide/1.svg");
+	}
+	
+	//Shows the puzzle hints
+	public void ShowHint()
+	{
+		var hints = (Godot.Collections.Dictionary<string, string>)PARENT.GetMeta("Hints");
+		CalledOutwidthDialogue = true;
+		if (hints != null)
+		{
+			if (SCENESTATEACCESS.TimesStuck == -1)
+			{
+				GD.PrintErr(SCENESTATEACCESS.TimesStuck);
+
+				Dialogue("Narrator", "You've not started a puzzle yet.", "res://resources/textures/sprites/guide/1.svg");
+			}
+		
+			else if (SCENESTATEACCESS.TimesStuck >= 0 && SCENESTATEACCESS.TimesStuck <= 2)
+			{
+				GD.PrintErr(SCENESTATEACCESS.TimesStuck);
+
+				Dialogue("Narrator", hints["0"], "res://resources/textures/sprites/guide/1.svg");
+				SCENESTATEACCESS.TimesStuck++;
+			}
+		
+			else if (SCENESTATEACCESS.TimesStuck > 2 && SCENESTATEACCESS.TimesStuck <= 4)
+			{
+				GD.PrintErr(SCENESTATEACCESS.TimesStuck);
+
+				Dialogue("Narrator", hints["5"], "res://resources/textures/sprites/guide/1.svg");
+				SCENESTATEACCESS.TimesStuck++;
+
+			}
+		
+			else if (SCENESTATEACCESS.TimesStuck > 4 && SCENESTATEACCESS.TimesStuck <= 6)
+			{
+				GD.PrintErr(SCENESTATEACCESS.TimesStuck);
+
+				Dialogue("Narrator", hints["10"], "res://resources/textures/sprites/guide/1.svg");
+				SCENESTATEACCESS.TimesStuck++;
+			}
+		
+			else if (SCENESTATEACCESS.TimesStuck > 6)
+			{
+				GD.PrintErr(SCENESTATEACCESS.TimesStuck);
+
+				Dialogue("Narrator", hints["15"], "res://resources/textures/sprites/guide/1.svg");
+			}
+
+			else
+			{
+				GD.PrintErr(SCENESTATEACCESS.TimesStuck);
+			}
+		}
 	}
 
 	/**

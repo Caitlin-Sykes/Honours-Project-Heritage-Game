@@ -10,4 +10,7 @@
   <ItemGroup>
     <EmbeddedResource Remove=".idea\**" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="sources.md" />
+  </ItemGroup>
 </Project>

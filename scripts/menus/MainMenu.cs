@@ -125,7 +125,7 @@ public partial class MainMenu : Control
 	// A function to control the button "Sources" on the main menu
 	private void OnSourcesPressed()
 	{
-		TRANSITION.NextScene("res://scenes/menus/OptionsCredits.tscn");
+		TRANSITION.NextScene("res://scenes/menus/OptionsCreditsMenu.tscn");
 	}
 
 	// A function to control the button "Exit" on the main menu

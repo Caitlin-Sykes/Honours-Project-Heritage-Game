@@ -7,6 +7,8 @@ public partial class PuzzleStart : Control
 
 	private Safecracking puzzleTwo;
 
+	[Export] private InteractCircles CIRCLES;
+
 
 	public static string CURRENT_RED_CIRCLE {get;set;}
 
@@ -76,12 +78,37 @@ public partial class PuzzleStart : Control
 		var puzzlesMaster = (Control)compDir.GetParent().GetParent();
 		puzzlesMaster.Visible = !puzzlesMaster.Visible;
 	}
+	
+	//Toggles puzzle visibility by enabling the puzzle circle itself, its parent, and the "Puzzles" control node
+	private void TogglePuzzleVisibilityParentForceOn(ButtonOverwrite circ)
+	{
+
+		circ.Visible = true;
+		
+		//Toggles Puzzle Cont Visibility
+		var parCirc = (Control)circ.GetParent();
+		parCirc.Visible = true;
+
+		//Toggles South visibility
+		var compDir = (Control)parCirc.GetParent();
+		compDir.Visible = true;
+
+		//Toggles Puzzles master visiblity
+		var puzzlesMaster = (Control)compDir.GetParent().GetParent();
+		puzzlesMaster.Visible = true;
+	}
 
 	//Toggle specific circle
 	public void ToggleSpecificCircleVisibility(ButtonOverwrite circ) {
 		circ.Visible = !circ.Visible;
 	}
-
+	
+	//Toggle specific circle by path
+	public void ToggleSpecificCircleVisibilityPath(String circ)
+	{
+		ButtonOverwrite btn = GetNode<ButtonOverwrite>(circ);
+		btn.Visible = !btn.Visible;
+	}
 	//Handlers all the clickable components
 	public void EnableAllCircleComponents(String path)
 	{
@@ -99,6 +126,11 @@ public partial class PuzzleStart : Control
 			else if (comp is Panel panel) {
 				panel.Visible = !panel.Visible; ;
 			}
+		}
+
+		if (CIRCLES.BackButtonContainer.Visible == false)
+		{
+			CIRCLES.BackButtonContainer.Visible = true;
 		}
 	}
 

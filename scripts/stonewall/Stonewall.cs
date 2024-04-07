@@ -12,6 +12,7 @@ public partial class Stonewall : Node
 	private Cameras CAMERAS; //instance of cameraScript
 	private Cameras CAMERASBAR; //instance of bar side camera Script
 
+	[Export]
 	private InteractCircles CIRCLES; //instance of interactCircles
 
 	[Export]
@@ -22,6 +23,9 @@ public partial class Stonewall : Node
 
 	private PopupPanel MATTACHINE; //accesses the matachine popup panels
 	private PopupPanel GLFPOSTER; //accesses the GLF popup panels
+
+	[Export] private PuzzleStart PUZZLES;
+	[Export] private PuzzleStart OTHER_PUZZLES;
 
 
 
@@ -44,7 +48,6 @@ public partial class Stonewall : Node
 
 		CONTROLS = GetNode<Controls>("Cameras/Controls");
 		INTROCAM = GetNode<Camera3D>("CanvasLayer/IntroCam/");
-		CIRCLES = GetNode<InteractCircles>("InteractableItems");
 
 		//Actual Scene Init Stuff
 		SCENESTATEACCESS.sceneState = SceneState.CurrentSceneState.Stage_1; //sets to stage 1.
@@ -102,8 +105,7 @@ public partial class Stonewall : Node
 		DIALOGUE.ToggleGUIVisible();
 		CAMERAS.ToggleEvents();
 		CAMERAS.state = Cameras.State.Enabled; //enables that cameras
-
-
+		
 		SCENESTATEACCESS.CurrentObjective = "Explore the inside of Stonewall";
 		SCENESTATEACCESS.PlayerStatus = SceneState.StatusOfPlayer.InDialogue;
 		 
@@ -114,8 +116,17 @@ public partial class Stonewall : Node
 	private void MoveToSafeSide() {
 
 		// Hides the red circle
-		ButtonOverwrite btn = GetNode<ButtonOverwrite>("InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/3");
-		btn.Visible = false;
+		// GetNode<ButtonOverwrite>("InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/3")
+		// 	.Visible = false;
+		
+		
+		//disable puzzles for the normal side
+		PUZZLES.TogglePuzzleVisibility(GetNode<ButtonOverwrite>("InteractableItems/Select_Items/Settings/Puzzles/PuzzlesPanel/South/PuzzleCont/3"));
+		
+		if (CIRCLES_OTHER.BackButtonContainer.Visible == true)
+		{
+			CIRCLES_OTHER.BackButtonContainer.Visible = false;
+		}
 
 		//go to south camera on the other side, and sets it to true
 		CIRCLES.ResetCam(); 
@@ -124,9 +135,6 @@ public partial class Stonewall : Node
 		// Swaps the active cameras between cluster 1 and 2
 		// Sets current cam to cameras bar
 		SwapActiveCameraPod();
-
-		// Hides the back button
-		CIRCLES.ToggleBackButton();
 
 		// Toggles the secondary item overlay and disables the second one
 		DIALOGUE.EnableSecondaryItemOverlay();
@@ -152,17 +160,67 @@ public partial class Stonewall : Node
 	private void MoveToNormalSide()
 	{
 		// Hides the red circle
-		CIRCLES_OTHER.ToggleSpecificDirection(GetNode<ButtonOverwrite>("InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/North/PuzzleCont/2"));
+		// GetNode<ButtonOverwrite>("InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/North/PuzzleCont/2").Visible = false;
 		//go to north camera on the other side, and sets it to true
+		CIRCLES.ResetCam();
 		Camera3D cam = CAMERAS.CAMERAS[0];
 		// Swaps the active cameras between cluster 1 and 2
-		CIRCLES.ResetCam();
 
 		// Sets current cam to cameras bar
 		SwapActiveCameraPod();
 
+		//disable puzzles for the bar side
+		OTHER_PUZZLES.TogglePuzzleVisibility(GetNode<ButtonOverwrite>("InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/North/PuzzleCont/2"));
+
 		// Hides the back button
-		CIRCLES.ToggleBackButton();
+		if (CIRCLES.BackButtonContainer.Visible == true)
+		{
+			CIRCLES.BackButtonContainer.Visible = false;
+		}
+		
+		CIRCLES.HideMasterPuzzle();
+
+		// Toggles the secondary item overlay and disables the second one
+		DIALOGUE.DisableSecondaryItemOverlay();
+		DIALOGUE.Active_Canvas_Layer.Visible = true;
+		DIALOGUE.Select_Items_Second.Visible = false;
+
+		// Enables the events
+		CAMERAS.EnableEvents = true;
+		CAMERAS.SetCurrentCamera(cam);
+
+		// Sets status back to free roam and dir to north
+		SCENESTATEACCESS.PlayerStatus = SceneState.StatusOfPlayer.FreeRoam;
+		SCENESTATEACCESS.DIR = Cameras.Direction.North;
+
+		//Locks input for cluster 2. enables input for cluster 1
+		CAMERAS.state = Cameras.State.Enabled;
+		CAMERASBAR.state = Cameras.State.Disabled;
+
+	}
+	
+	//Handles moving from main room to the side with the safe
+	private void MoveToNormalSide(string path)
+	{
+		// Hides the red circle
+		// GetNode<ButtonOverwrite>("InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel/North/PuzzleCont/2").Visible = false;
+		//go to north camera on the other side, and sets it to true
+		Camera3D cam = CAMERAS.CAMERAS[0];
+		// Swaps the active cameras between cluster 1 and 2
+		CIRCLES_OTHER.ResetCam();
+
+		// Sets current cam to cameras bar
+		SwapActiveCameraPod();
+
+		//disable puzzles for the bar side
+		OTHER_PUZZLES.TogglePuzzleVisibility(GetNode<ButtonOverwrite>(path));
+
+		// Hides the back button
+		if (CIRCLES.BackButtonContainer.Visible == true)
+		{
+			CIRCLES.BackButtonContainer.Visible = false;
+		}
+		
 		CIRCLES.HideMasterPuzzle();
 
 		// Toggles the secondary item overlay and disables the second one

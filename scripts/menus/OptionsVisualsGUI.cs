@@ -151,10 +151,17 @@ public partial class OptionsVisualsGUI : Control
 	
 	
 	// A function to control the button "Back" on the Options
-	// Sends you back to the Options menu
+	// Sends you back to the Options menu or main menu
 	private void OnBackPressed()
-	{ 
-		TRANSITION.NextScene("res://scenes/menus/OptionsMenu.tscn");
+	{
+		if (this.Name == "OptionsCredits")
+		{
+			TRANSITION.NextScene("res://scenes/menus/OptionsMenu.tscn");
+		}
+		else
+		{
+			TRANSITION.NextScene("res://scenes/menus/MainMenu.tscn");
+		}
 	}
 
 	// A function to control the font toggle
