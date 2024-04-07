@@ -2854,7 +2854,7 @@ metadata/Description = {
 metadata/CamRotation = Vector3(0, 0, 0)
 metadata/NewCamPos = Vector3(0, 0, 0)
 
-[node name="West" type="Control" parent="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel" node_paths=PackedStringArray("CIRCLES_TWO", "beepReject", "beepAccept", "PinScreen")]
+[node name="West" type="Control" parent="InteractableItems2/Select_Items/Settings/Puzzles/PuzzlesPanel" node_paths=PackedStringArray("TRANSITION", "CIRCLES_TWO", "beepReject", "beepAccept", "PinScreen")]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -2863,6 +2863,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("20_2s2lp")
+TRANSITION = NodePath("../../../../../../Transition")
 CIRCLES_TWO = NodePath("../../../../..")
 beepReject = NodePath("../../../../../../beepReject")
 beepAccept = NodePath("../../../../../../beepOpen")

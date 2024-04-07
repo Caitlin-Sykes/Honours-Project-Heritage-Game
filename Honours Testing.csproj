@@ -11,6 +11,7 @@
     <EmbeddedResource Remove=".idea\**" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="readme.md" />
     <Content Include="resources\dialogue.json" />
     <Content Include="sources.md" />
   </ItemGroup>

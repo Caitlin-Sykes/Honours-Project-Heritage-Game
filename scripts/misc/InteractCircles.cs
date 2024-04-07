@@ -23,7 +23,7 @@ public partial class InteractCircles : Node3D
 	private PlayerData PLAYERDATA; //accesses the singleton for the PLAYERDATA
 
 	private PuzzleStart PUZZLES; //instance of puzzles
-
+	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -175,6 +175,9 @@ public partial class InteractCircles : Node3D
 				return;
 			case "Safe_Incorrect_TMD":
 				DIALOGUE.Dialogue(DIALOGUEACCESS.Speech.Safe_Incorrect_TMD);
+				return;
+			case "Finished":
+				DIALOGUE.Dialogue(DIALOGUEACCESS.Speech.Finished);
 				return;
 			default:
 				GD.PrintErr("Tried accessing a dialogue that's not in the switch case.");
@@ -413,7 +416,14 @@ public partial class InteractCircles : Node3D
 				PUZZLES.TogglePuzzleVisibilityParentForceOn(GetNode<ButtonOverwrite>("Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/2"));
 				PUZZLES.TogglePuzzleVisibility(GetNode<ButtonOverwrite>("Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/2"));
 				PUZZLES.HideAllCircleComponents("PuzzlesPanel/West/PuzzleCont/Components");
+				GetNode<MarginContainer>("Select_Items/Settings/Panel/Back_Button").Visible = false;
 				// ToggleEventsDirection(GetNode<ButtonOverwrite>("Select_Items/Settings/Panel/West/1"));
+
+				if (ReturnCurrentButton().Name == "c1" || ReturnCurrentButton().Name == "c2")
+				{
+					GD.Print("just the annoying buttons");
+					ToggleEventsDirection(GetNode<ButtonOverwrite>("Select_Items/Settings/Panel/West/1"));
+				}
 			}
 		}
 	}

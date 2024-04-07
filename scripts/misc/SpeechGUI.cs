@@ -304,6 +304,7 @@ public partial class SpeechGUI : Control
 				GD.Print(extraInfo[key]);
 				SetSpeechNode(string.Format(extraInfo[key], System.Environment.NewLine));
 				await ToSignal(this, "LookProgress");
+				await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
 			}
 		}
 

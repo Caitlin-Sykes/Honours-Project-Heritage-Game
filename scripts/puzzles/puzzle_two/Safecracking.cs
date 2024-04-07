@@ -11,6 +11,8 @@ public partial class Safecracking : Control
 
     private SceneState SCENESTATEACCESS; //accesses the singleton for the scene state
 
+    [Export] private Transitions TRANSITION;
+
     private int fullAttempt = 0;
 
     private PuzzleStart PUZZLES; //instance of PuzzleStart
@@ -115,7 +117,7 @@ public partial class Safecracking : Control
             {
                 PinScreen.Text = "*Opening*";
                 beepAccept.Play();
-                //PuzzleAnswer();
+                PuzzleAnswer();
             }
         
             else
@@ -223,7 +225,10 @@ public partial class Safecracking : Control
 
     // A function that executes what happens after the puzzle is solved
     private void PuzzleAnswer() {
-        
+        // Plays dialogue for wrong pin
+        CIRCLES_TWO.DialogueByString("Finished");
+        TRANSITION.NextScene("res://scenes/menus/FinishingScreen.tscn");
+
     }
 
 
