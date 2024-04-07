@@ -4,12 +4,12 @@ Welcome to the repository for my honours project.
 
 If you are here to user test, please read the participant information sheet and return the consent form available here to ```2423179@dundee.ac.uk```:
 
-Participant Information Sheet: https://dmail-my.sharepoint.com/:b:/g/personal/2423179_dundee_ac_uk/Efeb-qaQZlhHhZOEj15ROPMB_Iz6CZQyqNoParM4zYoBlw?e=7lBfqd
+[Participant Information Sheet](https://github.com/Caitlin-Sykes/Honours-Project-Heritage-Game/releases/tag/Windows)
 
-Consent Form: https://dmail-my.sharepoint.com/:b:/g/personal/2423179_dundee_ac_uk/ESH8720mZk5Bg8v3PDSxufcBygwzq-m-uBLiBv9vVt0SjA?e=thaecm
+[Consent Form](https://dmail-my.sharepoint.com/:b:/g/personal/2423179_dundee_ac_uk/ESH8720mZk5Bg8v3PDSxufcBygwzq-m-uBLiBv9vVt0SjA?e=thaecm)
 
-When you have finished user-testing the game, please fill out the form available here:
-https://forms.office.com/Pages/ResponsePage.aspx?id=OTEyrjoJKk2Bpl0zS82QGXVBog8GeIhCglNepN7oyPVUMTQyVFQ3VjFZSlVXV1UyOTFaV1JYSTFIMy4u
+When you have finished user-testing the game, please fill out the survey available here:
+[Survey](https://forms.office.com/e/eHns4xbB5v)
 
 ---
 ## Running the game
