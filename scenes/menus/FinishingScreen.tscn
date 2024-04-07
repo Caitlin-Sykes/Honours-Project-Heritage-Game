@@ -1,0 +1,135 @@
+[gd_scene load_steps=7 format=3 uid="uid://bdexxj1w621d4"]
+
+[ext_resource type="Theme" uid="uid://c8ikhuofmlww0" path="res://resources/themes/main_theme_cascadia.tres" id="1_r3pvd"]
+[ext_resource type="Script" path="res://scripts/menus/DisclaimersMenu.cs" id="2_s6sxl"]
+[ext_resource type="Script" path="res://scripts/misc/Transitions.cs" id="3_mdidy"]
+[ext_resource type="PackedScene" uid="uid://c3yc0s2xdcxsu" path="res://scenes/misc/AudioButtons.tscn" id="4_wifye"]
+
+[sub_resource type="Animation" id="Animation_7a53q"]
+resource_name = "Transition_Fade_In"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nuk71"]
+_data = {
+"Transition_Fade": SubResource("Animation_7a53q")
+}
+
+[node name="Disclaimers" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_r3pvd")
+script = ExtResource("2_s6sxl")
+
+[node name="Transition" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+top_level = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("3_mdidy")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Transition"]
+libraries = {
+"": SubResource("AnimationLibrary_nuk71")
+}
+
+[node name="Panel" type="Panel" parent="."]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="BoxContainer" type="BoxContainer" parent="Panel/MarginContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 5.0
+theme_type_variation = &"Disclaimer"
+text = "THANK YOU FOR PlAYING
+
+This is currently how far the game goes. 
+
+Thank you for user testing, please make sure to fill out the form
+available on the Github repository, as well as the consent sheet.
+
+This is a minimal viable product, used to demonstrate how gamefication
+could be used and expanded upon.
+
+Thanks again for user-testing, it is much appreciated.
+"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Continue" parent="Panel/MarginContainer/BoxContainer/Label" instance=ExtResource("4_wifye")]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.977
+anchor_right = 1.0
+anchor_bottom = 0.992
+offset_top = -47.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_type_variation = &"GreenButton"
+text = "Quit"
+
+[node name="Shadow" type="Panel" parent="Panel/MarginContainer/BoxContainer/Label/Continue"]
+show_behind_parent = true
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+
+[connection signal="pressed" from="Panel/MarginContainer/BoxContainer/Label/Continue" to="." method="OnExitPressed"]
