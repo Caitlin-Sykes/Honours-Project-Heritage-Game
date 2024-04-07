@@ -4,7 +4,7 @@ Welcome to the repository for my honours project.
 
 If you are here to user test, please read the participant information sheet and return the consent form available here to ```2423179@dundee.ac.uk```:
 
-[Participant Information Sheet](https://github.com/Caitlin-Sykes/Honours-Project-Heritage-Game/releases/tag/Windows)
+[Participant Information Sheet](https://dmail-my.sharepoint.com/:b:/g/personal/2423179_dundee_ac_uk/Efeb-qaQZlhHhZOEj15ROPMB_Iz6CZQyqNoParM4zYoBlw?e=LwaQYm)
 
 [Consent Form](https://dmail-my.sharepoint.com/:b:/g/personal/2423179_dundee_ac_uk/ESH8720mZk5Bg8v3PDSxufcBygwzq-m-uBLiBv9vVt0SjA?e=thaecm)
 
