@@ -49,4 +49,10 @@ public partial class DisclaimersMenu : Control
 	private void OnContinuePressed() { 
 		TRANSITION.NextScene("res://scenes/misc/PlayerIntro.tscn");
 	}
+	
+	// A function to control the button "Exit" on the main menu
+	private void OnExitPressed()
+	{
+		GetTree().Quit();
+	}
 }
