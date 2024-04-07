@@ -846,7 +846,7 @@ metadata/NewCamPos = Vector3(0, 0, 0)
 metadata/Sources = {}
 metadata/CamRotation = Vector3(0, 0, 0)
 
-[node name="Puzzles" type="Control" parent="InteractableItems/Select_Items/Settings"]
+[node name="Puzzles" type="Control" parent="InteractableItems/Select_Items/Settings" node_paths=PackedStringArray("CIRCLES")]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -855,6 +855,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("14_p25bt")
+CIRCLES = NodePath("../../..")
 
 [node name="PuzzlesPanel" type="Panel" parent="InteractableItems/Select_Items/Settings/Puzzles"]
 layout_mode = 1

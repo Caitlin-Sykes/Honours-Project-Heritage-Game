@@ -89,21 +89,28 @@
     {
       "Id": "6",
       "Speaker": "Narrator",
-      "Dialogue": "The 'J' key may provide extra information not originally shown. Try pressing 'J' whilst clicking on the poster by the desk.",
+      "Dialogue": "If you are stuck at any time, pressing 'H' will give you a clue for the puzzle you're stuck on. The 'J' key may provide extra information not originally shown. Try pressing 'J' whilst clicking on the poster.",
       "Avatar": "res://resources/textures/sprites/guide/1.svg"
     },
 
     {
       "Id": "7",
       "Speaker": "Narrator",
-      "Dialogue": "If you are stuck at any time, or forget what you are supposed to be doing, press the 'L' key to prompt you.",
+      "Dialogue": "If you forget what you are supposed to be doing, press the 'L' key to prompt you.",
       "Avatar": "res://resources/textures/sprites/guide/1.svg"
     },
-
+    
     {
       "Id": "8",
       "Speaker": "Narrator",
-      "Dialogue": "I think that's about it in terms of controls. Have fun- and I think you should interact with the door to tell your mum you're coming.",
+      "Dialogue": "If you forget what you are supposed to be doing, press the 'L' key to prompt you. Otherwise, that's about it in terms of controls. Have fun- and I think you should interact with the door to tell your mum you're coming.",
+      "Avatar": "res://resources/textures/sprites/guide/1.svg"
+    },
+    
+    {
+      "Id": "9",
+      "Speaker": "Narrator",
+      "Dialogue": "",
       "Avatar": "res://resources/textures/sprites/guide/1.svg"
     }
   ],

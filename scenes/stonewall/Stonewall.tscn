@@ -891,16 +891,24 @@ texture_normal = ExtResource("6_f0smn")
 texture_pressed = ExtResource("7_t6h5l")
 metadata/Object = "Leitsch"
 metadata/Description = {
-"Stage_1": "It's my really comfy desk chair.",
-"Stage_2": "The book doesn't seem to be on the chair.",
+"Stage_1": "Who is this?",
+"Stage_2": "This is Dick Leitsch. I don't think I'll get the pin to the safe here.",
 "Stage_3": "I'd better put it on the desk, not the chair."
 }
 metadata/Hints = {}
 metadata/ExtraInformation = {
-"Stage_1": "Apparently, purple chairs are a little hard to come by. I don't know why, purple's a great colour!"
+"Stage_1": "This is Dick Leitsch, the leader of the Mattachine Society. This group was one of the earliest movements regarding LGBTQ+ rights,",
+"aa": "He was closely intertwined with someone called Craig Rodwell, who was also a pioneer for protesting for LGBTQ+ rights.",
+"aaa": "Dick participated in one of the earliest acts of protest, a sit in where they would announce that they were gay, waited to be told to leave, and then sue the owners.",
+"srw": "The time in which they operated was known as the \"Hompohile Movement\", an old word for \"homosexual\""
 }
 metadata/NewCamPos = Vector3(0.827879, 1.26392, -0.459455)
-metadata/Sources = {}
+metadata/Sources = {
+"arc": "https://guides.loc.gov/lgbtq-studies/before-stonewall/mattachine",
+"bbb": "https://en.wikipedia.org/wiki/Dick_Leitsch",
+"src": null,
+"sx": "Information: https://makinggayhistory.com/podcast/dick-leitsch/"
+}
 metadata/CamRotation = Vector3(0, 0, 0)
 
 [node name="East" type="Control" parent="InteractableItems/Select_Items/Settings/Panel"]

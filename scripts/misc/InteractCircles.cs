@@ -407,11 +407,13 @@ public partial class InteractCircles : Node3D
 			{
 				GD.Print("pingi");
 				SCENESTATEACCESS.PlayerStatus = SceneState.StatusOfPlayer.FreeRoam;
-				DIALOGUE.Select_Items.Visible = true;
+				DIALOGUE.Active_Canvas_Layer.Visible = true;
 				DIALOGUE.Speech_Overlay.Visible = false;
 				// HideMasterPuzzle();
+				PUZZLES.TogglePuzzleVisibilityParentForceOn(GetNode<ButtonOverwrite>("Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/2"));
 				PUZZLES.TogglePuzzleVisibility(GetNode<ButtonOverwrite>("Select_Items/Settings/Puzzles/PuzzlesPanel/West/PuzzleCont/2"));
-				ToggleEventsDirection(GetNode<ButtonOverwrite>("Select_Items/Settings/Panel/West/1"));
+				PUZZLES.HideAllCircleComponents("PuzzlesPanel/West/PuzzleCont/Components");
+				// ToggleEventsDirection(GetNode<ButtonOverwrite>("Select_Items/Settings/Panel/West/1"));
 			}
 		}
 	}

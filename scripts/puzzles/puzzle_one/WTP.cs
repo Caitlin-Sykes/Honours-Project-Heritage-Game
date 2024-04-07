@@ -50,7 +50,6 @@ public partial class WTP : Control
 
         //Toggles the specific components of the puzzle
         PUZZLES.EnableAllCircleComponents("PuzzlesPanel/South/PuzzleCont/Components");
-
         //Toggles parent nodes
         PUZZLES.TogglePuzzleVisibility(redCirc);
 

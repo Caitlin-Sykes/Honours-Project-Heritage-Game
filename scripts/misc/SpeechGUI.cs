@@ -301,7 +301,7 @@ public partial class SpeechGUI : Control
 			//foreach key in the extraInfo dict, show the dialogue and await progression signal
 			foreach (string key in extraInfo.Keys)
 			{
-
+				GD.Print(extraInfo[key]);
 				SetSpeechNode(string.Format(extraInfo[key], System.Environment.NewLine));
 				await ToSignal(this, "LookProgress");
 			}

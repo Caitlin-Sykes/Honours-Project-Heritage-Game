@@ -80,10 +80,12 @@ public partial class PuzzleStart : Control
 	}
 	
 	//Toggles puzzle visibility by enabling the puzzle circle itself, its parent, and the "Puzzles" control node
-	private void TogglePuzzleVisibilityParentForceOn(ButtonOverwrite circ)
+	public void TogglePuzzleVisibilityParentForceOn(ButtonOverwrite circ)
 	{
 
 		circ.Visible = true;
+
+		GetNode<Control>("PuzzlesPanel/West/PuzzleCont/Components").Visible = true;
 		
 		//Toggles Puzzle Cont Visibility
 		var parCirc = (Control)circ.GetParent();
@@ -97,7 +99,7 @@ public partial class PuzzleStart : Control
 		var puzzlesMaster = (Control)compDir.GetParent().GetParent();
 		puzzlesMaster.Visible = true;
 	}
-
+	
 	//Toggle specific circle
 	public void ToggleSpecificCircleVisibility(ButtonOverwrite circ) {
 		circ.Visible = !circ.Visible;
@@ -139,11 +141,19 @@ public partial class PuzzleStart : Control
 	{
 
 		Control components = GetNode<Control>(path);
-
+		components.Visible = false;	
 		//For every circle in the components container, toggles them
-		foreach (ButtonOverwrite circle in components.GetChildren())
+		foreach (var vari in components.GetChildren())
 		{
-			circle.Visible = false;
+			if (vari is ButtonOverwrite btn)
+			{
+				btn.Visible = false;
+			}
+			
+			else if (vari is Panel pnl)
+			{
+				pnl.Visible = false;
+			}
 		}
 	}
 
