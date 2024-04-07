@@ -1,6 +1,4 @@
 using Godot;
-using System;
-
 public partial class ButtonOverwrite : BaseButton
 {
 	private AudioStreamPlayer2D aux; //for handling on click audio

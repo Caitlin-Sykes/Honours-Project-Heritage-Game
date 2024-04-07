@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=28 format=3 uid="uid://dl5h0o47fqj0f"]
 
-[ext_resource type="FontFile" uid="uid://c5vmny5pp0j27" path="res://resources/fonts/Dyslexie-Regular.woff" id="1_8hwvl"]
+[ext_resource type="FontFile" uid="uid://b8sgbs473kwqw" path="res://resources/fonts/OpenDyslexic3-Regular.ttf" id="1_nqig6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4cpy2"]
 bg_color = Color(0.552941, 0.760784, 0, 1)
@@ -82,11 +82,14 @@ bg_color = Color(1, 0.866667, 0.458824, 1)
 
 [resource]
 resource_name = "Dyslexie"
-default_font = ExtResource("1_8hwvl")
+default_font = ExtResource("1_nqig6")
 default_font_size = 40
+Disclaimer/base_type = &"Label"
+Disclaimer/constants/line_spacing = -21
+Disclaimer/font_sizes/font_size = 39
 GreenButton/constants/h_separation = 2
 GreenButton/constants/icon_max_width = 340
-GreenButton/font_sizes/font_size = 39
+GreenButton/font_sizes/font_size = 36
 GreenButton/styles/focus = null
 GreenButton/styles/hover = SubResource("StyleBoxFlat_4cpy2")
 GreenButton/styles/normal = SubResource("StyleBoxFlat_cbh2r")
@@ -117,7 +120,8 @@ SourcesTab/styles/tab_hovered = SubResource("StyleBoxFlat_1eto3")
 SourcesTab/styles/tab_selected = SubResource("StyleBoxFlat_obmn7")
 SourcesTab/styles/tab_unselected = SubResource("StyleBoxFlat_kca8h")
 Speech/base_type = &"Label"
-Speech/font_sizes/font_size = 29
+Speech/constants/line_spacing = -25
+Speech/font_sizes/font_size = 33
 SpeechPanel/base_type = &"Panel"
 SpeechPanel/styles/panel = SubResource("StyleBoxFlat_dmibg")
 StudentIDLineEdit/base_type = &"LineEdit"

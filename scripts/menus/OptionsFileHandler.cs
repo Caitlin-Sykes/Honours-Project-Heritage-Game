@@ -7,8 +7,8 @@ using System.Text.RegularExpressions;
 public partial class OptionsFileHandler : Node2D
 {
 
-	public readonly static string PROJECT_PATH = System.Environment.CurrentDirectory + "\\config\\";
-	public readonly static string CONFIG_PATH = System.Environment.CurrentDirectory + "\\config\\config.txt";
+	public readonly static string PROJECT_PATH = System.Environment.CurrentDirectory + "\\config\\"; //path to the config root
+	public readonly static string CONFIG_PATH = System.Environment.CurrentDirectory + "\\config\\config.txt"; //path to the config
 
 	/**
 	* ----------------------------------------------------------------
@@ -18,7 +18,7 @@ public partial class OptionsFileHandler : Node2D
 
 	 // Returns whether the file is present
 	public static bool IsOptionsPresent() {
-		if (Directory.Exists(OptionsFileHandler.PROJECT_PATH)) {
+		if (Directory.Exists(PROJECT_PATH)) {
 			return true;
 		}
 
@@ -28,7 +28,7 @@ public partial class OptionsFileHandler : Node2D
 	
 	// Checks whether the config file is present
 	public static bool IsConfigFilePresent() {
-		if (File.Exists(OptionsFileHandler.CONFIG_PATH)) {
+		if (File.Exists(CONFIG_PATH)) {
 			return true;
 		}
 			return false;
@@ -37,12 +37,12 @@ public partial class OptionsFileHandler : Node2D
 	// Creates the options directory - 
 	// in C#, only does it if it already exists, hence the lack of validation
 	public static void CreateOptionsDirectory() {
-        Directory.CreateDirectory(OptionsFileHandler.PROJECT_PATH);
+        Directory.CreateDirectory(PROJECT_PATH);
 	}
 
 	// Creates the options file
 	public static StreamWriter CreateConfigFile() {
-		return File.CreateText(OptionsFileHandler.CONFIG_PATH);
+		return File.CreateText(CONFIG_PATH);
 	}
 
 	// Closes the config file
@@ -52,11 +52,13 @@ public partial class OptionsFileHandler : Node2D
 
 	// Reads the configuration
 	public static void InitConfigFile() {
-		OptionsFileHandler.CreateOptionsDirectory();
+		//Creates the directory
+		CreateOptionsDirectory();
 
 		//If the file doesn't exist or is empty, will initialise it to defaults
-		if (!File.Exists(OptionsFileHandler.CONFIG_PATH) || (new FileInfo(CONFIG_PATH).Length == 0)) {
-			StreamWriter sw = OptionsFileHandler.CreateConfigFile();
+		if (!File.Exists(CONFIG_PATH) || (new FileInfo(CONFIG_PATH).Length == 0)) {
+			//Initialises the stream for the file
+			StreamWriter sw = CreateConfigFile();
 
 			//Writes Visual Default Settings
 			sw.WriteLine("[VISUAL]");
@@ -64,6 +66,7 @@ public partial class OptionsFileHandler : Node2D
 			sw.WriteLine("[FONT_SIZE] : DEFAULT");
 			sw.WriteLine("[FULL_SCREEN] : FALSE");
 
+			//Closes it
 			CloseConfigFile(sw);
 
 		}

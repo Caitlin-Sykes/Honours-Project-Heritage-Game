@@ -20,10 +20,10 @@ public partial class DisclaimersMenu : Control
 	
 	// Init Settings for Scene
 	private void InitSettings() {
-			//If GetFontDefault returns Dyslexie, sets theme to dyslexie
+			//If GetFontDefault returns Dyslexic, sets theme to dyslexie
 			//Else sets Theme to cascadia
-			if (OptionsVisualsGUI.GetFontDefault() == "Dyslexie") {
-				Theme = (Theme)GD.Load("res://resources/themes/main_theme_dyslexie.tres");
+			if (OptionsVisualsGUI.GetFontDefault() == "Dyslexic") {
+				Theme = (Theme)GD.Load("res://resources/themes/main_theme_dyslexic.tres");
 			}
 
 			else {
@@ -48,5 +48,11 @@ public partial class DisclaimersMenu : Control
 
 	private void OnContinuePressed() { 
 		TRANSITION.NextScene("res://scenes/misc/PlayerIntro.tscn");
+	}
+	
+	// A function to control the button "Exit" on the main menu
+	private void OnExitPressed()
+	{
+		GetTree().Quit();
 	}
 }

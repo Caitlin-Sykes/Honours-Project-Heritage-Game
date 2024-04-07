@@ -41,10 +41,10 @@ public partial class MainMenu : Control
 
 	// Init scene settings
 	private void InitSettings() {
-			//If GetFontDefault returns Dyslexie, sets theme to dyslexie
+			//If GetFontDefault returns Dyslexic, sets theme to dyslexie
 			//Else sets Theme to cascadia
-			if (OptionsVisualsGUI.GetFontDefault() == "Dyslexie") {
-				Theme = (Theme)GD.Load("res://resources/themes/main_theme_dyslexie.tres");
+			if (OptionsVisualsGUI.GetFontDefault() == "Dyslexic") {
+				Theme = (Theme)GD.Load("res://resources/themes/main_theme_dyslexic.tres");
 			}
 
 			else {
@@ -125,7 +125,7 @@ public partial class MainMenu : Control
 	// A function to control the button "Sources" on the main menu
 	private void OnSourcesPressed()
 	{
-		TRANSITION.NextScene("res://scenes/menus/OptionsCredits.tscn");
+		TRANSITION.NextScene("res://scenes/menus/OptionsCreditsMenu.tscn");
 	}
 
 	// A function to control the button "Exit" on the main menu

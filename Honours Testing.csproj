@@ -4,4 +4,15 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <RootNamespace>HonoursTesting</RootNamespace>
   </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove=".idea\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Remove=".idea\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="readme.md" />
+    <Content Include="resources\dialogue.json" />
+    <Content Include="sources.md" />
+  </ItemGroup>
 </Project>

@@ -15,7 +15,7 @@ public partial class Player_Intro : Control
 
 	private int currentAvatar = 0; //current index of avatar
 	private Random rdm; //random number generator
-	private PlayerDataStruct player;
+	private PlayerData PLAYERDATA; //accesses the singleton for the PLAYERDATA
 	private Transitions TRANSITION; //Handles screen transitions
 
 	private bool currentlyEditing = false;
@@ -29,6 +29,7 @@ public partial class Player_Intro : Control
 	public override void _Ready()
 	{
 		TRANSITION = GetNode<Transitions>("Settings/Transition");
+		PLAYERDATA = GetNode<PlayerData>("/root/PlayerData"); //accesses the singleton for the scene state
 		InitSettings();
 
 
@@ -56,11 +57,11 @@ public partial class Player_Intro : Control
 	// Init Settings for Scene
 	private void InitSettings()
 	{
-		//If GetFontDefault returns Dyslexie, sets theme to dyslexie
+		//If GetFontDefault returns Dyslexic, sets theme to dyslexie
 		//Else sets Theme to cascadia
-		if (OptionsVisualsGUI.GetFontDefault() == "Dyslexie")
+		if (OptionsVisualsGUI.GetFontDefault() == "Dyslexic")
 		{
-			Theme = (Theme)GD.Load("res://resources/themes/main_theme_dyslexie.tres");
+			Theme = (Theme)GD.Load("res://resources/themes/main_theme_dyslexic.tres");
 		}
 
 		else
@@ -88,7 +89,7 @@ public partial class Player_Intro : Control
 	//On submit button pressed
 	private void OnSubmitPressed() {
 		if (name.Text.Length > 0) {
-			PlayerData.CreatePlayer(name.Text, DateTime.Now, pronouns.Text, id.Text, currentAvatar+1);
+			PLAYERDATA.CreatePlayer(name.Text, DateTime.Now, pronouns.Text, id.Text, currentAvatar + 1);
 			TRANSITION.NextScene("res://scenes/intro_scene/IntroductionScene.tscn");
 		}
 

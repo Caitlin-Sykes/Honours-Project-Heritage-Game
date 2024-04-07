@@ -1,16 +1,12 @@
 using Godot;
 using System;
-using System.IO;
-using System.Linq;
-using System.Runtime.CompilerServices;
-
 public partial class OptionsVisualsGUI : Control
 {
 
-	private static readonly string FONT_OPTION_BUTTON_PATH = "Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/Fonts";
-	private static readonly string FONT_SIZE_OPTION_BUTTON_PATH = "Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/Font_Size";
+	private static readonly string FONT_OPTION_BUTTON_PATH = "Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/Fonts"; //path to the font button path
+	private static readonly string FONT_SIZE_OPTION_BUTTON_PATH = "Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/Font_Size"; //path to the font size button path
 
-	private static readonly string FULL_SCREEN_OPTION_BUTTON_PATH = "Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/Full_Screen";
+	private static readonly string FULL_SCREEN_OPTION_BUTTON_PATH = "Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/Full_Screen"; //path to the full screen path
 
 	private Transitions TRANSITION; //instance of transition
 	
@@ -39,23 +35,23 @@ public partial class OptionsVisualsGUI : Control
 
 	// Init Settings for Scene
 	private void InitSettings() {
-		//If GetFontDefault returns Dyslexie, sets theme to dyslexie
-			//Else sets Theme to cascadia
-			if (OptionsVisualsGUI.GetFontDefault() == "Dyslexie") {
-				Theme = (Theme)GD.Load("res://resources/themes/main_theme_dyslexie.tres");
-			}
+		//If GetFontDefault returns Dyslexic, sets theme to dyslexie
+		//Else sets Theme to cascadia
+		if (GetFontDefault() == "Dyslexic") {
+			Theme = (Theme)GD.Load("res://resources/themes/main_theme_dyslexic.tres");
+		}
 
-			else {
-				Theme = (Theme)GD.Load("res://resources/themes/main_theme_cascadia.tres");
-			}
+		else {
+			Theme = (Theme)GD.Load("res://resources/themes/main_theme_cascadia.tres");
+		}
 
-			//Converts GetFontSizeDefault to int (as it returns the default size)
-			Theme.DefaultFontSize = OptionsVisualsGUI.GetFontSizeDefault().ToInt();
+		//Converts GetFontSizeDefault to int (as it returns the default size)
+		Theme.DefaultFontSize = GetFontSizeDefault().ToInt();
 
-	
-			if (OptionsVisualsGUI.GetFullScreenDefault()) {
-				DisplayServer.WindowSetMode(DisplayServer.WindowMode.Fullscreen);
-			}
+
+		if (GetFullScreenDefault()) {
+			DisplayServer.WindowSetMode(DisplayServer.WindowMode.Fullscreen);
+		}
 	}
 
 
@@ -67,9 +63,9 @@ public partial class OptionsVisualsGUI : Control
 
 	// Selects the default options
 	private void SetFontDefault() {
-		//Sets default setting to Dyslexie if CURRENT_FONT is Dyslexie
+		//Sets default setting to Dyslexic if CURRENT_FONT is Dyslexic
 		//Otherwise sets it to Cascadia
-		if (GetFontDefault() == "Dyslexie") {
+		if (GetFontDefault() == "Dyslexic") {
 			GetNode<OptionButton>(FONT_OPTION_BUTTON_PATH).Select(1); //with 1 being the index of dyslexie
 		}
 
@@ -81,9 +77,9 @@ public partial class OptionsVisualsGUI : Control
 
 	//Gets the current font default
 	public static string GetFontDefault() {
-		//If DYSLEXIE is found in file, current font is set to dyslexie
-		if (OptionsFileHandler.FindInFile("DYSLEXIE")) {
-			return "Dyslexie";
+		//If DYSLEXIC is found in file, current font is set to dyslexie
+		if (OptionsFileHandler.FindInFile("DYSLEXIC")) {
+			return "Dyslexic";
 		}
 
 		return "Cascadia";
@@ -91,7 +87,7 @@ public partial class OptionsVisualsGUI : Control
 
 	// Selects the default options
 	public void SetFontSizeDefault() {
-		//Sets default setting to Dyslexie if CURRENT_FONT is Dyslexie
+
 		//Otherwise sets it to Cascadia
 		if (GetFontSizeDefault() == DEFAULT.ToString()) {
 			GetNode<OptionButton>(FONT_SIZE_OPTION_BUTTON_PATH).Select(0); //with 0 being the index of default
@@ -113,7 +109,7 @@ public partial class OptionsVisualsGUI : Control
 
 	//Gets the current font size default
 	public static string GetFontSizeDefault() {
-		//If DYSLEXIE is found in file, current font is set to dyslexie
+		//If DYSLEXIC is found in file, current font is set to dyslexie
 		if (OptionsFileHandler.FindInFile("[FONT_SIZE] : DEFAULT")) {
 			return DEFAULT.ToString();
 		}
@@ -155,22 +151,29 @@ public partial class OptionsVisualsGUI : Control
 	
 	
 	// A function to control the button "Back" on the Options
-	// Sends you back to the Options menu
+	// Sends you back to the Options menu or main menu
 	private void OnBackPressed()
-	{ 
-		TRANSITION.NextScene("res://scenes/menus/OptionsMenu.tscn");
+	{
+		if (this.Name == "OptionsCredits")
+		{
+			TRANSITION.NextScene("res://scenes/menus/OptionsMenu.tscn");
+		}
+		else
+		{
+			TRANSITION.NextScene("res://scenes/menus/MainMenu.tscn");
+		}
 	}
 
 	// A function to control the font toggle
 	private void OnFontsItemSelected(int index) {
 		if (index == 0) {
-			OptionsFileHandler.ReplaceInFile("DYSLEXIE", "CASCADIA");
+			OptionsFileHandler.ReplaceInFile("DYSLEXIC", "CASCADIA");
 			Theme = (Theme)GD.Load("res://resources/themes/main_theme_cascadia.tres");
 		}
 
 		else {
-			OptionsFileHandler.ReplaceInFile("CASCADIA", "DYSLEXIE");
-			Theme = (Theme)GD.Load("res://resources/themes/main_theme_dyslexie.tres");
+			OptionsFileHandler.ReplaceInFile("CASCADIA", "DYSLEXIC");
+			Theme = (Theme)GD.Load("res://resources/themes/main_theme_dyslexic.tres");
 		}	
 	}
 

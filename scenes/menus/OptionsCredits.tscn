@@ -118,18 +118,97 @@ theme_override_constants/margin_top = 15
 
 [node name="Audio" type="RichTextLabel" parent="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Audio"]
 layout_mode = 2
-text = "Main Theme: Passing Clouds:  https://uppbeat.io/t/cedric-vermue/passing-clouds License Code: S8HBXZTMUN5TMGGW"
-fit_content = true
+text = "Main Theme: Passing Clouds:  https://uppbeat.io/t/cedric-vermue/passing-clouds License Code: S8HBXZTMUN5TMGGW
 
-[node name="Bedroom" type="MarginContainer" parent="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/TabContainer"]
+Button Click: https://pixabay.com/sound-effects//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=140881
+
+Safe Entry: https://pixabay.com/users/edr-1177074/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=8333
+
+Reject Pin for Safe: https://pixabay.com/sound-effects/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=6151
+
+Successful Opening of Safe: https://pixabay.com/sound-effects/opening-small-safe-87536/ - beepSuccessOpen.mp3 for the successful opening of the safe 
+"
+
+[node name="Icons" type="MarginContainer" parent="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/TabContainer"]
 visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 15
 
-[node name="Bedroom" type="RichTextLabel" parent="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Bedroom"]
+[node name="Icons" type="RichTextLabel" parent="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Icons"]
 layout_mode = 2
-text = "Main Theme: Passing Clouds - https://uppbeat.io/t/cedric-vermue/passing-clouds - License Code - S8HBXZTMUN5TMGGW"
+text = "https://www.flaticon.com/free-icons/clarity - Clarity icons, logisstudio, icon for visuals setting
+
+https://www.flaticon.com/free-icons/speaker - Speaker icons, Pixel perfect, icon for audio setting
+
+https://www.flaticon.com/free-icons/credit - Credit icons, Freepik, icon for credits setting
+
+https://www.flaticon.com/free-icons/arrow - Arrow icons, Kirill Kazachek, icon for going back
+
+https://www.flaticon.com/free-icons/text-box\" - Text box icons, Freepik, icon for selecting fonts
+
+https://www.flaticon.com/free-icons/font - Size icon, Freepik, icon for selecting font size
+
+https://www.flaticon.com/free-icons/play - Arrow icon, Roundicon, icon for selecting avatars"
+
+[node name="Fonts" type="MarginContainer" parent="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+
+[node name="Fonts" type="RichTextLabel" parent="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Fonts"]
+layout_mode = 2
+text = "https://github.com/microsoft/cascadia-code/releases - Cascadia Code, Microsoft, default font of the game
+
+https://antijingoist.gumroad.com/l/OpenDyslexic - Open Dyslexic, Abbie Gonzalez, font that can help those who are dyslexic"
+
+[node name="Models & Textures" type="MarginContainer" parent="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+
+[node name="Models" type="RichTextLabel" parent="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Models & Textures"]
+layout_mode = 2
+text = "\"Schoolbag\", modelled by https://www.turbosquid.com/3d-models/3d-backpack-lowpoly-2024285, by Wolfy640
+
+https://www.dicebear.com/playground/ - for character speaking sprites
+
+https://www.freepik.com/free-photo/brick-wall-texture_1033953.htm#page=2&query=brick%20texture%20seamless&position=43&from_view=search&track=ais&uuid=9b7bac6d-a674-4f3e-902e-6f4f3c7d5f9f - Bricks for stonewall
+
+https://www.amazon.com/Persona-Official-Setting-Picture-JAPANESE/dp/4047331902. - Persona 5 Poster
+
+https://en.wikipedia.org/wiki/File:Get_The_Mafia_and_The_Cops_Out_of_Gay_Bars.jpg - Image used for one of the bits outside Stonewall.
+
+https://news.google.com/newspapers?nid=KEtq3P1Vf8oC&dat=19690703&printsec=frontpage&hl=en - newspaper article"
+
+[node name="People" type="MarginContainer" parent="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+
+[node name="People" type="RichTextLabel" parent="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/People"]
+layout_mode = 2
+text = "  [YVONNE RITTER]:
+        https://s3.amazonaws.com/americanarchive.org/thumbnail/cpb-aacip-15-96k0r7rb.jpg - image of Yvonne Ritter, used in Stonewall. Taken from the credited source.
+        https://search.library.wisc.edu/catalog/9913010402402121
+        https://www.theguardian.com/lifeandstyle/2019/jun/19/stonewall-50th-anniversary-night-that-unleashed-gay-liberation
+        https://www.history.com/news/how-the-mob-helped-establish-nycs-gay-bar-scene
+
+    [MARTHA SHELLEY]:
+        https://joaquimlivraria.files.wordpress.com/2019/06/marthashelley-stonewall.jpg
+        https://www.bbc.co.uk/news/world-us-canada-48643756
+        https://www.glf-foundation.org/timeline
+
+    [DICK LEITSCH]
+        https://americanarchive.org/catalog/cpb-aacip_15-pr7mp4wr01 - Dick Leitsch, image 		taken from the credited source. Used in Stonewall
+        https://makinggayhistory.com/podcast/dick-leitsch/
+        https://guides.loc.gov/lgbtq-studies/before-stonewall/mattachine 
+        https://en.wikipedia.org/wiki/Dick_Leitsch
+        https://www.history.com/news/stonewall-riots-facts-gay-rights-lgbt 
+        https://info.umkc.edu/makinghistory/the-homophile-movement/"
 
 [node name="Misc" type="MarginContainer" parent="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/TabContainer"]
 visible = false
@@ -137,9 +216,38 @@ layout_mode = 2
 theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 15
 
-[node name="Bedroom" type="RichTextLabel" parent="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Misc"]
+[node name="Misc" type="RichTextLabel" parent="Menu_Panel/VisualButtons/PanelContainer/Panel/HBoxContainer/MarginContainer/VBoxContainer/TabContainer/Misc"]
 layout_mode = 2
-text = "Main Theme: Passing Clouds - https://uppbeat.io/t/cedric-vermue/passing-clouds - License Code - S8HBXZTMUN5TMGGW"
+text = "[MATTACHINE]
+        https://www.history.com/topics/gay-rights/the-stonewall-riots
+        https://guides.loc.gov/lgbtq-studies/before-stonewall/mattachine
+        https://www.nps.gov/articles/000/mattachine-society.htm
+        https://en.wikipedia.org/wiki/File:Get_The_Mafia_and_The_Cops_Out_of_Gay_Bars.jpg
+        https://hyperallergic.com/838167/the-radical-queer-aesthetics-of-gay-power-magazine/
+        https://www.loc.gov/item/sn93023131/
+        https://web.archive.org/web/20110712032306/http://www.villagevoice.com/2008-06-17/news/before-stonewall/
+
+[GAY LIBERATION FRONT]
+         https://blogs.lse.ac.uk/lsehistory/2023/04/25/the-gay-liberation-front/
+         http://www.glbtqarchive.com/ssh/gay_liberation_front_S.pdf
+         https://www.lgbtqhp.org/post/come-out
+         https://www.glf-foundation.org/timeline
+
+[STONEWALL]
+        https://www.pbs.org/wgbh/americanexperience/features/stonewall-inn-through-years/
+        https://www.pbs.org/wgbh/americanexperience/features/stonewall-why-did-mafia-own-bar/
+        https://journals.sagepub.com/doi/epdf/10.1177/000312240607100502
+        https://www.history.com/topics/gay-rights/the-stonewall-riots
+
+ [SIGN]
+        https://t-vox.org/history/stonewall-riots
+        https://en.wikipedia.org/wiki/Howard_R._Leary
+        https://en.wikipedia.org/wiki/Stonewall_riots
+        https://www.thesun.co.uk/news/18999623/stonewall-riots-gay-pride-lgbtq-rights-march-police/
+        https://digitalcollections.nypl.org/items/2e807240-e134-0136-1b27-2f4d2ebbfaa2
+ https://today.tamu.edu/2019/06/26/stonewalls-impact-50-years-later/
+        https://www.nyclgbtsites.org/site/christopher-park/
+        https://afterstonewall.nycitynewsservice.com/50-years-of-stonewall-then-now/"
 
 [node name="Back_Button" type="MarginContainer" parent="Menu_Panel"]
 layout_mode = 1
